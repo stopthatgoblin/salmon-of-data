@@ -29,10 +29,10 @@ Use the existing `salmon-of-data` Worker connected to `stopthatgoblin/salmon-of-
 | Production branch | `main` |
 | Root directory | `/` |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
+| Deploy command | `npx wrangler deploy --config wrangler.static.jsonc` |
 | Build variable | `NODE_VERSION` = `24.19.0` |
 
-Commit and push `wrangler.jsonc` before retrying. It explicitly selects `dist/client`, serves the exported HTML routes, and prevents Wrangler's automatic framework setup. Keep the installed dependency versions and lockfile; no forced dependency upgrade is needed. The earlier log successfully built the website, then failed when automatic setup attempted a conflicting Wrangler upgrade.
+Commit and push `wrangler.static.jsonc` before retrying. The non-default filename avoids Vinext detecting this static export as a server-based Worker build. The explicit deploy command selects this configuration. It selects `dist/client`, serves the exported HTML routes, and prevents Wrangler's automatic framework setup. Keep the installed dependency versions and lockfile; no forced dependency upgrade is needed. The earlier log successfully built the website, then failed when automatic setup attempted a conflicting Wrangler upgrade.
 
 The existing build token can remain if it has permission to deploy this Worker in this account; its display name does not determine its permissions. The supplied log did not show a token permission failure.
 
