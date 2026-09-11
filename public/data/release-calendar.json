@@ -1,0 +1,400 @@
+{
+  "checkedAt": "2026-09-07",
+  "through": "2026-12-31",
+  "entries": [
+    {
+      "date": "2026-09-11",
+      "title": "US consumer prices",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q2 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260827/dq260827b-eng.htm",
+      "time": null,
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-09-29",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-10-02",
+      "title": "US employment situation",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-10-14",
+      "title": "US consumer prices",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-11-03",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "US employment situation",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "US consumer prices",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-12-01",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-12-04",
+      "title": "US employment situation",
+      "referencePeriod": "November 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "date": "2026-12-10",
+      "title": "US consumer prices",
+      "referencePeriod": "November 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "month": "2026-11",
+      "title": "US graduate labour market",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Graduate gap",
+        "Underemployment"
+      ],
+      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
+      "note": "Expected in November: the New York Fed generally updates in February, May, August and November. No exact day confirmed.",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": null,
+      "status": "Expected month",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "month": "2026-12",
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
+      "note": "Expected in December from the quarterly release pattern. Month is an estimate; no exact day confirmed.",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": null,
+      "status": "Expected month",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-09-16",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukaugust2026",
+      "referencePeriod": "August 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-21",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukseptember2026",
+      "referencePeriod": "September 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-11-18",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukoctober2026",
+      "referencePeriod": "October 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-12-16",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationuknovember2026",
+      "referencePeriod": "November 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-02",
+      "title": "FAO Food Price Index",
+      "metrics": [
+        "Food basket"
+      ],
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "referencePeriod": "September 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-11-06",
+      "title": "FAO Food Price Index",
+      "metrics": [
+        "Food basket"
+      ],
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "referencePeriod": "October 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-12-04",
+      "title": "FAO Food Price Index",
+      "metrics": [
+        "Food basket"
+      ],
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "referencePeriod": "November 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-02",
+      "title": "World Bank commodity prices",
+      "metrics": [
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
+      ],
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "referencePeriod": "September 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-09-07"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": null,
+      "title": "World Bank commodity prices",
+      "metrics": [
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
+      ],
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "referencePeriod": "October 2026",
+      "time": null,
+      "status": "Expected month",
+      "checkedAt": "2026-09-07",
+      "month": "2026-11",
+      "note": "Monthly publication; exact release day not yet confirmed."
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": null,
+      "title": "World Bank commodity prices",
+      "metrics": [
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
+      ],
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "referencePeriod": "November 2026",
+      "time": null,
+      "status": "Expected month",
+      "checkedAt": "2026-09-07",
+      "month": "2026-12",
+      "note": "Monthly publication; exact release day not yet confirmed."
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": null,
+      "title": "NOAA Relative Oceanic Niño Index",
+      "metrics": [
+        "El Niño"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "referencePeriod": "July–September 2026",
+      "time": null,
+      "status": "By the 5th",
+      "checkedAt": "2026-09-07",
+      "month": "2026-10",
+      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": null,
+      "title": "NOAA Relative Oceanic Niño Index",
+      "metrics": [
+        "El Niño"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "referencePeriod": "August–October 2026",
+      "time": null,
+      "status": "By the 5th",
+      "checkedAt": "2026-09-07",
+      "month": "2026-11",
+      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": null,
+      "title": "NOAA Relative Oceanic Niño Index",
+      "metrics": [
+        "El Niño"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "referencePeriod": "September–November 2026",
+      "time": null,
+      "status": "By the 5th",
+      "checkedAt": "2026-09-07",
+      "month": "2026-12",
+      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
+    }
+  ]
+}

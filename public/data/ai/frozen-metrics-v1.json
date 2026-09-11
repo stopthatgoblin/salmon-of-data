@@ -1,0 +1,384 @@
+{
+  "version": "1.0",
+  "frozenAt": "2026-09-06",
+  "horizon": "2029-12-31",
+  "checkpoint": "2027-09-01",
+  "scenarioType": "Judgement-based conditional paths, not estimated probabilities or causal forecasts",
+  "reviewRule": "Compare the first published September 2027 value (Q3 for Canadian metrics) with the frozen path at its observation date. Report signed errors against all three paths, and the nearest path by absolute error. Require persistence for at least four successive quarters before describing structural displacement. Report revised-data results separately. No scenario fit establishes AI causation.",
+  "metrics": [
+    {
+      "id": "recruitment",
+      "tab": "Recruitment",
+      "title": "Is white-collar recruitment falling behind?",
+      "description": "Demand for six white-collar job families, relative to the overall jobs market. A falling line means these careers are losing ground even after allowing for a broad hiring slowdown.",
+      "source": "Indeed Hiring Lab",
+      "sourceUrl": "https://github.com/hiring-lab/job_postings_tracker",
+      "definition": "Equal-weight mean of total-posting indices for Software Development, Accounting, Marketing, Administrative Assistance, Customer Service and Banking & Finance, divided by the all-US total-posting index, \u00d7 100. Daily seasonally adjusted seven-day trailing indices; 1 February 2020 = 100. All daily observations are retained. The six families are a frozen watchlist, not a census of white-collar work. An equal-weight index is not the share of all advertisements.",
+      "caveat": "Postings are intentions, not completed hires or jobs lost. The benchmark includes exposed work. Offshoring, remote work and the post-pandemic correction can create the same pattern.",
+      "test": "A sustained relative decline supports a recruitment squeeze. A recovery while adoption grows would weaken it. Require corroboration from actual hiring and employment before interpreting this as displacement.",
+      "deltas": [
+        10,
+        -10,
+        -30
+      ],
+      "impacts": [
+        "Relative recruitment recovers 10%. Employers continue opening human roles alongside AI.",
+        "Relative recruitment falls another 10%. Entry and career moves become harder even if the wider market holds up.",
+        "Relative recruitment falls another 30%. A large, persistent loss of opportunities would support the hiring-squeeze scenario."
+      ],
+      "country": "United States",
+      "unit": "Relative recruitment \u00b7 1 Feb 2020 = 100",
+      "format": "index",
+      "frequency": "Daily \u00b7 updated weekly",
+      "mode": "percent",
+      "period": "day",
+      "notes": [
+        "Indeed Hiring Lab data: CC BY 4.0. This dashboard transforms the published indices; Indeed does not endorse these scenarios.",
+        "Historical data use the provider\u2019s current revised methodology, including its November 2024 seasonal-adjustment change."
+      ],
+      "sourceFiles": [
+        "indeed-us-sectors.csv",
+        "indeed-us-all.csv",
+        "indeed-LICENSE.txt"
+      ],
+      "anchor": {
+        "date": "2026-08-28",
+        "value": 86.704853
+      },
+      "endpoints": [
+        95.375338,
+        78.034368,
+        60.693397
+      ],
+      "sourceHashes": {
+        "indeed-us-sectors.csv": "c1811a5a7e6e6341227c5d496c53a02ecb9c5b0cd557a2cad296c092224b2242",
+        "indeed-us-all.csv": "157b6357aea10e511a9e23ae08d480d0b4e23e1f2f7fbe4877f0e264bc359a88",
+        "indeed-LICENSE.txt": "f5b745ef98087f531e719ee8ca6a96809444573ecc7173c6fa68eaad39b3cc3f"
+      }
+    },
+    {
+      "id": "graduates",
+      "tab": "Graduate gap",
+      "title": "Are new graduates being left behind?",
+      "description": "The unemployment-rate gap between recent graduates and graduates of all working ages. A widening gap means younger degree-holders face an increasingly difficult start.",
+      "source": "Federal Reserve Bank of New York \u00b7 CPS",
+      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
+      "definition": "Recent-graduate unemployment rate (ages 22\u201327, bachelor\u2019s degree or higher) minus college-graduate unemployment rate (ages 22\u201365, bachelor\u2019s degree or higher), in percentage points. Both exclude students. Published rates are seasonally adjusted and smoothed with a three-month moving average. The comparison group includes recent graduates; it is not an older-only control.",
+      "caveat": "This covers all graduates, not only AI-exposed careers. Remote working, cohort size and sector hiring cycles matter. People leaving the labour force do not count as unemployed.",
+      "test": "A widening gap alongside weaker exposed-job recruitment supports the entry-level squeeze. A return toward the pre-pandemic gap would weaken it. One month is not decisive.",
+      "deltas": [
+        -1,
+        1,
+        3
+      ],
+      "impacts": [
+        "The gap narrows by 1 percentage point. Early-career prospects move back toward those of other graduates.",
+        "The gap widens by 1 point: one additional unemployed recent graduate per 100 in the labour force, if the comparison rate is unchanged.",
+        "The gap widens by 3 points: three additional unemployed recent graduates per 100, conditional on an unchanged comparison rate."
+      ],
+      "country": "United States",
+      "unit": "Recent minus all-graduate unemployment \u00b7 percentage points",
+      "format": "pp",
+      "frequency": "Monthly estimates \u00b7 quarterly release",
+      "mode": "points",
+      "period": "month",
+      "notes": [
+        "October 2025 is estimated by the source because survey data were missing. The dashboard does not replace this with an invented observation."
+      ],
+      "sourceFiles": [
+        "graduate-unemployment.csv",
+        "graduate-metadata.json"
+      ],
+      "anchor": {
+        "date": "2026-06-01",
+        "value": 2.839
+      },
+      "endpoints": [
+        1.839,
+        3.839,
+        5.839
+      ],
+      "sourceHashes": {
+        "graduate-unemployment.csv": "202e637b06568d3632f35a42baa5db985d2f860b278b2296630e46e36eae5cbd",
+        "graduate-metadata.json": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b"
+      }
+    },
+    {
+      "id": "underemployment",
+      "tab": "Underemployment",
+      "title": "Are graduates finding graduate-level work?",
+      "description": "The share of employed recent graduates in jobs that usually do not require a degree. A rising line means more graduates are working below the usual qualification level.",
+      "source": "Federal Reserve Bank of New York \u00b7 CPS / O*NET",
+      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
+      "definition": "Published underemployment rate for employed graduates aged 22\u201327 with a bachelor\u2019s degree or higher, excluding students. A non-college job is one in which fewer than half of surveyed incumbents report that a bachelor\u2019s degree is necessary. Seasonally adjusted, three-month moving average. This is an education-to-job mismatch measure, not involuntary part-time work.",
+      "caveat": "A non-graduate job can be skilled and well paid. This measure excludes unemployed graduates and cannot identify whether AI caused a mismatch.",
+      "test": "A sustained rise, together with weaker recruitment and a larger unemployment gap, would support an entry bottleneck. Falling mismatch would suggest that graduates are finding other suitable work.",
+      "deltas": [
+        -3,
+        3,
+        8
+      ],
+      "impacts": [
+        "Three fewer graduates per 100 employed work in non-graduate roles. The transition into degree-level work improves.",
+        "Three more graduates per 100 employed take non-graduate roles. The cost appears as weaker career matching.",
+        "Eight more graduates per 100 employed take non-graduate roles. A sizeable share of the next cohort struggles to use its qualifications."
+      ],
+      "country": "United States",
+      "unit": "Employed recent graduates in non-graduate jobs \u00b7 %",
+      "format": "percent",
+      "frequency": "Monthly estimates \u00b7 quarterly release",
+      "mode": "points",
+      "period": "month",
+      "notes": [
+        "October 2025 is estimated by the source because survey data were missing."
+      ],
+      "sourceFiles": [
+        "graduate-underemployment.csv",
+        "graduate-metadata.json"
+      ],
+      "anchor": {
+        "date": "2026-06-01",
+        "value": 41.95
+      },
+      "endpoints": [
+        38.95,
+        44.95,
+        49.95
+      ],
+      "sourceHashes": {
+        "graduate-underemployment.csv": "509aad590c2f26387d07bc7e7f8e3122be60c955a549bc88a23d248c78ab9b47",
+        "graduate-metadata.json": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b"
+      }
+    },
+    {
+      "id": "hiring",
+      "tab": "Actual hiring",
+      "title": "Is the hiring slowdown becoming real?",
+      "description": "Actual hiring in professional and business services, relative to private-sector hiring overall. This checks whether weaker advertisements are translating into fewer people joining employers.",
+      "source": "US Bureau of Labor Statistics \u00b7 JOLTS via FRED",
+      "sourceUrl": "https://fred.stlouisfed.org/series/JTS540099HIR",
+      "definition": "Three-month average of the seasonally adjusted professional and business services hires rate (JTS540099HIR) divided by the same average for total private employment (JTS1000HIR); rebase this ratio to its 2019 mean = 100. A hires rate is hires during the month divided by employment, \u00d7 100. This broad supersector includes professional services, company management, administrative support, staffing agencies and waste services.",
+      "caveat": "This is a broad industry measure, not graduate or occupation-specific hiring. Staffing-agency activity and changes in voluntary job switching can dominate it.",
+      "test": "Hiring falling behind the wider market for several quarters would corroborate recruitment pressure. Stable relative hiring despite weaker advertisements would weaken the claim that vacancies are translating into lost opportunities.",
+      "deltas": [
+        5,
+        -10,
+        -25
+      ],
+      "impacts": [
+        "Relative hiring improves 5%. Human recruitment remains resilient as employers change how work is done.",
+        "Relative hiring slows 10%. Fewer workers enter these employers for a given pace of hiring elsewhere.",
+        "Relative hiring slows 25%. An extended recruitment freeze would materially constrain entry and job mobility."
+      ],
+      "country": "United States",
+      "unit": "Index \u00b7 2019 average = 100",
+      "format": "index",
+      "frequency": "Monthly \u00b7 three-month average",
+      "mode": "percent",
+      "period": "month",
+      "notes": [],
+      "sourceFiles": [
+        "JTS540099HIR.csv",
+        "JTS1000HIR.csv"
+      ],
+      "anchor": {
+        "date": "2026-07-01",
+        "value": 99.04465
+      },
+      "endpoints": [
+        103.996883,
+        89.140185,
+        74.283488
+      ],
+      "sourceHashes": {
+        "JTS540099HIR.csv": "494531c7f346d44c427d733e1f4b1b1549c8264a7aef5da74a66ce5dd3365226",
+        "JTS1000HIR.csv": "4ec8bce5e90960a20c1dc15422ccdf2b7da5d826f6b71297c4facca054470d9c"
+      }
+    },
+    {
+      "id": "employment",
+      "tab": "Employment",
+      "title": "Are knowledge-service jobs losing ground?",
+      "description": "Employment in professional, scientific and technical services, relative to total private employment. A falling line means this group is shrinking as a share of the private jobs market.",
+      "source": "US Bureau of Labor Statistics \u00b7 CES via FRED",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CES6054000001",
+      "definition": "Seasonally adjusted employment in NAICS 54 (CES6054000001), divided by total private nonfarm employment (USPRIV); ratio indexed to its 2019 mean = 100. NAICS 54 includes legal, accounting, computer systems design, consulting, architecture, engineering, research and advertising services. The series measures payroll jobs, not unique workers.",
+      "caveat": "This misses knowledge workers employed in banks, manufacturers and other industries. Relative decline can coexist with absolute job growth. Outsourcing and industry reclassification can also move the line.",
+      "test": "A sustained loss of employment share, especially while output holds up, supports labour-saving change. Continued relative job growth would weaken broad displacement in this sector. Attribution to AI needs adoption evidence.",
+      "deltas": [
+        3,
+        -3,
+        -10
+      ],
+      "impacts": [
+        "The sector gains 3% relative to private employment. New demand more than absorbs any displaced work.",
+        "The sector loses 3% relative to private employment. The employment effect becomes visible beyond job advertisements.",
+        "The sector loses 10% relative to private employment. This would be a substantial contraction in a major knowledge-work sector."
+      ],
+      "country": "United States",
+      "unit": "Index \u00b7 2019 average = 100",
+      "format": "index",
+      "frequency": "Monthly",
+      "mode": "percent",
+      "period": "month",
+      "notes": [
+        "The high-path job equivalent holds total private employment fixed at its latest value. It is not a forecast of US unemployment or GDP. Recent CES observations are provisional and subject to revision."
+      ],
+      "sourceFiles": [
+        "CES6054000001.csv",
+        "USPRIV.csv"
+      ],
+      "anchor": {
+        "date": "2026-08-01",
+        "value": 107.482312
+      },
+      "endpoints": [
+        110.706781,
+        104.257843,
+        96.734081
+      ],
+      "sourceHashes": {
+        "CES6054000001.csv": "e9767bfc2bc7c31247c5088db258728decd7c0e9c8eb5e2c2e8f8f1334c62987",
+        "USPRIV.csv": "6a30afe0e525b5060db740fba542bcdc4d8de57c89e09bacabac1c5bd912e14b"
+      }
+    },
+    {
+      "id": "real-pay",
+      "tab": "Real pay",
+      "title": "Is the purchasing power of pay weakening?",
+      "description": "Inflation-adjusted hourly earnings in professional and business services. A falling line means an hour of work buys less, even if the dollar wage is rising.",
+      "source": "US Bureau of Labor Statistics \u00b7 CES / CPI via FRED",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CES6000000003",
+      "definition": "Seasonally adjusted average hourly earnings for all employees in professional and business services (CES6000000003), divided by seasonally adjusted CPI-U (CPIAUCSL); rebase to the 2019 mean = 100. Use only months available in both sources. This broad sector includes staffing, administrative support and waste services; it is not a pure knowledge-worker wage series.",
+      "caveat": "Average pay can rise when lower-paid junior roles disappear. These are not same-worker wages or technology-specific salary offers. Inflation can weaken purchasing power without any AI displacement.",
+      "test": "Falling real pay alongside weaker employment strengthens the case for a labour-income cost. Rising pay on its own does not disprove displacement, because the mix of surviving workers may change.",
+      "deltas": [
+        6,
+        -3,
+        -10
+      ],
+      "impacts": [
+        "Real hourly pay grows 6%. Workers share in productivity gains or retain their bargaining power.",
+        "Real hourly pay falls 3%. Even workers keeping their jobs experience an erosion of purchasing power.",
+        "Real hourly pay falls 10%. The income effect reaches workers who remain employed, alongside any lost jobs."
+      ],
+      "country": "United States",
+      "unit": "Index \u00b7 2019 average = 100",
+      "format": "index",
+      "frequency": "Monthly",
+      "mode": "percent",
+      "period": "month",
+      "notes": [
+        "History ends at the latest common earnings/CPI month. A newer nominal-pay release is not silently presented as an inflation-adjusted observation."
+      ],
+      "sourceFiles": [
+        "CES6000000003.csv",
+        "CPIAUCSL.csv"
+      ],
+      "anchor": {
+        "date": "2026-07-01",
+        "value": 104.073142
+      },
+      "endpoints": [
+        110.317531,
+        100.950948,
+        93.665828
+      ],
+      "sourceHashes": {
+        "CES6000000003.csv": "f44787249b8202c448fc3aafd21ea8689a7cb39b2e8f7abaf7246038482788f3",
+        "CPIAUCSL.csv": "5a102ceb6a4c5fe5a2e0319d6feca89b55dde6199e51de0760f42791a949cdaa"
+      }
+    },
+    {
+      "id": "canada-vacancies",
+      "tab": "Canada: demand",
+      "title": "Is software demand weakening beyond the US?",
+      "description": "Canadian computer, software and web-development vacancies as a share of all vacancies. A falling line means demand for these skills is weakening faster than the wider Canadian market.",
+      "source": "Statistics Canada \u00b7 Job Vacancy and Wage Survey",
+      "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
+      "definition": "National NOC 2021 group 2123: Computer, software and Web designers and developers. Sum of the latest four consecutive quarterly job-vacancy levels, divided by the corresponding sum for all occupations, \u00d7 100. Table 14-10-0444-01. Underlying data are unadjusted; four-quarter pooling reduces seasonality. Missing/suppressed quarters are not filled, and rolling windows never bridge missing quarters. Dates denote quarter-end.",
+      "caveat": "A second-country signal is useful corroboration, not a controlled experiment. Migration, interest rates and technology investment also affect Canada. Vacancies are positions employers seek to fill, not hires.",
+      "test": "Persistent weakness in both Canadian software vacancies and US white-collar postings would strengthen the case for a wider change in demand. Canadian recovery would weaken the claim of a universal collapse.",
+      "deltas": [
+        10,
+        -15,
+        -35
+      ],
+      "impacts": [
+        "The vacancy share recovers 10%. Software work retains demand outside the US.",
+        "The vacancy share falls another 15%. The loss of recruitment momentum extends to a second labour market.",
+        "The vacancy share falls another 35%. A major, sustained reduction would corroborate broad demand pressure on software work."
+      ],
+      "country": "Canada",
+      "unit": "Software-related share of all vacancies \u00b7 trailing four quarters \u00b7 %",
+      "format": "percent",
+      "frequency": "Quarterly \u00b7 four-quarter window",
+      "mode": "percent",
+      "period": "quarter",
+      "notes": [
+        "The underlying latest quarter is 2026 Q1, released 16 June 2026. This is the latest available table at the freeze date, not a live September reading. Statistics Canada quality flags are retained in the source extract.",
+        "Quarterly levels are stocks, so their four-quarter sum is used only to construct a ratio; it is not a count of unique vacancies over a year."
+      ],
+      "sourceFiles": [
+        "canada-national.csv"
+      ],
+      "anchor": {
+        "date": "2026-03-31",
+        "value": 1.36628
+      },
+      "endpoints": [
+        1.502908,
+        1.161338,
+        0.888082
+      ],
+      "sourceHashes": {
+        "canada-national.csv": "8d05d207f8db8c762885554cbbeedddc3f79d8da27e37068ed71015723de50cf"
+      }
+    },
+    {
+      "id": "canada-pay",
+      "tab": "Canada: pay",
+      "title": "Is the software salary premium eroding?",
+      "description": "How much more Canadian computer, software and web-development jobs offer than the average vacancy. A falling premium suggests employers need to pay less extra to attract these skills.",
+      "source": "Statistics Canada \u00b7 Job Vacancy and Wage Survey",
+      "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
+      "definition": "Arithmetic mean of four consecutive quarterly offered-hourly-wage estimates for NOC 2123, divided by the corresponding mean for all occupations, minus 1, \u00d7 100. Equal quarter weights; table 14-10-0444-01, Canada. Uses published averages, not individual offers or a fixed-seniority comparison. Missing/suppressed quarters are not filled. Dates denote quarter-end.",
+      "caveat": "This is a relative nominal wage premium, not real pay. Seniority, location and employer mix can move it. A lower premium could reflect wages rising elsewhere rather than software salaries falling.",
+      "test": "A sustained decline in both the premium and vacancy share would support weaker bargaining power for software skills. A resilient premium despite fewer vacancies would suggest a more selective hiring market.",
+      "deltas": [
+        5,
+        -10,
+        -25
+      ],
+      "impacts": [
+        "The premium grows by 5 percentage points. Employers still pay substantially extra for these skills.",
+        "The premium shrinks by 10 points. Every C$30 offered across all jobs buys C$3 less additional software pay than today.",
+        "The premium shrinks by 25 points. At a C$30 general offered wage, the extra software pay is C$7.50 lower than today."
+      ],
+      "country": "Canada",
+      "unit": "Software-related offered-pay premium over all vacancies \u00b7 %",
+      "format": "percent",
+      "frequency": "Quarterly \u00b7 four-quarter window",
+      "mode": "points",
+      "period": "quarter",
+      "notes": [
+        "Four-quarter averages reduce seasonal volatility but delay detection of turning points. This metric does not measure the premium for an individual programming language."
+      ],
+      "sourceFiles": [
+        "canada-national.csv"
+      ],
+      "anchor": {
+        "date": "2026-03-31",
+        "value": 67.0282
+      },
+      "endpoints": [
+        72.0282,
+        57.0282,
+        42.0282
+      ],
+      "sourceHashes": {
+        "canada-national.csv": "8d05d207f8db8c762885554cbbeedddc3f79d8da27e37068ed71015723de50cf"
+      }
+    }
+  ]
+}

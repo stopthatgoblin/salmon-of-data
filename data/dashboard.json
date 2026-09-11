@@ -1,0 +1,5492 @@
+{
+  "asOf": "2026-09-07",
+  "version": 1,
+  "metrics": [
+    {
+      "id": "food",
+      "label": "Food basket",
+      "title": "Is the global food bill rising?",
+      "unit": "index",
+      "geography": "Global \u00b7 2014\u201316 = 100",
+      "source": "FAO Food Price Index",
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 101.0
+        },
+        {
+          "date": "2015-02",
+          "value": 98.7
+        },
+        {
+          "date": "2015-03",
+          "value": 95.7
+        },
+        {
+          "date": "2015-04",
+          "value": 94.6
+        },
+        {
+          "date": "2015-05",
+          "value": 95.0
+        },
+        {
+          "date": "2015-06",
+          "value": 94.6
+        },
+        {
+          "date": "2015-07",
+          "value": 93.8
+        },
+        {
+          "date": "2015-08",
+          "value": 89.5
+        },
+        {
+          "date": "2015-09",
+          "value": 88.9
+        },
+        {
+          "date": "2015-10",
+          "value": 90.3
+        },
+        {
+          "date": "2015-11",
+          "value": 87.7
+        },
+        {
+          "date": "2015-12",
+          "value": 87.0
+        },
+        {
+          "date": "2016-01",
+          "value": 84.9
+        },
+        {
+          "date": "2016-02",
+          "value": 86.1
+        },
+        {
+          "date": "2016-03",
+          "value": 87.4
+        },
+        {
+          "date": "2016-04",
+          "value": 89.1
+        },
+        {
+          "date": "2016-05",
+          "value": 90.6
+        },
+        {
+          "date": "2016-06",
+          "value": 93.8
+        },
+        {
+          "date": "2016-07",
+          "value": 93.0
+        },
+        {
+          "date": "2016-08",
+          "value": 95.3
+        },
+        {
+          "date": "2016-09",
+          "value": 96.1
+        },
+        {
+          "date": "2016-10",
+          "value": 95.9
+        },
+        {
+          "date": "2016-11",
+          "value": 96.0
+        },
+        {
+          "date": "2016-12",
+          "value": 95.3
+        },
+        {
+          "date": "2017-01",
+          "value": 97.8
+        },
+        {
+          "date": "2017-02",
+          "value": 98.1
+        },
+        {
+          "date": "2017-03",
+          "value": 96.2
+        },
+        {
+          "date": "2017-04",
+          "value": 95.0
+        },
+        {
+          "date": "2017-05",
+          "value": 97.3
+        },
+        {
+          "date": "2017-06",
+          "value": 97.8
+        },
+        {
+          "date": "2017-07",
+          "value": 100.0
+        },
+        {
+          "date": "2017-08",
+          "value": 99.2
+        },
+        {
+          "date": "2017-09",
+          "value": 99.7
+        },
+        {
+          "date": "2017-10",
+          "value": 98.8
+        },
+        {
+          "date": "2017-11",
+          "value": 98.8
+        },
+        {
+          "date": "2017-12",
+          "value": 96.4
+        },
+        {
+          "date": "2018-01",
+          "value": 96.7
+        },
+        {
+          "date": "2018-02",
+          "value": 97.8
+        },
+        {
+          "date": "2018-03",
+          "value": 98.8
+        },
+        {
+          "date": "2018-04",
+          "value": 98.4
+        },
+        {
+          "date": "2018-05",
+          "value": 98.5
+        },
+        {
+          "date": "2018-06",
+          "value": 96.8
+        },
+        {
+          "date": "2018-07",
+          "value": 95.0
+        },
+        {
+          "date": "2018-08",
+          "value": 95.8
+        },
+        {
+          "date": "2018-09",
+          "value": 94.0
+        },
+        {
+          "date": "2018-10",
+          "value": 93.2
+        },
+        {
+          "date": "2018-11",
+          "value": 91.9
+        },
+        {
+          "date": "2018-12",
+          "value": 92.0
+        },
+        {
+          "date": "2019-01",
+          "value": 93.1
+        },
+        {
+          "date": "2019-02",
+          "value": 93.8
+        },
+        {
+          "date": "2019-03",
+          "value": 93.0
+        },
+        {
+          "date": "2019-04",
+          "value": 93.5
+        },
+        {
+          "date": "2019-05",
+          "value": 94.2
+        },
+        {
+          "date": "2019-06",
+          "value": 95.4
+        },
+        {
+          "date": "2019-07",
+          "value": 95.1
+        },
+        {
+          "date": "2019-08",
+          "value": 93.8
+        },
+        {
+          "date": "2019-09",
+          "value": 93.2
+        },
+        {
+          "date": "2019-10",
+          "value": 95.0
+        },
+        {
+          "date": "2019-11",
+          "value": 98.2
+        },
+        {
+          "date": "2019-12",
+          "value": 100.8
+        },
+        {
+          "date": "2020-01",
+          "value": 102.5
+        },
+        {
+          "date": "2020-02",
+          "value": 99.6
+        },
+        {
+          "date": "2020-03",
+          "value": 95.2
+        },
+        {
+          "date": "2020-04",
+          "value": 92.4
+        },
+        {
+          "date": "2020-05",
+          "value": 91.2
+        },
+        {
+          "date": "2020-06",
+          "value": 93.1
+        },
+        {
+          "date": "2020-07",
+          "value": 93.8
+        },
+        {
+          "date": "2020-08",
+          "value": 95.7
+        },
+        {
+          "date": "2020-09",
+          "value": 97.9
+        },
+        {
+          "date": "2020-10",
+          "value": 101.3
+        },
+        {
+          "date": "2020-11",
+          "value": 105.5
+        },
+        {
+          "date": "2020-12",
+          "value": 108.5
+        },
+        {
+          "date": "2021-01",
+          "value": 113.5
+        },
+        {
+          "date": "2021-02",
+          "value": 116.5
+        },
+        {
+          "date": "2021-03",
+          "value": 119.1
+        },
+        {
+          "date": "2021-04",
+          "value": 122.1
+        },
+        {
+          "date": "2021-05",
+          "value": 128.4
+        },
+        {
+          "date": "2021-06",
+          "value": 125.4
+        },
+        {
+          "date": "2021-07",
+          "value": 124.4
+        },
+        {
+          "date": "2021-08",
+          "value": 128.0
+        },
+        {
+          "date": "2021-09",
+          "value": 129.1
+        },
+        {
+          "date": "2021-10",
+          "value": 133.3
+        },
+        {
+          "date": "2021-11",
+          "value": 135.4
+        },
+        {
+          "date": "2021-12",
+          "value": 133.7
+        },
+        {
+          "date": "2022-01",
+          "value": 135.7
+        },
+        {
+          "date": "2022-02",
+          "value": 141.7
+        },
+        {
+          "date": "2022-03",
+          "value": 160.2
+        },
+        {
+          "date": "2022-04",
+          "value": 158.8
+        },
+        {
+          "date": "2022-05",
+          "value": 158.7
+        },
+        {
+          "date": "2022-06",
+          "value": 155.7
+        },
+        {
+          "date": "2022-07",
+          "value": 141.6
+        },
+        {
+          "date": "2022-08",
+          "value": 138.7
+        },
+        {
+          "date": "2022-09",
+          "value": 137.3
+        },
+        {
+          "date": "2022-10",
+          "value": 136.7
+        },
+        {
+          "date": "2022-11",
+          "value": 136.0
+        },
+        {
+          "date": "2022-12",
+          "value": 133.1
+        },
+        {
+          "date": "2023-01",
+          "value": 131.4
+        },
+        {
+          "date": "2023-02",
+          "value": 130.7
+        },
+        {
+          "date": "2023-03",
+          "value": 128.0
+        },
+        {
+          "date": "2023-04",
+          "value": 128.4
+        },
+        {
+          "date": "2023-05",
+          "value": 124.5
+        },
+        {
+          "date": "2023-06",
+          "value": 123.0
+        },
+        {
+          "date": "2023-07",
+          "value": 124.4
+        },
+        {
+          "date": "2023-08",
+          "value": 121.8
+        },
+        {
+          "date": "2023-09",
+          "value": 121.7
+        },
+        {
+          "date": "2023-10",
+          "value": 120.7
+        },
+        {
+          "date": "2023-11",
+          "value": 120.6
+        },
+        {
+          "date": "2023-12",
+          "value": 119.1
+        },
+        {
+          "date": "2024-01",
+          "value": 117.6
+        },
+        {
+          "date": "2024-02",
+          "value": 117.4
+        },
+        {
+          "date": "2024-03",
+          "value": 118.9
+        },
+        {
+          "date": "2024-04",
+          "value": 119.2
+        },
+        {
+          "date": "2024-05",
+          "value": 120.5
+        },
+        {
+          "date": "2024-06",
+          "value": 121.0
+        },
+        {
+          "date": "2024-07",
+          "value": 120.9
+        },
+        {
+          "date": "2024-08",
+          "value": 121.7
+        },
+        {
+          "date": "2024-09",
+          "value": 124.6
+        },
+        {
+          "date": "2024-10",
+          "value": 126.9
+        },
+        {
+          "date": "2024-11",
+          "value": 127.7
+        },
+        {
+          "date": "2024-12",
+          "value": 127.3
+        },
+        {
+          "date": "2025-01",
+          "value": 124.6
+        },
+        {
+          "date": "2025-02",
+          "value": 126.6
+        },
+        {
+          "date": "2025-03",
+          "value": 127.2
+        },
+        {
+          "date": "2025-04",
+          "value": 128.2
+        },
+        {
+          "date": "2025-05",
+          "value": 127.1
+        },
+        {
+          "date": "2025-06",
+          "value": 128.1
+        },
+        {
+          "date": "2025-07",
+          "value": 129.8
+        },
+        {
+          "date": "2025-08",
+          "value": 130.0
+        },
+        {
+          "date": "2025-09",
+          "value": 128.6
+        },
+        {
+          "date": "2025-10",
+          "value": 126.4
+        },
+        {
+          "date": "2025-11",
+          "value": 125.2
+        },
+        {
+          "date": "2025-12",
+          "value": 124.5
+        },
+        {
+          "date": "2026-01",
+          "value": 124.1
+        },
+        {
+          "date": "2026-02",
+          "value": 125.5
+        },
+        {
+          "date": "2026-03",
+          "value": 128.7
+        },
+        {
+          "date": "2026-04",
+          "value": 131.0
+        },
+        {
+          "date": "2026-05",
+          "value": 131.0
+        },
+        {
+          "date": "2026-06",
+          "value": 130.1
+        },
+        {
+          "date": "2026-07",
+          "value": 130.8
+        },
+        {
+          "date": "2026-08",
+          "value": 133.3
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 1,
+      "description": "A broad measure of internationally traded food prices. It shows whether pressure is spreading across the food basket.",
+      "why": "The headline outcome: a persistent rise across food categories would support the case for a wider price shock.",
+      "caveat": "Export-weighted commodity prices, not supermarket prices. Energy, trade policy and currencies also matter. Recent meat prices include estimates and the index can be revised.",
+      "mechanism": "Regional harvest losses \u2192 tighter internationally traded supplies \u2192 a more expensive food basket.",
+      "assumptions": "Peak uplifts of 5%, 15% and 30% by June 2027. By August 2029, prices are 4%, 8% and 15% above the frozen anchor. These are judgement-based total-price scenarios, not estimates of the portion caused by El Ni\u00f1o.",
+      "peak": "2027-06",
+      "historyStart": "1990-01",
+      "latest": {
+        "date": "2026-08",
+        "value": 133.3
+      },
+      "anchor": {
+        "date": "2026-08",
+        "value": 133.3
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 133.3
+          },
+          {
+            "date": "2027-06",
+            "value": 139.965
+          },
+          {
+            "date": "2027-12",
+            "value": 138.632
+          },
+          {
+            "date": "2028-08",
+            "value": 137.299
+          },
+          {
+            "date": "2029-08",
+            "value": 138.632
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 133.3
+          },
+          {
+            "date": "2027-06",
+            "value": 153.295
+          },
+          {
+            "date": "2027-12",
+            "value": 149.296
+          },
+          {
+            "date": "2028-08",
+            "value": 142.631
+          },
+          {
+            "date": "2029-08",
+            "value": 143.964
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 133.3
+          },
+          {
+            "date": "2027-06",
+            "value": 173.29
+          },
+          {
+            "date": "2027-12",
+            "value": 166.625
+          },
+          {
+            "date": "2028-08",
+            "value": 154.628
+          },
+          {
+            "date": "2029-08",
+            "value": 153.295
+          }
+        ]
+      }
+    },
+    {
+      "id": "rice",
+      "label": "Rice",
+      "title": "The price of a staple",
+      "unit": "US$/tonne",
+      "geography": "Thai 5% broken \u00b7 export benchmark",
+      "source": "World Bank Pink Sheet",
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 420.0
+        },
+        {
+          "date": "2015-02",
+          "value": 420.0
+        },
+        {
+          "date": "2015-03",
+          "value": 410.0
+        },
+        {
+          "date": "2015-04",
+          "value": 399.0
+        },
+        {
+          "date": "2015-05",
+          "value": 381.0
+        },
+        {
+          "date": "2015-06",
+          "value": 376.0
+        },
+        {
+          "date": "2015-07",
+          "value": 392.0
+        },
+        {
+          "date": "2015-08",
+          "value": 373.0
+        },
+        {
+          "date": "2015-09",
+          "value": 357.0
+        },
+        {
+          "date": "2015-10",
+          "value": 373.0
+        },
+        {
+          "date": "2015-11",
+          "value": 368.0
+        },
+        {
+          "date": "2015-12",
+          "value": 363.0
+        },
+        {
+          "date": "2016-01",
+          "value": 369.0
+        },
+        {
+          "date": "2016-02",
+          "value": 384.0
+        },
+        {
+          "date": "2016-03",
+          "value": 384.0
+        },
+        {
+          "date": "2016-04",
+          "value": 395.0
+        },
+        {
+          "date": "2016-05",
+          "value": 433.0
+        },
+        {
+          "date": "2016-06",
+          "value": 441.0
+        },
+        {
+          "date": "2016-07",
+          "value": 442.0
+        },
+        {
+          "date": "2016-08",
+          "value": 415.0
+        },
+        {
+          "date": "2016-09",
+          "value": 384.0
+        },
+        {
+          "date": "2016-10",
+          "value": 369.0
+        },
+        {
+          "date": "2016-11",
+          "value": 365.0
+        },
+        {
+          "date": "2016-12",
+          "value": 373.0
+        },
+        {
+          "date": "2017-01",
+          "value": 377.0
+        },
+        {
+          "date": "2017-02",
+          "value": 367.0
+        },
+        {
+          "date": "2017-03",
+          "value": 370.0
+        },
+        {
+          "date": "2017-04",
+          "value": 380.0
+        },
+        {
+          "date": "2017-05",
+          "value": 421.0
+        },
+        {
+          "date": "2017-06",
+          "value": 458.0
+        },
+        {
+          "date": "2017-07",
+          "value": 417.0
+        },
+        {
+          "date": "2017-08",
+          "value": 393.0
+        },
+        {
+          "date": "2017-09",
+          "value": 402.0
+        },
+        {
+          "date": "2017-10",
+          "value": 394.0
+        },
+        {
+          "date": "2017-11",
+          "value": 402.0
+        },
+        {
+          "date": "2017-12",
+          "value": 406.0
+        },
+        {
+          "date": "2018-01",
+          "value": 442.0
+        },
+        {
+          "date": "2018-02",
+          "value": 425.0
+        },
+        {
+          "date": "2018-03",
+          "value": 430.0
+        },
+        {
+          "date": "2018-04",
+          "value": 451.0
+        },
+        {
+          "date": "2018-05",
+          "value": 451.0
+        },
+        {
+          "date": "2018-06",
+          "value": 427.0
+        },
+        {
+          "date": "2018-07",
+          "value": 398.0
+        },
+        {
+          "date": "2018-08",
+          "value": 405.0
+        },
+        {
+          "date": "2018-09",
+          "value": 405.0
+        },
+        {
+          "date": "2018-10",
+          "value": 409.0
+        },
+        {
+          "date": "2018-11",
+          "value": 401.0
+        },
+        {
+          "date": "2018-12",
+          "value": 404.0
+        },
+        {
+          "date": "2019-01",
+          "value": 410.0
+        },
+        {
+          "date": "2019-02",
+          "value": 408.0
+        },
+        {
+          "date": "2019-03",
+          "value": 406.0
+        },
+        {
+          "date": "2019-04",
+          "value": 413.0
+        },
+        {
+          "date": "2019-05",
+          "value": 409.0
+        },
+        {
+          "date": "2019-06",
+          "value": 420.0
+        },
+        {
+          "date": "2019-07",
+          "value": 416.0
+        },
+        {
+          "date": "2019-08",
+          "value": 430.0
+        },
+        {
+          "date": "2019-09",
+          "value": 427.0
+        },
+        {
+          "date": "2019-10",
+          "value": 424.0
+        },
+        {
+          "date": "2019-11",
+          "value": 421.0
+        },
+        {
+          "date": "2019-12",
+          "value": 432.0
+        },
+        {
+          "date": "2020-01",
+          "value": 451.0
+        },
+        {
+          "date": "2020-02",
+          "value": 450.0
+        },
+        {
+          "date": "2020-03",
+          "value": 494.0
+        },
+        {
+          "date": "2020-04",
+          "value": 564.0
+        },
+        {
+          "date": "2020-05",
+          "value": 510.0
+        },
+        {
+          "date": "2020-06",
+          "value": 520.0
+        },
+        {
+          "date": "2020-07",
+          "value": 480.0
+        },
+        {
+          "date": "2020-08",
+          "value": 505.0
+        },
+        {
+          "date": "2020-09",
+          "value": 507.0
+        },
+        {
+          "date": "2020-10",
+          "value": 471.0
+        },
+        {
+          "date": "2020-11",
+          "value": 489.0
+        },
+        {
+          "date": "2020-12",
+          "value": 520.0
+        },
+        {
+          "date": "2021-01",
+          "value": 545.0
+        },
+        {
+          "date": "2021-02",
+          "value": 557.0
+        },
+        {
+          "date": "2021-03",
+          "value": 525.0
+        },
+        {
+          "date": "2021-04",
+          "value": 495.0
+        },
+        {
+          "date": "2021-05",
+          "value": 493.0
+        },
+        {
+          "date": "2021-06",
+          "value": 466.0
+        },
+        {
+          "date": "2021-07",
+          "value": 414.0
+        },
+        {
+          "date": "2021-08",
+          "value": 403.0
+        },
+        {
+          "date": "2021-09",
+          "value": 400.0
+        },
+        {
+          "date": "2021-10",
+          "value": 401.0
+        },
+        {
+          "date": "2021-11",
+          "value": 400.0
+        },
+        {
+          "date": "2021-12",
+          "value": 400.0
+        },
+        {
+          "date": "2022-01",
+          "value": 427.0
+        },
+        {
+          "date": "2022-02",
+          "value": 427.0
+        },
+        {
+          "date": "2022-03",
+          "value": 422.0
+        },
+        {
+          "date": "2022-04",
+          "value": 431.0
+        },
+        {
+          "date": "2022-05",
+          "value": 464.0
+        },
+        {
+          "date": "2022-06",
+          "value": 444.0
+        },
+        {
+          "date": "2022-07",
+          "value": 418.0
+        },
+        {
+          "date": "2022-08",
+          "value": 431.0
+        },
+        {
+          "date": "2022-09",
+          "value": 439.0
+        },
+        {
+          "date": "2022-10",
+          "value": 431.0
+        },
+        {
+          "date": "2022-11",
+          "value": 440.0
+        },
+        {
+          "date": "2022-12",
+          "value": 467.0
+        },
+        {
+          "date": "2023-01",
+          "value": 517.0
+        },
+        {
+          "date": "2023-02",
+          "value": 492.0
+        },
+        {
+          "date": "2023-03",
+          "value": 476.0
+        },
+        {
+          "date": "2023-04",
+          "value": 501.0
+        },
+        {
+          "date": "2023-05",
+          "value": 510.0
+        },
+        {
+          "date": "2023-06",
+          "value": 514.0
+        },
+        {
+          "date": "2023-07",
+          "value": 547.0
+        },
+        {
+          "date": "2023-08",
+          "value": 635.0
+        },
+        {
+          "date": "2023-09",
+          "value": 620.0
+        },
+        {
+          "date": "2023-10",
+          "value": 590.0
+        },
+        {
+          "date": "2023-11",
+          "value": 598.0
+        },
+        {
+          "date": "2023-12",
+          "value": 644.0
+        },
+        {
+          "date": "2024-01",
+          "value": 660.0
+        },
+        {
+          "date": "2024-02",
+          "value": 624.0
+        },
+        {
+          "date": "2024-03",
+          "value": 613.0
+        },
+        {
+          "date": "2024-04",
+          "value": 592.0
+        },
+        {
+          "date": "2024-05",
+          "value": 628.0
+        },
+        {
+          "date": "2024-06",
+          "value": 632.0
+        },
+        {
+          "date": "2024-07",
+          "value": 590.0
+        },
+        {
+          "date": "2024-08",
+          "value": 589.0
+        },
+        {
+          "date": "2024-09",
+          "value": 580.0
+        },
+        {
+          "date": "2024-10",
+          "value": 515.0
+        },
+        {
+          "date": "2024-11",
+          "value": 511.0
+        },
+        {
+          "date": "2024-12",
+          "value": 527.0
+        },
+        {
+          "date": "2025-01",
+          "value": 478.0
+        },
+        {
+          "date": "2025-02",
+          "value": 437.0
+        },
+        {
+          "date": "2025-03",
+          "value": 425.0
+        },
+        {
+          "date": "2025-04",
+          "value": 415.0
+        },
+        {
+          "date": "2025-05",
+          "value": 431.0
+        },
+        {
+          "date": "2025-06",
+          "value": 419.0
+        },
+        {
+          "date": "2025-07",
+          "value": 392.0
+        },
+        {
+          "date": "2025-08",
+          "value": 375.0
+        },
+        {
+          "date": "2025-09",
+          "value": 374.0
+        },
+        {
+          "date": "2025-10",
+          "value": 356.0
+        },
+        {
+          "date": "2025-11",
+          "value": 368.0
+        },
+        {
+          "date": "2025-12",
+          "value": 424.0
+        },
+        {
+          "date": "2026-01",
+          "value": 408.0
+        },
+        {
+          "date": "2026-02",
+          "value": 409.0
+        },
+        {
+          "date": "2026-03",
+          "value": 381.0
+        },
+        {
+          "date": "2026-04",
+          "value": 403.0
+        },
+        {
+          "date": "2026-05",
+          "value": 440.0
+        },
+        {
+          "date": "2026-06",
+          "value": 494.0
+        },
+        {
+          "date": "2026-07",
+          "value": 467.0
+        },
+        {
+          "date": "2026-08",
+          "value": 471.0
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 1,
+      "description": "Rice connects Asian growing conditions with the food bills of import-dependent countries.",
+      "why": "Rice connects Asian growing conditions with the food bills of import-dependent countries.",
+      "mechanism": "Drought in exposed Asian growing regions \u2192 lower rice availability \u2192 pressure on export prices.",
+      "caveat": "Export restrictions, government stocks and exchange rates can dominate weather effects. One benchmark does not represent all rice varieties.",
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are +0% / +18% / +40% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts.",
+      "peak": "2027-06",
+      "historyStart": "1960-01",
+      "latest": {
+        "date": "2026-08",
+        "value": 471.0
+      },
+      "analogues": [
+        {
+          "period": "Aug 1982 \u2192 Jun 1983",
+          "change": -6.6
+        },
+        {
+          "period": "Aug 1997 \u2192 Jun 1998",
+          "change": 14.2
+        },
+        {
+          "period": "Aug 2015 \u2192 Jun 2016",
+          "change": 18.2
+        },
+        {
+          "period": "Aug 2023 \u2192 Jun 2024",
+          "change": -0.5
+        }
+      ],
+      "anchor": {
+        "date": "2026-08",
+        "value": 471.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 471.0
+          },
+          {
+            "date": "2027-06",
+            "value": 471.0
+          },
+          {
+            "date": "2027-12",
+            "value": 461.58
+          },
+          {
+            "date": "2028-08",
+            "value": 471.0
+          },
+          {
+            "date": "2029-08",
+            "value": 485.13
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 471.0
+          },
+          {
+            "date": "2027-06",
+            "value": 555.78
+          },
+          {
+            "date": "2027-12",
+            "value": 527.52
+          },
+          {
+            "date": "2028-08",
+            "value": 494.55
+          },
+          {
+            "date": "2029-08",
+            "value": 499.26
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 471.0
+          },
+          {
+            "date": "2027-06",
+            "value": 659.4
+          },
+          {
+            "date": "2027-12",
+            "value": 612.3
+          },
+          {
+            "date": "2028-08",
+            "value": 541.65
+          },
+          {
+            "date": "2029-08",
+            "value": 527.52
+          }
+        ]
+      }
+    },
+    {
+      "id": "maize",
+      "label": "Maize",
+      "title": "From the harvest to the feed bill",
+      "unit": "US$/tonne",
+      "geography": "International \u00b7 US maize benchmark",
+      "source": "World Bank Pink Sheet",
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 174.7
+        },
+        {
+          "date": "2015-02",
+          "value": 173.7
+        },
+        {
+          "date": "2015-03",
+          "value": 174.2
+        },
+        {
+          "date": "2015-04",
+          "value": 172.1
+        },
+        {
+          "date": "2015-05",
+          "value": 166.3
+        },
+        {
+          "date": "2015-06",
+          "value": 166.7
+        },
+        {
+          "date": "2015-07",
+          "value": 179.6
+        },
+        {
+          "date": "2015-08",
+          "value": 162.6
+        },
+        {
+          "date": "2015-09",
+          "value": 165.6
+        },
+        {
+          "date": "2015-10",
+          "value": 171.4
+        },
+        {
+          "date": "2015-11",
+          "value": 166.2
+        },
+        {
+          "date": "2015-12",
+          "value": 163.9
+        },
+        {
+          "date": "2016-01",
+          "value": 161.0
+        },
+        {
+          "date": "2016-02",
+          "value": 159.7
+        },
+        {
+          "date": "2016-03",
+          "value": 159.1
+        },
+        {
+          "date": "2016-04",
+          "value": 164.4
+        },
+        {
+          "date": "2016-05",
+          "value": 169.0
+        },
+        {
+          "date": "2016-06",
+          "value": 179.9
+        },
+        {
+          "date": "2016-07",
+          "value": 161.8
+        },
+        {
+          "date": "2016-08",
+          "value": 150.2
+        },
+        {
+          "date": "2016-09",
+          "value": 148.4
+        },
+        {
+          "date": "2016-10",
+          "value": 152.3
+        },
+        {
+          "date": "2016-11",
+          "value": 151.8
+        },
+        {
+          "date": "2016-12",
+          "value": 152.4
+        },
+        {
+          "date": "2017-01",
+          "value": 160.0
+        },
+        {
+          "date": "2017-02",
+          "value": 162.9
+        },
+        {
+          "date": "2017-03",
+          "value": 159.0
+        },
+        {
+          "date": "2017-04",
+          "value": 156.4
+        },
+        {
+          "date": "2017-05",
+          "value": 158.6
+        },
+        {
+          "date": "2017-06",
+          "value": 157.9
+        },
+        {
+          "date": "2017-07",
+          "value": 157.5
+        },
+        {
+          "date": "2017-08",
+          "value": 148.5
+        },
+        {
+          "date": "2017-09",
+          "value": 147.3
+        },
+        {
+          "date": "2017-10",
+          "value": 148.6
+        },
+        {
+          "date": "2017-11",
+          "value": 148.7
+        },
+        {
+          "date": "2017-12",
+          "value": 149.0
+        },
+        {
+          "date": "2018-01",
+          "value": 155.8
+        },
+        {
+          "date": "2018-02",
+          "value": 163.4
+        },
+        {
+          "date": "2018-03",
+          "value": 172.0
+        },
+        {
+          "date": "2018-04",
+          "value": 175.6
+        },
+        {
+          "date": "2018-05",
+          "value": 179.1
+        },
+        {
+          "date": "2018-06",
+          "value": 165.1
+        },
+        {
+          "date": "2018-07",
+          "value": 156.5
+        },
+        {
+          "date": "2018-08",
+          "value": 162.4
+        },
+        {
+          "date": "2018-09",
+          "value": 154.8
+        },
+        {
+          "date": "2018-10",
+          "value": 160.3
+        },
+        {
+          "date": "2018-11",
+          "value": 160.7
+        },
+        {
+          "date": "2018-12",
+          "value": 167.4
+        },
+        {
+          "date": "2019-01",
+          "value": 166.7
+        },
+        {
+          "date": "2019-02",
+          "value": 169.5
+        },
+        {
+          "date": "2019-03",
+          "value": 166.2
+        },
+        {
+          "date": "2019-04",
+          "value": 161.5
+        },
+        {
+          "date": "2019-05",
+          "value": 171.1
+        },
+        {
+          "date": "2019-06",
+          "value": 195.1
+        },
+        {
+          "date": "2019-07",
+          "value": 189.4
+        },
+        {
+          "date": "2019-08",
+          "value": 163.6
+        },
+        {
+          "date": "2019-09",
+          "value": 157.3
+        },
+        {
+          "date": "2019-10",
+          "value": 167.1
+        },
+        {
+          "date": "2019-11",
+          "value": 166.3
+        },
+        {
+          "date": "2019-12",
+          "value": 167.0
+        },
+        {
+          "date": "2020-01",
+          "value": 171.8
+        },
+        {
+          "date": "2020-02",
+          "value": 168.7
+        },
+        {
+          "date": "2020-03",
+          "value": 162.4
+        },
+        {
+          "date": "2020-04",
+          "value": 146.9
+        },
+        {
+          "date": "2020-05",
+          "value": 143.9
+        },
+        {
+          "date": "2020-06",
+          "value": 148.0
+        },
+        {
+          "date": "2020-07",
+          "value": 152.6
+        },
+        {
+          "date": "2020-08",
+          "value": 149.3
+        },
+        {
+          "date": "2020-09",
+          "value": 166.1
+        },
+        {
+          "date": "2020-10",
+          "value": 186.7
+        },
+        {
+          "date": "2020-11",
+          "value": 190.4
+        },
+        {
+          "date": "2020-12",
+          "value": 198.8
+        },
+        {
+          "date": "2021-01",
+          "value": 234.5
+        },
+        {
+          "date": "2021-02",
+          "value": 245.2
+        },
+        {
+          "date": "2021-03",
+          "value": 245.2
+        },
+        {
+          "date": "2021-04",
+          "value": 268.2
+        },
+        {
+          "date": "2021-05",
+          "value": 305.3
+        },
+        {
+          "date": "2021-06",
+          "value": 292.6
+        },
+        {
+          "date": "2021-07",
+          "value": 278.4
+        },
+        {
+          "date": "2021-08",
+          "value": 256.6
+        },
+        {
+          "date": "2021-09",
+          "value": 235.6
+        },
+        {
+          "date": "2021-10",
+          "value": 239.6
+        },
+        {
+          "date": "2021-11",
+          "value": 248.7
+        },
+        {
+          "date": "2021-12",
+          "value": 264.5
+        },
+        {
+          "date": "2022-01",
+          "value": 276.6
+        },
+        {
+          "date": "2022-02",
+          "value": 292.6
+        },
+        {
+          "date": "2022-03",
+          "value": 335.5
+        },
+        {
+          "date": "2022-04",
+          "value": 348.2
+        },
+        {
+          "date": "2022-05",
+          "value": 344.8
+        },
+        {
+          "date": "2022-06",
+          "value": 335.7
+        },
+        {
+          "date": "2022-07",
+          "value": 323.0
+        },
+        {
+          "date": "2022-08",
+          "value": 289.8
+        },
+        {
+          "date": "2022-09",
+          "value": 312.7
+        },
+        {
+          "date": "2022-10",
+          "value": 343.6
+        },
+        {
+          "date": "2022-11",
+          "value": 320.9
+        },
+        {
+          "date": "2022-12",
+          "value": 302.2
+        },
+        {
+          "date": "2023-01",
+          "value": 302.8
+        },
+        {
+          "date": "2023-02",
+          "value": 298.2
+        },
+        {
+          "date": "2023-03",
+          "value": 282.5
+        },
+        {
+          "date": "2023-04",
+          "value": 291.1
+        },
+        {
+          "date": "2023-05",
+          "value": 268.1
+        },
+        {
+          "date": "2023-06",
+          "value": 266.9
+        },
+        {
+          "date": "2023-07",
+          "value": 242.4
+        },
+        {
+          "date": "2023-08",
+          "value": 207.6
+        },
+        {
+          "date": "2023-09",
+          "value": 223.8
+        },
+        {
+          "date": "2023-10",
+          "value": 230.7
+        },
+        {
+          "date": "2023-11",
+          "value": 211.3
+        },
+        {
+          "date": "2023-12",
+          "value": 206.5
+        },
+        {
+          "date": "2024-01",
+          "value": 198.6
+        },
+        {
+          "date": "2024-02",
+          "value": 189.1
+        },
+        {
+          "date": "2024-03",
+          "value": 190.6
+        },
+        {
+          "date": "2024-04",
+          "value": 191.7
+        },
+        {
+          "date": "2024-05",
+          "value": 197.8
+        },
+        {
+          "date": "2024-06",
+          "value": 192.5
+        },
+        {
+          "date": "2024-07",
+          "value": 177.4
+        },
+        {
+          "date": "2024-08",
+          "value": 170.3
+        },
+        {
+          "date": "2024-09",
+          "value": 185.0
+        },
+        {
+          "date": "2024-10",
+          "value": 190.3
+        },
+        {
+          "date": "2024-11",
+          "value": 201.3
+        },
+        {
+          "date": "2024-12",
+          "value": 202.6
+        },
+        {
+          "date": "2025-01",
+          "value": 214.4
+        },
+        {
+          "date": "2025-02",
+          "value": 220.9
+        },
+        {
+          "date": "2025-03",
+          "value": 207.4
+        },
+        {
+          "date": "2025-04",
+          "value": 215.0
+        },
+        {
+          "date": "2025-05",
+          "value": 203.9
+        },
+        {
+          "date": "2025-06",
+          "value": 196.1
+        },
+        {
+          "date": "2025-07",
+          "value": 192.0
+        },
+        {
+          "date": "2025-08",
+          "value": 185.5
+        },
+        {
+          "date": "2025-09",
+          "value": 197.4
+        },
+        {
+          "date": "2025-10",
+          "value": 198.1
+        },
+        {
+          "date": "2025-11",
+          "value": 202.0
+        },
+        {
+          "date": "2025-12",
+          "value": 205.7
+        },
+        {
+          "date": "2026-01",
+          "value": 204.5
+        },
+        {
+          "date": "2026-02",
+          "value": 209.6
+        },
+        {
+          "date": "2026-03",
+          "value": 212.7
+        },
+        {
+          "date": "2026-04",
+          "value": 214.0
+        },
+        {
+          "date": "2026-05",
+          "value": 216.2
+        },
+        {
+          "date": "2026-06",
+          "value": 197.1
+        },
+        {
+          "date": "2026-07",
+          "value": 213.4
+        },
+        {
+          "date": "2026-08",
+          "value": 224.0
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 1,
+      "description": "Maize is both a staple and animal feed, connecting harvest conditions with meat and dairy costs.",
+      "why": "Maize is both a staple and animal feed, connecting harvest conditions with meat and dairy costs.",
+      "mechanism": "Poor harvests \u2192 tighter grain and feed supplies \u2192 higher costs across the food chain.",
+      "caveat": "This global benchmark may stay stable while southern African prices rise. US harvests, ethanol demand and Black Sea trade are major influences.",
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are -3% / +12% / +30% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts.",
+      "peak": "2027-06",
+      "historyStart": "1960-01",
+      "latest": {
+        "date": "2026-08",
+        "value": 224.0
+      },
+      "analogues": [
+        {
+          "period": "Aug 1982 \u2192 Jun 1983",
+          "change": 32.0
+        },
+        {
+          "period": "Aug 1997 \u2192 Jun 1998",
+          "change": -7.7
+        },
+        {
+          "period": "Aug 2015 \u2192 Jun 2016",
+          "change": 10.6
+        },
+        {
+          "period": "Aug 2023 \u2192 Jun 2024",
+          "change": -7.3
+        }
+      ],
+      "anchor": {
+        "date": "2026-08",
+        "value": 224.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 224.0
+          },
+          {
+            "date": "2027-06",
+            "value": 217.28
+          },
+          {
+            "date": "2027-12",
+            "value": 212.8
+          },
+          {
+            "date": "2028-08",
+            "value": 224.0
+          },
+          {
+            "date": "2029-08",
+            "value": 228.48
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 224.0
+          },
+          {
+            "date": "2027-06",
+            "value": 250.88
+          },
+          {
+            "date": "2027-12",
+            "value": 241.92
+          },
+          {
+            "date": "2028-08",
+            "value": 232.96
+          },
+          {
+            "date": "2029-08",
+            "value": 235.2
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 224.0
+          },
+          {
+            "date": "2027-06",
+            "value": 291.2
+          },
+          {
+            "date": "2027-12",
+            "value": 273.28
+          },
+          {
+            "date": "2028-08",
+            "value": 246.4
+          },
+          {
+            "date": "2029-08",
+            "value": 246.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "sugar",
+      "label": "Sugar",
+      "title": "A sweet crop, a volatile market",
+      "unit": "US$/kg",
+      "geography": "World \u00b7 raw sugar benchmark",
+      "source": "World Bank Pink Sheet",
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 0.34
+        },
+        {
+          "date": "2015-02",
+          "value": 0.32
+        },
+        {
+          "date": "2015-03",
+          "value": 0.29
+        },
+        {
+          "date": "2015-04",
+          "value": 0.29
+        },
+        {
+          "date": "2015-05",
+          "value": 0.29
+        },
+        {
+          "date": "2015-06",
+          "value": 0.27
+        },
+        {
+          "date": "2015-07",
+          "value": 0.28
+        },
+        {
+          "date": "2015-08",
+          "value": 0.25
+        },
+        {
+          "date": "2015-09",
+          "value": 0.26
+        },
+        {
+          "date": "2015-10",
+          "value": 0.31
+        },
+        {
+          "date": "2015-11",
+          "value": 0.32
+        },
+        {
+          "date": "2015-12",
+          "value": 0.32
+        },
+        {
+          "date": "2016-01",
+          "value": 0.31
+        },
+        {
+          "date": "2016-02",
+          "value": 0.29
+        },
+        {
+          "date": "2016-03",
+          "value": 0.34
+        },
+        {
+          "date": "2016-04",
+          "value": 0.34
+        },
+        {
+          "date": "2016-05",
+          "value": 0.38
+        },
+        {
+          "date": "2016-06",
+          "value": 0.43
+        },
+        {
+          "date": "2016-07",
+          "value": 0.43
+        },
+        {
+          "date": "2016-08",
+          "value": 0.44
+        },
+        {
+          "date": "2016-09",
+          "value": 0.47
+        },
+        {
+          "date": "2016-10",
+          "value": 0.49
+        },
+        {
+          "date": "2016-11",
+          "value": 0.45
+        },
+        {
+          "date": "2016-12",
+          "value": 0.41
+        },
+        {
+          "date": "2017-01",
+          "value": 0.45
+        },
+        {
+          "date": "2017-02",
+          "value": 0.45
+        },
+        {
+          "date": "2017-03",
+          "value": 0.4
+        },
+        {
+          "date": "2017-04",
+          "value": 0.36
+        },
+        {
+          "date": "2017-05",
+          "value": 0.35
+        },
+        {
+          "date": "2017-06",
+          "value": 0.31
+        },
+        {
+          "date": "2017-07",
+          "value": 0.32
+        },
+        {
+          "date": "2017-08",
+          "value": 0.32
+        },
+        {
+          "date": "2017-09",
+          "value": 0.32
+        },
+        {
+          "date": "2017-10",
+          "value": 0.32
+        },
+        {
+          "date": "2017-11",
+          "value": 0.33
+        },
+        {
+          "date": "2017-12",
+          "value": 0.32
+        },
+        {
+          "date": "2018-01",
+          "value": 0.31
+        },
+        {
+          "date": "2018-02",
+          "value": 0.3
+        },
+        {
+          "date": "2018-03",
+          "value": 0.28
+        },
+        {
+          "date": "2018-04",
+          "value": 0.27
+        },
+        {
+          "date": "2018-05",
+          "value": 0.27
+        },
+        {
+          "date": "2018-06",
+          "value": 0.28
+        },
+        {
+          "date": "2018-07",
+          "value": 0.26
+        },
+        {
+          "date": "2018-08",
+          "value": 0.24
+        },
+        {
+          "date": "2018-09",
+          "value": 0.25
+        },
+        {
+          "date": "2018-10",
+          "value": 0.29
+        },
+        {
+          "date": "2018-11",
+          "value": 0.28
+        },
+        {
+          "date": "2018-12",
+          "value": 0.28
+        },
+        {
+          "date": "2019-01",
+          "value": 0.28
+        },
+        {
+          "date": "2019-02",
+          "value": 0.29
+        },
+        {
+          "date": "2019-03",
+          "value": 0.28
+        },
+        {
+          "date": "2019-04",
+          "value": 0.28
+        },
+        {
+          "date": "2019-05",
+          "value": 0.27
+        },
+        {
+          "date": "2019-06",
+          "value": 0.28
+        },
+        {
+          "date": "2019-07",
+          "value": 0.28
+        },
+        {
+          "date": "2019-08",
+          "value": 0.27
+        },
+        {
+          "date": "2019-09",
+          "value": 0.26
+        },
+        {
+          "date": "2019-10",
+          "value": 0.28
+        },
+        {
+          "date": "2019-11",
+          "value": 0.28
+        },
+        {
+          "date": "2019-12",
+          "value": 0.3
+        },
+        {
+          "date": "2020-01",
+          "value": 0.31
+        },
+        {
+          "date": "2020-02",
+          "value": 0.33
+        },
+        {
+          "date": "2020-03",
+          "value": 0.26
+        },
+        {
+          "date": "2020-04",
+          "value": 0.23
+        },
+        {
+          "date": "2020-05",
+          "value": 0.24
+        },
+        {
+          "date": "2020-06",
+          "value": 0.27
+        },
+        {
+          "date": "2020-07",
+          "value": 0.27
+        },
+        {
+          "date": "2020-08",
+          "value": 0.29
+        },
+        {
+          "date": "2020-09",
+          "value": 0.28
+        },
+        {
+          "date": "2020-10",
+          "value": 0.3
+        },
+        {
+          "date": "2020-11",
+          "value": 0.31
+        },
+        {
+          "date": "2020-12",
+          "value": 0.31
+        },
+        {
+          "date": "2021-01",
+          "value": 0.34
+        },
+        {
+          "date": "2021-02",
+          "value": 0.36
+        },
+        {
+          "date": "2021-03",
+          "value": 0.34
+        },
+        {
+          "date": "2021-04",
+          "value": 0.36
+        },
+        {
+          "date": "2021-05",
+          "value": 0.38
+        },
+        {
+          "date": "2021-06",
+          "value": 0.38
+        },
+        {
+          "date": "2021-07",
+          "value": 0.39
+        },
+        {
+          "date": "2021-08",
+          "value": 0.43
+        },
+        {
+          "date": "2021-09",
+          "value": 0.43
+        },
+        {
+          "date": "2021-10",
+          "value": 0.42
+        },
+        {
+          "date": "2021-11",
+          "value": 0.43
+        },
+        {
+          "date": "2021-12",
+          "value": 0.42
+        },
+        {
+          "date": "2022-01",
+          "value": 0.4
+        },
+        {
+          "date": "2022-02",
+          "value": 0.39
+        },
+        {
+          "date": "2022-03",
+          "value": 0.42
+        },
+        {
+          "date": "2022-04",
+          "value": 0.43
+        },
+        {
+          "date": "2022-05",
+          "value": 0.43
+        },
+        {
+          "date": "2022-06",
+          "value": 0.42
+        },
+        {
+          "date": "2022-07",
+          "value": 0.4
+        },
+        {
+          "date": "2022-08",
+          "value": 0.39
+        },
+        {
+          "date": "2022-09",
+          "value": 0.39
+        },
+        {
+          "date": "2022-10",
+          "value": 0.39
+        },
+        {
+          "date": "2022-11",
+          "value": 0.41
+        },
+        {
+          "date": "2022-12",
+          "value": 0.42
+        },
+        {
+          "date": "2023-01",
+          "value": 0.42
+        },
+        {
+          "date": "2023-02",
+          "value": 0.45
+        },
+        {
+          "date": "2023-03",
+          "value": 0.45
+        },
+        {
+          "date": "2023-04",
+          "value": 0.53
+        },
+        {
+          "date": "2023-05",
+          "value": 0.56
+        },
+        {
+          "date": "2023-06",
+          "value": 0.54
+        },
+        {
+          "date": "2023-07",
+          "value": 0.52
+        },
+        {
+          "date": "2023-08",
+          "value": 0.53
+        },
+        {
+          "date": "2023-09",
+          "value": 0.58
+        },
+        {
+          "date": "2023-10",
+          "value": 0.57
+        },
+        {
+          "date": "2023-11",
+          "value": 0.57
+        },
+        {
+          "date": "2023-12",
+          "value": 0.48
+        },
+        {
+          "date": "2024-01",
+          "value": 0.48
+        },
+        {
+          "date": "2024-02",
+          "value": 0.5
+        },
+        {
+          "date": "2024-03",
+          "value": 0.48
+        },
+        {
+          "date": "2024-04",
+          "value": 0.45
+        },
+        {
+          "date": "2024-05",
+          "value": 0.42
+        },
+        {
+          "date": "2024-06",
+          "value": 0.43
+        },
+        {
+          "date": "2024-07",
+          "value": 0.43
+        },
+        {
+          "date": "2024-08",
+          "value": 0.41
+        },
+        {
+          "date": "2024-09",
+          "value": 0.45
+        },
+        {
+          "date": "2024-10",
+          "value": 0.46
+        },
+        {
+          "date": "2024-11",
+          "value": 0.45
+        },
+        {
+          "date": "2024-12",
+          "value": 0.44
+        },
+        {
+          "date": "2025-01",
+          "value": 0.4
+        },
+        {
+          "date": "2025-02",
+          "value": 0.42
+        },
+        {
+          "date": "2025-03",
+          "value": 0.42
+        },
+        {
+          "date": "2025-04",
+          "value": 0.4
+        },
+        {
+          "date": "2025-05",
+          "value": 0.39
+        },
+        {
+          "date": "2025-06",
+          "value": 0.37
+        },
+        {
+          "date": "2025-07",
+          "value": 0.37
+        },
+        {
+          "date": "2025-08",
+          "value": 0.37
+        },
+        {
+          "date": "2025-09",
+          "value": 0.35
+        },
+        {
+          "date": "2025-10",
+          "value": 0.34
+        },
+        {
+          "date": "2025-11",
+          "value": 0.32
+        },
+        {
+          "date": "2025-12",
+          "value": 0.32
+        },
+        {
+          "date": "2026-01",
+          "value": 0.32
+        },
+        {
+          "date": "2026-02",
+          "value": 0.31
+        },
+        {
+          "date": "2026-03",
+          "value": 0.33
+        },
+        {
+          "date": "2026-04",
+          "value": 0.32
+        },
+        {
+          "date": "2026-05",
+          "value": 0.34
+        },
+        {
+          "date": "2026-06",
+          "value": 0.32
+        },
+        {
+          "date": "2026-07",
+          "value": 0.34
+        },
+        {
+          "date": "2026-08",
+          "value": 0.38
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 2,
+      "description": "Sugar adds a weather-sensitive ingredient used widely in processed food.",
+      "why": "Sugar adds a weather-sensitive ingredient used widely in processed food.",
+      "mechanism": "Stress in cane-growing regions \u2192 less sugar available for export \u2192 higher ingredient costs.",
+      "caveat": "Brazilian harvests, ethanol economics and trade policy can offset or intensify losses elsewhere.",
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are -5% / +20% / +45% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts.",
+      "peak": "2027-06",
+      "historyStart": "1960-01",
+      "latest": {
+        "date": "2026-08",
+        "value": 0.38
+      },
+      "analogues": [
+        {
+          "period": "Aug 1982 \u2192 Jun 1983",
+          "change": 60.0
+        },
+        {
+          "period": "Aug 1997 \u2192 Jun 1998",
+          "change": -30.8
+        },
+        {
+          "period": "Aug 2015 \u2192 Jun 2016",
+          "change": 72.0
+        },
+        {
+          "period": "Aug 2023 \u2192 Jun 2024",
+          "change": -18.9
+        }
+      ],
+      "anchor": {
+        "date": "2026-08",
+        "value": 0.38
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 0.38
+          },
+          {
+            "date": "2027-06",
+            "value": 0.361
+          },
+          {
+            "date": "2027-12",
+            "value": 0.3496
+          },
+          {
+            "date": "2028-08",
+            "value": 0.3686
+          },
+          {
+            "date": "2029-08",
+            "value": 0.38
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 0.38
+          },
+          {
+            "date": "2027-06",
+            "value": 0.456
+          },
+          {
+            "date": "2027-12",
+            "value": 0.4256
+          },
+          {
+            "date": "2028-08",
+            "value": 0.399
+          },
+          {
+            "date": "2029-08",
+            "value": 0.399
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 0.38
+          },
+          {
+            "date": "2027-06",
+            "value": 0.551
+          },
+          {
+            "date": "2027-12",
+            "value": 0.494
+          },
+          {
+            "date": "2028-08",
+            "value": 0.437
+          },
+          {
+            "date": "2029-08",
+            "value": 0.418
+          }
+        ]
+      }
+    },
+    {
+      "id": "palm",
+      "label": "Palm oil",
+      "title": "Pressure in the cooking-oil market",
+      "unit": "US$/tonne",
+      "geography": "International \u00b7 palm oil benchmark",
+      "source": "World Bank Pink Sheet",
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 720.0
+        },
+        {
+          "date": "2015-02",
+          "value": 723.0
+        },
+        {
+          "date": "2015-03",
+          "value": 699.0
+        },
+        {
+          "date": "2015-04",
+          "value": 683.0
+        },
+        {
+          "date": "2015-05",
+          "value": 697.0
+        },
+        {
+          "date": "2015-06",
+          "value": 706.0
+        },
+        {
+          "date": "2015-07",
+          "value": 680.0
+        },
+        {
+          "date": "2015-08",
+          "value": 601.0
+        },
+        {
+          "date": "2015-09",
+          "value": 600.0
+        },
+        {
+          "date": "2015-10",
+          "value": 637.0
+        },
+        {
+          "date": "2015-11",
+          "value": 608.0
+        },
+        {
+          "date": "2015-12",
+          "value": 607.0
+        },
+        {
+          "date": "2016-01",
+          "value": 612.0
+        },
+        {
+          "date": "2016-02",
+          "value": 679.0
+        },
+        {
+          "date": "2016-03",
+          "value": 716.0
+        },
+        {
+          "date": "2016-04",
+          "value": 775.0
+        },
+        {
+          "date": "2016-05",
+          "value": 753.0
+        },
+        {
+          "date": "2016-06",
+          "value": 718.0
+        },
+        {
+          "date": "2016-07",
+          "value": 678.0
+        },
+        {
+          "date": "2016-08",
+          "value": 771.0
+        },
+        {
+          "date": "2016-09",
+          "value": 798.0
+        },
+        {
+          "date": "2016-10",
+          "value": 750.0
+        },
+        {
+          "date": "2016-11",
+          "value": 767.0
+        },
+        {
+          "date": "2016-12",
+          "value": 811.0
+        },
+        {
+          "date": "2017-01",
+          "value": 825.0
+        },
+        {
+          "date": "2017-02",
+          "value": 809.0
+        },
+        {
+          "date": "2017-03",
+          "value": 779.0
+        },
+        {
+          "date": "2017-04",
+          "value": 752.0
+        },
+        {
+          "date": "2017-05",
+          "value": 763.0
+        },
+        {
+          "date": "2017-06",
+          "value": 735.0
+        },
+        {
+          "date": "2017-07",
+          "value": 720.0
+        },
+        {
+          "date": "2017-08",
+          "value": 718.0
+        },
+        {
+          "date": "2017-09",
+          "value": 754.0
+        },
+        {
+          "date": "2017-10",
+          "value": 747.0
+        },
+        {
+          "date": "2017-11",
+          "value": 729.0
+        },
+        {
+          "date": "2017-12",
+          "value": 679.0
+        },
+        {
+          "date": "2018-01",
+          "value": 703.0
+        },
+        {
+          "date": "2018-02",
+          "value": 709.0
+        },
+        {
+          "date": "2018-03",
+          "value": 706.0
+        },
+        {
+          "date": "2018-04",
+          "value": 701.0
+        },
+        {
+          "date": "2018-05",
+          "value": 687.0
+        },
+        {
+          "date": "2018-06",
+          "value": 657.0
+        },
+        {
+          "date": "2018-07",
+          "value": 616.0
+        },
+        {
+          "date": "2018-08",
+          "value": 615.0
+        },
+        {
+          "date": "2018-09",
+          "value": 605.0
+        },
+        {
+          "date": "2018-10",
+          "value": 590.0
+        },
+        {
+          "date": "2018-11",
+          "value": 539.0
+        },
+        {
+          "date": "2018-12",
+          "value": 535.0
+        },
+        {
+          "date": "2019-01",
+          "value": 585.0
+        },
+        {
+          "date": "2019-02",
+          "value": 603.0
+        },
+        {
+          "date": "2019-03",
+          "value": 573.0
+        },
+        {
+          "date": "2019-04",
+          "value": 588.0
+        },
+        {
+          "date": "2019-05",
+          "value": 564.0
+        },
+        {
+          "date": "2019-06",
+          "value": 552.0
+        },
+        {
+          "date": "2019-07",
+          "value": 544.0
+        },
+        {
+          "date": "2019-08",
+          "value": 586.0
+        },
+        {
+          "date": "2019-09",
+          "value": 580.0
+        },
+        {
+          "date": "2019-10",
+          "value": 591.0
+        },
+        {
+          "date": "2019-11",
+          "value": 685.0
+        },
+        {
+          "date": "2019-12",
+          "value": 764.0
+        },
+        {
+          "date": "2020-01",
+          "value": 810.0
+        },
+        {
+          "date": "2020-02",
+          "value": 729.0
+        },
+        {
+          "date": "2020-03",
+          "value": 636.0
+        },
+        {
+          "date": "2020-04",
+          "value": 609.0
+        },
+        {
+          "date": "2020-05",
+          "value": 577.0
+        },
+        {
+          "date": "2020-06",
+          "value": 656.0
+        },
+        {
+          "date": "2020-07",
+          "value": 694.0
+        },
+        {
+          "date": "2020-08",
+          "value": 760.0
+        },
+        {
+          "date": "2020-09",
+          "value": 796.0
+        },
+        {
+          "date": "2020-10",
+          "value": 819.0
+        },
+        {
+          "date": "2020-11",
+          "value": 918.0
+        },
+        {
+          "date": "2020-12",
+          "value": 1016.0
+        },
+        {
+          "date": "2021-01",
+          "value": 990.0
+        },
+        {
+          "date": "2021-02",
+          "value": 1020.0
+        },
+        {
+          "date": "2021-03",
+          "value": 1030.0
+        },
+        {
+          "date": "2021-04",
+          "value": 1078.0
+        },
+        {
+          "date": "2021-05",
+          "value": 1136.0
+        },
+        {
+          "date": "2021-06",
+          "value": 1004.0
+        },
+        {
+          "date": "2021-07",
+          "value": 1063.0
+        },
+        {
+          "date": "2021-08",
+          "value": 1142.0
+        },
+        {
+          "date": "2021-09",
+          "value": 1181.0
+        },
+        {
+          "date": "2021-10",
+          "value": 1310.0
+        },
+        {
+          "date": "2021-11",
+          "value": 1341.0
+        },
+        {
+          "date": "2021-12",
+          "value": 1270.0
+        },
+        {
+          "date": "2022-01",
+          "value": 1345.0
+        },
+        {
+          "date": "2022-02",
+          "value": 1522.0
+        },
+        {
+          "date": "2022-03",
+          "value": 1777.0
+        },
+        {
+          "date": "2022-04",
+          "value": 1683.0
+        },
+        {
+          "date": "2022-05",
+          "value": 1717.0
+        },
+        {
+          "date": "2022-06",
+          "value": 1501.0
+        },
+        {
+          "date": "2022-07",
+          "value": 1057.0
+        },
+        {
+          "date": "2022-08",
+          "value": 1026.0
+        },
+        {
+          "date": "2022-09",
+          "value": 909.0
+        },
+        {
+          "date": "2022-10",
+          "value": 889.0
+        },
+        {
+          "date": "2022-11",
+          "value": 946.0
+        },
+        {
+          "date": "2022-12",
+          "value": 940.0
+        },
+        {
+          "date": "2023-01",
+          "value": 942.0
+        },
+        {
+          "date": "2023-02",
+          "value": 950.0
+        },
+        {
+          "date": "2023-03",
+          "value": 972.0
+        },
+        {
+          "date": "2023-04",
+          "value": 1005.0
+        },
+        {
+          "date": "2023-05",
+          "value": 934.0
+        },
+        {
+          "date": "2023-06",
+          "value": 817.0
+        },
+        {
+          "date": "2023-07",
+          "value": 879.0
+        },
+        {
+          "date": "2023-08",
+          "value": 861.0
+        },
+        {
+          "date": "2023-09",
+          "value": 830.0
+        },
+        {
+          "date": "2023-10",
+          "value": 804.0
+        },
+        {
+          "date": "2023-11",
+          "value": 830.0
+        },
+        {
+          "date": "2023-12",
+          "value": 814.0
+        },
+        {
+          "date": "2024-01",
+          "value": 845.0
+        },
+        {
+          "date": "2024-02",
+          "value": 857.0
+        },
+        {
+          "date": "2024-03",
+          "value": 943.0
+        },
+        {
+          "date": "2024-04",
+          "value": 936.0
+        },
+        {
+          "date": "2024-05",
+          "value": 859.0
+        },
+        {
+          "date": "2024-06",
+          "value": 874.0
+        },
+        {
+          "date": "2024-07",
+          "value": 896.0
+        },
+        {
+          "date": "2024-08",
+          "value": 933.0
+        },
+        {
+          "date": "2024-09",
+          "value": 983.0
+        },
+        {
+          "date": "2024-10",
+          "value": 1077.0
+        },
+        {
+          "date": "2024-11",
+          "value": 1169.0
+        },
+        {
+          "date": "2024-12",
+          "value": 1190.0
+        },
+        {
+          "date": "2025-01",
+          "value": 1070.0
+        },
+        {
+          "date": "2025-02",
+          "value": 1067.0
+        },
+        {
+          "date": "2025-03",
+          "value": 1068.0
+        },
+        {
+          "date": "2025-04",
+          "value": 994.0
+        },
+        {
+          "date": "2025-05",
+          "value": 908.0
+        },
+        {
+          "date": "2025-06",
+          "value": 935.0
+        },
+        {
+          "date": "2025-07",
+          "value": 976.0
+        },
+        {
+          "date": "2025-08",
+          "value": 1026.0
+        },
+        {
+          "date": "2025-09",
+          "value": 1037.0
+        },
+        {
+          "date": "2025-10",
+          "value": 1038.0
+        },
+        {
+          "date": "2025-11",
+          "value": 983.0
+        },
+        {
+          "date": "2025-12",
+          "value": 980.0
+        },
+        {
+          "date": "2026-01",
+          "value": 1005.0
+        },
+        {
+          "date": "2026-02",
+          "value": 1039.0
+        },
+        {
+          "date": "2026-03",
+          "value": 1109.0
+        },
+        {
+          "date": "2026-04",
+          "value": 1146.0
+        },
+        {
+          "date": "2026-05",
+          "value": 1136.0
+        },
+        {
+          "date": "2026-06",
+          "value": 1104.0
+        },
+        {
+          "date": "2026-07",
+          "value": 1101.0
+        },
+        {
+          "date": "2026-08",
+          "value": 1117.0
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 1,
+      "description": "A key cooking oil and food ingredient, with production exposed to Southeast Asian weather.",
+      "why": "A key cooking oil and food ingredient, with production exposed to Southeast Asian weather.",
+      "mechanism": "Water stress in oil-palm regions \u2192 delayed production losses \u2192 tighter edible-oil supplies.",
+      "caveat": "Biodiesel mandates, competing vegetable oils and export policies also influence the price. Production effects can arrive with a lag.",
+      "assumptions": "At the 2027-09 peak checkpoint, low / medium / high paths are +0% / +18% / +35% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts.",
+      "peak": "2027-09",
+      "historyStart": "1960-01",
+      "latest": {
+        "date": "2026-08",
+        "value": 1117.0
+      },
+      "analogues": [
+        {
+          "period": "Aug 1982 \u2192 Jun 1983",
+          "change": -0.5
+        },
+        {
+          "period": "Aug 1997 \u2192 Jun 1998",
+          "change": 25.6
+        },
+        {
+          "period": "Aug 2015 \u2192 Jun 2016",
+          "change": 19.5
+        },
+        {
+          "period": "Aug 2023 \u2192 Jun 2024",
+          "change": 1.5
+        }
+      ],
+      "anchor": {
+        "date": "2026-08",
+        "value": 1117.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-09",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-12",
+            "value": 1083.49
+          },
+          {
+            "date": "2028-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2029-08",
+            "value": 1150.51
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-09",
+            "value": 1318.06
+          },
+          {
+            "date": "2027-12",
+            "value": 1295.72
+          },
+          {
+            "date": "2028-08",
+            "value": 1206.36
+          },
+          {
+            "date": "2029-08",
+            "value": 1195.19
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-09",
+            "value": 1507.95
+          },
+          {
+            "date": "2027-12",
+            "value": 1474.44
+          },
+          {
+            "date": "2028-08",
+            "value": 1318.06
+          },
+          {
+            "date": "2029-08",
+            "value": 1251.04
+          }
+        ]
+      }
+    },
+    {
+      "id": "coffee",
+      "label": "Coffee",
+      "title": "What happens to the morning coffee?",
+      "unit": "US$/kg",
+      "geography": "International \u00b7 Robusta coffee",
+      "source": "World Bank Pink Sheet",
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 2.16
+        },
+        {
+          "date": "2015-02",
+          "value": 2.17
+        },
+        {
+          "date": "2015-03",
+          "value": 2.03
+        },
+        {
+          "date": "2015-04",
+          "value": 2.03
+        },
+        {
+          "date": "2015-05",
+          "value": 1.93
+        },
+        {
+          "date": "2015-06",
+          "value": 1.99
+        },
+        {
+          "date": "2015-07",
+          "value": 1.92
+        },
+        {
+          "date": "2015-08",
+          "value": 1.89
+        },
+        {
+          "date": "2015-09",
+          "value": 1.8
+        },
+        {
+          "date": "2015-10",
+          "value": 1.82
+        },
+        {
+          "date": "2015-11",
+          "value": 1.8
+        },
+        {
+          "date": "2015-12",
+          "value": 1.75
+        },
+        {
+          "date": "2016-01",
+          "value": 1.65
+        },
+        {
+          "date": "2016-02",
+          "value": 1.63
+        },
+        {
+          "date": "2016-03",
+          "value": 1.67
+        },
+        {
+          "date": "2016-04",
+          "value": 1.77
+        },
+        {
+          "date": "2016-05",
+          "value": 1.85
+        },
+        {
+          "date": "2016-06",
+          "value": 1.89
+        },
+        {
+          "date": "2016-07",
+          "value": 2.0
+        },
+        {
+          "date": "2016-08",
+          "value": 2.02
+        },
+        {
+          "date": "2016-09",
+          "value": 2.14
+        },
+        {
+          "date": "2016-10",
+          "value": 2.29
+        },
+        {
+          "date": "2016-11",
+          "value": 2.29
+        },
+        {
+          "date": "2016-12",
+          "value": 2.25
+        },
+        {
+          "date": "2017-01",
+          "value": 2.39
+        },
+        {
+          "date": "2017-02",
+          "value": 2.35
+        },
+        {
+          "date": "2017-03",
+          "value": 2.35
+        },
+        {
+          "date": "2017-04",
+          "value": 2.28
+        },
+        {
+          "date": "2017-05",
+          "value": 2.17
+        },
+        {
+          "date": "2017-06",
+          "value": 2.25
+        },
+        {
+          "date": "2017-07",
+          "value": 2.31
+        },
+        {
+          "date": "2017-08",
+          "value": 2.3
+        },
+        {
+          "date": "2017-09",
+          "value": 2.19
+        },
+        {
+          "date": "2017-10",
+          "value": 2.17
+        },
+        {
+          "date": "2017-11",
+          "value": 2.01
+        },
+        {
+          "date": "2017-12",
+          "value": 1.93
+        },
+        {
+          "date": "2018-01",
+          "value": 1.95
+        },
+        {
+          "date": "2018-02",
+          "value": 1.97
+        },
+        {
+          "date": "2018-03",
+          "value": 1.94
+        },
+        {
+          "date": "2018-04",
+          "value": 1.95
+        },
+        {
+          "date": "2018-05",
+          "value": 1.96
+        },
+        {
+          "date": "2018-06",
+          "value": 1.9
+        },
+        {
+          "date": "2018-07",
+          "value": 1.86
+        },
+        {
+          "date": "2018-08",
+          "value": 1.78
+        },
+        {
+          "date": "2018-09",
+          "value": 1.69
+        },
+        {
+          "date": "2018-10",
+          "value": 1.88
+        },
+        {
+          "date": "2018-11",
+          "value": 1.84
+        },
+        {
+          "date": "2018-12",
+          "value": 1.71
+        },
+        {
+          "date": "2019-01",
+          "value": 1.72
+        },
+        {
+          "date": "2019-02",
+          "value": 1.73
+        },
+        {
+          "date": "2019-03",
+          "value": 1.7
+        },
+        {
+          "date": "2019-04",
+          "value": 1.62
+        },
+        {
+          "date": "2019-05",
+          "value": 1.57
+        },
+        {
+          "date": "2019-06",
+          "value": 1.63
+        },
+        {
+          "date": "2019-07",
+          "value": 1.63
+        },
+        {
+          "date": "2019-08",
+          "value": 1.56
+        },
+        {
+          "date": "2019-09",
+          "value": 1.56
+        },
+        {
+          "date": "2019-10",
+          "value": 1.51
+        },
+        {
+          "date": "2019-11",
+          "value": 1.62
+        },
+        {
+          "date": "2019-12",
+          "value": 1.61
+        },
+        {
+          "date": "2020-01",
+          "value": 1.56
+        },
+        {
+          "date": "2020-02",
+          "value": 1.5
+        },
+        {
+          "date": "2020-03",
+          "value": 1.49
+        },
+        {
+          "date": "2020-04",
+          "value": 1.41
+        },
+        {
+          "date": "2020-05",
+          "value": 1.42
+        },
+        {
+          "date": "2020-06",
+          "value": 1.42
+        },
+        {
+          "date": "2020-07",
+          "value": 1.49
+        },
+        {
+          "date": "2020-08",
+          "value": 1.6
+        },
+        {
+          "date": "2020-09",
+          "value": 1.6
+        },
+        {
+          "date": "2020-10",
+          "value": 1.51
+        },
+        {
+          "date": "2020-11",
+          "value": 1.6
+        },
+        {
+          "date": "2020-12",
+          "value": 1.59
+        },
+        {
+          "date": "2021-01",
+          "value": 1.56
+        },
+        {
+          "date": "2021-02",
+          "value": 1.62
+        },
+        {
+          "date": "2021-03",
+          "value": 1.63
+        },
+        {
+          "date": "2021-04",
+          "value": 1.64
+        },
+        {
+          "date": "2021-05",
+          "value": 1.76
+        },
+        {
+          "date": "2021-06",
+          "value": 1.87
+        },
+        {
+          "date": "2021-07",
+          "value": 2.08
+        },
+        {
+          "date": "2021-08",
+          "value": 2.1
+        },
+        {
+          "date": "2021-09",
+          "value": 2.31
+        },
+        {
+          "date": "2021-10",
+          "value": 2.32
+        },
+        {
+          "date": "2021-11",
+          "value": 2.41
+        },
+        {
+          "date": "2021-12",
+          "value": 2.48
+        },
+        {
+          "date": "2022-01",
+          "value": 2.43
+        },
+        {
+          "date": "2022-02",
+          "value": 2.41
+        },
+        {
+          "date": "2022-03",
+          "value": 2.29
+        },
+        {
+          "date": "2022-04",
+          "value": 2.29
+        },
+        {
+          "date": "2022-05",
+          "value": 2.27
+        },
+        {
+          "date": "2022-06",
+          "value": 2.29
+        },
+        {
+          "date": "2022-07",
+          "value": 2.21
+        },
+        {
+          "date": "2022-08",
+          "value": 2.42
+        },
+        {
+          "date": "2022-09",
+          "value": 2.46
+        },
+        {
+          "date": "2022-10",
+          "value": 2.27
+        },
+        {
+          "date": "2022-11",
+          "value": 2.04
+        },
+        {
+          "date": "2022-12",
+          "value": 2.05
+        },
+        {
+          "date": "2023-01",
+          "value": 2.12
+        },
+        {
+          "date": "2023-02",
+          "value": 2.29
+        },
+        {
+          "date": "2023-03",
+          "value": 2.35
+        },
+        {
+          "date": "2023-04",
+          "value": 2.55
+        },
+        {
+          "date": "2023-05",
+          "value": 2.7
+        },
+        {
+          "date": "2023-06",
+          "value": 2.91
+        },
+        {
+          "date": "2023-07",
+          "value": 2.81
+        },
+        {
+          "date": "2023-08",
+          "value": 2.75
+        },
+        {
+          "date": "2023-09",
+          "value": 2.73
+        },
+        {
+          "date": "2023-10",
+          "value": 2.62
+        },
+        {
+          "date": "2023-11",
+          "value": 2.7
+        },
+        {
+          "date": "2023-12",
+          "value": 2.99
+        },
+        {
+          "date": "2024-01",
+          "value": 3.26
+        },
+        {
+          "date": "2024-02",
+          "value": 3.38
+        },
+        {
+          "date": "2024-03",
+          "value": 3.66
+        },
+        {
+          "date": "2024-04",
+          "value": 4.23
+        },
+        {
+          "date": "2024-05",
+          "value": 4.04
+        },
+        {
+          "date": "2024-06",
+          "value": 4.5
+        },
+        {
+          "date": "2024-07",
+          "value": 4.73
+        },
+        {
+          "date": "2024-08",
+          "value": 4.73
+        },
+        {
+          "date": "2024-09",
+          "value": 5.33
+        },
+        {
+          "date": "2024-10",
+          "value": 4.89
+        },
+        {
+          "date": "2024-11",
+          "value": 4.98
+        },
+        {
+          "date": "2024-12",
+          "value": 5.22
+        },
+        {
+          "date": "2025-01",
+          "value": 5.41
+        },
+        {
+          "date": "2025-02",
+          "value": 5.81
+        },
+        {
+          "date": "2025-03",
+          "value": 5.69
+        },
+        {
+          "date": "2025-04",
+          "value": 5.43
+        },
+        {
+          "date": "2025-05",
+          "value": 5.24
+        },
+        {
+          "date": "2025-06",
+          "value": 4.33
+        },
+        {
+          "date": "2025-07",
+          "value": 3.69
+        },
+        {
+          "date": "2025-08",
+          "value": 4.39
+        },
+        {
+          "date": "2025-09",
+          "value": 4.66
+        },
+        {
+          "date": "2025-10",
+          "value": 4.74
+        },
+        {
+          "date": "2025-11",
+          "value": 4.74
+        },
+        {
+          "date": "2025-12",
+          "value": 4.2
+        },
+        {
+          "date": "2026-01",
+          "value": 4.24
+        },
+        {
+          "date": "2026-02",
+          "value": 3.96
+        },
+        {
+          "date": "2026-03",
+          "value": 3.9
+        },
+        {
+          "date": "2026-04",
+          "value": 3.63
+        },
+        {
+          "date": "2026-05",
+          "value": 3.67
+        },
+        {
+          "date": "2026-06",
+          "value": 3.73
+        },
+        {
+          "date": "2026-07",
+          "value": 4.07
+        },
+        {
+          "date": "2026-08",
+          "value": 3.98
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 2,
+      "description": "Robusta offers a focused link to drought exposure in Vietnam and a familiar household purchase.",
+      "why": "Robusta offers a focused link to drought exposure in Vietnam and a familiar household purchase.",
+      "mechanism": "Hot, dry growing conditions \u2192 lower Robusta supply \u2192 pressure on wholesale coffee prices.",
+      "caveat": "Wholesale beans are only part of the retail price. Stocks, Brazilian supply, currencies and the preceding price cycle can outweigh new weather damage.",
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are -10% / +20% / +50% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts.",
+      "peak": "2027-06",
+      "historyStart": "1960-01",
+      "latest": {
+        "date": "2026-08",
+        "value": 3.98
+      },
+      "analogues": [
+        {
+          "period": "Aug 1982 \u2192 Jun 1983",
+          "change": 17.8
+        },
+        {
+          "period": "Aug 1997 \u2192 Jun 1998",
+          "change": 11.0
+        },
+        {
+          "period": "Aug 2015 \u2192 Jun 2016",
+          "change": 0.0
+        },
+        {
+          "period": "Aug 2023 \u2192 Jun 2024",
+          "change": 63.6
+        }
+      ],
+      "anchor": {
+        "date": "2026-08",
+        "value": 3.98
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 3.98
+          },
+          {
+            "date": "2027-06",
+            "value": 3.582
+          },
+          {
+            "date": "2027-12",
+            "value": 3.383
+          },
+          {
+            "date": "2028-08",
+            "value": 3.582
+          },
+          {
+            "date": "2029-08",
+            "value": 3.781
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 3.98
+          },
+          {
+            "date": "2027-06",
+            "value": 4.776
+          },
+          {
+            "date": "2027-12",
+            "value": 4.4576
+          },
+          {
+            "date": "2028-08",
+            "value": 4.179
+          },
+          {
+            "date": "2029-08",
+            "value": 4.179
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 3.98
+          },
+          {
+            "date": "2027-06",
+            "value": 5.97
+          },
+          {
+            "date": "2027-12",
+            "value": 5.373
+          },
+          {
+            "date": "2028-08",
+            "value": 4.776
+          },
+          {
+            "date": "2029-08",
+            "value": 4.4576
+          }
+        ]
+      }
+    },
+    {
+      "id": "retail",
+      "label": "UK groceries",
+      "title": "Does the shock reach the checkout?",
+      "unit": "index",
+      "geography": "United Kingdom \u00b7 2015 = 100",
+      "source": "ONS \u00b7 D7BU",
+      "sourceUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 101.3
+        },
+        {
+          "date": "2015-02",
+          "value": 101.0
+        },
+        {
+          "date": "2015-03",
+          "value": 100.9
+        },
+        {
+          "date": "2015-04",
+          "value": 100.5
+        },
+        {
+          "date": "2015-05",
+          "value": 100.4
+        },
+        {
+          "date": "2015-06",
+          "value": 100.2
+        },
+        {
+          "date": "2015-07",
+          "value": 99.5
+        },
+        {
+          "date": "2015-08",
+          "value": 99.5
+        },
+        {
+          "date": "2015-09",
+          "value": 99.5
+        },
+        {
+          "date": "2015-10",
+          "value": 99.1
+        },
+        {
+          "date": "2015-11",
+          "value": 99.2
+        },
+        {
+          "date": "2015-12",
+          "value": 99.0
+        },
+        {
+          "date": "2016-01",
+          "value": 98.6
+        },
+        {
+          "date": "2016-02",
+          "value": 98.8
+        },
+        {
+          "date": "2016-03",
+          "value": 98.1
+        },
+        {
+          "date": "2016-04",
+          "value": 98.0
+        },
+        {
+          "date": "2016-05",
+          "value": 97.6
+        },
+        {
+          "date": "2016-06",
+          "value": 97.2
+        },
+        {
+          "date": "2016-07",
+          "value": 96.9
+        },
+        {
+          "date": "2016-08",
+          "value": 97.3
+        },
+        {
+          "date": "2016-09",
+          "value": 97.3
+        },
+        {
+          "date": "2016-10",
+          "value": 96.8
+        },
+        {
+          "date": "2016-11",
+          "value": 97.2
+        },
+        {
+          "date": "2016-12",
+          "value": 97.9
+        },
+        {
+          "date": "2017-01",
+          "value": 98.1
+        },
+        {
+          "date": "2017-02",
+          "value": 98.9
+        },
+        {
+          "date": "2017-03",
+          "value": 99.3
+        },
+        {
+          "date": "2017-04",
+          "value": 99.5
+        },
+        {
+          "date": "2017-05",
+          "value": 99.6
+        },
+        {
+          "date": "2017-06",
+          "value": 99.4
+        },
+        {
+          "date": "2017-07",
+          "value": 99.4
+        },
+        {
+          "date": "2017-08",
+          "value": 99.4
+        },
+        {
+          "date": "2017-09",
+          "value": 100.2
+        },
+        {
+          "date": "2017-10",
+          "value": 100.6
+        },
+        {
+          "date": "2017-11",
+          "value": 101.1
+        },
+        {
+          "date": "2017-12",
+          "value": 101.8
+        },
+        {
+          "date": "2018-01",
+          "value": 101.7
+        },
+        {
+          "date": "2018-02",
+          "value": 101.9
+        },
+        {
+          "date": "2018-03",
+          "value": 102.3
+        },
+        {
+          "date": "2018-04",
+          "value": 102.1
+        },
+        {
+          "date": "2018-05",
+          "value": 101.9
+        },
+        {
+          "date": "2018-06",
+          "value": 101.4
+        },
+        {
+          "date": "2018-07",
+          "value": 101.7
+        },
+        {
+          "date": "2018-08",
+          "value": 101.9
+        },
+        {
+          "date": "2018-09",
+          "value": 101.7
+        },
+        {
+          "date": "2018-10",
+          "value": 101.5
+        },
+        {
+          "date": "2018-11",
+          "value": 101.6
+        },
+        {
+          "date": "2018-12",
+          "value": 102.5
+        },
+        {
+          "date": "2019-01",
+          "value": 102.6
+        },
+        {
+          "date": "2019-02",
+          "value": 103.0
+        },
+        {
+          "date": "2019-03",
+          "value": 103.1
+        },
+        {
+          "date": "2019-04",
+          "value": 102.8
+        },
+        {
+          "date": "2019-05",
+          "value": 102.9
+        },
+        {
+          "date": "2019-06",
+          "value": 103.1
+        },
+        {
+          "date": "2019-07",
+          "value": 103.1
+        },
+        {
+          "date": "2019-08",
+          "value": 103.7
+        },
+        {
+          "date": "2019-09",
+          "value": 103.5
+        },
+        {
+          "date": "2019-10",
+          "value": 102.8
+        },
+        {
+          "date": "2019-11",
+          "value": 103.7
+        },
+        {
+          "date": "2019-12",
+          "value": 104.3
+        },
+        {
+          "date": "2020-01",
+          "value": 104.1
+        },
+        {
+          "date": "2020-02",
+          "value": 104.3
+        },
+        {
+          "date": "2020-03",
+          "value": 104.5
+        },
+        {
+          "date": "2020-04",
+          "value": 104.2
+        },
+        {
+          "date": "2020-05",
+          "value": 104.8
+        },
+        {
+          "date": "2020-06",
+          "value": 104.2
+        },
+        {
+          "date": "2020-07",
+          "value": 103.9
+        },
+        {
+          "date": "2020-08",
+          "value": 104.1
+        },
+        {
+          "date": "2020-09",
+          "value": 103.4
+        },
+        {
+          "date": "2020-10",
+          "value": 103.4
+        },
+        {
+          "date": "2020-11",
+          "value": 103.1
+        },
+        {
+          "date": "2020-12",
+          "value": 102.8
+        },
+        {
+          "date": "2021-01",
+          "value": 103.4
+        },
+        {
+          "date": "2021-02",
+          "value": 103.6
+        },
+        {
+          "date": "2021-03",
+          "value": 103.0
+        },
+        {
+          "date": "2021-04",
+          "value": 103.8
+        },
+        {
+          "date": "2021-05",
+          "value": 103.5
+        },
+        {
+          "date": "2021-06",
+          "value": 103.6
+        },
+        {
+          "date": "2021-07",
+          "value": 103.3
+        },
+        {
+          "date": "2021-08",
+          "value": 104.4
+        },
+        {
+          "date": "2021-09",
+          "value": 104.2
+        },
+        {
+          "date": "2021-10",
+          "value": 104.7
+        },
+        {
+          "date": "2021-11",
+          "value": 105.7
+        },
+        {
+          "date": "2021-12",
+          "value": 107.1
+        },
+        {
+          "date": "2022-01",
+          "value": 107.8
+        },
+        {
+          "date": "2022-02",
+          "value": 108.9
+        },
+        {
+          "date": "2022-03",
+          "value": 109.0
+        },
+        {
+          "date": "2022-04",
+          "value": 110.7
+        },
+        {
+          "date": "2022-05",
+          "value": 112.4
+        },
+        {
+          "date": "2022-06",
+          "value": 113.7
+        },
+        {
+          "date": "2022-07",
+          "value": 116.3
+        },
+        {
+          "date": "2022-08",
+          "value": 118.0
+        },
+        {
+          "date": "2022-09",
+          "value": 119.3
+        },
+        {
+          "date": "2022-10",
+          "value": 121.7
+        },
+        {
+          "date": "2022-11",
+          "value": 123.1
+        },
+        {
+          "date": "2022-12",
+          "value": 125.1
+        },
+        {
+          "date": "2023-01",
+          "value": 125.8
+        },
+        {
+          "date": "2023-02",
+          "value": 128.5
+        },
+        {
+          "date": "2023-03",
+          "value": 129.9
+        },
+        {
+          "date": "2023-04",
+          "value": 131.7
+        },
+        {
+          "date": "2023-05",
+          "value": 132.9
+        },
+        {
+          "date": "2023-06",
+          "value": 133.4
+        },
+        {
+          "date": "2023-07",
+          "value": 133.5
+        },
+        {
+          "date": "2023-08",
+          "value": 134.0
+        },
+        {
+          "date": "2023-09",
+          "value": 133.8
+        },
+        {
+          "date": "2023-10",
+          "value": 134.0
+        },
+        {
+          "date": "2023-11",
+          "value": 134.4
+        },
+        {
+          "date": "2023-12",
+          "value": 135.1
+        },
+        {
+          "date": "2024-01",
+          "value": 134.6
+        },
+        {
+          "date": "2024-02",
+          "value": 134.9
+        },
+        {
+          "date": "2024-03",
+          "value": 135.1
+        },
+        {
+          "date": "2024-04",
+          "value": 135.6
+        },
+        {
+          "date": "2024-05",
+          "value": 135.2
+        },
+        {
+          "date": "2024-06",
+          "value": 135.5
+        },
+        {
+          "date": "2024-07",
+          "value": 135.5
+        },
+        {
+          "date": "2024-08",
+          "value": 135.8
+        },
+        {
+          "date": "2024-09",
+          "value": 136.3
+        },
+        {
+          "date": "2024-10",
+          "value": 136.5
+        },
+        {
+          "date": "2024-11",
+          "value": 137.1
+        },
+        {
+          "date": "2024-12",
+          "value": 137.8
+        },
+        {
+          "date": "2025-01",
+          "value": 139.0
+        },
+        {
+          "date": "2025-02",
+          "value": 139.3
+        },
+        {
+          "date": "2025-03",
+          "value": 139.2
+        },
+        {
+          "date": "2025-04",
+          "value": 140.2
+        },
+        {
+          "date": "2025-05",
+          "value": 141.2
+        },
+        {
+          "date": "2025-06",
+          "value": 141.6
+        },
+        {
+          "date": "2025-07",
+          "value": 142.2
+        },
+        {
+          "date": "2025-08",
+          "value": 142.8
+        },
+        {
+          "date": "2025-09",
+          "value": 142.5
+        },
+        {
+          "date": "2025-10",
+          "value": 143.2
+        },
+        {
+          "date": "2025-11",
+          "value": 142.9
+        },
+        {
+          "date": "2025-12",
+          "value": 144.1
+        },
+        {
+          "date": "2026-01",
+          "value": 143.9
+        },
+        {
+          "date": "2026-02",
+          "value": 143.9
+        },
+        {
+          "date": "2026-03",
+          "value": 144.4
+        },
+        {
+          "date": "2026-04",
+          "value": 144.5
+        },
+        {
+          "date": "2026-05",
+          "value": 144.3
+        },
+        {
+          "date": "2026-06",
+          "value": 144.0
+        },
+        {
+          "date": "2026-07",
+          "value": 144.0
+        }
+      ],
+      "frequency": "Monthly",
+      "kind": "price",
+      "decimals": 1,
+      "description": "The price level of food and non-alcoholic drinks bought by UK households.",
+      "why": "The final link in the chain: do higher commodity costs reach the household food bill?",
+      "mechanism": "Imported ingredients \u2192 manufacturing and distribution costs \u2192 household food prices.",
+      "caveat": "UK only. Sterling, wages, energy and retailer margins all affect this index. Falling inflation does not mean falling prices.",
+      "assumptions": "By December 2027: low +3%, medium +7%, high +12% versus July 2026. By August 2029: +7%, +12%, +20%. All are cumulative price-level changes, not annual inflation rates or causal estimates.",
+      "peak": "2027-12",
+      "historyStart": "1988-01",
+      "latest": {
+        "date": "2026-07",
+        "value": 144.0
+      },
+      "anchor": {
+        "date": "2026-07",
+        "value": 144.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-07",
+            "value": 144.0
+          },
+          {
+            "date": "2027-12",
+            "value": 148.32
+          },
+          {
+            "date": "2028-08",
+            "value": 151.2
+          },
+          {
+            "date": "2029-08",
+            "value": 154.08
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-07",
+            "value": 144.0
+          },
+          {
+            "date": "2027-12",
+            "value": 154.08
+          },
+          {
+            "date": "2028-08",
+            "value": 158.4
+          },
+          {
+            "date": "2029-08",
+            "value": 161.28
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-07",
+            "value": 144.0
+          },
+          {
+            "date": "2027-12",
+            "value": 161.28
+          },
+          {
+            "date": "2028-08",
+            "value": 168.48
+          },
+          {
+            "date": "2029-08",
+            "value": 172.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "enso",
+      "label": "El Ni\u00f1o",
+      "title": "The Pacific signal behind the story",
+      "unit": "\u00b0C",
+      "geography": "Equatorial Pacific \u00b7 relative anomaly",
+      "source": "NOAA CPC \u00b7 RONI",
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 0.5
+        },
+        {
+          "date": "2015-02",
+          "value": 0.5
+        },
+        {
+          "date": "2015-03",
+          "value": 0.6
+        },
+        {
+          "date": "2015-04",
+          "value": 0.7
+        },
+        {
+          "date": "2015-05",
+          "value": 0.9
+        },
+        {
+          "date": "2015-06",
+          "value": 1.0
+        },
+        {
+          "date": "2015-07",
+          "value": 1.3
+        },
+        {
+          "date": "2015-08",
+          "value": 1.5
+        },
+        {
+          "date": "2015-09",
+          "value": 1.8
+        },
+        {
+          "date": "2015-10",
+          "value": 2.0
+        },
+        {
+          "date": "2015-11",
+          "value": 2.2
+        },
+        {
+          "date": "2015-12",
+          "value": 2.3
+        },
+        {
+          "date": "2016-01",
+          "value": 2.1
+        },
+        {
+          "date": "2016-02",
+          "value": 1.8
+        },
+        {
+          "date": "2016-03",
+          "value": 1.3
+        },
+        {
+          "date": "2016-04",
+          "value": 0.7
+        },
+        {
+          "date": "2016-05",
+          "value": 0.1
+        },
+        {
+          "date": "2016-06",
+          "value": -0.4
+        },
+        {
+          "date": "2016-07",
+          "value": -0.7
+        },
+        {
+          "date": "2016-08",
+          "value": -0.8
+        },
+        {
+          "date": "2016-09",
+          "value": -0.9
+        },
+        {
+          "date": "2016-10",
+          "value": -1.0
+        },
+        {
+          "date": "2016-11",
+          "value": -1.0
+        },
+        {
+          "date": "2016-12",
+          "value": -0.9
+        },
+        {
+          "date": "2017-01",
+          "value": -0.6
+        },
+        {
+          "date": "2017-02",
+          "value": -0.4
+        },
+        {
+          "date": "2017-03",
+          "value": -0.2
+        },
+        {
+          "date": "2017-04",
+          "value": -0.1
+        },
+        {
+          "date": "2017-05",
+          "value": 0.0
+        },
+        {
+          "date": "2017-06",
+          "value": 0.0
+        },
+        {
+          "date": "2017-07",
+          "value": -0.2
+        },
+        {
+          "date": "2017-08",
+          "value": -0.5
+        },
+        {
+          "date": "2017-09",
+          "value": -0.6
+        },
+        {
+          "date": "2017-10",
+          "value": -0.8
+        },
+        {
+          "date": "2017-11",
+          "value": -1.0
+        },
+        {
+          "date": "2017-12",
+          "value": -1.1
+        },
+        {
+          "date": "2018-01",
+          "value": -1.1
+        },
+        {
+          "date": "2018-02",
+          "value": -1.0
+        },
+        {
+          "date": "2018-03",
+          "value": -0.9
+        },
+        {
+          "date": "2018-04",
+          "value": -0.7
+        },
+        {
+          "date": "2018-05",
+          "value": -0.3
+        },
+        {
+          "date": "2018-06",
+          "value": 0.0
+        },
+        {
+          "date": "2018-07",
+          "value": 0.1
+        },
+        {
+          "date": "2018-08",
+          "value": 0.2
+        },
+        {
+          "date": "2018-09",
+          "value": 0.4
+        },
+        {
+          "date": "2018-10",
+          "value": 0.6
+        },
+        {
+          "date": "2018-11",
+          "value": 0.8
+        },
+        {
+          "date": "2018-12",
+          "value": 0.8
+        },
+        {
+          "date": "2019-01",
+          "value": 0.7
+        },
+        {
+          "date": "2019-02",
+          "value": 0.6
+        },
+        {
+          "date": "2019-03",
+          "value": 0.6
+        },
+        {
+          "date": "2019-04",
+          "value": 0.5
+        },
+        {
+          "date": "2019-05",
+          "value": 0.4
+        },
+        {
+          "date": "2019-06",
+          "value": 0.2
+        },
+        {
+          "date": "2019-07",
+          "value": 0.0
+        },
+        {
+          "date": "2019-08",
+          "value": -0.1
+        },
+        {
+          "date": "2019-09",
+          "value": 0.0
+        },
+        {
+          "date": "2019-10",
+          "value": 0.2
+        },
+        {
+          "date": "2019-11",
+          "value": 0.3
+        },
+        {
+          "date": "2019-12",
+          "value": 0.2
+        },
+        {
+          "date": "2020-01",
+          "value": 0.1
+        },
+        {
+          "date": "2020-02",
+          "value": 0.1
+        },
+        {
+          "date": "2020-03",
+          "value": 0.0
+        },
+        {
+          "date": "2020-04",
+          "value": -0.3
+        },
+        {
+          "date": "2020-05",
+          "value": -0.5
+        },
+        {
+          "date": "2020-06",
+          "value": -0.7
+        },
+        {
+          "date": "2020-07",
+          "value": -0.8
+        },
+        {
+          "date": "2020-08",
+          "value": -0.8
+        },
+        {
+          "date": "2020-09",
+          "value": -1.2
+        },
+        {
+          "date": "2020-10",
+          "value": -1.4
+        },
+        {
+          "date": "2020-11",
+          "value": -1.5
+        },
+        {
+          "date": "2020-12",
+          "value": -1.4
+        },
+        {
+          "date": "2021-01",
+          "value": -1.3
+        },
+        {
+          "date": "2021-02",
+          "value": -1.2
+        },
+        {
+          "date": "2021-03",
+          "value": -1.1
+        },
+        {
+          "date": "2021-04",
+          "value": -0.9
+        },
+        {
+          "date": "2021-05",
+          "value": -0.7
+        },
+        {
+          "date": "2021-06",
+          "value": -0.6
+        },
+        {
+          "date": "2021-07",
+          "value": -0.6
+        },
+        {
+          "date": "2021-08",
+          "value": -0.8
+        },
+        {
+          "date": "2021-09",
+          "value": -0.9
+        },
+        {
+          "date": "2021-10",
+          "value": -1.1
+        },
+        {
+          "date": "2021-11",
+          "value": -1.2
+        },
+        {
+          "date": "2021-12",
+          "value": -1.2
+        },
+        {
+          "date": "2022-01",
+          "value": -1.2
+        },
+        {
+          "date": "2022-02",
+          "value": -1.1
+        },
+        {
+          "date": "2022-03",
+          "value": -1.2
+        },
+        {
+          "date": "2022-04",
+          "value": -1.3
+        },
+        {
+          "date": "2022-05",
+          "value": -1.2
+        },
+        {
+          "date": "2022-06",
+          "value": -0.9
+        },
+        {
+          "date": "2022-07",
+          "value": -0.9
+        },
+        {
+          "date": "2022-08",
+          "value": -0.9
+        },
+        {
+          "date": "2022-09",
+          "value": -1.1
+        },
+        {
+          "date": "2022-10",
+          "value": -1.1
+        },
+        {
+          "date": "2022-11",
+          "value": -1.1
+        },
+        {
+          "date": "2022-12",
+          "value": -1.0
+        },
+        {
+          "date": "2023-01",
+          "value": -0.9
+        },
+        {
+          "date": "2023-02",
+          "value": -0.7
+        },
+        {
+          "date": "2023-03",
+          "value": -0.5
+        },
+        {
+          "date": "2023-04",
+          "value": -0.3
+        },
+        {
+          "date": "2023-05",
+          "value": 0.0
+        },
+        {
+          "date": "2023-06",
+          "value": 0.3
+        },
+        {
+          "date": "2023-07",
+          "value": 0.5
+        },
+        {
+          "date": "2023-08",
+          "value": 0.8
+        },
+        {
+          "date": "2023-09",
+          "value": 1.0
+        },
+        {
+          "date": "2023-10",
+          "value": 1.3
+        },
+        {
+          "date": "2023-11",
+          "value": 1.4
+        },
+        {
+          "date": "2023-12",
+          "value": 1.4
+        },
+        {
+          "date": "2024-01",
+          "value": 1.1
+        },
+        {
+          "date": "2024-02",
+          "value": 0.8
+        },
+        {
+          "date": "2024-03",
+          "value": 0.4
+        },
+        {
+          "date": "2024-04",
+          "value": 0.0
+        },
+        {
+          "date": "2024-05",
+          "value": -0.3
+        },
+        {
+          "date": "2024-06",
+          "value": -0.4
+        },
+        {
+          "date": "2024-07",
+          "value": -0.5
+        },
+        {
+          "date": "2024-08",
+          "value": -0.6
+        },
+        {
+          "date": "2024-09",
+          "value": -0.7
+        },
+        {
+          "date": "2024-10",
+          "value": -0.8
+        },
+        {
+          "date": "2024-11",
+          "value": -0.9
+        },
+        {
+          "date": "2024-12",
+          "value": -1.0
+        },
+        {
+          "date": "2025-01",
+          "value": -1.1
+        },
+        {
+          "date": "2025-02",
+          "value": -0.8
+        },
+        {
+          "date": "2025-03",
+          "value": -0.7
+        },
+        {
+          "date": "2025-04",
+          "value": -0.5
+        },
+        {
+          "date": "2025-05",
+          "value": -0.5
+        },
+        {
+          "date": "2025-06",
+          "value": -0.4
+        },
+        {
+          "date": "2025-07",
+          "value": -0.4
+        },
+        {
+          "date": "2025-08",
+          "value": -0.6
+        },
+        {
+          "date": "2025-09",
+          "value": -0.8
+        },
+        {
+          "date": "2025-10",
+          "value": -0.9
+        },
+        {
+          "date": "2025-11",
+          "value": -1.0
+        },
+        {
+          "date": "2025-12",
+          "value": -1.0
+        },
+        {
+          "date": "2026-01",
+          "value": -0.9
+        },
+        {
+          "date": "2026-02",
+          "value": -0.8
+        },
+        {
+          "date": "2026-03",
+          "value": -0.4
+        },
+        {
+          "date": "2026-04",
+          "value": 0.0
+        },
+        {
+          "date": "2026-05",
+          "value": 0.5
+        },
+        {
+          "date": "2026-06",
+          "value": 1.0
+        },
+        {
+          "date": "2026-07",
+          "value": 1.4
+        }
+      ],
+      "frequency": "Monthly \u00b7 three-month seasons",
+      "kind": "price",
+      "decimals": 1,
+      "description": "Three-month relative sea-surface temperature anomalies in the Ni\u00f1o 3.4 region. Each point is dated to the middle month of its season.",
+      "why": "Tracks the climate driver. Greater strength raises the risk of impacts, but does not guarantee damage in every region.",
+      "mechanism": "Warmer relative Pacific temperatures \u2192 shifted rainfall patterns \u2192 changing risks for growing regions.",
+      "caveat": "RONI adjusts for tropical background warming; do not compare it directly with unadjusted Ni\u00f1o 3.4 values. Recent observations are provisional. Climate scenarios stop in July 2027.",
+      "assumptions": "Illustrative strength paths peak in November 2026 at 2.0\u00b0C / 2.6\u00b0C / 3.0\u00b0C, then decline to \u22120.2\u00b0C / 0.3\u00b0C / 1.0\u00b0C in July 2027. The official August NOAA outlook informs the peak range; these paths are our conditional illustrations, not NOAA forecast quantiles.",
+      "climate": true,
+      "historyStart": "1950-01",
+      "latest": {
+        "date": "2026-07",
+        "value": 1.4
+      },
+      "anchor": {
+        "date": "2026-07",
+        "value": 1.4
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-07",
+            "value": 1.4
+          },
+          {
+            "date": "2026-11",
+            "value": 2.0
+          },
+          {
+            "date": "2027-03",
+            "value": 1.0
+          },
+          {
+            "date": "2027-07",
+            "value": -0.2
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-07",
+            "value": 1.4
+          },
+          {
+            "date": "2026-11",
+            "value": 2.6
+          },
+          {
+            "date": "2027-03",
+            "value": 1.8
+          },
+          {
+            "date": "2027-07",
+            "value": 0.3
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-07",
+            "value": 1.4
+          },
+          {
+            "date": "2026-11",
+            "value": 3
+          },
+          {
+            "date": "2027-03",
+            "value": 2.4
+          },
+          {
+            "date": "2027-07",
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "harvest",
+      "label": "Maize harvest",
+      "title": "The harvest on the front line",
+      "unit": "tonnes/ha",
+      "geography": "South Africa \u00b7 maize yield",
+      "source": "USDA \u00b7 PSD",
+      "sourceUrl": "https://apps.fas.usda.gov/PSDOnline/app/index.html",
+      "history": [
+        {
+          "date": "2015-01",
+          "value": 3.71
+        },
+        {
+          "date": "2016-01",
+          "value": 5.86
+        },
+        {
+          "date": "2017-01",
+          "value": 4.97
+        },
+        {
+          "date": "2018-01",
+          "value": 4.55
+        },
+        {
+          "date": "2019-01",
+          "value": 5.45
+        },
+        {
+          "date": "2020-01",
+          "value": 5.44
+        },
+        {
+          "date": "2021-01",
+          "value": 5.38
+        },
+        {
+          "date": "2022-01",
+          "value": 5.81
+        },
+        {
+          "date": "2023-01",
+          "value": 4.5
+        },
+        {
+          "date": "2024-01",
+          "value": 5.85
+        },
+        {
+          "date": "2025-01",
+          "value": 5.78
+        }
+      ],
+      "frequency": "Annual harvest \u00b7 estimates reviewed monthly",
+      "kind": "price",
+      "decimals": 2,
+      "description": "Annual maize yield in South Africa, an exposed producer and regional supplier. Points use USDA marketing-year labels, not calendar-month observations.",
+      "why": "Tests the physical harvest link. In this panel, a lower line means a higher impact.",
+      "mechanism": "Summer heat and drought \u2192 lower yields \u2192 less maize for domestic use and regional exports.",
+      "caveat": "Historical points are USDA estimates and remain revisable. The separate 2026/27 USDA forecast is 5.50 tonnes/ha; it is not shown as an observed harvest. A local crop loss does not imply a global shortage.",
+      "assumptions": "2026/27 yields: low-impact 5.9, medium 5.5, high-impact 4.3 tonnes/ha. The medium scenario matches the archived USDA forecast. Subsequent seasons assume recovery; high impact means lower yield. Annual paths are illustrative, not monthly forecasts.",
+      "annual": true,
+      "officialForecast": 5.5,
+      "historyStart": "1960-01",
+      "latest": {
+        "date": "2025-01",
+        "value": 5.78
+      },
+      "anchor": {
+        "date": "2025-01",
+        "value": 5.78
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2025-01",
+            "value": 5.78
+          },
+          {
+            "date": "2026-01",
+            "value": 5.9
+          },
+          {
+            "date": "2027-01",
+            "value": 6
+          },
+          {
+            "date": "2028-01",
+            "value": 6.1
+          }
+        ],
+        "medium": [
+          {
+            "date": "2025-01",
+            "value": 5.78
+          },
+          {
+            "date": "2026-01",
+            "value": 5.5
+          },
+          {
+            "date": "2027-01",
+            "value": 5.7
+          },
+          {
+            "date": "2028-01",
+            "value": 5.95
+          }
+        ],
+        "high": [
+          {
+            "date": "2025-01",
+            "value": 5.78
+          },
+          {
+            "date": "2026-01",
+            "value": 4.3
+          },
+          {
+            "date": "2027-01",
+            "value": 5
+          },
+          {
+            "date": "2028-01",
+            "value": 5.7
+          }
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "file": "world-bank.xlsx",
+      "name": "World Bank Pink Sheet",
+      "url": "https://www.worldbank.org/en/research/commodity-markets",
+      "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+      "retrieved": "2026-09-07",
+      "sha256": "9fdcfa8a2aed9a1bb545a10c1a5ce036c6a0acd4766f450424ca800b4b5a0225"
+    },
+    {
+      "file": "fao.csv",
+      "name": "FAO Food Price Index",
+      "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_83",
+      "retrieved": "2026-09-07",
+      "sha256": "746104cf59d2de5582d147a54b0f0c5ba798a371e9be7f8a1e1b38d1aaacc62f"
+    },
+    {
+      "file": "ons.json",
+      "name": "ONS D7BU",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23",
+      "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+      "retrieved": "2026-09-07",
+      "sha256": "e8fba154dae1c7ea5b86e5b40f0642d69a2aeb0c8c5992e1e7a4457711f29f1b"
+    },
+    {
+      "file": "roni.html",
+      "name": "NOAA RONI (ERSSTv6)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "retrieved": "2026-09-07",
+      "sha256": "a01e3df387390792b3ca10e8a8ccfe0c718d95f57c60996af782bc3e4337040f"
+    },
+    {
+      "file": "grains.zip",
+      "name": "USDA Production, Supply & Distribution",
+      "url": "https://apps.fas.usda.gov/PSDOnline/app/index.html",
+      "downloadUrl": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
+      "retrieved": "2026-09-07",
+      "sha256": "cfe2c99d68d41b702b83bb5ce1e4d81cb74b7ab090fca3ba0f2cac1b05fe2b99"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+import { AITracker } from '@/components/ai-tracker';
+export const metadata={title:'AI Job Displacement Tracker',description:'Eight measures of white-collar labour displacement in the US and Canada, tracked against frozen September 2026 scenarios.'};
+export default function AIPage(){return <main className="wrap tracker-page"><div className="tracker-heading"><div><a className="back-link" href="/#trackers">← All trackers</a><p className="eyebrow">Technology & work · Tracker 02</p><h1>AI Displacement Tracker<span>.</span></h1><p>AI is changing work. Is it taking jobs?</p></div></div><div className="hypothesis"><span>The hypothesis</span><p>AI will disrupt the white-collar job market, reducing opportunities and changing worker outcomes.</p></div><AITracker/></main>}

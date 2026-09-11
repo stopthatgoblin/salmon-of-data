@@ -1,0 +1,5 @@
+import posts from '@/data/posts.json';
+import { notFound } from 'next/navigation';
+export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const post=posts.find(p=>p.slug===slug);return {title:post?.title||'Post not found',description:post?.excerpt}}
+export default async function Post({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const post=posts.find(p=>p.slug===slug);if(!post)notFound();return <main className="wrap"><article className="article"><a className="back-link" href="/blog/">← The notebook</a><p className="eyebrow">{post.tag}</p><h1>{post.title}</h1><p className="article-meta">{post.author} <span>·</span> <time dateTime={post.date}>{new Date(post.date+'T12:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}</time> <span>·</span> {post.readingMinutes} min read</p><div className="prose" dangerouslySetInnerHTML={{__html:post.html}}/><a className="text-link" href="/blog/">All posts <span>→</span></a></article></main>}

@@ -1,0 +1,155 @@
+{
+  "checkedAt": "2026-09-06",
+  "year": 2026,
+  "entries": [
+    {
+      "date": "2026-09-11",
+      "title": "US consumer prices",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q2 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260827/dq260827b-eng.htm",
+      "time": null,
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-09-29",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-10-02",
+      "title": "US employment situation",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Employment",
+        "Real pay \u00b7 earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-10-14",
+      "title": "US consumer prices",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-11-03",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "US employment situation",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Employment",
+        "Real pay \u00b7 earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "US consumer prices",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-12-01",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-12-04",
+      "title": "US employment situation",
+      "referencePeriod": "November 2026",
+      "metrics": [
+        "Employment",
+        "Real pay \u00b7 earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    },
+    {
+      "date": "2026-12-10",
+      "title": "US consumer prices",
+      "referencePeriod": "November 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed"
+    }
+  ],
+  "provisional": [
+    {
+      "month": "2026-11",
+      "title": "US graduate labour market",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Graduate gap",
+        "Underemployment"
+      ],
+      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
+      "note": "Expected in November: the New York Fed generally updates in February, May, August and November. No exact day confirmed."
+    },
+    {
+      "month": "2026-12",
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
+      "note": "Expected in December from the quarterly release pattern. Month is an estimate; no exact day confirmed."
+    }
+  ]
+}

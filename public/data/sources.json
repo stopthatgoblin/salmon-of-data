@@ -1,0 +1,42 @@
+[
+  {
+    "file": "world-bank.xlsx",
+    "name": "World Bank Pink Sheet",
+    "url": "https://www.worldbank.org/en/research/commodity-markets",
+    "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+    "retrieved": "2026-09-07",
+    "sha256": "9fdcfa8a2aed9a1bb545a10c1a5ce036c6a0acd4766f450424ca800b4b5a0225"
+  },
+  {
+    "file": "fao.csv",
+    "name": "FAO Food Price Index",
+    "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+    "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_83",
+    "retrieved": "2026-09-07",
+    "sha256": "746104cf59d2de5582d147a54b0f0c5ba798a371e9be7f8a1e1b38d1aaacc62f"
+  },
+  {
+    "file": "ons.json",
+    "name": "ONS D7BU",
+    "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23",
+    "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+    "retrieved": "2026-09-07",
+    "sha256": "e8fba154dae1c7ea5b86e5b40f0642d69a2aeb0c8c5992e1e7a4457711f29f1b"
+  },
+  {
+    "file": "roni.html",
+    "name": "NOAA RONI (ERSSTv6)",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+    "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+    "retrieved": "2026-09-07",
+    "sha256": "a01e3df387390792b3ca10e8a8ccfe0c718d95f57c60996af782bc3e4337040f"
+  },
+  {
+    "file": "grains.zip",
+    "name": "USDA Production, Supply & Distribution",
+    "url": "https://apps.fas.usda.gov/PSDOnline/app/index.html",
+    "downloadUrl": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
+    "retrieved": "2026-09-07",
+    "sha256": "cfe2c99d68d41b702b83bb5ce1e4d81cb74b7ab090fca3ba0f2cac1b05fe2b99"
+  }
+]

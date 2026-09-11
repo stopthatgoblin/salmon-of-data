@@ -1,0 +1,646 @@
+{
+  "version": 1,
+  "date": "2026-09-07",
+  "method": "Judgement-based conditional scenarios; linear interpolation between explicit dated checkpoints. No probability or causal interpretation. Original anchors remain fixed.",
+  "metrics": {
+    "food": {
+      "anchor": {
+        "date": "2026-08",
+        "value": 133.3
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 133.3
+          },
+          {
+            "date": "2027-06",
+            "value": 139.965
+          },
+          {
+            "date": "2027-12",
+            "value": 138.632
+          },
+          {
+            "date": "2028-08",
+            "value": 137.299
+          },
+          {
+            "date": "2029-08",
+            "value": 138.632
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 133.3
+          },
+          {
+            "date": "2027-06",
+            "value": 153.295
+          },
+          {
+            "date": "2027-12",
+            "value": 149.296
+          },
+          {
+            "date": "2028-08",
+            "value": 142.631
+          },
+          {
+            "date": "2029-08",
+            "value": 143.964
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 133.3
+          },
+          {
+            "date": "2027-06",
+            "value": 173.29
+          },
+          {
+            "date": "2027-12",
+            "value": 166.625
+          },
+          {
+            "date": "2028-08",
+            "value": 154.628
+          },
+          {
+            "date": "2029-08",
+            "value": 153.295
+          }
+        ]
+      },
+      "assumptions": "Peak uplifts of 5%, 15% and 30% by June 2027. By August 2029, prices are 4%, 8% and 15% above the frozen anchor. These are judgement-based total-price scenarios, not estimates of the portion caused by El Ni\u00f1o."
+    },
+    "rice": {
+      "anchor": {
+        "date": "2026-08",
+        "value": 471.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 471.0
+          },
+          {
+            "date": "2027-06",
+            "value": 471.0
+          },
+          {
+            "date": "2027-12",
+            "value": 461.58
+          },
+          {
+            "date": "2028-08",
+            "value": 471.0
+          },
+          {
+            "date": "2029-08",
+            "value": 485.13
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 471.0
+          },
+          {
+            "date": "2027-06",
+            "value": 555.78
+          },
+          {
+            "date": "2027-12",
+            "value": 527.52
+          },
+          {
+            "date": "2028-08",
+            "value": 494.55
+          },
+          {
+            "date": "2029-08",
+            "value": 499.26
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 471.0
+          },
+          {
+            "date": "2027-06",
+            "value": 659.4
+          },
+          {
+            "date": "2027-12",
+            "value": 612.3
+          },
+          {
+            "date": "2028-08",
+            "value": 541.65
+          },
+          {
+            "date": "2029-08",
+            "value": 527.52
+          }
+        ]
+      },
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are +0% / +18% / +40% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts."
+    },
+    "maize": {
+      "anchor": {
+        "date": "2026-08",
+        "value": 224.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 224.0
+          },
+          {
+            "date": "2027-06",
+            "value": 217.28
+          },
+          {
+            "date": "2027-12",
+            "value": 212.8
+          },
+          {
+            "date": "2028-08",
+            "value": 224.0
+          },
+          {
+            "date": "2029-08",
+            "value": 228.48
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 224.0
+          },
+          {
+            "date": "2027-06",
+            "value": 250.88
+          },
+          {
+            "date": "2027-12",
+            "value": 241.92
+          },
+          {
+            "date": "2028-08",
+            "value": 232.96
+          },
+          {
+            "date": "2029-08",
+            "value": 235.2
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 224.0
+          },
+          {
+            "date": "2027-06",
+            "value": 291.2
+          },
+          {
+            "date": "2027-12",
+            "value": 273.28
+          },
+          {
+            "date": "2028-08",
+            "value": 246.4
+          },
+          {
+            "date": "2029-08",
+            "value": 246.4
+          }
+        ]
+      },
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are -3% / +12% / +30% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts."
+    },
+    "sugar": {
+      "anchor": {
+        "date": "2026-08",
+        "value": 0.38
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 0.38
+          },
+          {
+            "date": "2027-06",
+            "value": 0.361
+          },
+          {
+            "date": "2027-12",
+            "value": 0.3496
+          },
+          {
+            "date": "2028-08",
+            "value": 0.3686
+          },
+          {
+            "date": "2029-08",
+            "value": 0.38
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 0.38
+          },
+          {
+            "date": "2027-06",
+            "value": 0.456
+          },
+          {
+            "date": "2027-12",
+            "value": 0.4256
+          },
+          {
+            "date": "2028-08",
+            "value": 0.399
+          },
+          {
+            "date": "2029-08",
+            "value": 0.399
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 0.38
+          },
+          {
+            "date": "2027-06",
+            "value": 0.551
+          },
+          {
+            "date": "2027-12",
+            "value": 0.494
+          },
+          {
+            "date": "2028-08",
+            "value": 0.437
+          },
+          {
+            "date": "2029-08",
+            "value": 0.418
+          }
+        ]
+      },
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are -5% / +20% / +45% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts."
+    },
+    "palm": {
+      "anchor": {
+        "date": "2026-08",
+        "value": 1117.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-09",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-12",
+            "value": 1083.49
+          },
+          {
+            "date": "2028-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2029-08",
+            "value": 1150.51
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-09",
+            "value": 1318.06
+          },
+          {
+            "date": "2027-12",
+            "value": 1295.72
+          },
+          {
+            "date": "2028-08",
+            "value": 1206.36
+          },
+          {
+            "date": "2029-08",
+            "value": 1195.19
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 1117.0
+          },
+          {
+            "date": "2027-09",
+            "value": 1507.95
+          },
+          {
+            "date": "2027-12",
+            "value": 1474.44
+          },
+          {
+            "date": "2028-08",
+            "value": 1318.06
+          },
+          {
+            "date": "2029-08",
+            "value": 1251.04
+          }
+        ]
+      },
+      "assumptions": "At the 2027-09 peak checkpoint, low / medium / high paths are +0% / +18% / +35% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts."
+    },
+    "coffee": {
+      "anchor": {
+        "date": "2026-08",
+        "value": 3.98
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-08",
+            "value": 3.98
+          },
+          {
+            "date": "2027-06",
+            "value": 3.582
+          },
+          {
+            "date": "2027-12",
+            "value": 3.383
+          },
+          {
+            "date": "2028-08",
+            "value": 3.582
+          },
+          {
+            "date": "2029-08",
+            "value": 3.781
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-08",
+            "value": 3.98
+          },
+          {
+            "date": "2027-06",
+            "value": 4.776
+          },
+          {
+            "date": "2027-12",
+            "value": 4.4576
+          },
+          {
+            "date": "2028-08",
+            "value": 4.179
+          },
+          {
+            "date": "2029-08",
+            "value": 4.179
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-08",
+            "value": 3.98
+          },
+          {
+            "date": "2027-06",
+            "value": 5.97
+          },
+          {
+            "date": "2027-12",
+            "value": 5.373
+          },
+          {
+            "date": "2028-08",
+            "value": 4.776
+          },
+          {
+            "date": "2029-08",
+            "value": 4.4576
+          }
+        ]
+      },
+      "assumptions": "At the 2027-06 peak checkpoint, low / medium / high paths are -10% / +20% / +50% versus the frozen anchor. Paths then allow supply recovery; endpoint assumptions are available below. These are judgement-based stress scenarios, not fitted forecasts."
+    },
+    "retail": {
+      "anchor": {
+        "date": "2026-07",
+        "value": 144.0
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-07",
+            "value": 144.0
+          },
+          {
+            "date": "2027-12",
+            "value": 148.32
+          },
+          {
+            "date": "2028-08",
+            "value": 151.2
+          },
+          {
+            "date": "2029-08",
+            "value": 154.08
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-07",
+            "value": 144.0
+          },
+          {
+            "date": "2027-12",
+            "value": 154.08
+          },
+          {
+            "date": "2028-08",
+            "value": 158.4
+          },
+          {
+            "date": "2029-08",
+            "value": 161.28
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-07",
+            "value": 144.0
+          },
+          {
+            "date": "2027-12",
+            "value": 161.28
+          },
+          {
+            "date": "2028-08",
+            "value": 168.48
+          },
+          {
+            "date": "2029-08",
+            "value": 172.8
+          }
+        ]
+      },
+      "assumptions": "By December 2027: low +3%, medium +7%, high +12% versus July 2026. By August 2029: +7%, +12%, +20%. All are cumulative price-level changes, not annual inflation rates or causal estimates."
+    },
+    "enso": {
+      "anchor": {
+        "date": "2026-07",
+        "value": 1.4
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2026-07",
+            "value": 1.4
+          },
+          {
+            "date": "2026-11",
+            "value": 2.0
+          },
+          {
+            "date": "2027-03",
+            "value": 1.0
+          },
+          {
+            "date": "2027-07",
+            "value": -0.2
+          }
+        ],
+        "medium": [
+          {
+            "date": "2026-07",
+            "value": 1.4
+          },
+          {
+            "date": "2026-11",
+            "value": 2.6
+          },
+          {
+            "date": "2027-03",
+            "value": 1.8
+          },
+          {
+            "date": "2027-07",
+            "value": 0.3
+          }
+        ],
+        "high": [
+          {
+            "date": "2026-07",
+            "value": 1.4
+          },
+          {
+            "date": "2026-11",
+            "value": 3
+          },
+          {
+            "date": "2027-03",
+            "value": 2.4
+          },
+          {
+            "date": "2027-07",
+            "value": 1
+          }
+        ]
+      },
+      "assumptions": "Illustrative strength paths peak in November 2026 at 2.0\u00b0C / 2.6\u00b0C / 3.0\u00b0C, then decline to \u22120.2\u00b0C / 0.3\u00b0C / 1.0\u00b0C in July 2027. The official August NOAA outlook informs the peak range; these paths are our conditional illustrations, not NOAA forecast quantiles."
+    },
+    "harvest": {
+      "anchor": {
+        "date": "2025-01",
+        "value": 5.78
+      },
+      "paths": {
+        "low": [
+          {
+            "date": "2025-01",
+            "value": 5.78
+          },
+          {
+            "date": "2026-01",
+            "value": 5.9
+          },
+          {
+            "date": "2027-01",
+            "value": 6
+          },
+          {
+            "date": "2028-01",
+            "value": 6.1
+          }
+        ],
+        "medium": [
+          {
+            "date": "2025-01",
+            "value": 5.78
+          },
+          {
+            "date": "2026-01",
+            "value": 5.5
+          },
+          {
+            "date": "2027-01",
+            "value": 5.7
+          },
+          {
+            "date": "2028-01",
+            "value": 5.95
+          }
+        ],
+        "high": [
+          {
+            "date": "2025-01",
+            "value": 5.78
+          },
+          {
+            "date": "2026-01",
+            "value": 4.3
+          },
+          {
+            "date": "2027-01",
+            "value": 5
+          },
+          {
+            "date": "2028-01",
+            "value": 5.7
+          }
+        ]
+      },
+      "assumptions": "2026/27 yields: low-impact 5.9, medium 5.5, high-impact 4.3 tonnes/ha. The medium scenario matches the archived USDA forecast. Subsequent seasons assume recovery; high impact means lower yield. Annual paths are illustrative, not monthly forecasts."
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export default function NotFound(){return <main className="wrap not-found"><p className="eyebrow">404 · Page not found</p><h1>This page has moved<br/>out of the current.</h1><a className="text-link" href="/">Back to Salmon of Data →</a></main>}

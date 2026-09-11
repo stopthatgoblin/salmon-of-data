@@ -1,0 +1,103 @@
+[
+  {
+    "file": "indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 11895410,
+    "sha256": "c1811a5a7e6e6341227c5d496c53a02ecb9c5b0cd557a2cad296c092224b2242",
+    "retrievedAt": "2026-09-06T13:51:27.719098+00:00"
+  },
+  {
+    "file": "indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 199229,
+    "sha256": "157b6357aea10e511a9e23ae08d480d0b4e23e1f2f7fbe4877f0e264bc359a88",
+    "retrievedAt": "2026-09-06T13:51:27.499877+00:00"
+  },
+  {
+    "file": "indeed-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/LICENSE",
+    "bytes": 18658,
+    "sha256": "f5b745ef98087f531e719ee8ca6a96809444573ecc7173c6fa68eaad39b3cc3f",
+    "retrievedAt": "2026-09-06T13:51:27.294788+00:00"
+  },
+  {
+    "file": "graduate-unemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-unemployment-data.csv",
+    "bytes": 16075,
+    "sha256": "202e637b06568d3632f35a42baa5db985d2f860b278b2296630e46e36eae5cbd",
+    "retrievedAt": "2026-09-06T13:51:27.754913+00:00"
+  },
+  {
+    "file": "graduate-underemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-underemployment-data.csv",
+    "bytes": 11542,
+    "sha256": "509aad590c2f26387d07bc7e7f8e3122be60c955a549bc88a23d248c78ab9b47",
+    "retrievedAt": "2026-09-06T13:51:27.715010+00:00"
+  },
+  {
+    "file": "JTS540099HIR.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS540099HIR",
+    "bytes": 4650,
+    "sha256": "494531c7f346d44c427d733e1f4b1b1549c8264a7aef5da74a66ce5dd3365226",
+    "retrievedAt": "2026-09-06T13:51:28.188035+00:00"
+  },
+  {
+    "file": "JTS1000HIR.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS1000HIR",
+    "bytes": 4648,
+    "sha256": "4ec8bce5e90960a20c1dc15422ccdf2b7da5d826f6b71297c4facca054470d9c",
+    "retrievedAt": "2026-09-06T13:51:27.675402+00:00"
+  },
+  {
+    "file": "CES6054000001.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6054000001",
+    "bytes": 8011,
+    "sha256": "e9767bfc2bc7c31247c5088db258728decd7c0e9c8eb5e2c2e8f8f1334c62987",
+    "retrievedAt": "2026-09-06T13:51:27.885542+00:00"
+  },
+  {
+    "file": "USPRIV.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=USPRIV",
+    "bytes": 18271,
+    "sha256": "6a30afe0e525b5060db740fba542bcdc4d8de57c89e09bacabac1c5bd912e14b",
+    "retrievedAt": "2026-09-06T13:51:27.866371+00:00"
+  },
+  {
+    "file": "CES6000000003.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6000000003",
+    "bytes": 4213,
+    "sha256": "f44787249b8202c448fc3aafd21ea8689a7cb39b2e8f7abaf7246038482788f3",
+    "retrievedAt": "2026-09-06T13:51:28.432392+00:00"
+  },
+  {
+    "file": "CPIAUCSL.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
+    "bytes": 17725,
+    "sha256": "5a102ceb6a4c5fe5a2e0319d6feca89b55dde6199e51de0760f42791a949cdaa",
+    "retrievedAt": "2026-09-06T13:51:28.268221+00:00"
+  },
+  {
+    "file": "graduate-metadata.json",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-chart-meta.json",
+    "bytes": 4190,
+    "sha256": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b",
+    "retrievedOn": "2026-09-06",
+    "note": "Publisher definitions, release dates and missing-month notes."
+  },
+  {
+    "file": "canada-vacancies.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
+    "bytes": 97386757,
+    "sha256": "38a420036ad592d75b66bdfbd7b4540cd9c7639df1ed08dc4659c96287538138",
+    "retrievedOn": "2026-09-06",
+    "note": "Full published table 14-10-0444-01. Retrieved 6 September 2026; latest quarter 2026 Q1."
+  },
+  {
+    "file": "canada-national.csv",
+    "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
+    "bytes": 10958282,
+    "sha256": "8d05d207f8db8c762885554cbbeedddc3f79d8da27e37068ed71015723de50cf",
+    "retrievedOn": "2026-09-06",
+    "note": "All Canada rows extracted without altering values from 14100444.csv inside the archived table ZIP. Quality flags retained."
+  }
+]
