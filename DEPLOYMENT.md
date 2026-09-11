@@ -1,6 +1,6 @@
 # Publish Salmon of Data
 
-This project exports a static website. Use **Cloudflare Pages** with GitHub integration; no Worker or database is required. These steps publish the current committed snapshots and Markdown posts. They do not fetch new actuals or alter the frozen forecasts.
+This project exports a static website. Use **Cloudflare Workers Static Assets** with GitHub integration; no custom Worker script or database is required. These steps publish the current committed snapshots and Markdown posts. They do not fetch new actuals or alter the frozen forecasts.
 
 ## 1. Put the project on GitHub
 
@@ -20,36 +20,37 @@ git push -u origin main
 
 Replace YOUR-USERNAME. Review `git status` before committing. The project's ignore file excludes dependencies, generated builds, environment files and local raw-data archives. Commit the source code, package lock, `data` JSON snapshots, `public/data`, and published Markdown posts. GitHub Desktop is an alternative to these commands: create a repository in this existing folder, commit, then Publish Repository.
 
-## 2. Create the Cloudflare Pages project
+## 2. Deploy with Cloudflare Workers
 
-In Cloudflare, open **Workers & Pages → Create application → Pages → Connect to Git** (the wording can vary). Authorize GitHub and select the repository.
+Use the existing `salmon-of-data` Worker connected to `stopthatgoblin/salmon-of-data`. For a new project, choose Workers & Pages → Create application, select the repository, and continue with the default Workers workflow.
 
 | Setting | Value |
 | --- | --- |
 | Production branch | `main` |
-| Framework preset | None |
-| Root directory | Leave blank |
+| Root directory | `/` |
 | Build command | `npm run build` |
-| Build output directory | `dist/client` |
-| Environment variable | `NODE_VERSION` = `24.19.0` |
+| Deploy command | `npx wrangler deploy` |
+| Build variable | `NODE_VERSION` = `24.19.0` |
 
-Set the Node variable for production and preview builds. `.node-version` also pins this version. Node 20.16 cannot build this project, which caused the earlier `fs/promises` error. Do not use `npm start` as the Cloudflare build command: it only serves an existing local build.
+Commit and push `wrangler.jsonc` before retrying. It explicitly selects `dist/client`, serves the exported HTML routes, and prevents Wrangler's automatic framework setup. Keep the installed dependency versions and lockfile; no forced dependency upgrade is needed. The earlier log successfully built the website, then failed when automatic setup attempted a conflicting Wrangler upgrade.
 
-Deploy, then test the assigned `*.pages.dev` address, both tracker routes, a blog post, CSV downloads and PNG downloads. Every subsequent push to `main` rebuilds the live site automatically.
+The existing build token can remain if it has permission to deploy this Worker in this account; its display name does not determine its permissions. The supplied log did not show a token permission failure.
 
-References: [Pages Git integration](https://developers.cloudflare.com/pages/get-started/git-integration/), [build environment](https://developers.cloudflare.com/pages/configuration/build-image/).
+Test the assigned `*.workers.dev` address, both tracker routes, a blog post, CSV downloads and PNG downloads. Subsequent pushes to `main` rebuild and deploy automatically. Node 20.16 cannot build this project; `.node-version` pins Node 24 as well. `npm start` only serves a previously built local site.
+
+Reference: [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 
 ## 3. Connect salmonofdata.com, registered at GoDaddy
 
 1. Add `salmonofdata.com` as a domain/zone in your Cloudflare account, selecting the Free plan if suitable. Review the imported DNS records against GoDaddy. Preserve email records (MX, SPF, DKIM and DMARC) and any other services you use.
 2. Cloudflare assigns two nameservers. In GoDaddy's Domain Portfolio, select the domain → DNS → Nameservers → Change nameservers → use your own nameservers. Enter **the two names Cloudflare assigns**, then save. The registration stays at GoDaddy; Cloudflare takes over DNS. If existing DNSSEC is enabled, follow Cloudflare's migration instructions to remove the old DS record before switching, then enable DNSSEC again after activation.
-3. Wait for Cloudflare to show the zone as Active. In the Pages project, open **Custom domains → Set up a custom domain**, enter `salmonofdata.com`, and complete the setup. Let Cloudflare create the required DNS record. Add `www.salmonofdata.com` there too.
+3. Wait for Cloudflare to show the zone as Active. In the Worker, open **Settings → Domains & Routes → Add → Custom Domain**, enter `salmonofdata.com`, and complete the setup. Let Cloudflare create the required DNS record. Add `www.salmonofdata.com` there too.
 4. Wait until both custom domains and HTTPS certificates are active. Test the home page and `https://salmonofdata.com/trackers/ai/` and `/trackers/el-nino/` directly.
 5. Optionally use a Cloudflare Redirect Rule to send `www.salmonofdata.com` to the apex domain, preserving the path and query string, with a 301 status.
 
-Associate each hostname with the Pages project before manually changing a CNAME. You do not need to buy GoDaddy hosting or transfer the domain registration.
+Use Worker custom domains so Cloudflare manages the website DNS and certificates. You do not need to buy GoDaddy hosting or transfer the domain registration.
 
-References: [Pages custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/), [GoDaddy nameserver instructions](https://www.godaddy.com/help/change-my-domain-nameservers-664).
+References: [Worker custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), [GoDaddy nameserver instructions](https://www.godaddy.com/help/change-my-domain-nameservers-664).
 
 ## 4. Redirect aidisplacementtracker.com
 
