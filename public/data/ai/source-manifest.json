@@ -99,5 +99,37 @@
     "sha256": "8d05d207f8db8c762885554cbbeedddc3f79d8da27e37068ed71015723de50cf",
     "retrievedOn": "2026-09-06",
     "note": "All Canada rows extracted without altering values from 14100444.csv inside the archived table ZIP. Quality flags retained."
+  },
+  {
+    "file": "2026-09-13/CPIAUCSL.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
+    "bytes": 17744,
+    "sha256": "f8ecddf53a9a9a74dda92c2c4204e6039466fcb744bc74171b73b5f6aac48119",
+    "retrievedOn": "2026-09-13",
+    "note": "Refresh archive; original freeze archive preserved."
+  },
+  {
+    "file": "2026-09-13/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 11929960,
+    "sha256": "7f4b23091419f732188c4bfe2c0dfa19a9d42cc1548a41cb866e004543ed4bae",
+    "retrievedOn": "2026-09-13",
+    "note": "Refresh archive; original freeze archive preserved."
+  },
+  {
+    "file": "2026-09-13/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 199806,
+    "sha256": "24686c59fdb715d3984c422d112434f54cb8f1815f3db2623a71269c273ce084",
+    "retrievedOn": "2026-09-13",
+    "note": "Refresh archive; original freeze archive preserved."
+  },
+  {
+    "file": "2026-09-13/graduate-metadata.json",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-chart-meta.json",
+    "bytes": 4190,
+    "sha256": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b",
+    "retrievedOn": "2026-09-13",
+    "note": "Refresh archive; original freeze archive preserved."
   }
 ]

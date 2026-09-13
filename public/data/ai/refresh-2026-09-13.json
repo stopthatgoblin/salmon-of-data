@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-09-13",
+  "policy": "Append new observations only; preserve previous actuals, source archives, anchors and forecast paths. Observation dates can precede the freeze even when first imported afterwards.",
+  "newActuals": {
+    "recruitment": [
+      {
+        "date": "2026-08-29",
+        "value": 86.594842
+      },
+      {
+        "date": "2026-08-30",
+        "value": 86.439958
+      },
+      {
+        "date": "2026-08-31",
+        "value": 86.357988
+      },
+      {
+        "date": "2026-09-01",
+        "value": 86.281724
+      },
+      {
+        "date": "2026-09-02",
+        "value": 86.534692
+      },
+      {
+        "date": "2026-09-03",
+        "value": 86.796855
+      },
+      {
+        "date": "2026-09-04",
+        "value": 87.193633
+      }
+    ],
+    "real-pay": [
+      {
+        "date": "2026-08-01",
+        "nominalHourlyPay": 45.7,
+        "cpi": 334.131,
+        "base2019MeanPayDividedByCpi": 0.1317670088039296,
+        "value": 103.798898
+      }
+    ]
+  },
+  "recruitmentColumns": [
+    "date",
+    "Software Development",
+    "Accounting",
+    "Marketing",
+    "Administrative Assistance",
+    "Customer Service",
+    "Banking & Finance",
+    "All US postings"
+  ],
+  "recruitmentInputs": [
+    [
+      "2026-08-29",
+      74.64,
+      96.32,
+      76.66,
+      94.89,
+      88.06,
+      99.91,
+      102.1
+    ],
+    [
+      "2026-08-30",
+      74.62,
+      95.98,
+      76.47,
+      94.71,
+      87.92,
+      99.52,
+      102.04
+    ],
+    [
+      "2026-08-31",
+      74.75,
+      95.65,
+      76.25,
+      94.61,
+      87.93,
+      99.01,
+      101.94
+    ],
+    [
+      "2026-09-01",
+      74.86,
+      95.4,
+      76.08,
+      94.57,
+      87.91,
+      98.81,
+      101.92
+    ],
+    [
+      "2026-09-02",
+      75.19,
+      96.14,
+      76.14,
+      94.75,
+      87.91,
+      99.67,
+      102.04
+    ],
+    [
+      "2026-09-03",
+      75.59,
+      97.03,
+      76.29,
+      95.0,
+      87.78,
+      100.34,
+      102.16
+    ],
+    [
+      "2026-09-04",
+      76.12,
+      98.26,
+      76.55,
+      95.38,
+      87.9,
+      101.56,
+      102.41
+    ]
+  ],
+  "cpiRevisionsDetected": 0,
+  "frozenFileSha256": {
+    "public/data/scenarios-v1.json": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+    "public/data/ai/frozen-metrics-v1.json": "93a384e2b0ec76018614152ca1f5065477ae0e09a3246488eefabe6f41fa0dd8"
+  },
+  "sources": [
+    {
+      "file": "2026-09-13/CPIAUCSL.csv",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
+      "bytes": 17744,
+      "sha256": "f8ecddf53a9a9a74dda92c2c4204e6039466fcb744bc74171b73b5f6aac48119",
+      "retrievedOn": "2026-09-13",
+      "note": "Refresh archive; original freeze archive preserved."
+    },
+    {
+      "file": "2026-09-13/indeed-us-sectors.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+      "bytes": 11929960,
+      "sha256": "7f4b23091419f732188c4bfe2c0dfa19a9d42cc1548a41cb866e004543ed4bae",
+      "retrievedOn": "2026-09-13",
+      "note": "Refresh archive; original freeze archive preserved."
+    },
+    {
+      "file": "2026-09-13/indeed-us-all.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+      "bytes": 199806,
+      "sha256": "24686c59fdb715d3984c422d112434f54cb8f1815f3db2623a71269c273ce084",
+      "retrievedOn": "2026-09-13",
+      "note": "Refresh archive; original freeze archive preserved."
+    },
+    {
+      "file": "2026-09-13/graduate-metadata.json",
+      "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-chart-meta.json",
+      "bytes": 4190,
+      "sha256": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b",
+      "retrievedOn": "2026-09-13",
+      "note": "Refresh archive; original freeze archive preserved."
+    }
+  ],
+  "otherChecks": {
+    "employment": "August already imported; latest release 4 September.",
+    "hiring": "July already imported; next release 29 September.",
+    "graduatesAndUnderemployment": "Publisher metadata unchanged: 6 August release, Q2 2026.",
+    "canada": "Q2 release due 15 September; retain calendar entry.",
+    "food": "August 133.3, released 4 September, already imported.",
+    "commodities": "August prices released 2 September, already imported; next release 2 October.",
+    "enso": "JJA 2026 = 1.4, already imported as July midpoint; no JAS value.",
+    "ukGroceries": "August release unpublished, due 16 September.",
+    "harvest": "September USDA estimates revise 2024/25 to 5.74 and 2025/26 to 5.80 tonnes/ha. Stored separately in /data/harvest-revisions-2026-09-13.json; no new observed year."
+  }
+}

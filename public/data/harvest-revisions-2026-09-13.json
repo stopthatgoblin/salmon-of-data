@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-13",
+  "sourceUrl": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
+  "sourceSha256": "70464746e0905060c70c5f27330748769908f5159669b5b7b853e0925bd3d5f4",
+  "geography": "South Africa",
+  "commodity": "Corn",
+  "unit": "tonnes/ha",
+  "revisions": [
+    {
+      "marketingYear": 2024,
+      "original": 5.85,
+      "revised": 5.74
+    },
+    {
+      "marketingYear": 2025,
+      "original": 5.78,
+      "revised": 5.8
+    }
+  ],
+  "officialForecast2026": 5.5,
+  "note": "Revisions are reported separately. Original plotted observations and frozen scenarios are preserved. The 2026/27 estimate remains a forecast, not a new observed harvest."
+}

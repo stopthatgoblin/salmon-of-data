@@ -36,14 +36,14 @@ All input indices equal 100 on 1 February 2020, so the derived ratio also starts
 2. Columns A–H are date, Software Development, Accounting, Marketing, Administrative Assistance, Customer Service, Banking & Finance, All US postings.
 3. In I1 enter `Basket mean`; in I2 enter `=IF(COUNT(B2:G2)=6,AVERAGE(B2:G2),NA())`.
 4. In J1 enter `Relative recruitment`; in J2 enter `=IF(AND(COUNT(H2)=1,H2>0),I2/H2*100,NA())`.
-5. Fill I2:J2 down all 2,401 observations. Plot A against J as a line chart. Keep all daily rows; do not smooth again. The sources are already seasonally adjusted seven-day trailing indices.
+5. Fill I2:J2 down all available observations. Plot A against J as a line chart. Keep all daily rows; do not smooth again. The sources are already seasonally adjusted seven-day trailing indices.
 6. Check 1 February 2020 gives 100, and 28 August 2026 gives 86.7048533. Compare J to `recruitment.csv`, allowing 0.000001 for six-decimal export rounding.
 
 ## Rebuild the inputs yourself from the original CSVs
 
 Use Excel Power Query to import both original CSVs. For sectors, filter `variable` to exactly `total postings` and `display_name` to the six names above. Keep `date`, `display_name` and `indeed_job_postings_index`; pivot `display_name` into six columns with “Don't aggregate”. There should be exactly one source value per date and sector. A duplicate should be investigated, not summed.
 
-For the all-US file, filter `variable` to `total postings`, and retain `date` and `indeed_job_postings_index_SA`. Merge with the sector pivot on date, keeping dates with all seven numeric inputs. Order columns as above and dates ascending. For this frozen edition retain dates through 6 September 2026. Apply the same Excel formulas. Do not substitute new-posting indices or the non-seasonally-adjusted all-US column.
+For the all-US file, filter `variable` to `total postings`, and retain `date` and `indeed_job_postings_index_SA`. Merge with the sector pivot on date, keeping dates with all seven numeric inputs. Order columns as above and dates ascending. To reproduce the original snapshot, retain dates through 28 August 2026. The 13 September update appends seven observations through 4 September; the original rows and forecast anchor are unchanged. Apply the same Excel formulas. Do not substitute new-posting indices or the non-seasonally-adjusted all-US column.
 
 ## Recreate the scenario lines
 

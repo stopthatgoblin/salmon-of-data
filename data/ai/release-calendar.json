@@ -3,17 +3,6 @@
   "year": 2026,
   "entries": [
     {
-      "date": "2026-09-11",
-      "title": "US consumer prices",
-      "referencePeriod": "August 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed"
-    },
-    {
       "date": "2026-09-15",
       "title": "Canadian vacancies and offered wages",
       "referencePeriod": "Q2 2026",
@@ -150,6 +139,24 @@
       ],
       "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
       "note": "Expected in December from the quarterly release pattern. Month is an estimate; no exact day confirmed."
+    }
+  ],
+  "lastReleaseReviewAt": "2026-09-13",
+  "completedReleases": [
+    {
+      "date": "2026-09-11",
+      "title": "US consumer prices",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "importedAt": "2026-09-13",
+      "actualsAdded": [
+        "real-pay: 2026-08-01"
+      ]
     }
   ]
 }
