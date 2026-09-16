@@ -3,21 +3,6 @@
   "through": "2026-12-31",
   "entries": [
     {
-      "date": "2026-09-15",
-      "title": "Canadian vacancies and offered wages",
-      "referencePeriod": "Q2 2026",
-      "metrics": [
-        "Canada: demand",
-        "Canada: pay"
-      ],
-      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260827/dq260827b-eng.htm",
-      "time": null,
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "quarterly",
-      "checkedAt": "2026-09-06"
-    },
-    {
       "date": "2026-09-29",
       "title": "US job openings and labour turnover",
       "referencePeriod": "August 2026",
@@ -163,34 +148,18 @@
       "checkedAt": "2026-09-06"
     },
     {
-      "month": "2026-12",
       "title": "Canadian vacancies and offered wages",
       "referencePeriod": "Q3 2026",
       "metrics": [
         "Canada: demand",
         "Canada: pay"
       ],
-      "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
-      "note": "Expected in December from the quarterly release pattern. Month is an estimate; no exact day confirmed.",
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260915/dq260915a-eng.htm",
       "tracker": "ai",
       "frequency": "quarterly",
-      "date": null,
-      "status": "Expected month",
-      "checkedAt": "2026-09-06"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-09-16",
-      "title": "UK consumer prices",
-      "metrics": [
-        "UK groceries"
-      ],
-      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukaugust2026",
-      "referencePeriod": "August 2026",
-      "time": "07:00 UK time",
+      "date": "2026-12-15",
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-16"
     },
     {
       "tracker": "el-nino",
@@ -204,7 +173,7 @@
       "referencePeriod": "September 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-16"
     },
     {
       "tracker": "el-nino",
@@ -246,7 +215,7 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-16"
     },
     {
       "tracker": "el-nino",
@@ -260,7 +229,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-16"
     },
     {
       "tracker": "el-nino",
@@ -274,7 +243,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-16"
     },
     {
       "tracker": "el-nino",
@@ -292,7 +261,7 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-16"
     },
     {
       "tracker": "el-nino",
@@ -346,7 +315,7 @@
       "referencePeriod": "July\u2013September 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-07",
+      "checkedAt": "2026-09-16",
       "month": "2026-10",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -362,7 +331,7 @@
       "referencePeriod": "August\u2013October 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-07",
+      "checkedAt": "2026-09-16",
       "month": "2026-11",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -378,12 +347,26 @@
       "referencePeriod": "September\u2013November 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-07",
+      "checkedAt": "2026-09-16",
       "month": "2026-12",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-08",
+      "title": "NOAA ENSO Diagnostic Discussion",
+      "metrics": [
+        "El Ni\u00f1o outlook"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "referencePeriod": "September 2026 conditions and outlook",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-16",
+      "note": "Outlook update; the three-month RONI actuals are published separately."
     }
   ],
-  "lastReleaseReviewAt": "2026-09-13",
+  "lastReleaseReviewAt": "2026-09-16",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -401,6 +384,44 @@
       "importedAt": "2026-09-13",
       "actualsAdded": [
         "real-pay: 2026-08-01"
+      ]
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-09-16",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukaugust2026",
+      "referencePeriod": "August 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-16",
+      "importedAt": "2026-09-16",
+      "actualsAdded": [
+        "retail: 2026-08"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q2 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260915/dq260915a-eng.htm",
+      "time": null,
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "checkedAt": "2026-09-16",
+      "importedAt": "2026-09-16",
+      "actualsAdded": [
+        "canada-vacancies: 2026-06-30",
+        "canada-pay: 2026-06-30"
       ]
     }
   ]

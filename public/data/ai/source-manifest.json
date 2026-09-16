@@ -131,5 +131,21 @@
     "sha256": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b",
     "retrievedOn": "2026-09-13",
     "note": "Refresh archive; original freeze archive preserved."
+  },
+  {
+    "file": "2026-09-16/canada-vacancies.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
+    "bytes": 99676598,
+    "sha256": "bb50ed47b2b5149c481e11f7be3289f137867df7457f17d7e58e37c5ea6a0080",
+    "retrievedOn": "2026-09-16",
+    "note": "Full table or exact Canada rows for NOC 2123 and all occupations; quality flags retained."
+  },
+  {
+    "file": "2026-09-16/canada-inputs.csv",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
+    "bytes": 25697,
+    "sha256": "d4e3b34a77bb60bd48112742341963192f8408e46c39211565d9a8a8bb41c4cc",
+    "retrievedOn": "2026-09-16",
+    "note": "Full table or exact Canada rows for NOC 2123 and all occupations; quality flags retained."
   }
 ]

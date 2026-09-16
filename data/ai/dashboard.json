@@ -12904,6 +12904,10 @@
         {
           "date": "2026-03-31",
           "value": 1.36628
+        },
+        {
+          "date": "2026-06-30",
+          "value": 1.372062
         }
       ],
       "country": "Canada",
@@ -12913,23 +12917,24 @@
       "mode": "percent",
       "period": "quarter",
       "notes": [
-        "The underlying latest quarter is 2026 Q1, released 16 June 2026. This is the latest available table at the freeze date, not a live September reading. Statistics Canada quality flags are retained in the source extract.",
+        "Latest underlying quarter: Q2 2026, released 15 September 2026. The original forecast anchor remains Q1 2026. Source quality flags are retained in the refresh report.",
         "Quarterly levels are stocks, so their four-quarter sum is used only to construct a ratio; it is not a count of unique vacancies over a year."
       ],
       "components": [
         {
           "label": "Software-related vacancies",
-          "value": "6,855",
+          "value": "6,915",
           "detail": "Latest quarter \u00b7 not seasonally adjusted"
         },
         {
           "label": "All vacancies",
-          "value": "473,035",
+          "value": "548,400",
           "detail": "Latest quarter \u00b7 not seasonally adjusted"
         }
       ],
       "sourceFiles": [
-        "canada-national.csv"
+        "canada-national.csv",
+        "2026-09-16/canada-inputs.csv"
       ],
       "anchor": {
         "date": "2026-03-31",
@@ -13109,6 +13114,10 @@
         {
           "date": "2026-03-31",
           "value": 67.0282
+        },
+        {
+          "date": "2026-06-30",
+          "value": 64.637306
         }
       ],
       "country": "Canada",
@@ -13123,17 +13132,18 @@
       "components": [
         {
           "label": "Software-related offer",
-          "value": "C$46.20",
+          "value": "C$47.75",
           "detail": "Per hour \u00b7 latest quarter"
         },
         {
           "label": "All-job offer",
-          "value": "C$29.55",
+          "value": "C$28.55",
           "detail": "Per hour \u00b7 latest quarter"
         }
       ],
       "sourceFiles": [
-        "canada-national.csv"
+        "canada-national.csv",
+        "2026-09-16/canada-inputs.csv"
       ],
       "anchor": {
         "date": "2026-03-31",
@@ -13146,5 +13156,5 @@
       ]
     }
   ],
-  "actualsUpdatedAt": "2026-09-13"
+  "actualsUpdatedAt": "2026-09-16"
 }

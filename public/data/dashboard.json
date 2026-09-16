@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-09-07",
+  "asOf": "2026-09-16",
   "version": 1,
   "metrics": [
     {
@@ -4598,6 +4598,10 @@
         {
           "date": "2026-07",
           "value": 144.0
+        },
+        {
+          "date": "2026-08",
+          "value": 144.6
         }
       ],
       "frequency": "Monthly",
@@ -4611,8 +4615,8 @@
       "peak": "2027-12",
       "historyStart": "1988-01",
       "latest": {
-        "date": "2026-07",
-        "value": 144.0
+        "date": "2026-08",
+        "value": 144.6
       },
       "anchor": {
         "date": "2026-07",
@@ -5487,6 +5491,14 @@
       "downloadUrl": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
       "retrieved": "2026-09-07",
       "sha256": "cfe2c99d68d41b702b83bb5ce1e4d81cb74b7ab090fca3ba0f2cac1b05fe2b99"
+    },
+    {
+      "name": "ONS D7BU",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23",
+      "releasedAt": "2026-09-16",
+      "retrievedOn": "2026-09-16",
+      "method": "Transcribed from official monthly table: 2026 AUG = 144.6; 2015=100.",
+      "nextRelease": "2026-10-21"
     }
   ]
 }

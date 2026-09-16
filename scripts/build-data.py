@@ -77,6 +77,12 @@ h.sort(key=lambda x:x['date'])
 official=next(float(r['Value']) for r in yields if r['Market_Year']=='2026')
 metrics.append(metric('harvest','Maize harvest','The harvest on the front line','tonnes/ha','South Africa · maize yield','USDA · PSD',USDA,h,
  description='Annual maize yield in South Africa, an exposed producer and regional supplier. Points use USDA marketing-year labels, not calendar-month observations.',why='Tests the physical harvest link. In this panel, a lower line means a higher impact.',mechanism='Summer heat and drought → lower yields → less maize for domestic use and regional exports.',caveat=f'Historical points are USDA estimates and remain revisable. The separate 2026/27 USDA forecast is {official:.2f} tonnes/ha; it is not shown as an observed harvest. A local crop loss does not imply a global shortage.',assumptions='2026/27 yields: low-impact 5.9, medium 5.5, high-impact 4.3 tonnes/ha. The medium scenario matches the archived USDA forecast. Subsequent seasons assume recovery; high impact means lower yield. Annual paths are illustrative, not monthly forecasts.',annual=True,officialForecast=official))
+# Apply verified post-freeze observations; retain the original archive and scenario anchors.
+refresh=json.loads((OUT/'refresh-2026-09-16.json').read_text())
+for m in metrics:
+ for point in refresh['newActuals'].get(m['id'],[]):
+  m['history']=[p for p in m['history'] if p['date']!=point['date']]+[point]
+manifest.extend(s for s in refresh['sources'] if s.get('name')=='ONS D7BU')
 # Strip future source periods and freeze the original anchors, without overwriting them on refresh.
 for m in metrics:
  m['history']=[p for p in m['history'] if p['date']<='2026-08'];m['history'].sort(key=lambda x:x['date'])
@@ -115,7 +121,7 @@ for m in metrics:
   for key,path in m['paths'].items():
    for p in path:writer.writerow([p['date'],p['value'],m['unit'],key+' scenario checkpoint'])
  m['history']=[p for p in m['history'] if p['date']>='2015-01']
-payload={'asOf':FREEZE,'version':1,'metrics':metrics,'sources':manifest}
+payload={'asOf':refresh['checkedAt'],'version':1,'metrics':metrics,'sources':manifest}
 (ROOT/'data/dashboard.json').write_text(json.dumps(payload,indent=2)+'\n')
 (OUT/'dashboard.json').write_text(json.dumps(payload,indent=2)+'\n');(OUT/'sources.json').write_text(json.dumps(manifest,indent=2)+'\n')
 for m in metrics: print(m['id'],m['latest'],'history',len(m['history']))
