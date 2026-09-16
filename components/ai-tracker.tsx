@@ -89,7 +89,7 @@ function MetricView({ m }: { m: Metric }) {
         className="chart-shell" ref={chartRef}
         aria-label={`${m.title} historical chart and scenarios`}
       >
-        <h3 className="chart-title">{m.tab} — historical data and projections</h3><p className="chart-subtitle">{m.country} · {m.unit} · Latest data: {periodLabel(last.date)}</p>
+        <h3 className="chart-title">{m.tab} - historical data and projections</h3><p className="chart-subtitle">{m.country} · {m.unit} · Latest data: {periodLabel(last.date)}</p>
         <div className="chart-toolbar">
           <span>{m.unit}</span>
           <div className="chart-legend">
@@ -192,7 +192,7 @@ function MetricView({ m }: { m: Metric }) {
             Solid line: published history. Dashed lines: illustrative paths, not
             estimated probabilities.
           </span>
-          <span className="chart-actions"><a href={`/data/ai/${m.id}.csv`} download>Download CSV ↓</a><ChartDownload chartRef={chartRef} filename={'salmonofdata-ai-'+m.id} freezeNote={`Forecast frozen 6 September 2026. Latest data at the freeze: ${periodLabel(anchor.date)} — ${fmt(anchor.value,m)}. Future actuals overlay unchanged predictions. Horizon: December 2029.`}/></span>
+          <span className="chart-actions"><a href={`/data/ai/${m.id}.csv`} download>Download CSV ↓</a><ChartDownload chartRef={chartRef} filename={'salmonofdata-ai-'+m.id} freezeNote={`Forecast frozen 6 September 2026. Latest data at the freeze: ${periodLabel(anchor.date)} - ${fmt(anchor.value,m)}. Future actuals overlay unchanged predictions. Horizon: December 2029.`}/></span>
         </div>
         <ChartLicence tracker="ai" metric={m.id}/><div className="chart-brand">SALMONOFDATA.COM</div>
       </section>

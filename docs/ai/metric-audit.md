@@ -1,4 +1,4 @@
-# Metric audit — 6 September 2026
+# Metric audit - 6 September 2026
 
 All 3,168 displayed observations independently rebuilt from archived source files using pandas pivoting, calendar reindexing and rolling operations in `scripts/audit-metrics.py`. All dates agree. Maximum absolute difference is under 0.000001, entirely explained by dashboard export rounding. No calculation or frozen definition required alteration. Raw-file hashes and the immutable scenario registry are checked separately by `scripts/validate-data.py`.
 
