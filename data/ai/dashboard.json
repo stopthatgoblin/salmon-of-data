@@ -13,7 +13,7 @@
       "description": "Demand for six white-collar job families, relative to the overall jobs market. A falling line means these careers are losing ground even after allowing for a broad hiring slowdown.",
       "source": "Indeed Hiring Lab",
       "sourceUrl": "https://github.com/hiring-lab/job_postings_tracker",
-      "definition": "Equal-weight mean of total-posting indices for Software Development, Accounting, Marketing, Administrative Assistance, Customer Service and Banking & Finance, divided by the all-US total-posting index, \u00d7 100. Daily seasonally adjusted seven-day trailing indices; 1 February 2020 = 100. All daily observations are retained. The six families are a frozen watchlist, not a census of white-collar work. An equal-weight index is not the share of all advertisements.",
+      "definition": "Equal-weight mean of total-posting indices for Software Development, Accounting, Marketing, Administrative Assistance, Customer Service and Banking & Finance, divided by the all-US total-posting index, × 100. Daily seasonally adjusted seven-day trailing indices; 1 February 2020 = 100. All daily observations are retained. The six families are a frozen watchlist, not a census of white-collar work. An equal-weight index is not the share of all advertisements.",
       "caveat": "Postings are intentions, not completed hires or jobs lost. The benchmark includes exposed work. Offshoring, remote work and the post-pandemic correction can create the same pattern.",
       "test": "A sustained relative decline supports a recruitment squeeze. A recovery while adoption grows would weaken it. Require corroboration from actual hiring and employment before interpreting this as displacement.",
       "deltas": [
@@ -2885,7 +2885,7 @@
         },
         {
           "date": "2022-01-15",
-          "value": 113.78722
+          "value": 113.794501
         },
         {
           "date": "2022-01-16",
@@ -3073,7 +3073,7 @@
         },
         {
           "date": "2022-03-03",
-          "value": 117.926568
+          "value": 117.933924
         },
         {
           "date": "2022-03-04",
@@ -3105,7 +3105,7 @@
         },
         {
           "date": "2022-03-11",
-          "value": 117.802321
+          "value": 117.801281
         },
         {
           "date": "2022-03-12",
@@ -3117,7 +3117,7 @@
         },
         {
           "date": "2022-03-14",
-          "value": 117.598189
+          "value": 117.59715
         },
         {
           "date": "2022-03-15",
@@ -3177,7 +3177,7 @@
         },
         {
           "date": "2022-03-29",
-          "value": 117.224781
+          "value": 117.223744
         },
         {
           "date": "2022-03-30",
@@ -4053,7 +4053,7 @@
         },
         {
           "date": "2022-11-03",
-          "value": 103.573604
+          "value": 103.572476
         },
         {
           "date": "2022-11-04",
@@ -4081,7 +4081,7 @@
         },
         {
           "date": "2022-11-10",
-          "value": 102.555016
+          "value": 102.55389
         },
         {
           "date": "2022-11-11",
@@ -4101,7 +4101,7 @@
         },
         {
           "date": "2022-11-15",
-          "value": 101.784871
+          "value": 101.783746
         },
         {
           "date": "2022-11-16",
@@ -4129,7 +4129,7 @@
         },
         {
           "date": "2022-11-22",
-          "value": 101.199747
+          "value": 101.198619
         },
         {
           "date": "2022-11-23",
@@ -4141,11 +4141,11 @@
         },
         {
           "date": "2022-11-25",
-          "value": 100.956164
+          "value": 100.955032
         },
         {
           "date": "2022-11-26",
-          "value": 100.946301
+          "value": 100.945169
         },
         {
           "date": "2022-11-27",
@@ -4153,7 +4153,7 @@
         },
         {
           "date": "2022-11-28",
-          "value": 100.842518
+          "value": 100.841384
         },
         {
           "date": "2022-11-29",
@@ -4177,7 +4177,7 @@
         },
         {
           "date": "2022-12-04",
-          "value": 100.69954
+          "value": 100.698397
         },
         {
           "date": "2022-12-05",
@@ -4213,7 +4213,7 @@
         },
         {
           "date": "2022-12-13",
-          "value": 100.195317
+          "value": 100.194161
         },
         {
           "date": "2022-12-14",
@@ -5453,11 +5453,11 @@
         },
         {
           "date": "2023-10-19",
-          "value": 85.715239
+          "value": 85.713904
         },
         {
           "date": "2023-10-20",
-          "value": 85.791146
+          "value": 85.789811
         },
         {
           "date": "2023-10-21",
@@ -5489,7 +5489,7 @@
         },
         {
           "date": "2023-10-28",
-          "value": 85.587613
+          "value": 85.586273
         },
         {
           "date": "2023-10-29",
@@ -5861,15 +5861,15 @@
         },
         {
           "date": "2024-01-29",
-          "value": 85.378314
+          "value": 85.379722
         },
         {
           "date": "2024-01-30",
-          "value": 85.426527
+          "value": 85.427936
         },
         {
           "date": "2024-01-31",
-          "value": 85.410501
+          "value": 85.40328
         },
         {
           "date": "2024-02-01",
@@ -5885,7 +5885,7 @@
         },
         {
           "date": "2024-02-04",
-          "value": 85.365544
+          "value": 85.366954
         },
         {
           "date": "2024-02-05",
@@ -5925,7 +5925,7 @@
         },
         {
           "date": "2024-02-14",
-          "value": 86.224662
+          "value": 86.223255
         },
         {
           "date": "2024-02-15",
@@ -5997,7 +5997,7 @@
         },
         {
           "date": "2024-03-03",
-          "value": 85.288798
+          "value": 85.287386
         },
         {
           "date": "2024-03-04",
@@ -6033,7 +6033,7 @@
         },
         {
           "date": "2024-03-12",
-          "value": 84.620995
+          "value": 84.619593
         },
         {
           "date": "2024-03-13",
@@ -6057,7 +6057,7 @@
         },
         {
           "date": "2024-03-18",
-          "value": 83.816059
+          "value": 83.814656
         },
         {
           "date": "2024-03-19",
@@ -8813,7 +8813,7 @@
         },
         {
           "date": "2026-02-05",
-          "value": 89.299636
+          "value": 89.298025
         },
         {
           "date": "2026-02-06",
@@ -8909,7 +8909,7 @@
         },
         {
           "date": "2026-03-01",
-          "value": 88.586836
+          "value": 88.588418
         },
         {
           "date": "2026-03-02",
@@ -8953,11 +8953,11 @@
         },
         {
           "date": "2026-03-12",
-          "value": 88.836313
+          "value": 88.837906
         },
         {
           "date": "2026-03-13",
-          "value": 88.893677
+          "value": 88.895273
         },
         {
           "date": "2026-03-14",
@@ -8965,7 +8965,7 @@
         },
         {
           "date": "2026-03-15",
-          "value": 89.013259
+          "value": 89.01486
         },
         {
           "date": "2026-03-16",
@@ -8977,7 +8977,7 @@
         },
         {
           "date": "2026-03-18",
-          "value": 89.366676
+          "value": 89.375322
         },
         {
           "date": "2026-03-19",
@@ -8993,19 +8993,19 @@
         },
         {
           "date": "2026-03-22",
-          "value": 89.85458
+          "value": 89.856199
         },
         {
           "date": "2026-03-23",
-          "value": 89.958139
+          "value": 89.959761
         },
         {
           "date": "2026-03-24",
-          "value": 89.962656
+          "value": 89.971421
         },
         {
           "date": "2026-03-25",
-          "value": 90.020155
+          "value": 90.018529
         },
         {
           "date": "2026-03-26",
@@ -9013,7 +9013,7 @@
         },
         {
           "date": "2026-03-27",
-          "value": 89.914939
+          "value": 89.91331
         },
         {
           "date": "2026-03-28",
@@ -9029,7 +9029,7 @@
         },
         {
           "date": "2026-03-31",
-          "value": 88.554708
+          "value": 88.553078
         },
         {
           "date": "2026-04-01",
@@ -9061,7 +9061,7 @@
         },
         {
           "date": "2026-04-08",
-          "value": 86.636109
+          "value": 86.644559
         },
         {
           "date": "2026-04-09",
@@ -9073,7 +9073,7 @@
         },
         {
           "date": "2026-04-11",
-          "value": 86.367609
+          "value": 86.36599
         },
         {
           "date": "2026-04-12",
@@ -9085,7 +9085,7 @@
         },
         {
           "date": "2026-04-14",
-          "value": 85.851715
+          "value": 85.860058
         },
         {
           "date": "2026-04-15",
@@ -9097,11 +9097,11 @@
         },
         {
           "date": "2026-04-17",
-          "value": 85.391928
+          "value": 85.390306
         },
         {
           "date": "2026-04-18",
-          "value": 85.429443
+          "value": 85.43776
         },
         {
           "date": "2026-04-19",
@@ -9121,7 +9121,7 @@
         },
         {
           "date": "2026-04-23",
-          "value": 86.137299
+          "value": 86.145671
         },
         {
           "date": "2026-04-24",
@@ -9129,7 +9129,7 @@
         },
         {
           "date": "2026-04-25",
-          "value": 86.063288
+          "value": 86.07166
         },
         {
           "date": "2026-04-26",
@@ -9189,7 +9189,7 @@
         },
         {
           "date": "2026-05-10",
-          "value": 87.288384
+          "value": 87.296927
         },
         {
           "date": "2026-05-11",
@@ -9201,7 +9201,7 @@
         },
         {
           "date": "2026-05-13",
-          "value": 87.438617
+          "value": 87.447206
         },
         {
           "date": "2026-05-14",
@@ -9253,7 +9253,7 @@
         },
         {
           "date": "2026-05-26",
-          "value": 86.628669
+          "value": 86.637183
         },
         {
           "date": "2026-05-27",
@@ -9365,11 +9365,11 @@
         },
         {
           "date": "2026-06-23",
-          "value": 85.971635
+          "value": 85.969998
         },
         {
           "date": "2026-06-24",
-          "value": 86.052149
+          "value": 86.050511
         },
         {
           "date": "2026-06-25",
@@ -9525,7 +9525,7 @@
         },
         {
           "date": "2026-08-02",
-          "value": 86.164294
+          "value": 86.172755
         },
         {
           "date": "2026-08-03",
@@ -9533,11 +9533,11 @@
         },
         {
           "date": "2026-08-04",
-          "value": 85.681051
+          "value": 85.689474
         },
         {
           "date": "2026-08-05",
-          "value": 85.497623
+          "value": 85.495983
         },
         {
           "date": "2026-08-06",
@@ -9597,11 +9597,11 @@
         },
         {
           "date": "2026-08-20",
-          "value": 87.543377
+          "value": 87.551976
         },
         {
           "date": "2026-08-21",
-          "value": 87.593628
+          "value": 87.602224
         },
         {
           "date": "2026-08-22",
@@ -9609,7 +9609,7 @@
         },
         {
           "date": "2026-08-23",
-          "value": 87.508573
+          "value": 87.517147
         },
         {
           "date": "2026-08-24",
@@ -9658,28 +9658,56 @@
         {
           "date": "2026-09-04",
           "value": 87.193633
+        },
+        {
+          "date": "2026-09-05",
+          "value": 87.477662
+        },
+        {
+          "date": "2026-09-06",
+          "value": 87.808597
+        },
+        {
+          "date": "2026-09-07",
+          "value": 88.07747
+        },
+        {
+          "date": "2026-09-08",
+          "value": 88.298628
+        },
+        {
+          "date": "2026-09-09",
+          "value": 88.234154
+        },
+        {
+          "date": "2026-09-10",
+          "value": 88.260476
+        },
+        {
+          "date": "2026-09-11",
+          "value": 88.107933
         }
       ],
       "country": "United States",
-      "unit": "Relative recruitment \u00b7 1 Feb 2020 = 100",
+      "unit": "Relative recruitment · 1 Feb 2020 = 100",
       "format": "index",
-      "frequency": "Daily \u00b7 updated weekly",
+      "frequency": "Daily · updated weekly",
       "mode": "percent",
       "period": "day",
       "notes": [
         "Indeed Hiring Lab data: CC BY 4.0. This dashboard transforms the published indices; Indeed does not endorse these scenarios.",
-        "Historical data use the provider\u2019s current revised methodology, including its November 2024 seasonal-adjustment change."
+        "Historical data use the provider’s current revised methodology, including its November 2024 seasonal-adjustment change."
       ],
       "components": [
         {
           "label": "White-collar basket",
-          "value": "88.6",
-          "detail": "Source index \u00b7 Feb 2020 = 100"
+          "value": "90.9",
+          "detail": "Source index · Feb 2020 = 100"
         },
         {
           "label": "All US postings",
-          "value": "102.1",
-          "detail": "Source index \u00b7 Feb 2020 = 100"
+          "value": "103.2",
+          "detail": "Source index · Feb 2020 = 100"
         }
       ],
       "sourceFiles": [
@@ -9696,16 +9724,16 @@
         78.034368,
         60.693397
       ],
-      "actualsUpdatedAt": "2026-09-13"
+      "actualsUpdatedAt": "2026-09-22"
     },
     {
       "id": "graduates",
       "tab": "Graduate gap",
       "title": "Are new graduates being left behind?",
       "description": "The unemployment-rate gap between recent graduates and graduates of all working ages. A widening gap means younger degree-holders face an increasingly difficult start.",
-      "source": "Federal Reserve Bank of New York \u00b7 CPS",
+      "source": "Federal Reserve Bank of New York · CPS",
       "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
-      "definition": "Recent-graduate unemployment rate (ages 22\u201327, bachelor\u2019s degree or higher) minus college-graduate unemployment rate (ages 22\u201365, bachelor\u2019s degree or higher), in percentage points. Both exclude students. Published rates are seasonally adjusted and smoothed with a three-month moving average. The comparison group includes recent graduates; it is not an older-only control.",
+      "definition": "Recent-graduate unemployment rate (ages 22–27, bachelor’s degree or higher) minus college-graduate unemployment rate (ages 22–65, bachelor’s degree or higher), in percentage points. Both exclude students. Published rates are seasonally adjusted and smoothed with a three-month moving average. The comparison group includes recent graduates; it is not an older-only control.",
       "caveat": "This covers all graduates, not only AI-exposed careers. Remote working, cohort size and sector hiring cycles matter. People leaving the labour force do not count as unemployed.",
       "test": "A widening gap alongside weaker exposed-job recruitment supports the entry-level squeeze. A return toward the pre-pandemic gap would weaken it. One month is not decisive.",
       "deltas": [
@@ -10273,9 +10301,9 @@
         }
       ],
       "country": "United States",
-      "unit": "Recent minus all-graduate unemployment \u00b7 percentage points",
+      "unit": "Recent minus all-graduate unemployment · percentage points",
       "format": "pp",
-      "frequency": "Monthly estimates \u00b7 quarterly release",
+      "frequency": "Monthly estimates · quarterly release",
       "mode": "points",
       "period": "month",
       "notes": [
@@ -10285,12 +10313,12 @@
         {
           "label": "Recent graduates",
           "value": "5.7%",
-          "detail": "Unemployment \u00b7 ages 22\u201327"
+          "detail": "Unemployment · ages 22–27"
         },
         {
           "label": "All graduates",
           "value": "2.9%",
-          "detail": "Unemployment \u00b7 ages 22\u201365"
+          "detail": "Unemployment · ages 22–65"
         }
       ],
       "sourceFiles": [
@@ -10312,9 +10340,9 @@
       "tab": "Underemployment",
       "title": "Are graduates finding graduate-level work?",
       "description": "The share of employed recent graduates in jobs that usually do not require a degree. A rising line means more graduates are working below the usual qualification level.",
-      "source": "Federal Reserve Bank of New York \u00b7 CPS / O*NET",
+      "source": "Federal Reserve Bank of New York · CPS / O*NET",
       "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
-      "definition": "Published underemployment rate for employed graduates aged 22\u201327 with a bachelor\u2019s degree or higher, excluding students. A non-college job is one in which fewer than half of surveyed incumbents report that a bachelor\u2019s degree is necessary. Seasonally adjusted, three-month moving average. This is an education-to-job mismatch measure, not involuntary part-time work.",
+      "definition": "Published underemployment rate for employed graduates aged 22–27 with a bachelor’s degree or higher, excluding students. A non-college job is one in which fewer than half of surveyed incumbents report that a bachelor’s degree is necessary. Seasonally adjusted, three-month moving average. This is an education-to-job mismatch measure, not involuntary part-time work.",
       "caveat": "A non-graduate job can be skilled and well paid. This measure excludes unemployed graduates and cannot identify whether AI caused a mismatch.",
       "test": "A sustained rise, together with weaker recruitment and a larger unemployment gap, would support an entry bottleneck. Falling mismatch would suggest that graduates are finding other suitable work.",
       "deltas": [
@@ -10882,9 +10910,9 @@
         }
       ],
       "country": "United States",
-      "unit": "Employed recent graduates in non-graduate jobs \u00b7 %",
+      "unit": "Employed recent graduates in non-graduate jobs · %",
       "format": "percent",
-      "frequency": "Monthly estimates \u00b7 quarterly release",
+      "frequency": "Monthly estimates · quarterly release",
       "mode": "points",
       "period": "month",
       "notes": [
@@ -10910,9 +10938,9 @@
       "tab": "Actual hiring",
       "title": "Is the hiring slowdown becoming real?",
       "description": "Actual hiring in professional and business services, relative to private-sector hiring overall. This checks whether weaker advertisements are translating into fewer people joining employers.",
-      "source": "US Bureau of Labor Statistics \u00b7 JOLTS via FRED",
+      "source": "US Bureau of Labor Statistics · JOLTS via FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/JTS540099HIR",
-      "definition": "Three-month average of the seasonally adjusted professional and business services hires rate (JTS540099HIR) divided by the same average for total private employment (JTS1000HIR); rebase this ratio to its 2019 mean = 100. A hires rate is hires during the month divided by employment, \u00d7 100. This broad supersector includes professional services, company management, administrative support, staffing agencies and waste services.",
+      "definition": "Three-month average of the seasonally adjusted professional and business services hires rate (JTS540099HIR) divided by the same average for total private employment (JTS1000HIR); rebase this ratio to its 2019 mean = 100. A hires rate is hires during the month divided by employment, × 100. This broad supersector includes professional services, company management, administrative support, staffing agencies and waste services.",
       "caveat": "This is a broad industry measure, not graduate or occupation-specific hiring. Staffing-agency activity and changes in voluntary job switching can dominate it.",
       "test": "Hiring falling behind the wider market for several quarters would corroborate recruitment pressure. Stable relative hiring despite weaker advertisements would weaken the claim that vacancies are translating into lost opportunities.",
       "deltas": [
@@ -11484,9 +11512,9 @@
         }
       ],
       "country": "United States",
-      "unit": "Index \u00b7 2019 average = 100",
+      "unit": "Index · 2019 average = 100",
       "format": "index",
-      "frequency": "Monthly \u00b7 three-month average",
+      "frequency": "Monthly · three-month average",
       "mode": "percent",
       "period": "month",
       "notes": [],
@@ -11494,12 +11522,12 @@
         {
           "label": "Professional & business",
           "value": "4.53%",
-          "detail": "Hires per employee \u00b7 3-month mean"
+          "detail": "Hires per employee · 3-month mean"
         },
         {
           "label": "Total private sector",
           "value": "3.60%",
-          "detail": "Hires per employee \u00b7 3-month mean"
+          "detail": "Hires per employee · 3-month mean"
         }
       ],
       "sourceFiles": [
@@ -11521,7 +11549,7 @@
       "tab": "Employment",
       "title": "Are knowledge-service jobs losing ground?",
       "description": "Employment in professional, scientific and technical services, relative to total private employment. A falling line means this group is shrinking as a share of the private jobs market.",
-      "source": "US Bureau of Labor Statistics \u00b7 CES via FRED",
+      "source": "US Bureau of Labor Statistics · CES via FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CES6054000001",
       "definition": "Seasonally adjusted employment in NAICS 54 (CES6054000001), divided by total private nonfarm employment (USPRIV); ratio indexed to its 2019 mean = 100. NAICS 54 includes legal, accounting, computer systems design, consulting, architecture, engineering, research and advertising services. The series measures payroll jobs, not unique workers.",
       "caveat": "This misses knowledge workers employed in banks, manufacturers and other industries. Relative decline can coexist with absolute job growth. Outsourcing and industry reclassification can also move the line.",
@@ -12099,7 +12127,7 @@
         }
       ],
       "country": "United States",
-      "unit": "Index \u00b7 2019 average = 100",
+      "unit": "Index · 2019 average = 100",
       "format": "index",
       "frequency": "Monthly",
       "mode": "percent",
@@ -12111,7 +12139,7 @@
         {
           "label": "Sector payroll jobs",
           "value": "10.84m",
-          "detail": "Actual headcount level \u00b7 latest month"
+          "detail": "Actual headcount level · latest month"
         },
         {
           "label": "High-path scale",
@@ -12138,7 +12166,7 @@
       "tab": "Real pay",
       "title": "Is the purchasing power of pay weakening?",
       "description": "Inflation-adjusted hourly earnings in professional and business services. A falling line means an hour of work buys less, even if the dollar wage is rising.",
-      "source": "US Bureau of Labor Statistics \u00b7 CES / CPI via FRED",
+      "source": "US Bureau of Labor Statistics · CES / CPI via FRED",
       "sourceUrl": "https://fred.stlouisfed.org/series/CES6000000003",
       "definition": "Seasonally adjusted average hourly earnings for all employees in professional and business services (CES6000000003), divided by seasonally adjusted CPI-U (CPIAUCSL); rebase to the 2019 mean = 100. Use only months available in both sources. This broad sector includes staffing, administrative support and waste services; it is not a pure knowledge-worker wage series.",
       "caveat": "Average pay can rise when lower-paid junior roles disappear. These are not same-worker wages or technology-specific salary offers. Inflation can weaken purchasing power without any AI displacement.",
@@ -12712,7 +12740,7 @@
         }
       ],
       "country": "United States",
-      "unit": "Index \u00b7 2019 average = 100",
+      "unit": "Index · 2019 average = 100",
       "format": "index",
       "frequency": "Monthly",
       "mode": "percent",
@@ -12741,9 +12769,9 @@
       "tab": "Canada: demand",
       "title": "Is software demand weakening beyond the US?",
       "description": "Canadian computer, software and web-development vacancies as a share of all vacancies. A falling line means demand for these skills is weakening faster than the wider Canadian market.",
-      "source": "Statistics Canada \u00b7 Job Vacancy and Wage Survey",
+      "source": "Statistics Canada · Job Vacancy and Wage Survey",
       "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
-      "definition": "National NOC 2021 group 2123: Computer, software and Web designers and developers. Sum of the latest four consecutive quarterly job-vacancy levels, divided by the corresponding sum for all occupations, \u00d7 100. Table 14-10-0444-01. Underlying data are unadjusted; four-quarter pooling reduces seasonality. Missing/suppressed quarters are not filled, and rolling windows never bridge missing quarters. Dates denote quarter-end.",
+      "definition": "National NOC 2021 group 2123: Computer, software and Web designers and developers. Sum of the latest four consecutive quarterly job-vacancy levels, divided by the corresponding sum for all occupations, × 100. Table 14-10-0444-01. Underlying data are unadjusted; four-quarter pooling reduces seasonality. Missing/suppressed quarters are not filled, and rolling windows never bridge missing quarters. Dates denote quarter-end.",
       "caveat": "A second-country signal is useful corroboration, not a controlled experiment. Migration, interest rates and technology investment also affect Canada. Vacancies are positions employers seek to fill, not hires.",
       "test": "Persistent weakness in both Canadian software vacancies and US white-collar postings would strengthen the case for a wider change in demand. Canadian recovery would weaken the claim of a universal collapse.",
       "deltas": [
@@ -12911,9 +12939,9 @@
         }
       ],
       "country": "Canada",
-      "unit": "Software-related share of all vacancies \u00b7 trailing four quarters \u00b7 %",
+      "unit": "Software-related share of all vacancies · trailing four quarters · %",
       "format": "percent",
-      "frequency": "Quarterly \u00b7 four-quarter window",
+      "frequency": "Quarterly · four-quarter window",
       "mode": "percent",
       "period": "quarter",
       "notes": [
@@ -12924,12 +12952,12 @@
         {
           "label": "Software-related vacancies",
           "value": "6,915",
-          "detail": "Latest quarter \u00b7 not seasonally adjusted"
+          "detail": "Latest quarter · not seasonally adjusted"
         },
         {
           "label": "All vacancies",
           "value": "548,400",
-          "detail": "Latest quarter \u00b7 not seasonally adjusted"
+          "detail": "Latest quarter · not seasonally adjusted"
         }
       ],
       "sourceFiles": [
@@ -12951,9 +12979,9 @@
       "tab": "Canada: pay",
       "title": "Is the software salary premium eroding?",
       "description": "How much more Canadian computer, software and web-development jobs offer than the average vacancy. A falling premium suggests employers need to pay less extra to attract these skills.",
-      "source": "Statistics Canada \u00b7 Job Vacancy and Wage Survey",
+      "source": "Statistics Canada · Job Vacancy and Wage Survey",
       "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
-      "definition": "Arithmetic mean of four consecutive quarterly offered-hourly-wage estimates for NOC 2123, divided by the corresponding mean for all occupations, minus 1, \u00d7 100. Equal quarter weights; table 14-10-0444-01, Canada. Uses published averages, not individual offers or a fixed-seniority comparison. Missing/suppressed quarters are not filled. Dates denote quarter-end.",
+      "definition": "Arithmetic mean of four consecutive quarterly offered-hourly-wage estimates for NOC 2123, divided by the corresponding mean for all occupations, minus 1, × 100. Equal quarter weights; table 14-10-0444-01, Canada. Uses published averages, not individual offers or a fixed-seniority comparison. Missing/suppressed quarters are not filled. Dates denote quarter-end.",
       "caveat": "This is a relative nominal wage premium, not real pay. Seniority, location and employer mix can move it. A lower premium could reflect wages rising elsewhere rather than software salaries falling.",
       "test": "A sustained decline in both the premium and vacancy share would support weaker bargaining power for software skills. A resilient premium despite fewer vacancies would suggest a more selective hiring market.",
       "deltas": [
@@ -13121,9 +13149,9 @@
         }
       ],
       "country": "Canada",
-      "unit": "Software-related offered-pay premium over all vacancies \u00b7 %",
+      "unit": "Software-related offered-pay premium over all vacancies · %",
       "format": "percent",
-      "frequency": "Quarterly \u00b7 four-quarter window",
+      "frequency": "Quarterly · four-quarter window",
       "mode": "points",
       "period": "quarter",
       "notes": [
@@ -13133,12 +13161,12 @@
         {
           "label": "Software-related offer",
           "value": "C$47.75",
-          "detail": "Per hour \u00b7 latest quarter"
+          "detail": "Per hour · latest quarter"
         },
         {
           "label": "All-job offer",
           "value": "C$28.55",
-          "detail": "Per hour \u00b7 latest quarter"
+          "detail": "Per hour · latest quarter"
         }
       ],
       "sourceFiles": [
@@ -13156,5 +13184,5 @@
       ]
     }
   ],
-  "actualsUpdatedAt": "2026-09-16"
+  "actualsUpdatedAt": "2026-09-22"
 }

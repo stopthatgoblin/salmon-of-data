@@ -133,19 +133,19 @@
     "note": "Refresh archive; original freeze archive preserved."
   },
   {
-    "file": "2026-09-16/canada-vacancies.zip",
-    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
-    "bytes": 99676598,
-    "sha256": "bb50ed47b2b5149c481e11f7be3289f137867df7457f17d7e58e37c5ea6a0080",
-    "retrievedOn": "2026-09-16",
-    "note": "Full table or exact Canada rows for NOC 2123 and all occupations; quality flags retained."
+    "file": "2026-09-22/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 200383,
+    "sha256": "79f7e2cbb2173a0a131362ec1f705cba20d566df274e065fe5f80d6d7ec009e1",
+    "retrievedOn": "2026-09-22",
+    "note": "Weekly Indeed refresh archive; current provider history retained, including revisions, through 2026-09-11."
   },
   {
-    "file": "2026-09-16/canada-inputs.csv",
-    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
-    "bytes": 25697,
-    "sha256": "d4e3b34a77bb60bd48112742341963192f8408e46c39211565d9a8a8bb41c4cc",
-    "retrievedOn": "2026-09-16",
-    "note": "Full table or exact Canada rows for NOC 2123 and all occupations; quality flags retained."
+    "file": "2026-09-22/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 11964553,
+    "sha256": "81977c0a18732fc8774d801c96e7f16f767615db8a606c214e31c359728f60db",
+    "retrievedOn": "2026-09-22",
+    "note": "Weekly Indeed refresh archive; current provider history retained, including revisions, through 2026-09-11."
   }
 ]

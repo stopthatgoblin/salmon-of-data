@@ -131,5 +131,21 @@
     "sha256": "4735ac0a6ebdb2bbfb625d12cf1aea70fdbe382af833f5e9f7edf62a322f552b",
     "retrievedOn": "2026-09-13",
     "note": "Refresh archive; original freeze archive preserved."
+  },
+  {
+    "file": "2026-09-22/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 200383,
+    "sha256": "79f7e2cbb2173a0a131362ec1f705cba20d566df274e065fe5f80d6d7ec009e1",
+    "retrievedOn": "2026-09-22",
+    "note": "Weekly Indeed refresh archive; current provider history retained, including revisions, through 2026-09-11."
+  },
+  {
+    "file": "2026-09-22/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 11964553,
+    "sha256": "81977c0a18732fc8774d801c96e7f16f767615db8a606c214e31c359728f60db",
+    "retrievedOn": "2026-09-22",
+    "note": "Weekly Indeed refresh archive; current provider history retained, including revisions, through 2026-09-11."
   }
 ]

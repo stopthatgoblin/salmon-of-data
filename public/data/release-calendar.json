@@ -14,7 +14,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-10-02",
@@ -29,7 +29,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-10-14",
@@ -43,7 +43,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-11-03",
@@ -57,7 +57,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-11-06",
@@ -72,7 +72,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-11-10",
@@ -86,7 +86,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-12-01",
@@ -100,7 +100,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-12-04",
@@ -115,7 +115,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "date": "2026-12-10",
@@ -129,7 +129,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "month": "2026-11",
@@ -145,7 +145,7 @@
       "frequency": "quarterly",
       "date": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-06"
+      "checkedAt": "2026-09-22"
     },
     {
       "title": "Canadian vacancies and offered wages",
@@ -159,7 +159,7 @@
       "frequency": "quarterly",
       "date": "2026-12-15",
       "status": "Confirmed",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -173,7 +173,7 @@
       "referencePeriod": "September 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -187,7 +187,7 @@
       "referencePeriod": "October 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -201,7 +201,7 @@
       "referencePeriod": "November 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-07"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -215,7 +215,7 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -229,7 +229,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -243,7 +243,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -261,7 +261,7 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-16"
+      "checkedAt": "2026-09-22"
     },
     {
       "tracker": "el-nino",
@@ -279,7 +279,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-07",
+      "checkedAt": "2026-09-22",
       "month": "2026-11",
       "note": "Monthly publication; exact release day not yet confirmed."
     },
@@ -299,7 +299,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-07",
+      "checkedAt": "2026-09-22",
       "month": "2026-12",
       "note": "Monthly publication; exact release day not yet confirmed."
     },
@@ -315,7 +315,7 @@
       "referencePeriod": "July\u2013September 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-22",
       "month": "2026-10",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -331,7 +331,7 @@
       "referencePeriod": "August\u2013October 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-22",
       "month": "2026-11",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -347,7 +347,7 @@
       "referencePeriod": "September\u2013November 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-22",
       "month": "2026-12",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -362,11 +362,11 @@
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
       "referencePeriod": "September 2026 conditions and outlook",
       "status": "Confirmed",
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-22",
       "note": "Outlook update; the three-month RONI actuals are published separately."
     }
   ],
-  "lastReleaseReviewAt": "2026-09-16",
+  "lastReleaseReviewAt": "2026-09-22",
   "completedReleases": [
     {
       "date": "2026-09-11",

@@ -1,0 +1,108 @@
+{
+  "checkedAt": "2026-09-22",
+  "sources": [
+    {
+      "file": "2026-09-22/indeed-us-all.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+      "bytes": 200383,
+      "sha256": "79f7e2cbb2173a0a131362ec1f705cba20d566df274e065fe5f80d6d7ec009e1"
+    },
+    {
+      "file": "2026-09-22/indeed-us-sectors.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+      "bytes": 11964553,
+      "sha256": "81977c0a18732fc8774d801c96e7f16f767615db8a606c214e31c359728f60db"
+    }
+  ],
+  "metricsUpdated": [
+    {
+      "id": "recruitment",
+      "latestObservation": "2026-09-11",
+      "latestValue": 88.107933,
+      "observationsAdded": [
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11"
+      ],
+      "revisedObservations": 55,
+      "revisedObservationDates": [
+        "2022-01-15",
+        "2022-03-03",
+        "2022-03-11",
+        "2022-03-14",
+        "2022-03-29",
+        "2022-11-03",
+        "2022-11-10",
+        "2022-11-15",
+        "2022-11-22",
+        "2022-11-25",
+        "2022-11-26",
+        "2022-11-28",
+        "2022-12-04",
+        "2022-12-13",
+        "2023-10-19",
+        "2023-10-20",
+        "2023-10-28",
+        "2024-01-29",
+        "2024-01-30",
+        "2024-01-31",
+        "2024-02-04",
+        "2024-02-14",
+        "2024-03-03",
+        "2024-03-12",
+        "2024-03-18",
+        "2026-02-05",
+        "2026-03-01",
+        "2026-03-12",
+        "2026-03-13",
+        "2026-03-15",
+        "2026-03-18",
+        "2026-03-22",
+        "2026-03-23",
+        "2026-03-24",
+        "2026-03-25",
+        "2026-03-27",
+        "2026-03-31",
+        "2026-04-08",
+        "2026-04-11",
+        "2026-04-14",
+        "2026-04-17",
+        "2026-04-18",
+        "2026-04-23",
+        "2026-04-25",
+        "2026-05-10",
+        "2026-05-13",
+        "2026-05-26",
+        "2026-06-23",
+        "2026-06-24",
+        "2026-08-02",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-23"
+      ],
+      "componentValues": [
+        {
+          "label": "White-collar basket",
+          "value": "90.9",
+          "detail": "Source index · Feb 2020 = 100"
+        },
+        {
+          "label": "All US postings",
+          "value": "103.2",
+          "detail": "Source index · Feb 2020 = 100"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "otherSources": "No newer scheduled observations were due as of 2026-09-22. NOAA RONI next update is due by 2026-10-05; FAO and World Bank next data releases are 2026-10-02; next BLS data releases for tracker metrics are JOLTS 2026-09-29 and Employment Situation 2026-10-02.",
+    "forecasts": "Original forecast anchors and scenario files preserved."
+  },
+  "policy": "Retained the exact provider data and current historical revisions in a dated archive; recomputed the displayed metric from the published sector and all-US posting indices."
+}
