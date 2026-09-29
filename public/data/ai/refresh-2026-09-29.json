@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-09-29",
+  "sources": [
+    {
+      "file": "2026-09-29/indeed-us-all.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+      "bytes": 200956,
+      "sha256": "b44516338e6d291b0547fd172a20365cfd2f8cba8dc2f514779cb7b4342bcbce"
+    },
+    {
+      "file": "2026-09-29/indeed-us-sectors.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+      "bytes": 11999045,
+      "sha256": "a8a37e73a219b510b9652da15efd080cabe69485f28f13bcc56d78319cec3e8c"
+    },
+    {
+      "file": "2026-09-29/JTS540099HIR.csv",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS540099HIR",
+      "bytes": 4665,
+      "sha256": "196d69d2637210bccbd7caf85f88a3af7521dd3d86fc966c4fad97e920029e89"
+    },
+    {
+      "file": "2026-09-29/JTS1000HIR.csv",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS1000HIR",
+      "bytes": 4663,
+      "sha256": "9491b016c08aba2747252b63440c59434f521e035b285dc9feff4a744db2ec52"
+    }
+  ],
+  "metricsUpdated": {
+    "recruitment": {
+      "latestObservation": "2026-09-18",
+      "latestValue": 87.974867,
+      "observationsAdded": [
+        "2026-09-12",
+        "2026-09-13",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18"
+      ],
+      "revisedObservationCount": 0,
+      "revisedObservationDates": [],
+      "components": [
+        {
+          "label": "White-collar basket",
+          "value": "91.0",
+          "detail": "Source index · Feb 2020 = 100"
+        },
+        {
+          "label": "All US postings",
+          "value": "103.5",
+          "detail": "Source index · Feb 2020 = 100"
+        }
+      ]
+    },
+    "hiring": {
+      "latestObservation": "2026-08-01",
+      "latestValue": 93.806455,
+      "observationsAdded": [
+        "2026-08-01"
+      ],
+      "revisedObservationCount": 1,
+      "revisedObservationDates": [
+        "2026-07-01"
+      ],
+      "components": [
+        {
+          "label": "Professional & business",
+          "value": "4.33%",
+          "detail": "Hires per employee · 3-month mean"
+        },
+        {
+          "label": "Total private sector",
+          "value": "3.63%",
+          "detail": "Hires per employee · 3-month mean"
+        }
+      ]
+    }
+  },
+  "checks": {
+    "usda": "Current PSD grain ZIP matches the 2026-09-13 archive exactly (SHA-256 70464746e0905060c70c5f27330748769908f5159669b5b7b853e0925bd3d5f4); 2026/27 South African maize yield forecast remains 5.50 tonnes/ha.",
+    "otherSources": "No newer observation release found for the remaining tracker sources as of 2026-09-29. FAO and World Bank next updates are 2026-10-02; NOAA RONI is due by 2026-10-05; NOAA discussion is scheduled 2026-10-08; USDA WASDE is scheduled 2026-10-09; ONS September CPI is scheduled 2026-10-21.",
+    "forecasts": "Original frozen metric anchors and conditional paths preserved."
+  },
+  "policy": "Recalculated recruitment and actual hiring from the exact 2026-09-29 source captures. Added actuals and recorded current historical revisions without changing forecast anchors."
+}

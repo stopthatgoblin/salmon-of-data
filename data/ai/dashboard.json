@@ -9686,6 +9686,34 @@
         {
           "date": "2026-09-11",
           "value": 88.107933
+        },
+        {
+          "date": "2026-09-12",
+          "value": 88.00084
+        },
+        {
+          "date": "2026-09-13",
+          "value": 87.88848
+        },
+        {
+          "date": "2026-09-14",
+          "value": 87.797532
+        },
+        {
+          "date": "2026-09-15",
+          "value": 87.825552
+        },
+        {
+          "date": "2026-09-16",
+          "value": 87.85765
+        },
+        {
+          "date": "2026-09-17",
+          "value": 87.874536
+        },
+        {
+          "date": "2026-09-18",
+          "value": 87.974867
         }
       ],
       "country": "United States",
@@ -9701,12 +9729,12 @@
       "components": [
         {
           "label": "White-collar basket",
-          "value": "90.9",
+          "value": "91.0",
           "detail": "Source index · Feb 2020 = 100"
         },
         {
           "label": "All US postings",
-          "value": "103.2",
+          "value": "103.5",
           "detail": "Source index · Feb 2020 = 100"
         }
       ],
@@ -9724,7 +9752,7 @@
         78.034368,
         60.693397
       ],
-      "actualsUpdatedAt": "2026-09-22"
+      "actualsUpdatedAt": "2026-09-29"
     },
     {
       "id": "graduates",
@@ -11508,7 +11536,11 @@
         },
         {
           "date": "2026-07-01",
-          "value": 99.04465
+          "value": 98.135984
+        },
+        {
+          "date": "2026-08-01",
+          "value": 93.806455
         }
       ],
       "country": "United States",
@@ -11521,12 +11553,12 @@
       "components": [
         {
           "label": "Professional & business",
-          "value": "4.53%",
+          "value": "4.33%",
           "detail": "Hires per employee · 3-month mean"
         },
         {
           "label": "Total private sector",
-          "value": "3.60%",
+          "value": "3.63%",
           "detail": "Hires per employee · 3-month mean"
         }
       ],
@@ -11542,7 +11574,8 @@
         103.996883,
         89.140185,
         74.283488
-      ]
+      ],
+      "actualsUpdatedAt": "2026-09-29"
     },
     {
       "id": "employment",
@@ -13184,5 +13217,5 @@
       ]
     }
   ],
-  "actualsUpdatedAt": "2026-09-22"
+  "actualsUpdatedAt": "2026-09-29"
 }

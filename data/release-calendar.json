@@ -1,21 +1,7 @@
 {
-  "checkedAt": "2026-09-07",
+  "checkedAt": "2026-09-29",
   "through": "2026-12-31",
   "entries": [
-    {
-      "date": "2026-09-29",
-      "title": "US job openings and labour turnover",
-      "referencePeriod": "August 2026",
-      "metrics": [
-        "Actual hiring"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
-      "time": "10:00 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-09-22"
-    },
     {
       "date": "2026-10-02",
       "title": "US employment situation",
@@ -29,7 +15,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-10-14",
@@ -43,7 +29,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-11-03",
@@ -57,7 +43,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-11-06",
@@ -72,7 +58,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-11-10",
@@ -86,7 +72,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-12-01",
@@ -100,7 +86,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-12-04",
@@ -115,7 +101,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "date": "2026-12-10",
@@ -129,7 +115,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "month": "2026-11",
@@ -145,7 +131,7 @@
       "frequency": "quarterly",
       "date": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "title": "Canadian vacancies and offered wages",
@@ -159,7 +145,7 @@
       "frequency": "quarterly",
       "date": "2026-12-15",
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -173,7 +159,7 @@
       "referencePeriod": "September 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -187,7 +173,7 @@
       "referencePeriod": "October 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -201,7 +187,7 @@
       "referencePeriod": "November 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -215,7 +201,7 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -229,7 +215,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -243,7 +229,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -261,7 +247,7 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-22"
+      "checkedAt": "2026-09-29"
     },
     {
       "tracker": "el-nino",
@@ -279,7 +265,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-29",
       "month": "2026-11",
       "note": "Monthly publication; exact release day not yet confirmed."
     },
@@ -299,7 +285,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-29",
       "month": "2026-12",
       "note": "Monthly publication; exact release day not yet confirmed."
     },
@@ -315,7 +301,7 @@
       "referencePeriod": "July\u2013September 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-29",
       "month": "2026-10",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -331,7 +317,7 @@
       "referencePeriod": "August\u2013October 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-29",
       "month": "2026-11",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -347,7 +333,7 @@
       "referencePeriod": "September\u2013November 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-29",
       "month": "2026-12",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -362,11 +348,25 @@
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
       "referencePeriod": "September 2026 conditions and outlook",
       "status": "Confirmed",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-29",
       "note": "Outlook update; the three-month RONI actuals are published separately."
+    },
+    {
+      "date": "2026-10-09",
+      "title": "USDA World Agricultural Supply and Demand Estimates",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Maize harvest"
+      ],
+      "sourceUrl": "https://usda.azureedge.us/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
+      "time": "12:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-29"
     }
   ],
-  "lastReleaseReviewAt": "2026-09-22",
+  "lastReleaseReviewAt": "2026-09-29",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -422,6 +422,24 @@
       "actualsAdded": [
         "canada-vacancies: 2026-06-30",
         "canada-pay: 2026-06-30"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-29",
+      "importedAt": "2026-09-29",
+      "actualsAdded": [
+        "hiring: 2026-08-01"
       ]
     }
   ]

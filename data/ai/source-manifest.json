@@ -147,5 +147,37 @@
     "sha256": "81977c0a18732fc8774d801c96e7f16f767615db8a606c214e31c359728f60db",
     "retrievedOn": "2026-09-22",
     "note": "Weekly Indeed refresh archive; current provider history retained, including revisions, through 2026-09-11."
+  },
+  {
+    "file": "2026-09-29/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 200956,
+    "sha256": "b44516338e6d291b0547fd172a20365cfd2f8cba8dc2f514779cb7b4342bcbce",
+    "retrievedOn": "2026-09-29",
+    "note": "Refresh archive; exact published source retained."
+  },
+  {
+    "file": "2026-09-29/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 11999045,
+    "sha256": "a8a37e73a219b510b9652da15efd080cabe69485f28f13bcc56d78319cec3e8c",
+    "retrievedOn": "2026-09-29",
+    "note": "Refresh archive; exact published source retained."
+  },
+  {
+    "file": "2026-09-29/JTS540099HIR.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS540099HIR",
+    "bytes": 4665,
+    "sha256": "196d69d2637210bccbd7caf85f88a3af7521dd3d86fc966c4fad97e920029e89",
+    "retrievedOn": "2026-09-29",
+    "note": "Refresh archive; exact published source retained."
+  },
+  {
+    "file": "2026-09-29/JTS1000HIR.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS1000HIR",
+    "bytes": 4663,
+    "sha256": "9491b016c08aba2747252b63440c59434f521e035b285dc9feff4a744db2ec52",
+    "retrievedOn": "2026-09-29",
+    "note": "Refresh archive; exact published source retained."
   }
 ]
