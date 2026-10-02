@@ -23,7 +23,7 @@ export async function createChartPng(chart:HTMLElement,freezeNote:string):Promis
   const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas unavailable');
   const title=chart.querySelector('.chart-title')?.textContent?.trim()||'Historical data and projections';
   const subtitle=chart.querySelector('.chart-subtitle')?.textContent?.trim()||'';
-  const notes=[chart.querySelector('.chart-caption-text')?.textContent,...Array.from(chart.querySelectorAll('.chart-licence p')).map(p=>p.textContent),freezeNote].filter(Boolean).map(s=>s!.replace(/\s+/g,' ').trim());
+  const notes=[chart.querySelector('.chart-caption-text')?.textContent,chart.querySelector('.chart-explainer')?.textContent,chart.querySelector('.chart-source')?.textContent,...Array.from(chart.querySelectorAll('.chart-licence p')).map(p=>p.textContent),freezeNote].filter(Boolean).map(s=>s!.replace(/\s+/g,' ').trim());
   const contentWidth=WIDTH-MARGIN*2;
   ctx.font='30px Georgia';const titleLines=wrapText(ctx,title,contentWidth);
   ctx.font='16px Arial';const subtitleLines=wrapText(ctx,subtitle,contentWidth);

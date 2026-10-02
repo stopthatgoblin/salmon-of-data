@@ -43,3 +43,8 @@ next-env.d.ts
 /archive/
 /.sites-runtime/
 *.tsbuildinfo
+
+# Reproducible research downloads are cached locally; manifests/results are versioned.
+/data/lough-neagh/raw/
+__pycache__/
+*.pyc

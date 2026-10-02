@@ -1,0 +1,984 @@
+{
+  "audit_date": "2026-09-23",
+  "publication_eligible": false,
+  "purpose": "Product/access audit only; not local turbidity validation",
+  "eocis": {
+    "catalogue": "https://catalogue.ceda.ac.uk/uuid/6e329e32570d4d4f818b8f8aa18e7a85/",
+    "directory": "https://data.ceda.ac.uk/neodc/eocis/data/CHUK/lake_catchment_indicators/neagh",
+    "listed_netcdf_files": 1435,
+    "unique_dates": 1435,
+    "first_date": "2016-05-26",
+    "last_date": "2023-12-29",
+    "files_by_year": {
+      "2016": 59,
+      "2017": 157,
+      "2018": 215,
+      "2019": 218,
+      "2020": 195,
+      "2021": 215,
+      "2022": 183,
+      "2023": 193
+    },
+    "overlap_with_2025_2026_observations": false,
+    "samples": [
+      {
+        "file": "EOCIS-Lakes-L3U-LWLR-Lake_Catchment-20230614-Neagh-fv1.5.0.nc",
+        "download_url": "https://dap.ceda.ac.uk/neodc/eocis/data/CHUK/lake_catchment_indicators/neagh/EOCIS-Lakes-L3U-LWLR-Lake_Catchment-20230614-Neagh-fv1.5.0.nc?download=1",
+        "sha256": "225bfe495be535775af2318696a44337fa2c03e416b6168c198691f026362ad3",
+        "ceda_md5_verified": true,
+        "global_attributes": {
+          "geospatial_lat_min": [
+            54.01691436767578
+          ],
+          "geospatial_lat_max": [
+            55.0373420715332
+          ],
+          "geospatial_lon_min": [
+            -7.601479530334473
+          ],
+          "geospatial_lon_max": [
+            -5.633663177490234
+          ],
+          "date_created": "Wed Nov 27 20:56:58 2024",
+          "time_coverage_start": "20230614T114349",
+          "time_coverage_end": "20230614T114349",
+          "title": "lake water-leaving reflectance",
+          "institution": "Plymouth Marine Laboratory",
+          "source": "European Space Agency MultiSpectral Instrument L1C",
+          "product_version": "1.5",
+          "format_version": "EOCIS CHUK Data Standards v0.1",
+          "summary": "Water-Leaving Reflectance and derived biogeochemical variables for water bodies in the lake catchment",
+          "keywords": "water,algal bloom,aquatic environment,freshwater,freshwater quality,ice,inland water,lagoon,lake,dam,phytoplankton,turbidity,water monitoring,water quality,water reservoir,climate,seasonal variation,environmental data,environmental monitoring,monitoring,remote sensing",
+          "keywords_vocabulary": "GEMET",
+          "comment": "The data in this product have not been quality controlled and are solely intended to inspect water leaving reflectance product obtained for small water bodies",
+          "creator_name": "Plymouth Marine Laboratory",
+          "creator_url": "pml.ac.uk",
+          "creator_email": "calimnos-support@pml.ac.uk",
+          "project": [
+            "\u201cUK Earth Observation Climate Information Service (EOCIS)\u201d"
+          ],
+          "standard_name_vocabulary": "CF Standard Name Table v82",
+          "license": [
+            "\u201cCreative Commons Licence by attribution (https://creativecommons.org/licenses/by/4.0/)\u201d"
+          ],
+          "platform": "Sentinel-2A, Sentinel-2B",
+          "sensor": "MSI",
+          "spatial_resolution": "100m",
+          "geospatial_lat_units": "degrees",
+          "geospatial_lon_units": "degrees",
+          "geospatial_lon_resolution": "100m",
+          "geospatial_lat_resolution": "100m",
+          "key_variables": "Lake water-leaving reflectance in 13 wavebands, chlorophyll-a concentration, turbidity",
+          "acknowledgement": "This work was supported by the Natural Environment Research Council (NERC grant reference number NE/X019071/1, UK EO Climate Information Service)",
+          "program": "EOCIS",
+          "program_url": "https://eocis.org",
+          "program_email": "EOCIS@reading.ac.uk",
+          "_NCProperties": "version=2,netcdf=4.9.1,hdf5=1.12.2"
+        },
+        "variables": {
+          "ANDWI": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float64",
+            "attributes": {
+              "_FillValue": [
+                "nan"
+              ],
+              "formula": "((490+560+665) - (842+1610+2190)) / ((490+560+665) + (842+1610+2190))",
+              "coordinates": "lat lon"
+            }
+          },
+          "MNDWI": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float64",
+            "attributes": {
+              "_FillValue": [
+                "nan"
+              ],
+              "formula": "(560 - 1610) / (560 + 1610)",
+              "coordinates": "lat lon"
+            }
+          },
+          "NDBI": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float64",
+            "attributes": {
+              "_FillValue": [
+                "nan"
+              ],
+              "formula": "(1610 - 842) / (1610 + 842)",
+              "coordinates": "lat lon"
+            }
+          },
+          "NDVI": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float64",
+            "attributes": {
+              "_FillValue": [
+                "nan"
+              ],
+              "formula": "(842 - 665) / (842 + 665)",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw1375": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 1375 nm",
+              "radiation_wavelength": [
+                1375.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                1375.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_1375nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw1610": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 1610 nm",
+              "radiation_wavelength": [
+                1610.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                1610.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_1610nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw2190": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 2190 nm",
+              "radiation_wavelength": [
+                2190.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                2190.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_2190nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw443": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 443 nm",
+              "radiation_wavelength": [
+                443.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                443.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_443nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw490": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 490 nm",
+              "radiation_wavelength": [
+                490.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                490.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_490nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw560": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 560 nm",
+              "radiation_wavelength": [
+                560.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                560.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_560nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw665": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 665 nm",
+              "radiation_wavelength": [
+                665.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                665.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_665nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw705": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 705 nm",
+              "radiation_wavelength": [
+                705.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                705.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_705nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw740": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 740 nm",
+              "radiation_wavelength": [
+                740.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                740.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_740nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw783": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 783 nm",
+              "radiation_wavelength": [
+                783.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                783.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_783nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw842": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 842 nm",
+              "radiation_wavelength": [
+                842.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                842.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_842nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw865": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 865 nm",
+              "radiation_wavelength": [
+                865.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                865.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_865nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "Rw945": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "long_name": "Fully normalized water-leaving reflectance at 945 nm",
+              "radiation_wavelength": [
+                945.0
+              ],
+              "radiation_wavelength_unit": "nm",
+              "wavelength": [
+                945.0
+              ],
+              "standard_name": "fully_normalized_water_leaving_reflectance_at_945nm",
+              "units": "1",
+              "valid_min": [
+                0.0
+              ],
+              "valid_max": [
+                1.0
+              ],
+              "radiation_wavelength_units": "nm",
+              "coordinates": "lat lon"
+            }
+          },
+          "chla_top_2_weighted": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "standard_name": "mass_concentration_of_chlorophyll_a_in_water_body",
+              "long_name": "Concentration of chlorophyll-a derived with Calimnos optical water type weighted blending of chlorophyll-a algorithms",
+              "units": "mg.m-3",
+              "coordinates": "lat lon"
+            }
+          },
+          "crsOSGB": {
+            "shape": [],
+            "dtype": "int64",
+            "attributes": {
+              "crs_wkt": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+              "semi_major_axis": [
+                6377563.396
+              ],
+              "semi_minor_axis": [
+                6356256.909237285
+              ],
+              "inverse_flattening": [
+                299.3249646
+              ],
+              "reference_ellipsoid_name": "Airy 1830",
+              "longitude_of_prime_meridian": [
+                0.0
+              ],
+              "prime_meridian_name": "Greenwich",
+              "geographic_crs_name": "OSGB36",
+              "horizontal_datum_name": "Ordnance Survey of Great Britain 1936",
+              "projected_crs_name": "OSGB36 / British National Grid",
+              "grid_mapping_name": "transverse_mercator",
+              "latitude_of_projection_origin": [
+                49.0
+              ],
+              "longitude_of_central_meridian": [
+                -2.0
+              ],
+              "false_easting": [
+                400000.0
+              ],
+              "false_northing": [
+                -100000.0
+              ],
+              "scale_factor_at_central_meridian": [
+                0.9996012717
+              ],
+              "spatial_ref": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+              "GeoTransform": "41600.0 100.0 0.0 577800.0 0.0 -100.0"
+            }
+          },
+          "lat": {
+            "shape": [
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                "nan"
+              ],
+              "standard_name": "latitude",
+              "units": "degrees_north",
+              "bounds": "lat_bnds",
+              "coordinates": "crsOSGB"
+            }
+          },
+          "lon": {
+            "shape": [
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                "nan"
+              ],
+              "standard_name": "longitude",
+              "units": "degrees_east",
+              "bounds": "lon_bnds",
+              "coordinates": "crsOSGB"
+            }
+          },
+          "spatial_ref": {
+            "shape": [],
+            "dtype": "int64",
+            "attributes": {
+              "crs_wkt": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+              "semi_major_axis": [
+                6377563.396
+              ],
+              "semi_minor_axis": [
+                6356256.909237285
+              ],
+              "inverse_flattening": [
+                299.3249646
+              ],
+              "reference_ellipsoid_name": "Airy 1830",
+              "longitude_of_prime_meridian": [
+                0.0
+              ],
+              "prime_meridian_name": "Greenwich",
+              "geographic_crs_name": "OSGB36",
+              "horizontal_datum_name": "Ordnance Survey of Great Britain 1936",
+              "projected_crs_name": "OSGB36 / British National Grid",
+              "grid_mapping_name": "transverse_mercator",
+              "latitude_of_projection_origin": [
+                49.0
+              ],
+              "longitude_of_central_meridian": [
+                -2.0
+              ],
+              "false_easting": [
+                400000.0
+              ],
+              "false_northing": [
+                -100000.0
+              ],
+              "scale_factor_at_central_meridian": [
+                0.9996012717
+              ],
+              "spatial_ref": "PROJCS[\"OSGB36 / British National Grid\",GEOGCS[\"OSGB36\",DATUM[\"Ordnance_Survey_of_Great_Britain_1936\",SPHEROID[\"Airy 1830\",6377563.396,299.3249646,AUTHORITY[\"EPSG\",\"7001\"]],AUTHORITY[\"EPSG\",\"6277\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4277\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",49],PARAMETER[\"central_meridian\",-2],PARAMETER[\"scale_factor\",0.9996012717],PARAMETER[\"false_easting\",400000],PARAMETER[\"false_northing\",-100000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"27700\"]]",
+              "GeoTransform": "41600.0 100.0 0.0 577800.0 0.0 -100.0"
+            }
+          },
+          "time": {
+            "shape": [
+              1
+            ],
+            "dtype": "float64",
+            "attributes": {
+              "CLASS": "DIMENSION_SCALE",
+              "NAME": "time",
+              "_Netcdf4Dimid": 0,
+              "_FillValue": [
+                "nan"
+              ],
+              "units": "days since 1970-01-01",
+              "calendar": "proleptic_gregorian"
+            }
+          },
+          "turbidity": {
+            "shape": [
+              1,
+              1061,
+              1209
+            ],
+            "dtype": "float32",
+            "attributes": {
+              "_FillValue": [
+                9.969209968386869e+36
+              ],
+              "standard_name": "turbidity_in_water_body_mean_within_aggregation_period",
+              "long_name": "Turbidity in Nephelometric Turbidity Units derived with Calimnos optical water type weighted blending of total suspended matter algorithms",
+              "units": "1",
+              "coordinates": "lat lon"
+            }
+          },
+          "x": {
+            "shape": [
+              1209
+            ],
+            "dtype": "int32",
+            "attributes": {
+              "CLASS": "DIMENSION_SCALE",
+              "NAME": "x",
+              "_Netcdf4Dimid": 1,
+              "long_name": "x coordinate of projection",
+              "standard_name": "projection_x_coordinate",
+              "units": "metre",
+              "bounds": "x_bnds",
+              "axis": "X"
+            }
+          },
+          "y": {
+            "shape": [
+              1061
+            ],
+            "dtype": "int32",
+            "attributes": {
+              "CLASS": "DIMENSION_SCALE",
+              "NAME": "y",
+              "_Netcdf4Dimid": 2,
+              "long_name": "y coordinate of projection",
+              "standard_name": "projection_y_coordinate",
+              "units": "metre",
+              "bounds": "y_bnds",
+              "axis": "Y"
+            }
+          }
+        },
+        "time_coordinate_utc": "2023-06-14T11:43:49+00:00",
+        "grid_spacing_x_m": [
+          100
+        ],
+        "grid_spacing_y_m": [
+          -100
+        ],
+        "quality_or_flag_variables": [],
+        "water_mask_variable_present": false,
+        "unmasked_catchment_container_diagnostics": {
+          "total_cells": 1282749,
+          "finite_nonfill_turbidity_cells": 472303,
+          "negative_turbidity_cells": 0,
+          "minimum": 3.703683614730835e-05,
+          "maximum": 5335.0625,
+          "warning": "Not Lough Neagh statistics; land/cloud/shore/bloom QC has not been applied."
+        }
+      }
+    ]
+  },
+  "clms": {
+    "dataset": "lwq-nrt_global_100m_10daily_v2",
+    "catalogue_record": {
+      "@odata.mediaContentType": "application/netcdf",
+      "Id": "57036110-e83d-4e6a-94b1-5a56e8d10fab",
+      "Name": "c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_nc",
+      "ContentType": "application/netcdf",
+      "ContentLength": 1641461901,
+      "OriginDate": "2026-09-16T10:19:46.743009Z",
+      "PublicationDate": "2026-09-16T10:53:30.587318Z",
+      "ModificationDate": "2026-09-16T10:53:30.587318Z",
+      "Online": true,
+      "EvictionDate": "9999-12-31T23:59:59.999999Z",
+      "S3Path": "/eodata/CLMS/bio-geophysical/lake_water_quality/lwq-nrt_global_100m_10daily_v2/2026/09/01/c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_nc",
+      "Checksum": [
+        {
+          "Value": "f50da73db1b1fe74b69bdc7188da1247",
+          "Algorithm": "MD5",
+          "ChecksumDate": "2026-09-16T10:53:25.833103Z"
+        },
+        {
+          "Value": "9e2f92c22f1823cbfc7d502f463c591628e8d01356a3573674f32b8d86e22fe6",
+          "Algorithm": "BLAKE3",
+          "ChecksumDate": "2026-09-16T10:53:29.292432Z"
+        }
+      ],
+      "ContentDate": {
+        "Start": "2026-09-01T00:00:00.000000Z",
+        "End": "2026-09-10T23:59:59.999999Z"
+      },
+      "Footprint": "geography'SRID=4326;POLYGON ((-180 -90, -180 90, 180 90, 180 -90, -180 -90))'",
+      "GeoFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -180.0,
+              -90.0
+            ],
+            [
+              -180.0,
+              90.0
+            ],
+            [
+              180.0,
+              90.0
+            ],
+            [
+              180.0,
+              -90.0
+            ],
+            [
+              -180.0,
+              -90.0
+            ]
+          ]
+        ]
+      },
+      "Attributes": [
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "component",
+          "Value": "bio-geophysical",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "gridLabel",
+          "Value": "100m",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "fileFormat",
+          "Value": "nc",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+          "Name": "nominalDate",
+          "Value": "2026-09-01T00:00:00.000000Z",
+          "ValueType": "DateTimeOffset"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "datasetAlias",
+          "Value": "lwq-nrt_global_100m_10daily",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "areaOfInterest",
+          "Value": "global",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "collectionName",
+          "Value": "CLMS",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.IntegerAttribute",
+          "Name": "datasetVersion",
+          "Value": 2,
+          "ValueType": "Integer"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "productVersion",
+          "Value": "v2.2.2",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "platformAcronym",
+          "Value": "unspecified",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "datasetShortName",
+          "Value": "lwq",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "missionShortName",
+          "Value": "SENTINEL2",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "processingCenter",
+          "Value": "Brockmann Consult,Plymouth Marine Laboratory",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "datasetIdentifier",
+          "Value": "lwq-nrt_global_100m_10daily_v2",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.IntegerAttribute",
+          "Name": "metricGridSpacing",
+          "Value": 100,
+          "ValueType": "Integer"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "platformShortName",
+          "Value": "unspecified",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "temporalRepeatRate",
+          "Value": "10daily",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "instrumentShortName",
+          "Value": "MSI",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+          "Name": "productDeliveryDate",
+          "Value": "2026-09-16T10:24:49.000000Z",
+          "ValueType": "DateTimeOffset"
+        },
+        {
+          "@odata.type": "#OData.CSC.StringAttribute",
+          "Name": "productType",
+          "Value": "lake_water_quality",
+          "ValueType": "String"
+        },
+        {
+          "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+          "Name": "beginningDateTime",
+          "Value": "2026-09-01T00:00:00.000000Z",
+          "ValueType": "DateTimeOffset"
+        },
+        {
+          "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+          "Name": "endingDateTime",
+          "Value": "2026-09-10T23:59:59.999999Z",
+          "ValueType": "DateTimeOffset"
+        }
+      ]
+    },
+    "latest_saved_cog_catalogue_record": {
+      "id": "9ae1c40f-801f-4c45-8530-369f797e4691",
+      "name": "c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_cog",
+      "content_length": "8686687462",
+      "ingestion_date": "2026-09-16T13:21:29.750",
+      "content_date_start": "2026-09-01T00:00:00.000",
+      "content_date_end": "2026-09-10T23:59:59.999",
+      "nominal_date": "2026-09-01T00:00:00.000",
+      "modification_date": "2026-09-16T13:21:29.750",
+      "checksum_algorithm": "MD5",
+      "checksum_value": "be57dfd61cc8d63ab5c1c54f623d3379",
+      "s3_path": "s3://eodata/CLMS/bio-geophysical/lake_water_quality/lwq-nrt_global_100m_10daily_v2/2026/09/01/c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_cog",
+      "bbox": "POLYGON((-180 90,-180 -90,180 -90,180 90,-180 90))"
+    },
+    "access_status": "Public catalogue metadata; saved unauthenticated download response is HTTP 401",
+    "raster_downloaded": false,
+    "neagh_pixel_coverage_confirmed": false,
+    "local_validation_performed": false,
+    "note": "Global product footprint alone does not prove valid Neagh pixels. The catalogue count may include multiple formats.",
+    "access_probe": {
+      "request_url": "https://download.dataspace.copernicus.eu/odata/v1/Products(57036110-e83d-4e6a-94b1-5a56e8d10fab)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_nc)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2.nc)/$value",
+      "method": "GET",
+      "range": "bytes=0-0",
+      "authentication": "none",
+      "max_response_bytes": 1024,
+      "response_status": 401,
+      "saved_response_headers": "clms_access_get_probe_headers.txt",
+      "note": "A preceding HEAD request received HTTP 405 (unsupported method); the bounded GET reproduced HTTP 401."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "source_note": "Downloaded from official APIs during 23 September2026 investigation; exact HTTP response timestamps not separately logged. Filesystem times are not asserted as server retrieval times.",
+  "files": [
+    {
+      "path": "data/lough-neagh/raw/geography/daera-lough-neagh.geojson",
+      "url": "https://services-eu1.arcgis.com/kswen6BYexuc1SUk/arcgis/rest/services/Lake_Water_Bodies_2016/FeatureServer/0/query?where=1%3D1&geometry=-6.5%2C54.6&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=geojson",
+      "sha256": "ae27e051f793cca8c1e00aa7841b241cdd62a154cce02c55111af453e3d22f01",
+      "filesystem_mtime_utc": "2026-09-23T20:07:17.483009+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/geography/wfd-lakes.geojson",
+      "url": "https://water.discomap.eea.europa.eu/arcgis/rest/services/WISE_WFD/WFD2016_SurfaceWaterBody_WM/MapServer/4/query?where=1%3D1&geometry=-6.72%2C54.43%2C-6.18%2C54.80&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=4326&f=geojson",
+      "sha256": "80af47943a3ae32fd5823dfb17ea76f9e2dd8878e2a7b8189c6bd95a9e487d3e",
+      "filesystem_mtime_utc": "2026-09-23T19:29:42.102782+00:00"
+    }
+  ]
+}

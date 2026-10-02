@@ -34,7 +34,6 @@ const fmt = (v: number, m: Metric) =>
 function MetricView({ m }: { m: Metric }) {
   const chartRef=useRef<HTMLElement>(null);
   const last = m.data.at(-1)!;
-  const shown = last;
   const anchor = m.anchor;
   const records = buildChartData(m, snapshot.horizon);
   const scale=niceScale(records.flatMap(r=>[r.observed,r.s0,r.s1,r.s2]).filter((v):v is number=>typeof v==='number'),m.id==='canada-vacancies'?.1:1);
@@ -63,33 +62,11 @@ function MetricView({ m }: { m: Metric }) {
       : dateLabel(d);
   return (
     <>
-      <section className="metric-intro">
-        <div>
-          <div className="eyebrow">
-            {m.country} <span> / </span> {m.frequency}
-          </div>
-          <h2>{m.title}</h2>
-          <p className="dek">{m.description}</p>
-          <p className="source">
-            Source:{' '}
-            <a href={m.sourceUrl} target="_blank" rel="noreferrer">
-              {m.source} ↗
-            </a>{' '}
-            <span>· Latest observation {periodLabel(last.date)}</span>
-          </p>
-        </div>
-        <div className="metric-latest">
-          <span>Latest reading</span>
-          <strong>{fmt(shown.value, m)}</strong>
-          <small>{periodLabel(shown.date)}</small>
-        </div>
-      </section>
-
       <section
         className="chart-shell" ref={chartRef}
         aria-label={`${m.title} historical chart and scenarios`}
       >
-        <h3 className="chart-title">{m.tab} - historical data and projections</h3><p className="chart-subtitle">{m.country} · {m.unit} · Latest data: {periodLabel(last.date)}</p>
+        <h3 className="chart-title">{m.title}</h3><p className="chart-subtitle">{m.country} · {m.frequency} · {m.unit} · Latest: {fmt(last.value, m)} ({periodLabel(last.date)})</p>
         <div className="chart-toolbar">
           <span>{m.unit}</span>
           <div className="chart-legend">
@@ -194,6 +171,8 @@ function MetricView({ m }: { m: Metric }) {
           </span>
           <span className="chart-actions"><a href={`/data/ai/${m.id}.csv`} download>Download CSV ↓</a><ChartDownload chartRef={chartRef} filename={'salmonofdata-ai-'+m.id} freezeNote={`Forecast frozen 6 September 2026. Latest data at the freeze: ${periodLabel(anchor.date)} - ${fmt(anchor.value,m)}. Future actuals overlay unchanged predictions. Horizon: December 2029.`}/></span>
         </div>
+        <p className="chart-explainer"><strong>What this chart shows:</strong> {m.chartExplainer}</p>
+        <p className="chart-source"><strong>Source:</strong> <a href={m.sourceUrl} target="_blank" rel="noreferrer">{m.source} ↗</a></p>
         <ChartLicence tracker="ai" metric={m.id}/><div className="chart-brand">SALMONOFDATA.COM</div>
       </section>
       <p className="freeze-note"><strong>Forecast frozen 6 September 2026.</strong> The most recent data then was {periodLabel(anchor.date)}: {fmt(anchor.value,m)}. Future actuals extend the solid line over these unchanged dashed predictions. Source revisions do not move the original forecast anchor.</p>
@@ -331,5 +310,5 @@ function MetricView({ m }: { m: Metric }) {
 }
 export function AITracker() {
  const [tab,setTab]=useState(snapshot.metrics[0].id);
- return <div className="ai-tracker"><Tabs value={tab} onValueChange={v=>setTab(String(v))} className="tracker-tabs"><div className="tabs-scroll"><TabsList variant="line" className="metric-tabs" aria-label="AI displacement metrics">{snapshot.metrics.map((m,i)=><TabsTrigger key={m.id} value={m.id}><span className="tab-number">{String(i+1).padStart(2,'0')}</span>{m.tab}</TabsTrigger>)}</TabsList></div>{snapshot.metrics.map(m=><TabsContent key={m.id} value={m.id}><div className="metric-panel"><MetricView m={m}/></div></TabsContent>)}</Tabs><section className="methodology"><p className="freeze-note">Actuals updated 29 September 2026: recruitment through 18 September, hiring through August and real pay through August. Forecasts remain frozen. <a href="/data/ai/refresh-2026-09-29.json" download>Download update details ↓</a></p><p className="eyebrow">Reading the evidence</p><h2>Evidence of displacement is not proof of AI causation.</h2><p>Read hiring, worker outcomes and adoption together. These are the original eight metrics, definitions and scenarios frozen on 6 September 2026. Forecasts end in December 2029; the first review is September 2027.</p><p className="freeze-note">{snapshot.reviewRule}</p><div className="method-links"><a href="/data/ai/frozen-metrics-v1.json" download>Frozen definitions ↓</a><a href="/data/ai/source-manifest.json" download>Source manifest ↓</a><a href="/#calendar">Data release calendar →</a><a href="/blog/">Why I built this tracker →</a></div></section></div>
+ return <div className="ai-tracker"><Tabs value={tab} onValueChange={v=>setTab(String(v))} className="tracker-tabs"><div className="tabs-scroll"><TabsList variant="line" className="metric-tabs" aria-label="AI displacement metrics">{snapshot.metrics.map((m,i)=><TabsTrigger key={m.id} value={m.id}><span className="tab-number">{String(i+1).padStart(2,'0')}</span>{m.tab}</TabsTrigger>)}</TabsList></div>{snapshot.metrics.map(m=><TabsContent key={m.id} value={m.id}><div className="metric-panel"><MetricView m={m}/></div></TabsContent>)}</Tabs><section className="methodology"><p className="freeze-note">Actuals updated 2 October 2026: recruitment through 25 September, employment through September, hiring through August and real pay through August. September wages are recorded as an input; September CPI is due 14 October, so no September real-pay value is plotted. Forecasts remain frozen. <a href="/data/ai/refresh-2026-10-02.json" download>Download update details ↓</a></p><p className="eyebrow">Reading the evidence</p><h2>Evidence of displacement is not proof of AI causation.</h2><p>Read hiring, worker outcomes and adoption together. These are the original eight metrics, definitions and scenarios frozen on 6 September 2026. Forecasts end in December 2029; the first review is September 2027.</p><p className="freeze-note">{snapshot.reviewRule}</p><div className="method-links"><a href="/data/ai/frozen-metrics-v1.json" download>Frozen definitions ↓</a><a href="/data/ai/source-manifest.json" download>Source manifest ↓</a><a href="/#calendar">Data release calendar →</a><a href="/blog/">Why I built this tracker →</a></div></section></div>
 }

@@ -179,5 +179,53 @@
     "sha256": "9491b016c08aba2747252b63440c59434f521e035b285dc9feff4a744db2ec52",
     "retrievedOn": "2026-09-29",
     "note": "Refresh archive; exact published source retained."
+  },
+  {
+    "file": "2026-10-02/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 201535,
+    "sha256": "88a170c276dfe889fc25ef4582ac54a75dd28834739a5d0a4d99c1fe026df97e",
+    "retrievedOn": "2026-10-02",
+    "note": "Exact source capture; observations and historical revisions through 2026-09-25."
+  },
+  {
+    "file": "2026-10-02/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 12033516,
+    "sha256": "8354b1b61ce4c2b23f0df97309a44a63179c1332a6bb4974e693aa32407f9208",
+    "retrievedOn": "2026-10-02",
+    "note": "Exact source capture; six-family inputs and historical revisions through 2026-09-25."
+  },
+  {
+    "file": "2026-10-02/CES6054000001.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6054000001",
+    "bytes": 8030,
+    "sha256": "1e263adbd99911e41ca9aa1bd3589b808a0c59865aa5c3f220aa05063c45d208",
+    "retrievedOn": "2026-10-02",
+    "note": "Current CES source capture after the 2026-10-02 Employment Situation release."
+  },
+  {
+    "file": "2026-10-02/USPRIV.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=USPRIV",
+    "bytes": 18289,
+    "sha256": "16c50d5a3928b8cd53fc1ede556dbd8a84c44c78da60e4ca5278c7476c0cba09",
+    "retrievedOn": "2026-10-02",
+    "note": "Current CES source capture after the 2026-10-02 Employment Situation release."
+  },
+  {
+    "file": "2026-10-02/CES6000000003.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6000000003",
+    "bytes": 4230,
+    "sha256": "aef90874b8f88efd561b557cfa2cce96eeb6df43a589df893b7f94df8cde8cbf",
+    "retrievedOn": "2026-10-02",
+    "note": "Current average hourly earnings input through 2026-09; real pay remains through August pending September CPI."
+  },
+  {
+    "file": "2026-10-02/CPIAUCSL.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
+    "bytes": 17744,
+    "sha256": "f8ecddf53a9a9a74dda92c2c4204e6039466fcb744bc74171b73b5f6aac48119",
+    "retrievedOn": "2026-10-02",
+    "note": "Current CPI source capture; the latest observation remains 2026-08."
   }
 ]

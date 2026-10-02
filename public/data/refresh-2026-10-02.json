@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-10-02",
+  "newActuals": {
+    "food": [
+      {
+        "date": "2026-07",
+        "value": 131.7,
+        "previousValue": 130.8
+      },
+      {
+        "date": "2026-08",
+        "value": 134.0,
+        "previousValue": 133.3
+      },
+      {
+        "date": "2026-09",
+        "value": 136.0
+      }
+    ]
+  },
+  "sources": [
+    {
+      "file": "2026-10-02/fao.csv",
+      "bytes": 48110,
+      "sha256": "1e7b4cab727d65ad85ac056a1f4ec21285c3294aebdacb08f01e10be490a4098",
+      "retrievedOn": "2026-10-02",
+      "note": "September 2026 actual and latest revised monthly history.",
+      "name": "FAO Food Price Index",
+      "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/wfs-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_84",
+      "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/"
+    },
+    {
+      "file": "2026-10-02/world-bank.xlsx",
+      "bytes": 586735,
+      "sha256": "9fdcfa8a2aed9a1bb545a10c1a5ce036c6a0acd4766f450424ca800b4b5a0225",
+      "retrievedOn": "2026-10-02",
+      "note": "Checked 2026-10-02; byte-identical to the prior archive and still ends in 2026-08.",
+      "name": "World Bank Pink Sheet",
+      "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+      "url": "https://www.worldbank.org/en/research/commodity-markets"
+    },
+    {
+      "file": "2026-10-02/ons.json",
+      "bytes": 125820,
+      "sha256": "69fc2d0432b5014bc9bc8444b8a1a4776de4d017b0c461000334d3c8ae71dd48",
+      "retrievedOn": "2026-10-02",
+      "note": "Latest observation remains 2026-08 = 144.6, already included in the 2026-09-16 refresh.",
+      "name": "ONS D7BU",
+      "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23"
+    }
+  ],
+  "checks": {
+    "food": "FAO September index is 136.0. July was revised from 130.8 to 131.7 and August from 133.3 to 134.0.",
+    "commodities": "World Bank workbook is unchanged and ends in August 2026; the scheduled October 2 update was not present in the source at check time.",
+    "enso": "NOAA RONI source is unchanged; latest displayed season remains JJA 2026 at 1.4°C. The next table update is due by October 5.",
+    "usda": "Current USDA grain ZIP matches the September 13 archive; the 2026/27 South African maize yield forecast remains 5.50 tonnes/ha.",
+    "retail": "ONS D7BU latest observation is August 2026 = 144.6, already included in the September 16 refresh; the next release is October 21.",
+    "forecasts": "Original frozen metric anchors and conditional paths remain unchanged."
+  },
+  "frozenFileSha256": {
+    "public/data/scenarios-v1.json": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+    "public/data/ai/frozen-metrics-v1.json": "93a384e2b0ec76018614152ca1f5065477ae0e09a3246488eefabe6f41fa0dd8"
+  },
+  "policy": "Updated the FAO actual history using its exact October 2 source capture, including publisher revisions. The original frozen forecast anchor and scenarios remain unchanged."
+}

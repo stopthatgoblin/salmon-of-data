@@ -1,22 +1,7 @@
 {
-  "checkedAt": "2026-09-29",
+  "checkedAt": "2026-10-02",
   "through": "2026-12-31",
   "entries": [
-    {
-      "date": "2026-10-02",
-      "title": "US employment situation",
-      "referencePeriod": "September 2026",
-      "metrics": [
-        "Employment",
-        "Real pay \u00b7 earnings input"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-09-29"
-    },
     {
       "date": "2026-10-14",
       "title": "US consumer prices",
@@ -51,7 +36,7 @@
       "referencePeriod": "October 2026",
       "metrics": [
         "Employment",
-        "Real pay \u00b7 earnings input"
+        "Real pay · earnings input"
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
@@ -94,7 +79,7 @@
       "referencePeriod": "November 2026",
       "metrics": [
         "Employment",
-        "Real pay \u00b7 earnings input"
+        "Real pay · earnings input"
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
@@ -192,20 +177,6 @@
     {
       "tracker": "el-nino",
       "frequency": "monthly",
-      "date": "2026-10-02",
-      "title": "FAO Food Price Index",
-      "metrics": [
-        "Food basket"
-      ],
-      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
-      "referencePeriod": "September 2026",
-      "time": null,
-      "status": "Confirmed",
-      "checkedAt": "2026-09-29"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
       "date": "2026-11-06",
       "title": "FAO Food Price Index",
       "metrics": [
@@ -247,7 +218,8 @@
       "referencePeriod": "September 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-02",
+      "note": "Checked 2 October: the workbook still ends in August 2026 and is unchanged; September values have not appeared in the source yet."
     },
     {
       "tracker": "el-nino",
@@ -293,12 +265,12 @@
       "tracker": "el-nino",
       "frequency": "monthly",
       "date": null,
-      "title": "NOAA Relative Oceanic Ni\u00f1o Index",
+      "title": "NOAA Relative Oceanic Niño Index",
       "metrics": [
-        "El Ni\u00f1o"
+        "El Niño"
       ],
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
-      "referencePeriod": "July\u2013September 2026",
+      "referencePeriod": "July–September 2026",
       "time": null,
       "status": "By the 5th",
       "checkedAt": "2026-09-29",
@@ -309,12 +281,12 @@
       "tracker": "el-nino",
       "frequency": "monthly",
       "date": null,
-      "title": "NOAA Relative Oceanic Ni\u00f1o Index",
+      "title": "NOAA Relative Oceanic Niño Index",
       "metrics": [
-        "El Ni\u00f1o"
+        "El Niño"
       ],
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
-      "referencePeriod": "August\u2013October 2026",
+      "referencePeriod": "August–October 2026",
       "time": null,
       "status": "By the 5th",
       "checkedAt": "2026-09-29",
@@ -325,12 +297,12 @@
       "tracker": "el-nino",
       "frequency": "monthly",
       "date": null,
-      "title": "NOAA Relative Oceanic Ni\u00f1o Index",
+      "title": "NOAA Relative Oceanic Niño Index",
       "metrics": [
-        "El Ni\u00f1o"
+        "El Niño"
       ],
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
-      "referencePeriod": "September\u2013November 2026",
+      "referencePeriod": "September–November 2026",
       "time": null,
       "status": "By the 5th",
       "checkedAt": "2026-09-29",
@@ -343,7 +315,7 @@
       "date": "2026-10-08",
       "title": "NOAA ENSO Diagnostic Discussion",
       "metrics": [
-        "El Ni\u00f1o outlook"
+        "El Niño outlook"
       ],
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
       "referencePeriod": "September 2026 conditions and outlook",
@@ -366,7 +338,7 @@
       "checkedAt": "2026-09-29"
     }
   ],
-  "lastReleaseReviewAt": "2026-09-29",
+  "lastReleaseReviewAt": "2026-10-02",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -384,24 +356,6 @@
       "importedAt": "2026-09-13",
       "actualsAdded": [
         "real-pay: 2026-08-01"
-      ]
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-09-16",
-      "title": "UK consumer prices",
-      "metrics": [
-        "UK groceries"
-      ],
-      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukaugust2026",
-      "referencePeriod": "August 2026",
-      "time": "07:00 UK time",
-      "status": "Confirmed",
-      "checkedAt": "2026-09-16",
-      "importedAt": "2026-09-16",
-      "actualsAdded": [
-        "retail: 2026-08"
       ]
     },
     {
@@ -425,6 +379,24 @@
       ]
     },
     {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-09-16",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukaugust2026",
+      "referencePeriod": "August 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-09-16",
+      "importedAt": "2026-09-16",
+      "actualsAdded": [
+        "retail: 2026-08"
+      ]
+    },
+    {
       "date": "2026-09-29",
       "title": "US job openings and labour turnover",
       "referencePeriod": "August 2026",
@@ -440,6 +412,52 @@
       "importedAt": "2026-09-29",
       "actualsAdded": [
         "hiring: 2026-08-01"
+      ]
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-02",
+      "title": "FAO Food Price Index",
+      "metrics": [
+        "Food basket"
+      ],
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "referencePeriod": "September 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-10-02",
+      "importedAt": "2026-10-02",
+      "actualsAdded": [
+        "food: 2026-09"
+      ],
+      "revisionsIncluded": [
+        "food: 2026-07-01",
+        "food: 2026-08-01"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "title": "US employment situation",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-02",
+      "importedAt": "2026-10-02",
+      "actualsAdded": [
+        "employment: 2026-09-01",
+        "real-pay input: earnings 2026-09-01"
+      ],
+      "revisionsIncluded": [
+        "employment: 2026-07-01 and 2026-08-01",
+        "real pay: 2026-07-01 and 2026-08-01"
       ]
     }
   ]

@@ -82,3 +82,7 @@ node scripts/check-site.mjs
 Both trackers read their forecast anchors and paths directly from their immutable freeze files, separately from their current observations. Appending actuals extends the solid line; it does not recalculate the dashed forecasts. Each panel displays the original data period and value available when the forecast was frozen. AI's original freeze is 6 September 2026; El Niño's is 7 September 2026.
 
 See `EDITING.md` for page wording, blog ordering and data-update guidance.
+
+## Lough Neagh feasibility investigation
+
+The [scientific report](docs/lough-neagh/README.md) records a **no-go for publication with the currently tested inputs and methods**. The investigation acquired actual DAERA/Sentinel data, built a reproducible candidate ledger, ran whole-date/temporal/spatial holdouts and received independent review. No turbidity tracker or website route was added. Research code lives in `research/lough_neagh/`; the frozen input capsule, diagnostic results and [reproduction instructions](docs/lough-neagh/REPRODUCE.md) preserve the evidence and the requirements for a future validated product.

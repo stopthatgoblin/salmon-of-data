@@ -1,0 +1,3753 @@
+{
+  "status": "exploratory_only_publication_blocked",
+  "model_version": "screening-1-no-deployable-model",
+  "input_sha256": "4248df39e2e0d4f94b5bb6594b87f2b75e2a28e02f4709d70f1d1aa6223065ab",
+  "rows": 82,
+  "dates": 60,
+  "observed_probe_range_ntu": [
+    0.00898528099060059,
+    30.3215179443359
+  ],
+  "metrics": [
+    {
+      "scheme": "leave_one_date_out",
+      "model": "training_median",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.0546333529963725,
+      "rmse": 6.920786824945744,
+      "bias": -2.0812877385718096,
+      "r2": -0.10915644182190465,
+      "mae_percent_of_mean_observed": 79.3758916673065,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 3.9733438008775313,
+      "date_balanced_rmse": 6.973153151166468,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          2.9565753367947916,
+          5.227702669837097
+        ],
+        "rmse_95pct_interval": [
+          4.699563397411296,
+          8.832912067752895
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "station_median",
+      "dates": 60,
+      "n": 82,
+      "mae": 3.680801449934159,
+      "rmse": 5.871683002123248,
+      "bias": -1.3121795376263004,
+      "r2": 0.20162475313863204,
+      "mae_percent_of_mean_observed": 72.05753805653654,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 3.6627736413230516,
+      "date_balanced_rmse": 5.961322490551693,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          2.8223256126992307,
+          4.688365304378257
+        ],
+        "rmse_95pct_interval": [
+          4.101400157071419,
+          7.513846731658774
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "seasonal_harmonic",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.442004507704478,
+      "rmse": 6.691466167957672,
+      "bias": -0.021633312980868163,
+      "r2": -0.03687029910266881,
+      "mae_percent_of_mean_observed": 86.95929764615471,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 4,
+      "date_balanced_mae": 4.5564950907596975,
+      "date_balanced_rmse": 6.857551114708874,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.4606209202014027,
+          5.53427966308336
+        ],
+        "rmse_95pct_interval": [
+          4.848101891911983,
+          8.330126107608715
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "red_linear",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.5803258451583275,
+      "rmse": 6.65113211977927,
+      "bias": 0.01293847392842241,
+      "r2": -0.024408117237218807,
+      "mae_percent_of_mean_observed": 89.66715765251013,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 4.613284371307453,
+      "date_balanced_rmse": 6.726334859620007,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.658040052861473,
+          5.585996883134885
+        ],
+        "rmse_95pct_interval": [
+          4.933618413849078,
+          8.195818672570951
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "nir_linear",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.689673236662974,
+      "rmse": 6.760645263761922,
+      "bias": 0.01667352914953084,
+      "r2": -0.05842029535039117,
+      "mae_percent_of_mean_observed": 91.80780662037824,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 4.748361345900171,
+      "date_balanced_rmse": 6.88516327307257,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.7168140573465447,
+          5.741484669224248
+        ],
+        "rmse_95pct_interval": [
+          4.906500356907031,
+          8.511018984942746
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "red_nir_linear",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.702809437056623,
+      "rmse": 6.428393485824038,
+      "bias": -0.03016547676865468,
+      "r2": 0.04305546618378708,
+      "mae_percent_of_mean_observed": 92.06496861964898,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 4,
+      "date_balanced_mae": 4.844128485750105,
+      "date_balanced_rmse": 6.598801099987634,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.8294958627410933,
+          5.626350221503321
+        ],
+        "rmse_95pct_interval": [
+          5.03313361965406,
+          7.806448549138393
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "red_green_ratio",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.699420843390298,
+      "rmse": 6.647330616890031,
+      "bias": -0.029378397488016444,
+      "r2": -0.023237436083293872,
+      "mae_percent_of_mean_observed": 91.99863151334466,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 4.716716935606809,
+      "date_balanced_rmse": 6.739611045675389,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.7735054333786415,
+          5.720924030031111
+        ],
+        "rmse_95pct_interval": [
+          4.952451614455641,
+          8.232587401776694
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "model": "nir_red_ratio",
+      "dates": 60,
+      "n": 82,
+      "mae": 4.662971209330901,
+      "rmse": 6.663866204659466,
+      "bias": -0.02632522926560172,
+      "r2": -0.02833448267247629,
+      "mae_percent_of_mean_observed": 91.28507199944346,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 4.760776669281541,
+      "date_balanced_rmse": 6.822424091886895,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.7184582013754035,
+          5.7434796946166635
+        ],
+        "rmse_95pct_interval": [
+          4.8579087948588855,
+          8.299453838565897
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "training_median",
+      "dates": 36,
+      "n": 53,
+      "mae": 5.545290982245274,
+      "rmse": 9.163835351407485,
+      "bias": -5.287837775951287,
+      "r2": -0.4898310040053231,
+      "mae_percent_of_mean_observed": 82.2986386870003,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 5.611652871697314,
+      "date_balanced_rmse": 9.543234101759184,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.7693175524177427,
+          7.525077258817402
+        ],
+        "rmse_95pct_interval": [
+          6.476580756099142,
+          11.747438849943704
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "station_median",
+      "dates": 36,
+      "n": 53,
+      "mae": 5.1340406946135015,
+      "rmse": 7.75564074107578,
+      "bias": -3.4584323264799037,
+      "r2": -0.06713120462973254,
+      "mae_percent_of_mean_observed": 76.19520084395526,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 5.227351580539513,
+      "date_balanced_rmse": 8.111395397280479,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.787749563587325,
+          6.763840581229586
+        ],
+        "rmse_95pct_interval": [
+          5.557141387015741,
+          10.051723519762149
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "seasonal_harmonic",
+      "dates": 36,
+      "n": 53,
+      "mae": 5.8136822338897725,
+      "rmse": 9.423688333112693,
+      "bias": -5.414639143222479,
+      "r2": -0.5755213097259269,
+      "mae_percent_of_mean_observed": 86.28188045313374,
+      "negative_predictions": 9,
+      "outside_training_feature_range": 25,
+      "date_balanced_mae": 5.920983275069816,
+      "date_balanced_rmse": 9.853379652890165,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          4.067374400419523,
+          7.778298871295246
+        ],
+        "rmse_95pct_interval": [
+          6.601136189506533,
+          11.994159550096107
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "red_linear",
+      "dates": 36,
+      "n": 53,
+      "mae": 4.872000916616439,
+      "rmse": 8.157526812093375,
+      "bias": -3.227410645540562,
+      "r2": -0.18059101219503493,
+      "mae_percent_of_mean_observed": 72.30622241522181,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 5.080427734288988,
+      "date_balanced_rmse": 8.518165132246573,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.3453432128074914,
+          6.621278682125643
+        ],
+        "rmse_95pct_interval": [
+          5.713302349415254,
+          10.490338255900669
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "nir_linear",
+      "dates": 36,
+      "n": 53,
+      "mae": 4.841435460960156,
+      "rmse": 8.334679883410013,
+      "bias": -3.158335081777802,
+      "r2": -0.23242443736410046,
+      "mae_percent_of_mean_observed": 71.85259511245015,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 5.070062125668109,
+      "date_balanced_rmse": 8.76386789293903,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.3217035258158774,
+          6.659125843635649
+        ],
+        "rmse_95pct_interval": [
+          5.700430922124507,
+          10.864377731044446
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "red_nir_linear",
+      "dates": 36,
+      "n": 53,
+      "mae": 5.568870631009732,
+      "rmse": 8.168399011139435,
+      "bias": -3.1510675546465583,
+      "r2": -0.18374004849238212,
+      "mae_percent_of_mean_observed": 82.64858840113538,
+      "negative_predictions": 2,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 5.8615973593300685,
+      "date_balanced_rmse": 8.593103417990259,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          4.169917492412175,
+          7.108490143494196
+        ],
+        "rmse_95pct_interval": [
+          6.042257512213442,
+          10.248750580051807
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "red_green_ratio",
+      "dates": 36,
+      "n": 53,
+      "mae": 5.728380108692444,
+      "rmse": 9.103464493407268,
+      "bias": -3.537514407244314,
+      "r2": -0.4702658100086734,
+      "mae_percent_of_mean_observed": 85.01589661146961,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 5.956516752363716,
+      "date_balanced_rmse": 9.522841123368599,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          4.081799573367075,
+          7.616765502640321
+        ],
+        "rmse_95pct_interval": [
+          6.626360452672629,
+          11.689035317547676
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "forward_blocks",
+      "model": "nir_red_ratio",
+      "dates": 36,
+      "n": 53,
+      "mae": 5.10616405126646,
+      "rmse": 8.399919612427233,
+      "bias": -3.3083993181818263,
+      "r2": -0.25179355890148614,
+      "mae_percent_of_mean_observed": 75.78147867753152,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 5.352163034243559,
+      "date_balanced_rmse": 8.88113750427086,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          3.535464005689973,
+          6.856885269273792
+        ],
+        "rmse_95pct_interval": [
+          5.731609875258435,
+          11.044280965456277
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "training_median",
+      "dates": 60,
+      "n": 82,
+      "mae": 6.058435231628941,
+      "rmse": 8.436166382440819,
+      "bias": -1.4239239174781786,
+      "r2": -0.6480566441649085,
+      "mae_percent_of_mean_observed": 118.60349796210095,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 6.039072896415989,
+      "date_balanced_rmse": 8.48523634996791,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          4.891151923397318,
+          7.321587060963431
+        ],
+        "rmse_95pct_interval": [
+          6.357369860680102,
+          10.306054120898352
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "station_median",
+      "dates": 60,
+      "n": 82,
+      "mae": 6.058435231628941,
+      "rmse": 8.436166382440819,
+      "bias": -1.4239239174781786,
+      "r2": -0.6480566441649085,
+      "mae_percent_of_mean_observed": 118.60349796210095,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 0,
+      "date_balanced_mae": 6.039072896415989,
+      "date_balanced_rmse": 8.48523634996791,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          4.891151923397318,
+          7.321587060963431
+        ],
+        "rmse_95pct_interval": [
+          6.357369860680102,
+          10.306054120898352
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "seasonal_harmonic",
+      "dates": 60,
+      "n": 82,
+      "mae": 7.173739326541614,
+      "rmse": 9.871717545025346,
+      "bias": 0.7121280843014642,
+      "r2": -1.2566660878196152,
+      "mae_percent_of_mean_observed": 140.43734810504154,
+      "negative_predictions": 2,
+      "outside_training_feature_range": 15,
+      "date_balanced_mae": 7.436464943799943,
+      "date_balanced_rmse": 10.141118369840175,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          5.636311476075509,
+          8.69940700101129
+        ],
+        "rmse_95pct_interval": [
+          7.822484712364134,
+          11.626472056575505
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "red_linear",
+      "dates": 60,
+      "n": 82,
+      "mae": 6.637775134712844,
+      "rmse": 8.592528289193321,
+      "bias": 0.05981160237301615,
+      "r2": -0.7097153177307434,
+      "mae_percent_of_mean_observed": 129.94499727467192,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 16,
+      "date_balanced_mae": 6.7015095576749415,
+      "date_balanced_rmse": 8.690261057980722,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          5.46617913863286,
+          7.728225035512094
+        ],
+        "rmse_95pct_interval": [
+          6.817000923693682,
+          10.19514931222963
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "nir_linear",
+      "dates": 60,
+      "n": 82,
+      "mae": 7.03740219123336,
+      "rmse": 8.876442282245796,
+      "bias": 0.3326709934755086,
+      "r2": -0.8245666328166841,
+      "mae_percent_of_mean_observed": 137.76833200905807,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 7,
+      "date_balanced_mae": 7.092679279422821,
+      "date_balanced_rmse": 8.990874716203717,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          5.903468936902904,
+          8.168169442271049
+        ],
+        "rmse_95pct_interval": [
+          7.117136939671133,
+          10.569166147430668
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "red_nir_linear",
+      "dates": 60,
+      "n": 82,
+      "mae": 6.354955775303749,
+      "rmse": 8.351035189348003,
+      "bias": -0.14912469265186484,
+      "r2": -0.6149626728157449,
+      "mae_percent_of_mean_observed": 124.40835884661686,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 18,
+      "date_balanced_mae": 6.41683680650703,
+      "date_balanced_rmse": 8.46765241280784,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          5.193292234830637,
+          7.424047467135098
+        ],
+        "rmse_95pct_interval": [
+          6.650146942309045,
+          9.9403606642399
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "red_green_ratio",
+      "dates": 60,
+      "n": 82,
+      "mae": 7.087018800576299,
+      "rmse": 8.981892788439438,
+      "bias": 0.33204777712567873,
+      "r2": -0.8681751678528635,
+      "mae_percent_of_mean_observed": 138.73965598960828,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 4,
+      "date_balanced_mae": 7.118917952905442,
+      "date_balanced_rmse": 9.08990931890913,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          5.8603139407145814,
+          8.300045562155372
+        ],
+        "rmse_95pct_interval": [
+          7.279276779027206,
+          10.645923957721005
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "model": "nir_red_ratio",
+      "dates": 60,
+      "n": 82,
+      "mae": 7.204165525944152,
+      "rmse": 8.971320620652364,
+      "bias": 0.48314492722663926,
+      "r2": -0.8637798721166059,
+      "mae_percent_of_mean_observed": 141.03298931285605,
+      "negative_predictions": 0,
+      "outside_training_feature_range": 2,
+      "date_balanced_mae": 7.252277036038799,
+      "date_balanced_rmse": 9.093093033222496,
+      "bootstrap": {
+        "mae_95pct_interval": [
+          6.065778954387059,
+          8.370329909085486
+        ],
+        "rmse_95pct_interval": [
+          7.2200698078036165,
+          10.626111227949085
+        ],
+        "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+      }
+    }
+  ],
+  "folds": [
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-03-30",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-04-09",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-05-09",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-05-11",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-05-14",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-05-16",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-05-18",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-05-21",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-06-20",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-07-13",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-08-12",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-08-17",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-08-26",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-08-29",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-09-08",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-09-11",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-09-15",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-09-21",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-09-23",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-09-28",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-10-06",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-10-28",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-11-02",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-11-10",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-11-14",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-11-24",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-11-25",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-02",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-04",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-10",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-12",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-20",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-25",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2025-12-27",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-02-15",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-02-28",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-03-14",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-03-15",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-04-03",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-04-24",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-04-29",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-05-09",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-05-11",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-05-13",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-05-26",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-06-08",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-06-10",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-06-20",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-06-25",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 78,
+      "test_rows": 4,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-06-28",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-07-08",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-07-12",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-07-13",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-07-15",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 78,
+      "test_rows": 4,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-07-18",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-07-30",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-08-04",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-08-24",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 80,
+      "test_rows": 2,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-08-27",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "leave_one_date_out",
+      "fold": "2026-09-08",
+      "train_dates": 59,
+      "test_dates": 1,
+      "train_rows": 81,
+      "test_rows": 1,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "forward_blocks",
+      "fold": "forward_0.4_0.6",
+      "train_dates": 24,
+      "test_dates": 12,
+      "train_rows": 29,
+      "test_rows": 16,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "forward_blocks",
+      "fold": "forward_0.6_0.8",
+      "train_dates": 36,
+      "test_dates": 12,
+      "train_rows": 45,
+      "test_rows": 16,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "forward_blocks",
+      "fold": "forward_0.8_1.0",
+      "train_dates": 48,
+      "test_dates": 12,
+      "train_rows": 61,
+      "test_rows": 21,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "fold": "L1278",
+      "train_dates": 18,
+      "test_dates": 42,
+      "train_rows": 21,
+      "test_rows": 47,
+      "run": true,
+      "reason": ""
+    },
+    {
+      "scheme": "station_and_date_holdout",
+      "fold": "L1279",
+      "train_dates": 30,
+      "test_dates": 30,
+      "train_rows": 33,
+      "test_rows": 35,
+      "run": true,
+      "reason": ""
+    }
+  ],
+  "residual_strata": [
+    {
+      "model": "nir_linear",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 4.115848546552326,
+      "rmse": 6.184184565520228,
+      "bias": -1.1314262570366036,
+      "r2": -0.11534793193795578,
+      "mae_percent_of_mean_observed": 66.49079742689956,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 5.236172941530256,
+      "rmse": 7.267266876275114,
+      "bias": 1.1101018969458496,
+      "r2": -0.06741062481801063,
+      "mae_percent_of_mean_observed": 128.40984638042076,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 3.1169577857902953,
+      "rmse": 3.529981760014226,
+      "bias": 2.318541295852315,
+      "r2": -0.9315719063339365,
+      "mae_percent_of_mean_observed": 108.54950600059226,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 14.84083660138662,
+      "rmse": 16.133544508007983,
+      "bias": -14.84083660138662,
+      "r2": -5.578928388219487,
+      "mae_percent_of_mean_observed": 75.93203243033007,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 3.9709024698928457,
+      "rmse": 5.361833301779627,
+      "bias": 0.39192059096149445,
+      "r2": -0.061756035542924526,
+      "mae_percent_of_mean_observed": 83.31396694192766,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 4.833631507100837,
+      "rmse": 6.975528248781153,
+      "bias": -0.05709689794574768,
+      "r2": -0.0906456976169121,
+      "mae_percent_of_mean_observed": 90.91686033175608,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 5.2763972067467915,
+      "rmse": 7.755057798290071,
+      "bias": -0.29148355168639156,
+      "r2": -0.02749100568947349,
+      "mae_percent_of_mean_observed": 101.45502494514182,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 10.097605108269917,
+      "rmse": 12.83331199530782,
+      "bias": -4.44814008270663,
+      "r2": -0.2202225544044909,
+      "mae_percent_of_mean_observed": 104.60134491437145,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 3.661062172430256,
+      "rmse": 6.167420713978763,
+      "bias": -1.7680471065119479,
+      "r2": -0.1373332293446965,
+      "mae_percent_of_mean_observed": 54.30714575633338,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 3.8219775272029226,
+      "rmse": 3.9973173722850954,
+      "bias": 3.316530976381502,
+      "r2": -2.1925588307201456,
+      "mae_percent_of_mean_observed": 219.7090515930789,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 4.187588339159091,
+      "rmse": 4.832158562880281,
+      "bias": 1.5986580007894662,
+      "r2": -0.2552786506200879,
+      "mae_percent_of_mean_observed": 110.24908570068176,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 3.315697599861581,
+      "rmse": 3.756969139704006,
+      "bias": 3.239030205488776,
+      "r2": -3.8691013300898724,
+      "mae_percent_of_mean_observed": 171.77785009364894,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_linear",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.534726234653414,
+      "rmse": 9.38771567357291,
+      "bias": -4.310491150506027,
+      "r2": -0.3453424953279718,
+      "mae_percent_of_mean_observed": 69.69904847523196,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 4.09158098624895,
+      "rmse": 6.134179723985999,
+      "bias": -1.238106832913687,
+      "r2": -0.09738362032071524,
+      "mae_percent_of_mean_observed": 66.09875932881927,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 5.207152374170855,
+      "rmse": 7.131848110227564,
+      "bias": 1.1277524884944796,
+      "r2": -0.02800084983875295,
+      "mae_percent_of_mean_observed": 127.6981573972444,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 3.17810647146071,
+      "rmse": 3.6410607875079366,
+      "bias": 2.1768931111499166,
+      "r2": -1.0550472733263199,
+      "mae_percent_of_mean_observed": 110.67903744704593,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 14.247098153765764,
+      "rmse": 15.667317660235872,
+      "bias": -14.247098153765764,
+      "r2": -5.204186923937242,
+      "mae_percent_of_mean_observed": 72.89421399254279,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 4.11676652912824,
+      "rmse": 5.3947138777444845,
+      "bias": 0.3611253369407864,
+      "r2": -0.07481805799075958,
+      "mae_percent_of_mean_observed": 86.37435774761798,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 4.599944327095632,
+      "rmse": 6.897756194606065,
+      "bias": -0.32062193370536907,
+      "r2": -0.06646146298901123,
+      "mae_percent_of_mean_observed": 86.52138569231707,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 5.338728789197475,
+      "rmse": 7.533750640277652,
+      "bias": -0.053667736736165615,
+      "r2": 0.030315544391055882,
+      "mae_percent_of_mean_observed": 102.65354204016229,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 9.86339063598789,
+      "rmse": 12.42415625173119,
+      "bias": -4.110499525364682,
+      "r2": -0.1436558401337824,
+      "mae_percent_of_mean_observed": 102.17511131378778,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 3.8424138910365486,
+      "rmse": 6.277117505716168,
+      "bias": -1.8943370954793997,
+      "r2": -0.17815137676660164,
+      "mae_percent_of_mean_observed": 56.99726511286312,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 3.660221157592517,
+      "rmse": 3.9285662067053613,
+      "bias": 3.1850756013514485,
+      "r2": -2.0836835215770404,
+      "mae_percent_of_mean_observed": 210.41037353877573,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 4.1088978932176445,
+      "rmse": 4.711804692395545,
+      "bias": 1.5692250323095938,
+      "r2": -0.1935272789532012,
+      "mae_percent_of_mean_observed": 108.17735633862954,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 3.274002773487626,
+      "rmse": 3.781601948396665,
+      "bias": 3.137360577809585,
+      "r2": -3.9331597948065182,
+      "mae_percent_of_mean_observed": 169.61774730416508,
+      "negative_predictions": 0
+    },
+    {
+      "model": "nir_red_ratio",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.528157394606157,
+      "rmse": 9.21064465582837,
+      "bias": -4.274703313052282,
+      "r2": -0.29506945549221175,
+      "mae_percent_of_mean_observed": 69.62898557061449,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 4.528169881027209,
+      "rmse": 6.454056352460299,
+      "bias": -0.9802594178743931,
+      "r2": -0.21481735430234372,
+      "mae_percent_of_mean_observed": 73.1517748694061,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 4.862516998021812,
+      "rmse": 6.826315709654265,
+      "bias": 0.8762225743085329,
+      "r2": 0.058192719713216934,
+      "mae_percent_of_mean_observed": 119.24645494151461,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 3.258328882660472,
+      "rmse": 3.8917919222773807,
+      "bias": 2.1352412661280784,
+      "r2": -1.3478220777312728,
+      "mae_percent_of_mean_observed": 113.47282026489779,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 14.001014408100993,
+      "rmse": 15.21950066398796,
+      "bias": -14.001014408100993,
+      "r2": -4.854588615779015,
+      "mae_percent_of_mean_observed": 71.63514488085615,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 4.06703363644072,
+      "rmse": 5.429231983891853,
+      "bias": 0.31883060733122576,
+      "r2": -0.08861652038268453,
+      "mae_percent_of_mean_observed": 85.33090613713148,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 4.820684489367245,
+      "rmse": 6.750267824871166,
+      "bias": -0.1827357674837336,
+      "r2": -0.021342714960367548,
+      "mae_percent_of_mean_observed": 90.67333696815906,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 5.222822122949745,
+      "rmse": 7.6344288536987035,
+      "bias": -0.2021283260479055,
+      "r2": 0.0042253742967715,
+      "mae_percent_of_mean_observed": 100.42487856872475,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 9.271840406416915,
+      "rmse": 11.732249730430853,
+      "bias": -3.695808381825137,
+      "r2": -0.019821445163942464,
+      "mae_percent_of_mean_observed": 96.04722762908595,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 3.866759040790368,
+      "rmse": 6.404769980912232,
+      "bias": -2.4207806698495635,
+      "r2": -0.2265567656986509,
+      "mae_percent_of_mean_observed": 57.35839407868529,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 4.209647389170066,
+      "rmse": 4.49251032916388,
+      "bias": 3.755567889036827,
+      "r2": -3.0325505068815186,
+      "mae_percent_of_mean_observed": 241.99452478013743,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 3.9340658369455723,
+      "rmse": 4.7825406122622995,
+      "bias": 1.4866205338282041,
+      "r2": -0.22963190217831286,
+      "mae_percent_of_mean_observed": 103.57445061006962,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 3.267572103214663,
+      "rmse": 3.8005722354095104,
+      "bias": 2.9679451834895523,
+      "r2": -3.982778018881919,
+      "mae_percent_of_mean_observed": 169.28459065133978,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_green_ratio",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.6221891516261495,
+      "rmse": 9.172084880925212,
+      "bias": -4.054355777657896,
+      "r2": -0.2842487022674254,
+      "mae_percent_of_mean_observed": 70.63192337633197,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 4.313755687258838,
+      "rmse": 6.318688458284116,
+      "bias": -1.193871703209279,
+      "r2": -0.16439241435520957,
+      "mae_percent_of_mean_observed": 69.6879519026337,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 4.834202186014986,
+      "rmse": 6.952982987138141,
+      "bias": 1.1622814997738524,
+      "r2": 0.022916596255102006,
+      "mae_percent_of_mean_observed": 118.55207362510522,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 3.0406391968748268,
+      "rmse": 3.688200821475085,
+      "bias": 2.264257622352125,
+      "r2": -1.108604252395398,
+      "mae_percent_of_mean_observed": 105.89167561122883,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 14.51830330226093,
+      "rmse": 15.555411799182725,
+      "bias": -14.51830330226093,
+      "r2": -5.115875014434999,
+      "mae_percent_of_mean_observed": 74.28181488620693,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 4.0401722712343116,
+      "rmse": 5.405205878487193,
+      "bias": 0.43218081524090657,
+      "r2": -0.07900287974143128,
+      "mae_percent_of_mean_observed": 84.7673247070184,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 4.924905575101088,
+      "rmse": 6.94827196655826,
+      "bias": 0.24084268976470385,
+      "r2": -0.08213913922440597,
+      "mae_percent_of_mean_observed": 92.63365477090589,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 4.706052576985668,
+      "rmse": 7.424469154257013,
+      "bias": -0.7451130169418102,
+      "r2": 0.05824319826690294,
+      "mae_percent_of_mean_observed": 90.48838874009023,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 10.371822931097293,
+      "rmse": 12.761043287132832,
+      "bias": -3.68392507023521,
+      "r2": -0.20651828054879195,
+      "mae_percent_of_mean_observed": 107.44197422792448,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 3.703820546681386,
+      "rmse": 6.033327506629053,
+      "bias": -1.9027144659113238,
+      "r2": -0.0884146516365174,
+      "mae_percent_of_mean_observed": 54.9414112108363,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 3.402473004313973,
+      "rmse": 3.5809077558061215,
+      "bias": 2.826268762148605,
+      "r2": -1.5620518486422745,
+      "mae_percent_of_mean_observed": 195.5935406548471,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 3.9751391876612483,
+      "rmse": 4.931415295424484,
+      "bias": 1.9204027286730716,
+      "r2": -0.3073773137459008,
+      "mae_percent_of_mean_observed": 104.65581272026598,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 3.1112292683463534,
+      "rmse": 3.8650923001489472,
+      "bias": 3.071993370756775,
+      "r2": -4.153393392487957,
+      "mae_percent_of_mean_observed": 161.1848664628777,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_linear",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.553112676877267,
+      "rmse": 9.142287437995803,
+      "bias": -4.094935244669653,
+      "r2": -0.2759179534384901,
+      "mae_percent_of_mean_observed": 69.89515730700697,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 4.782534835355124,
+      "rmse": 6.557167997063343,
+      "bias": -1.3310133098985464,
+      "r2": -0.2539438867332826,
+      "mae_percent_of_mean_observed": 77.26099523051175,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 4.626880486296146,
+      "rmse": 6.303305679666926,
+      "bias": 1.2087372214502898,
+      "r2": 0.19698059384422595,
+      "mae_percent_of_mean_observed": 113.46779777908175,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 3.3331600390428915,
+      "rmse": 3.907597118145353,
+      "bias": 2.0634146756558884,
+      "r2": -1.3669305701201333,
+      "mae_percent_of_mean_observed": 116.07885012381846,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 13.543273733327071,
+      "rmse": 14.474009711531455,
+      "bias": -13.543273733327071,
+      "r2": -4.29508938187199,
+      "mae_percent_of_mean_observed": 69.29314889402835,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 4.505636511505386,
+      "rmse": 5.561566916973184,
+      "bias": 0.4459407349708814,
+      "r2": -0.14233230041064915,
+      "mae_percent_of_mean_observed": 94.53328411312796,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 5.119452033995269,
+      "rmse": 6.816397990934211,
+      "bias": 0.23249517119937702,
+      "r2": -0.04145225917730966,
+      "mae_percent_of_mean_observed": 96.29292279854434,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 4.360889977152269,
+      "rmse": 6.7625075759869615,
+      "bias": -0.8961614034438613,
+      "r2": 0.21868982475000953,
+      "mae_percent_of_mean_observed": 83.85157221470614,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 9.992016923050736,
+      "rmse": 11.653028144310532,
+      "bias": -2.663913312677102,
+      "r2": -0.006095330869187121,
+      "mae_percent_of_mean_observed": 103.50755425187579,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 4.4514700189700385,
+      "rmse": 6.494236881185986,
+      "bias": -2.055234022457685,
+      "r2": -0.261063133131062,
+      "mae_percent_of_mean_observed": 66.03182895134493,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 3.0953216395766887,
+      "rmse": 3.437245632937436,
+      "bias": 2.3303223123331347,
+      "r2": -1.36060207558041,
+      "mae_percent_of_mean_observed": 177.93672960307308,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 3.8987900550156134,
+      "rmse": 4.411040872968672,
+      "bias": 1.958916165622106,
+      "r2": -0.04601991455864862,
+      "mae_percent_of_mean_observed": 102.64572448176648,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 3.206712374425422,
+      "rmse": 3.8419412754305413,
+      "bias": 2.788170367133302,
+      "r2": -4.091842971619515,
+      "mae_percent_of_mean_observed": 166.1316030661225,
+      "negative_predictions": 0
+    },
+    {
+      "model": "red_nir_linear",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.71185406401852,
+      "rmse": 8.774710105757165,
+      "bias": -3.81478789572271,
+      "r2": -0.17538071291254242,
+      "mae_percent_of_mean_observed": 71.58828464548844,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 3.4659417745753394,
+      "rmse": 5.970375025438263,
+      "bias": -1.8219934038990773,
+      "r2": -0.03955795274296903,
+      "mae_percent_of_mean_observed": 55.99166971772047,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 5.371588063065562,
+      "rmse": 7.31240609110646,
+      "bias": 1.6929953450364739,
+      "r2": -0.08071183285994743,
+      "mae_percent_of_mean_observed": 131.73071357638716,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 2.828994033094491,
+      "rmse": 3.492325289000085,
+      "bias": 2.27622340306517,
+      "r2": -0.8905812011184417,
+      "mae_percent_of_mean_observed": 98.52103425044284,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 14.853253934732573,
+      "rmse": 15.970624017210636,
+      "bias": -14.853253934732573,
+      "r2": -5.446728005540707,
+      "mae_percent_of_mean_observed": 75.99556478929661,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 3.803272773008989,
+      "rmse": 5.386242623808862,
+      "bias": 0.4909088320582474,
+      "r2": -0.07144516069543805,
+      "mae_percent_of_mean_observed": 79.79690875917056,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 4.392064656239333,
+      "rmse": 6.807207640957484,
+      "bias": -0.291838409825051,
+      "r2": -0.03864583314423675,
+      "mae_percent_of_mean_observed": 82.61133028712348,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 5.200550355578117,
+      "rmse": 7.731129498371545,
+      "bias": -0.21661384098099934,
+      "r2": -0.02116012247726018,
+      "mae_percent_of_mean_observed": 99.99663508634028,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 10.14467930580561,
+      "rmse": 12.828709178790435,
+      "bias": -4.5038043053349535,
+      "r2": -0.21934741736645624,
+      "mae_percent_of_mean_observed": 105.08898770889562,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 3.6410179592031198,
+      "rmse": 6.057384873009345,
+      "bias": -1.6690964162166784,
+      "r2": -0.09711187352716899,
+      "mae_percent_of_mean_observed": 54.009815648832216,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 2.333802788212817,
+      "rmse": 2.8448905100715236,
+      "bias": 1.6606159201178066,
+      "r2": -0.6170846701999217,
+      "mae_percent_of_mean_observed": 134.16028575625296,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 4.846247218480521,
+      "rmse": 5.536782443310372,
+      "bias": 3.2266977862190473,
+      "r2": -0.6480588174457917,
+      "mae_percent_of_mean_observed": 127.58998297913905,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 3.107780327173613,
+      "rmse": 3.8610923191092805,
+      "bias": 3.0995018025706935,
+      "r2": -4.142732426164349,
+      "mae_percent_of_mean_observed": 161.00618560254304,
+      "negative_predictions": 0
+    },
+    {
+      "model": "seasonal_harmonic",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.233676978703067,
+      "rmse": 9.213237997520483,
+      "bias": -4.212871896721537,
+      "r2": -0.29579883558557474,
+      "mae_percent_of_mean_observed": 66.48807284588662,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 4.15761803351343,
+      "rmse": 5.774702529951893,
+      "bias": -1.6668820772320028,
+      "r2": 0.02746617240693916,
+      "mae_percent_of_mean_observed": 67.16557602109314,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 3.2266904179539004,
+      "rmse": 5.96257904484169,
+      "bias": -0.9743675951446789,
+      "r2": 0.28144899348114505,
+      "mae_percent_of_mean_observed": 79.13008709096358,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 2.2493773784855735,
+      "rmse": 2.8002566936469204,
+      "bias": 0.4862141258699812,
+      "r2": -0.21551870287254005,
+      "mae_percent_of_mean_observed": 78.33561441115508,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 12.919993183829574,
+      "rmse": 14.366451319516372,
+      "bias": -12.919993183829574,
+      "r2": -4.216684685813527,
+      "mae_percent_of_mean_observed": 66.10418049764993,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 3.15190940694167,
+      "rmse": 4.446720434626799,
+      "bias": -0.9566037374047102,
+      "r2": 0.269739558531388,
+      "mae_percent_of_mean_observed": 66.1305781556945,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 3.8141432711854613,
+      "rmse": 6.065377721550021,
+      "bias": -1.6442470205947768,
+      "r2": 0.17539646859990465,
+      "mae_percent_of_mean_observed": 71.74107719263542,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 4.075978734840951,
+      "rmse": 6.879129110242824,
+      "bias": -1.2546300105750543,
+      "r2": 0.19150959142561297,
+      "mae_percent_of_mean_observed": 78.37327403827523,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 8.03237035599622,
+      "rmse": 11.416434249641453,
+      "bias": -5.257061140103772,
+      "r2": 0.034343868636532826,
+      "mae_percent_of_mean_observed": 83.20752624792325,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 3.953930780291558,
+      "rmse": 5.718395308522589,
+      "bias": -2.4866902023553834,
+      "r2": 0.022247518233897257,
+      "mae_percent_of_mean_observed": 58.651474649284225,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 2.3842632421715724,
+      "rmse": 3.056155584991544,
+      "bias": 1.3431071994656878,
+      "r2": -0.8661758570929303,
+      "mae_percent_of_mean_observed": 137.06104024874418,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 2.231470012743224,
+      "rmse": 3.300066058027807,
+      "bias": -0.24835272956835475,
+      "r2": 0.41453214456514,
+      "mae_percent_of_mean_observed": 58.74921523991823,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 1.6613573920219509,
+      "rmse": 1.940861121448675,
+      "bias": -0.5047756490555199,
+      "r2": -0.2994586914398978,
+      "mae_percent_of_mean_observed": 86.07069626935703,
+      "negative_predictions": 0
+    },
+    {
+      "model": "station_median",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 6.39262632770198,
+      "rmse": 8.701461216845617,
+      "bias": -2.3964076165642054,
+      "r2": -0.15583910297829595,
+      "mae_percent_of_mean_observed": 68.18341829467258,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "deployment_metadata",
+      "group": "after",
+      "dates": 26,
+      "n": 40,
+      "mae": 3.9744375567883266,
+      "rmse": 6.698794423827636,
+      "bias": -3.1943432349711687,
+      "r2": -0.3086960198302695,
+      "mae_percent_of_mean_observed": 64.20632816910543,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "deployment_metadata",
+      "group": "before",
+      "dates": 34,
+      "n": 42,
+      "mae": 4.13101030176594,
+      "rmse": 7.12578138297148,
+      "bias": -1.0212348848581352,
+      "r2": -0.0262526499086968,
+      "mae_percent_of_mean_observed": 101.3072723474015,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "observed_range_diagnostic",
+      "group": "0_to_10",
+      "dates": 55,
+      "n": 71,
+      "mae": 2.115710513902381,
+      "rmse": 2.592236475519837,
+      "bias": 0.163364702756973,
+      "r2": -0.041634107682644084,
+      "mae_percent_of_mean_observed": 73.68060362297567,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "observed_range_diagnostic",
+      "group": "10_to_40",
+      "dates": 10,
+      "n": 11,
+      "mae": 16.569498950784862,
+      "rmse": 17.71101305188383,
+      "bias": -16.569498950784862,
+      "r2": -6.928342118964127,
+      "mae_percent_of_mean_observed": 84.77660427632249,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "platform",
+      "group": "sentinel-2a",
+      "dates": 22,
+      "n": 26,
+      "mae": 3.3990572467446305,
+      "rmse": 5.530823297466693,
+      "bias": -1.7578623976845014,
+      "r2": -0.12973787790557845,
+      "mae_percent_of_mean_observed": 71.3160157511105,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "platform",
+      "group": "sentinel-2b",
+      "dates": 26,
+      "n": 32,
+      "mae": 4.228487308137121,
+      "rmse": 7.092011644626802,
+      "bias": -2.288819295354193,
+      "r2": -0.12737491422528335,
+      "mae_percent_of_mean_observed": 79.53456721799,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "platform",
+      "group": "sentinel-2c",
+      "dates": 20,
+      "n": 24,
+      "mae": 4.533035527914762,
+      "rmse": 7.965408297383378,
+      "bias": -2.1549564488232167,
+      "r2": -0.08398690368220607,
+      "mae_percent_of_mean_observed": 87.16160185471729,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "season",
+      "group": "DJF",
+      "dates": 9,
+      "n": 11,
+      "mae": 9.156866306608373,
+      "rmse": 13.385634615804616,
+      "bias": -6.595162397081207,
+      "r2": -0.32751511552725243,
+      "mae_percent_of_mean_observed": 94.85620804163514,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "season",
+      "group": "JJA",
+      "dates": 20,
+      "n": 30,
+      "mae": 4.113256826996803,
+      "rmse": 6.920706990505575,
+      "bias": -3.7810130049784987,
+      "r2": -0.4321269016756626,
+      "mae_percent_of_mean_observed": 61.014871508906104,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "season",
+      "group": "MAM",
+      "dates": 17,
+      "n": 22,
+      "mae": 2.113319486718286,
+      "rmse": 2.6360164761405205,
+      "bias": 1.3411659574644093,
+      "r2": -0.3883465576886951,
+      "mae_percent_of_mean_observed": 121.48564894358539,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "season",
+      "group": "SON",
+      "dates": 14,
+      "n": 19,
+      "mae": 3.255982739752844,
+      "rmse": 4.394350844139266,
+      "bias": -0.7470562689398506,
+      "r2": -0.038119251212674676,
+      "mae_percent_of_mean_observed": 85.7221605949539,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "station",
+      "group": "L1278",
+      "dates": 42,
+      "n": 47,
+      "mae": 1.8146873883744479,
+      "rmse": 2.0751799539297915,
+      "bias": 1.1135880839317376,
+      "r2": -0.48554251085681255,
+      "mae_percent_of_mean_observed": 94.01433296571876,
+      "negative_predictions": 0
+    },
+    {
+      "model": "training_median",
+      "dimension": "station",
+      "group": "L1279",
+      "dates": 30,
+      "n": 35,
+      "mae": 7.062560791202955,
+      "rmse": 10.316669349198298,
+      "bias": -6.371549557362287,
+      "r2": -0.6247705116653033,
+      "mae_percent_of_mean_observed": 75.32890426762235,
+      "negative_predictions": 0
+    }
+  ],
+  "residual_covariates": [
+    {
+      "model": "training_median",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.3050375286903753
+    },
+    {
+      "model": "training_median",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.09399549659805487
+    },
+    {
+      "model": "training_median",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.1121293698822378
+    },
+    {
+      "model": "training_median",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.07494182049183368
+    },
+    {
+      "model": "training_median",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.14775885186117937
+    },
+    {
+      "model": "station_median",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.2320137369742798
+    },
+    {
+      "model": "station_median",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.12616431693882055
+    },
+    {
+      "model": "station_median",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.14274239226723193
+    },
+    {
+      "model": "station_median",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.05813439693934945
+    },
+    {
+      "model": "station_median",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.07865143653476823
+    },
+    {
+      "model": "seasonal_harmonic",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.24235779514025002
+    },
+    {
+      "model": "seasonal_harmonic",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.16526170617544855
+    },
+    {
+      "model": "seasonal_harmonic",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.006951305731563623
+    },
+    {
+      "model": "seasonal_harmonic",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.0720438418601464
+    },
+    {
+      "model": "seasonal_harmonic",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.19306430032662666
+    },
+    {
+      "model": "red_linear",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.28255780337218456
+    },
+    {
+      "model": "red_linear",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.2062865011158559
+    },
+    {
+      "model": "red_linear",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.04827000765759093
+    },
+    {
+      "model": "red_linear",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.09855416847999783
+    },
+    {
+      "model": "red_linear",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.18797237859800914
+    },
+    {
+      "model": "nir_linear",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.2972058056712052
+    },
+    {
+      "model": "nir_linear",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.11540749922523925
+    },
+    {
+      "model": "nir_linear",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.09887044982027667
+    },
+    {
+      "model": "nir_linear",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.08723827691646122
+    },
+    {
+      "model": "nir_linear",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.17025241285323334
+    },
+    {
+      "model": "red_nir_linear",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.29829712459271696
+    },
+    {
+      "model": "red_nir_linear",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.316100546066189
+    },
+    {
+      "model": "red_nir_linear",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.015789958015154332
+    },
+    {
+      "model": "red_nir_linear",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.05904082860951863
+    },
+    {
+      "model": "red_nir_linear",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.1333096185930909
+    },
+    {
+      "model": "red_green_ratio",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.38935004281166297
+    },
+    {
+      "model": "red_green_ratio",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.09557882868997054
+    },
+    {
+      "model": "red_green_ratio",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.04634812435064896
+    },
+    {
+      "model": "red_green_ratio",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.07376659298417408
+    },
+    {
+      "model": "red_green_ratio",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.21465025979859725
+    },
+    {
+      "model": "nir_red_ratio",
+      "covariate": "phycocyanin_rfu",
+      "n": 81,
+      "residual_pearson_correlation_descriptive_only": -0.32157019452579966
+    },
+    {
+      "model": "nir_red_ratio",
+      "covariate": "tile_cloud_percent",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.12081305965571795
+    },
+    {
+      "model": "nir_red_ratio",
+      "covariate": "sun_elevation",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.07444970351394278
+    },
+    {
+      "model": "nir_red_ratio",
+      "covariate": "view_angle",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": -0.044842006165092485
+    },
+    {
+      "model": "nir_red_ratio",
+      "covariate": "red_cv",
+      "n": 82,
+      "residual_pearson_correlation_descriptive_only": 0.13654406721731105
+    }
+  ],
+  "sensitivities": {
+    "post_current_commissioning_only": {
+      "rows": 40,
+      "dates": 26,
+      "metrics": [
+        {
+          "scheme": "leave_one_date_out",
+          "model": "training_median",
+          "dates": 26,
+          "n": 40,
+          "mae": 3.9086061578244005,
+          "rmse": 6.387398397208366,
+          "bias": -2.306476356461647,
+          "r2": -0.18985349682180286,
+          "mae_percent_of_mean_observed": 63.14283368836065,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 4.050283238005184,
+          "date_balanced_rmse": 6.828456314064574,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.574922032294066,
+              5.659544547386473
+            ],
+            "rmse_95pct_interval": [
+              3.7221871649465483,
+              8.892486837706805
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "station_median",
+          "dates": 26,
+          "n": 40,
+          "mae": 3.6762139003723897,
+          "rmse": 5.620381280439925,
+          "bias": -0.768174858763815,
+          "r2": 0.07875098066348152,
+          "mae_percent_of_mean_observed": 59.38857831694642,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 3.937886951921082,
+          "date_balanced_rmse": 6.094285844116397,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.445923752758818,
+              5.293828971052166
+            ],
+            "rmse_95pct_interval": [
+              3.42978842935687,
+              7.828099203443091
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "seasonal_harmonic",
+          "dates": 26,
+          "n": 40,
+          "mae": 4.113597162129336,
+          "rmse": 5.954123686559421,
+          "bias": 0.11866288026353633,
+          "r2": -0.03390630924804294,
+          "mae_percent_of_mean_observed": 66.45442671405482,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 5,
+          "date_balanced_mae": 4.448713147456679,
+          "date_balanced_rmse": 6.5423331220892935,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.816261544640399,
+              5.967450726804894
+            ],
+            "rmse_95pct_interval": [
+              4.047971848763505,
+              8.116661755284104
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_linear",
+          "dates": 26,
+          "n": 40,
+          "mae": 4.755350983481337,
+          "rmse": 6.564757857620065,
+          "bias": 0.03674595314750824,
+          "r2": -0.2568484233624355,
+          "mae_percent_of_mean_observed": 76.82184496349407,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 5.061005549576984,
+          "date_balanced_rmse": 7.111906556260912,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.4260112292430556,
+              6.448044887226133
+            ],
+            "rmse_95pct_interval": [
+              4.304957910672016,
+              9.127055159559946
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_linear",
+          "dates": 26,
+          "n": 40,
+          "mae": 4.812364501880407,
+          "rmse": 6.822928201267861,
+          "bias": 0.1291592554728198,
+          "r2": -0.35764768566823246,
+          "mae_percent_of_mean_observed": 77.74288816019839,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 5.053200627132683,
+          "date_balanced_rmse": 7.263510474382473,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.4144816333446917,
+              6.66035630417509
+            ],
+            "rmse_95pct_interval": [
+              4.367356512100159,
+              9.503525771069137
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_nir_linear",
+          "dates": 26,
+          "n": 40,
+          "mae": 4.9308601656414295,
+          "rmse": 6.94290549623488,
+          "bias": 0.23755156967998187,
+          "r2": -0.4058144048583443,
+          "mae_percent_of_mean_observed": 79.65716442327904,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 3,
+          "date_balanced_mae": 5.193116124047173,
+          "date_balanced_rmse": 7.38304062708874,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.4949605875894965,
+              6.826559228223914
+            ],
+            "rmse_95pct_interval": [
+              4.471350159950057,
+              9.644814873457351
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_green_ratio",
+          "dates": 26,
+          "n": 40,
+          "mae": 4.533489262585289,
+          "rmse": 6.326550319731492,
+          "bias": -0.06739637782995067,
+          "r2": -0.16729174603949337,
+          "mae_percent_of_mean_observed": 73.2377085274633,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 4.883876811298446,
+          "date_balanced_rmse": 6.968769181995146,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.1913089686378813,
+              6.286471303513663
+            ],
+            "rmse_95pct_interval": [
+              3.8719232986962044,
+              8.886050550930877
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_red_ratio",
+          "dates": 26,
+          "n": 40,
+          "mae": 4.516690155050203,
+          "rmse": 6.159978271016842,
+          "bias": -0.001025660437053899,
+          "r2": -0.10663357316255384,
+          "mae_percent_of_mean_observed": 72.96632194862437,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 4.843623718136608,
+          "date_balanced_rmse": 6.705187558265745,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.2846332800912967,
+              6.123266498639938
+            ],
+            "rmse_95pct_interval": [
+              3.9154167444945824,
+              8.565461031897524
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        }
+      ]
+    },
+    "shore_buffer_200m": {
+      "rows": 82,
+      "dates": 60,
+      "metrics": [
+        {
+          "scheme": "leave_one_date_out",
+          "model": "training_median",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.0546333529963725,
+          "rmse": 6.920786824945744,
+          "bias": -2.0812877385718096,
+          "r2": -0.10915644182190465,
+          "mae_percent_of_mean_observed": 79.3758916673065,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 3.9733438008775313,
+          "date_balanced_rmse": 6.973153151166468,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.9565753367947916,
+              5.227702669837097
+            ],
+            "rmse_95pct_interval": [
+              4.699563397411296,
+              8.832912067752895
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "station_median",
+          "dates": 60,
+          "n": 82,
+          "mae": 3.680801449934159,
+          "rmse": 5.871683002123248,
+          "bias": -1.3121795376263004,
+          "r2": 0.20162475313863204,
+          "mae_percent_of_mean_observed": 72.05753805653654,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 3.6627736413230516,
+          "date_balanced_rmse": 5.961322490551693,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.8223256126992307,
+              4.688365304378257
+            ],
+            "rmse_95pct_interval": [
+              4.101400157071419,
+              7.513846731658774
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "seasonal_harmonic",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.442004507704478,
+          "rmse": 6.691466167957672,
+          "bias": -0.021633312980868163,
+          "r2": -0.03687029910266881,
+          "mae_percent_of_mean_observed": 86.95929764615471,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 4,
+          "date_balanced_mae": 4.5564950907596975,
+          "date_balanced_rmse": 6.857551114708874,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.4606209202014027,
+              5.53427966308336
+            ],
+            "rmse_95pct_interval": [
+              4.848101891911983,
+              8.330126107608715
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_linear",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.5803258451583275,
+          "rmse": 6.65113211977927,
+          "bias": 0.01293847392842241,
+          "r2": -0.024408117237218807,
+          "mae_percent_of_mean_observed": 89.66715765251013,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 4.613284371307453,
+          "date_balanced_rmse": 6.726334859620007,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.658040052861473,
+              5.585996883134885
+            ],
+            "rmse_95pct_interval": [
+              4.933618413849078,
+              8.195818672570951
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_linear",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.689673236662974,
+          "rmse": 6.760645263761922,
+          "bias": 0.01667352914953084,
+          "r2": -0.05842029535039117,
+          "mae_percent_of_mean_observed": 91.80780662037824,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 4.748361345900171,
+          "date_balanced_rmse": 6.88516327307257,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.7168140573465447,
+              5.741484669224248
+            ],
+            "rmse_95pct_interval": [
+              4.906500356907031,
+              8.511018984942746
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_nir_linear",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.702809437056623,
+          "rmse": 6.428393485824038,
+          "bias": -0.03016547676865468,
+          "r2": 0.04305546618378708,
+          "mae_percent_of_mean_observed": 92.06496861964898,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 4,
+          "date_balanced_mae": 4.844128485750105,
+          "date_balanced_rmse": 6.598801099987634,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.8294958627410933,
+              5.626350221503321
+            ],
+            "rmse_95pct_interval": [
+              5.03313361965406,
+              7.806448549138393
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_green_ratio",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.699420843390298,
+          "rmse": 6.647330616890031,
+          "bias": -0.029378397488016444,
+          "r2": -0.023237436083293872,
+          "mae_percent_of_mean_observed": 91.99863151334466,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 4.716716935606809,
+          "date_balanced_rmse": 6.739611045675389,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.7735054333786415,
+              5.720924030031111
+            ],
+            "rmse_95pct_interval": [
+              4.952451614455641,
+              8.232587401776694
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_red_ratio",
+          "dates": 60,
+          "n": 82,
+          "mae": 4.662971209330901,
+          "rmse": 6.663866204659466,
+          "bias": -0.02632522926560172,
+          "r2": -0.02833448267247629,
+          "mae_percent_of_mean_observed": 91.28507199944346,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 4.760776669281541,
+          "date_balanced_rmse": 6.822424091886895,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.7184582013754035,
+              5.7434796946166635
+            ],
+            "rmse_95pct_interval": [
+              4.8579087948588855,
+              8.299453838565897
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        }
+      ]
+    },
+    "shore_buffer_300m": {
+      "rows": 35,
+      "dates": 30,
+      "metrics": [
+        {
+          "scheme": "leave_one_date_out",
+          "model": "training_median",
+          "dates": 30,
+          "n": 35,
+          "mae": 6.39262632770198,
+          "rmse": 8.701461216845617,
+          "bias": -2.3964076165642054,
+          "r2": -0.15583910297829595,
+          "mae_percent_of_mean_observed": 68.18341829467258,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 6.822025566796465,
+          "date_balanced_rmse": 9.224173656566371,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              4.50195312435074,
+              8.243122624647244
+            ],
+            "rmse_95pct_interval": [
+              6.062757541855395,
+              10.875134339371698
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "station_median",
+          "dates": 30,
+          "n": 35,
+          "mae": 6.39262632770198,
+          "rmse": 8.701461216845617,
+          "bias": -2.3964076165642054,
+          "r2": -0.15583910297829595,
+          "mae_percent_of_mean_observed": 68.18341829467258,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 6.822025566796465,
+          "date_balanced_rmse": 9.224173656566371,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              4.50195312435074,
+              8.243122624647244
+            ],
+            "rmse_95pct_interval": [
+              6.062757541855395,
+              10.875134339371698
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "seasonal_harmonic",
+          "dates": 30,
+          "n": 35,
+          "mae": 6.750245257616044,
+          "rmse": 8.303395226895487,
+          "bias": 0.0393211164633005,
+          "r2": -0.052505624533900175,
+          "mae_percent_of_mean_observed": 71.99776310984797,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 4,
+          "date_balanced_mae": 7.1739281930878,
+          "date_balanced_rmse": 8.685624840704891,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              5.103657152382308,
+              8.3891618750046
+            ],
+            "rmse_95pct_interval": [
+              6.465154488106643,
+              9.880346400538915
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_linear",
+          "dates": 30,
+          "n": 35,
+          "mae": 7.034345957341785,
+          "rmse": 8.5979952229889,
+          "bias": 0.01503756072267254,
+          "r2": -0.12851517722627737,
+          "mae_percent_of_mean_observed": 75.0279663243338,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 7.352813041335897,
+          "date_balanced_rmse": 8.884735891649896,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              5.204875322717949,
+              8.784678400824793
+            ],
+            "rmse_95pct_interval": [
+              6.516576586414484,
+              10.35345324929789
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_linear",
+          "dates": 30,
+          "n": 35,
+          "mae": 7.046108492123581,
+          "rmse": 8.947066285203528,
+          "bias": 0.16396077777061632,
+          "r2": -0.2220087481876427,
+          "mae_percent_of_mean_observed": 75.15342490553657,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 7.381283222766608,
+          "date_balanced_rmse": 9.261836412472539,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              5.060803610375127,
+              8.953650014700008
+            ],
+            "rmse_95pct_interval": [
+              6.637156349375557,
+              10.798589063272376
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_nir_linear",
+          "dates": 30,
+          "n": 35,
+          "mae": 7.094953344785852,
+          "rmse": 8.334942755248607,
+          "bias": -0.05868477725915859,
+          "r2": -0.06051849803583931,
+          "mae_percent_of_mean_observed": 75.6744015511104,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 3,
+          "date_balanced_mae": 7.5026170624325585,
+          "date_balanced_rmse": 8.767632223318126,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              5.5609084260607355,
+              8.675785590913797
+            ],
+            "rmse_95pct_interval": [
+              6.5542593275775065,
+              9.86994817739773
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_green_ratio",
+          "dates": 30,
+          "n": 35,
+          "mae": 6.824035835307453,
+          "rmse": 8.51879702508071,
+          "bias": -0.05306344890271763,
+          "r2": -0.10782087990476441,
+          "mae_percent_of_mean_observed": 72.78480955477094,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 7.173788337258384,
+          "date_balanced_rmse": 8.967462769206408,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              5.156281415201924,
+              8.610840655684356
+            ],
+            "rmse_95pct_interval": [
+              6.429997417990852,
+              10.357263480940421
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_red_ratio",
+          "dates": 30,
+          "n": 35,
+          "mae": 6.468708191797921,
+          "rmse": 8.448672830097886,
+          "bias": -0.04324776984016968,
+          "r2": -0.089657445068412,
+          "mae_percent_of_mean_observed": 68.99490348063006,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 7.051156556107691,
+          "date_balanced_rmse": 8.98805277403166,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              4.772354083181172,
+              8.356464305232334
+            ],
+            "rmse_95pct_interval": [
+              6.283383046477338,
+              10.422486410371262
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        }
+      ]
+    },
+    "red_cv_max_0.1": {
+      "rows": 70,
+      "dates": 51,
+      "metrics": [
+        {
+          "scheme": "leave_one_date_out",
+          "model": "training_median",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.167764441136805,
+          "rmse": 7.160212518087662,
+          "bias": -2.1353745914995677,
+          "r2": -0.10725269588272957,
+          "mae_percent_of_mean_observed": 77.63632138415387,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 4.419127049764584,
+          "date_balanced_rmse": 7.77686388812967,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.931737506149169,
+              5.637493045425843
+            ],
+            "rmse_95pct_interval": [
+              4.7562713823030505,
+              9.283173961576017
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "station_median",
+          "dates": 51,
+          "n": 70,
+          "mae": 3.823457207530738,
+          "rmse": 6.140995336000933,
+          "bias": -1.1715541578829298,
+          "r2": 0.18553494327280518,
+          "mae_percent_of_mean_observed": 71.22263188210552,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 0,
+          "date_balanced_mae": 4.073088648637721,
+          "date_balanced_rmse": 6.707475136400845,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              2.870630984556759,
+              4.967498826163986
+            ],
+            "rmse_95pct_interval": [
+              4.237757344981674,
+              7.885473716416683
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "seasonal_harmonic",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.68834880406511,
+          "rmse": 6.989169297138186,
+          "bias": -0.0008187590526301517,
+          "r2": -0.05498441051909153,
+          "mae_percent_of_mean_observed": 87.33366764224587,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 4,
+          "date_balanced_mae": 5.115233800697237,
+          "date_balanced_rmse": 7.591388954677693,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.6083263108765493,
+              5.9434529959495705
+            ],
+            "rmse_95pct_interval": [
+              5.228264675843928,
+              8.741518771508915
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_linear",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.912273981840334,
+          "rmse": 6.960525030503805,
+          "bias": 0.019719493640255947,
+          "r2": -0.04635467829079842,
+          "mae_percent_of_mean_observed": 91.50490316030196,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 5.181707472917306,
+          "date_balanced_rmse": 7.430799772440699,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.9119408389861743,
+              6.104949655271376
+            ],
+            "rmse_95pct_interval": [
+              5.187737470905507,
+              8.60968006376904
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_linear",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.952932597451054,
+          "rmse": 7.073872677987569,
+          "bias": 0.031173421125831855,
+          "r2": -0.08071056892414008,
+          "mae_percent_of_mean_observed": 92.26228409993291,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 5.2792810590848145,
+          "date_balanced_rmse": 7.665628243602458,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.9719257623285475,
+              6.228009946051794
+            ],
+            "rmse_95pct_interval": [
+              5.106796385205813,
+              8.821766880275346
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_nir_linear",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.976839491416497,
+          "rmse": 6.822661718820151,
+          "bias": -0.024761504715856055,
+          "r2": -0.005316009148376821,
+          "mae_percent_of_mean_observed": 92.70761716263637,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 4,
+          "date_balanced_mae": 5.366298451440878,
+          "date_balanced_rmse": 7.345003158752386,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.9722815638293705,
+              6.120900591960051
+            ],
+            "rmse_95pct_interval": [
+              5.336280953224522,
+              8.303557254664536
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "red_green_ratio",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.938959154943892,
+          "rmse": 6.928506027847085,
+          "bias": -0.03723597975142557,
+          "r2": -0.03675018028893473,
+          "mae_percent_of_mean_observed": 92.00198947708395,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 5.136427931022038,
+          "date_balanced_rmse": 7.366304111811981,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.930532358021614,
+              6.156764971667554
+            ],
+            "rmse_95pct_interval": [
+              5.179279549224805,
+              8.537682925032255
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        },
+        {
+          "scheme": "leave_one_date_out",
+          "model": "nir_red_ratio",
+          "dates": 51,
+          "n": 70,
+          "mae": 4.856343623248323,
+          "rmse": 6.941074145307289,
+          "bias": -0.022433489433674274,
+          "r2": -0.04051486376256652,
+          "mae_percent_of_mean_observed": 90.46304310412376,
+          "negative_predictions": 0,
+          "outside_training_feature_range": 2,
+          "date_balanced_mae": 5.283018994424308,
+          "date_balanced_rmse": 7.588142170038232,
+          "bootstrap": {
+            "mae_95pct_interval": [
+              3.8066071067761147,
+              6.1230591482413645
+            ],
+            "rmse_95pct_interval": [
+              4.948976542392989,
+              8.707809237262213
+            ],
+            "interpretation": "Date-cluster bootstrap sampling uncertainty in fixed out-of-fold conditional errors; excludes fitting/selection uncertainty and sensor/atmospheric systematic uncertainty; not prediction intervals."
+          }
+        }
+      ]
+    }
+  },
+  "prediction_uncertainty": null,
+  "limitations": [
+    "DAERA provisional and upstream filtered; not independent validated truth",
+    "Generic Sen2Cor BOA, no aquatic AC/glint validation",
+    "Historical deployments unresolved",
+    "Two nearshore sites only",
+    "Selected positive, homogeneous SCL-water subset",
+    "No final model selected, fit to full data, saved or approved",
+    "No data-driven bands or categories validated"
+  ]
+}

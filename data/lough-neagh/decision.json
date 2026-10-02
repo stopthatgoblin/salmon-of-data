@@ -1,0 +1,43 @@
+{
+  "decision_date": "2026-09-24",
+  "data_edition": "2026-09-23",
+  "decision": "NO_GO_CURRENT_PIPELINE",
+  "publication_allowed": false,
+  "absolute_ntu_validated": false,
+  "relative_turbidity_validated": false,
+  "whole_lake_transfer_validated": false,
+  "scientific_impossibility_demonstrated": false,
+  "implemented": [
+    "literature_review",
+    "data_acquisition",
+    "radiometry_audit",
+    "candidate_matchup_ledger",
+    "simple_model_diagnostics",
+    "grouped_temporal_spatial_holdouts",
+    "independent_adversarial_review",
+    "frozen_reproducibility_capsule",
+    "scientific_tests"
+  ],
+  "not_implemented": [
+    "aquatic_atmospheric_correction_comparison",
+    "local_CLMS_raster_validation",
+    "historical_turbidity_reconstruction",
+    "sector_estimates",
+    "website_tracker",
+    "automated_publication"
+  ],
+  "blockers": [
+    "Filtered provisional DAERA reference data with undisclosed thresholds and unresolved zeros/duplicates",
+    "Unverified historical deployment/location/time/measurement-method metadata",
+    "Only two eligible nearshore reference sites",
+    "Tested Sen2Cor spectral models underperform station baseline and transfer poorly",
+    "No validated aquatic reflectance, uncertainty coverage or relative-change model"
+  ],
+  "required_next_evidence": [
+    "Complete quality-documented provider observations and deployment logs",
+    "Representative offshore/sector observations with radiometry and optical context",
+    "Aquatic AC/product benchmarks against independent date and spatial holdouts"
+  ],
+  "deployment_active": false,
+  "model_artifact": null
+}

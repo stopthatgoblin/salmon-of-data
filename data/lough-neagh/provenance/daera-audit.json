@@ -1,0 +1,742 @@
+{
+  "audit_generated_utc": "2026-09-23T20:10:12.060586Z",
+  "source": "https://services-eu1.arcgis.com/kswen6BYexuc1SUk/arcgis/rest/services/DAERA_Probes_and_Metrics_Master_Layers_View/FeatureServer",
+  "source_row_count": 123317,
+  "observations_sha256_uncompressed": "4e04da8425f95934b9e46f79432e37ebc7ef759decc4085025e03beae14a4f4b",
+  "date_fields_time_reference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "quality_fields": [],
+  "source_view_definition_query": "(threshold_exceeded = 'N') AND (Published = 'Y') AND (reviewed = 'Y')",
+  "groups": [
+    {
+      "station": "L1278",
+      "location": "Rea's Wood, Antrim",
+      "metric": "BGA_PC_Fluorescence",
+      "units": [
+        "Relative Fluorescence Units (RFU)"
+      ],
+      "row_count": 27802,
+      "first_utc": "2025-01-06T12:01:00Z",
+      "last_utc": "2026-09-16T20:00:00Z",
+      "unique_timestamps": 27771,
+      "duplicate_timestamp_rows": 31,
+      "null_values": 134,
+      "negative_values": 0,
+      "above_published_range": 0,
+      "minimum": 0,
+      "maximum": 98.492805480957,
+      "median": 0.1366168931126595,
+      "quartiles": [
+        0.027247315272688852,
+        0.1366168931126595,
+        0.5462325513362888
+      ],
+      "median_interval_minutes": 30.0,
+      "common_intervals_minutes": [
+        [
+          30.0,
+          26997
+        ],
+        [
+          60.0,
+          723
+        ],
+        [
+          90.0,
+          9
+        ],
+        [
+          120.0,
+          8
+        ],
+        [
+          210.0,
+          3
+        ]
+      ],
+      "gaps_greater_than_30_minutes": 760,
+      "largest_gaps": [
+        {
+          "hours": 286.5,
+          "from_utc": "2026-08-28T09:00:00Z",
+          "to_utc": "2026-09-09T07:30:00Z"
+        },
+        {
+          "hours": 117.5,
+          "from_utc": "2026-02-12T15:30:00Z",
+          "to_utc": "2026-02-17T13:00:00Z"
+        },
+        {
+          "hours": 41.5,
+          "from_utc": "2026-02-05T23:00:00Z",
+          "to_utc": "2026-02-07T16:30:00Z"
+        },
+        {
+          "hours": 27.0,
+          "from_utc": "2026-02-08T20:00:00Z",
+          "to_utc": "2026-02-09T23:00:00Z"
+        },
+        {
+          "hours": 23.0,
+          "from_utc": "2026-02-10T06:00:00Z",
+          "to_utc": "2026-02-11T05:00:00Z"
+        },
+        {
+          "hours": 20.0,
+          "from_utc": "2026-02-04T07:30:00Z",
+          "to_utc": "2026-02-05T03:30:00Z"
+        },
+        {
+          "hours": 18.0,
+          "from_utc": "2025-07-24T15:00:00Z",
+          "to_utc": "2025-07-25T09:00:00Z"
+        },
+        {
+          "hours": 8.5,
+          "from_utc": "2026-07-30T07:30:00Z",
+          "to_utc": "2026-07-30T16:00:00Z"
+        },
+        {
+          "hours": 8.5,
+          "from_utc": "2026-02-05T11:00:00Z",
+          "to_utc": "2026-02-05T19:30:00Z"
+        },
+        {
+          "hours": 8.0,
+          "from_utc": "2025-01-29T20:30:00Z",
+          "to_utc": "2025-01-30T04:30:00Z"
+        }
+      ],
+      "rows_by_year": {
+        "2025": 16786,
+        "2026": 11016
+      },
+      "zero_values": 6120,
+      "conflicting_duplicate_timestamps": 28,
+      "conflicting_duplicate_examples": [
+        "2025-10-21T05:00:00Z",
+        "2025-12-28T15:00:00Z",
+        "2025-12-28T15:30:00Z",
+        "2025-12-30T10:30:00Z",
+        "2026-01-01T05:00:00Z",
+        "2026-01-02T23:30:00Z",
+        "2026-01-05T10:00:00Z",
+        "2026-01-06T22:00:00Z",
+        "2026-02-05T08:00:00Z",
+        "2026-02-07T19:00:00Z"
+      ],
+      "longest_contiguous_zero_run": {
+        "rows": 1776,
+        "from_utc": "2025-02-11T10:34:00Z",
+        "to_utc": "2025-03-20T09:30:00Z",
+        "hours_first_to_last": 886.9333333333333
+      }
+    },
+    {
+      "station": "L1278",
+      "location": "Rea's Wood, Antrim",
+      "metric": "Turbidity",
+      "units": [
+        "Nephelometric Turbidity Unit (NTU)"
+      ],
+      "row_count": 27036,
+      "first_utc": "2025-01-06T12:01:00Z",
+      "last_utc": "2026-09-16T20:00:00Z",
+      "unique_timestamps": 27003,
+      "duplicate_timestamp_rows": 33,
+      "null_values": 62,
+      "negative_values": 0,
+      "above_published_range": 0,
+      "minimum": 0,
+      "maximum": 39.9548454284668,
+      "median": 1.381403625011445,
+      "quartiles": [
+        0.07822410948574546,
+        1.381403625011445,
+        3.2946140766143825
+      ],
+      "median_interval_minutes": 30.0,
+      "common_intervals_minutes": [
+        [
+          30.0,
+          25998
+        ],
+        [
+          60.0,
+          891
+        ],
+        [
+          90.0,
+          40
+        ],
+        [
+          120.0,
+          16
+        ],
+        [
+          150.0,
+          15
+        ]
+      ],
+      "gaps_greater_than_30_minutes": 992,
+      "largest_gaps": [
+        {
+          "hours": 384.0,
+          "from_utc": "2025-07-27T11:30:00Z",
+          "to_utc": "2025-08-12T11:30:00Z"
+        },
+        {
+          "hours": 286.5,
+          "from_utc": "2026-08-28T09:00:00Z",
+          "to_utc": "2026-09-09T07:30:00Z"
+        },
+        {
+          "hours": 18.0,
+          "from_utc": "2025-07-24T15:00:00Z",
+          "to_utc": "2025-07-25T09:00:00Z"
+        },
+        {
+          "hours": 15.0,
+          "from_utc": "2026-08-18T08:30:00Z",
+          "to_utc": "2026-08-18T23:30:00Z"
+        },
+        {
+          "hours": 10.0,
+          "from_utc": "2026-07-30T07:30:00Z",
+          "to_utc": "2026-07-30T17:30:00Z"
+        },
+        {
+          "hours": 9.5,
+          "from_utc": "2025-01-24T11:00:00Z",
+          "to_utc": "2025-01-24T20:30:00Z"
+        },
+        {
+          "hours": 8.0,
+          "from_utc": "2025-01-29T20:30:00Z",
+          "to_utc": "2025-01-30T04:30:00Z"
+        },
+        {
+          "hours": 7.0,
+          "from_utc": "2026-09-15T17:00:00Z",
+          "to_utc": "2026-09-16T00:00:00Z"
+        },
+        {
+          "hours": 6.5,
+          "from_utc": "2026-09-12T08:30:00Z",
+          "to_utc": "2026-09-12T15:00:00Z"
+        },
+        {
+          "hours": 6.0,
+          "from_utc": "2026-02-04T07:30:00Z",
+          "to_utc": "2026-02-04T13:30:00Z"
+        }
+      ],
+      "rows_by_year": {
+        "2025": 15962,
+        "2026": 11074
+      },
+      "zero_values": 5650,
+      "conflicting_duplicate_timestamps": 28,
+      "conflicting_duplicate_examples": [
+        "2025-12-28T15:00:00Z",
+        "2025-12-28T15:30:00Z",
+        "2025-12-30T10:30:00Z",
+        "2026-01-01T05:00:00Z",
+        "2026-01-06T22:00:00Z",
+        "2026-02-05T08:00:00Z",
+        "2026-02-05T13:00:00Z",
+        "2026-02-07T09:00:00Z",
+        "2026-02-07T19:00:00Z",
+        "2026-02-08T14:00:00Z"
+      ],
+      "longest_contiguous_zero_run": {
+        "rows": 512,
+        "from_utc": "2025-01-13T12:30:00Z",
+        "to_utc": "2025-01-24T04:00:00Z",
+        "hours_first_to_last": 255.5
+      }
+    },
+    {
+      "station": "L1279",
+      "location": "Washing Bay",
+      "metric": "BGA_PC_Fluorescence",
+      "units": [
+        "Relative Fluorescence Units (RFU)"
+      ],
+      "row_count": 19654,
+      "first_utc": "2025-07-03T07:44:00Z",
+      "last_utc": "2026-09-16T20:00:00Z",
+      "unique_timestamps": 19609,
+      "duplicate_timestamp_rows": 45,
+      "null_values": 0,
+      "negative_values": 0,
+      "above_published_range": 0,
+      "minimum": 0.00247886404395103,
+      "maximum": 39.3573341369629,
+      "median": 0.157768122851849,
+      "quartiles": [
+        0.04729112610220907,
+        0.157768122851849,
+        0.7371814996004105
+      ],
+      "median_interval_minutes": 30.0,
+      "common_intervals_minutes": [
+        [
+          30.0,
+          18374
+        ],
+        [
+          60.0,
+          1206
+        ],
+        [
+          120.0,
+          14
+        ],
+        [
+          90.0,
+          4
+        ],
+        [
+          180.0,
+          2
+        ]
+      ],
+      "gaps_greater_than_30_minutes": 1231,
+      "largest_gaps": [
+        {
+          "hours": 122.5,
+          "from_utc": "2026-01-11T11:30:00Z",
+          "to_utc": "2026-01-16T14:00:00Z"
+        },
+        {
+          "hours": 7.5,
+          "from_utc": "2026-02-02T08:00:00Z",
+          "to_utc": "2026-02-02T15:30:00Z"
+        },
+        {
+          "hours": 6.5,
+          "from_utc": "2025-11-21T08:00:00Z",
+          "to_utc": "2025-11-21T14:30:00Z"
+        },
+        {
+          "hours": 3.0,
+          "from_utc": "2026-04-21T12:00:00Z",
+          "to_utc": "2026-04-21T15:00:00Z"
+        },
+        {
+          "hours": 3.0,
+          "from_utc": "2025-09-22T10:30:00Z",
+          "to_utc": "2025-09-22T13:30:00Z"
+        },
+        {
+          "hours": 2.0,
+          "from_utc": "2025-08-02T18:00:00Z",
+          "to_utc": "2025-08-02T20:00:00Z"
+        },
+        {
+          "hours": 2.0,
+          "from_utc": "2025-07-30T22:00:00Z",
+          "to_utc": "2025-07-31T00:00:00Z"
+        },
+        {
+          "hours": 2.0,
+          "from_utc": "2025-07-30T06:00:00Z",
+          "to_utc": "2025-07-30T08:00:00Z"
+        },
+        {
+          "hours": 2.0,
+          "from_utc": "2025-07-28T18:00:00Z",
+          "to_utc": "2025-07-28T20:00:00Z"
+        },
+        {
+          "hours": 2.0,
+          "from_utc": "2025-07-25T22:00:00Z",
+          "to_utc": "2025-07-26T00:00:00Z"
+        }
+      ],
+      "rows_by_year": {
+        "2025": 7898,
+        "2026": 11756
+      },
+      "zero_values": 0,
+      "conflicting_duplicate_timestamps": 26,
+      "conflicting_duplicate_examples": [
+        "2025-09-12T11:00:00Z",
+        "2025-09-15T15:00:00Z",
+        "2025-09-23T15:00:00Z",
+        "2025-09-28T13:00:00Z",
+        "2025-10-03T07:00:00Z",
+        "2025-10-10T23:00:00Z",
+        "2025-10-23T15:00:00Z",
+        "2025-10-29T02:00:00Z",
+        "2025-11-19T12:00:00Z",
+        "2025-11-25T19:30:00Z"
+      ],
+      "longest_contiguous_zero_run": {
+        "rows": 0,
+        "from_utc": null,
+        "to_utc": null,
+        "hours_first_to_last": 0
+      }
+    },
+    {
+      "station": "L1279",
+      "location": "Washing Bay",
+      "metric": "Turbidity",
+      "units": [
+        "Nephelometric Turbidity Unit (NTU)"
+      ],
+      "row_count": 14312,
+      "first_utc": "2025-07-03T07:44:00Z",
+      "last_utc": "2026-09-16T20:00:00Z",
+      "unique_timestamps": 14302,
+      "duplicate_timestamp_rows": 10,
+      "null_values": 9,
+      "negative_values": 0,
+      "above_published_range": 0,
+      "minimum": 0,
+      "maximum": 39.9841842651367,
+      "median": 6.25455474853516,
+      "quartiles": [
+        1.4444227218627952,
+        6.25455474853516,
+        15.532600402832049
+      ],
+      "median_interval_minutes": 30.0,
+      "common_intervals_minutes": [
+        [
+          30.0,
+          12728
+        ],
+        [
+          60.0,
+          1306
+        ],
+        [
+          90.0,
+          78
+        ],
+        [
+          120.0,
+          56
+        ],
+        [
+          150.0,
+          23
+        ]
+      ],
+      "gaps_greater_than_30_minutes": 1570,
+      "largest_gaps": [
+        {
+          "hours": 1202.0,
+          "from_utc": "2025-09-30T22:30:00Z",
+          "to_utc": "2025-11-20T00:30:00Z"
+        },
+        {
+          "hours": 300.0,
+          "from_utc": "2026-04-09T17:00:00Z",
+          "to_utc": "2026-04-22T05:00:00Z"
+        },
+        {
+          "hours": 123.0,
+          "from_utc": "2026-01-11T11:00:00Z",
+          "to_utc": "2026-01-16T14:00:00Z"
+        },
+        {
+          "hours": 108.5,
+          "from_utc": "2025-12-21T16:00:00Z",
+          "to_utc": "2025-12-26T04:30:00Z"
+        },
+        {
+          "hours": 68.5,
+          "from_utc": "2025-12-18T19:30:00Z",
+          "to_utc": "2025-12-21T16:00:00Z"
+        },
+        {
+          "hours": 66.0,
+          "from_utc": "2026-04-04T05:30:00Z",
+          "to_utc": "2026-04-06T23:30:00Z"
+        },
+        {
+          "hours": 40.5,
+          "from_utc": "2025-12-30T13:00:00Z",
+          "to_utc": "2026-01-01T05:30:00Z"
+        },
+        {
+          "hours": 34.0,
+          "from_utc": "2026-01-09T10:00:00Z",
+          "to_utc": "2026-01-10T20:00:00Z"
+        },
+        {
+          "hours": 32.5,
+          "from_utc": "2026-03-25T17:30:00Z",
+          "to_utc": "2026-03-27T02:00:00Z"
+        },
+        {
+          "hours": 28.5,
+          "from_utc": "2026-04-08T12:30:00Z",
+          "to_utc": "2026-04-09T17:00:00Z"
+        }
+      ],
+      "rows_by_year": {
+        "2025": 4756,
+        "2026": 9556
+      },
+      "zero_values": 1938,
+      "conflicting_duplicate_timestamps": 8,
+      "conflicting_duplicate_examples": [
+        "2025-09-12T11:00:00Z",
+        "2025-09-15T15:00:00Z",
+        "2025-11-25T19:30:00Z",
+        "2025-12-04T06:00:00Z",
+        "2025-12-13T02:00:00Z",
+        "2025-12-17T14:00:00Z",
+        "2025-12-17T22:00:00Z",
+        "2025-12-28T15:00:00Z"
+      ],
+      "longest_contiguous_zero_run": {
+        "rows": 105,
+        "from_utc": "2025-09-23T11:30:00Z",
+        "to_utc": "2025-09-25T15:30:00Z",
+        "hours_first_to_last": 52.0
+      }
+    },
+    {
+      "station": "L1284",
+      "location": "Toome",
+      "metric": "BGA_PC_Fluorescence",
+      "units": [
+        "Relative Fluorescence Units (RFU)"
+      ],
+      "row_count": 17957,
+      "first_utc": "2025-07-10T09:16:00Z",
+      "last_utc": "2026-09-16T20:00:00Z",
+      "unique_timestamps": 17950,
+      "duplicate_timestamp_rows": 7,
+      "null_values": 2,
+      "negative_values": 0,
+      "above_published_range": 0,
+      "minimum": 0.000361200422048569,
+      "maximum": 95.6128921508789,
+      "median": 0.0715351924300194,
+      "quartiles": [
+        0.019918829202652,
+        0.0715351924300194,
+        0.5885536670684814
+      ],
+      "median_interval_minutes": 30.0,
+      "common_intervals_minutes": [
+        [
+          30.0,
+          15916
+        ],
+        [
+          60.0,
+          2002
+        ],
+        [
+          90.0,
+          6
+        ],
+        [
+          14.0,
+          2
+        ],
+        [
+          22.0,
+          2
+        ]
+      ],
+      "gaps_greater_than_30_minutes": 2020,
+      "largest_gaps": [
+        {
+          "hours": 245.0,
+          "from_utc": "2026-03-21T03:30:00Z",
+          "to_utc": "2026-03-31T08:30:00Z"
+        },
+        {
+          "hours": 89.0,
+          "from_utc": "2026-01-15T12:30:00Z",
+          "to_utc": "2026-01-19T05:30:00Z"
+        },
+        {
+          "hours": 51.5,
+          "from_utc": "2026-03-14T12:30:00Z",
+          "to_utc": "2026-03-16T16:00:00Z"
+        },
+        {
+          "hours": 20.183333333333334,
+          "from_utc": "2026-03-07T21:00:00Z",
+          "to_utc": "2026-03-08T17:11:00Z"
+        },
+        {
+          "hours": 5.5,
+          "from_utc": "2025-08-07T07:30:00Z",
+          "to_utc": "2025-08-07T13:00:00Z"
+        },
+        {
+          "hours": 4.5,
+          "from_utc": "2025-11-21T10:30:00Z",
+          "to_utc": "2025-11-21T15:00:00Z"
+        },
+        {
+          "hours": 4.0,
+          "from_utc": "2026-07-17T07:00:00Z",
+          "to_utc": "2026-07-17T11:00:00Z"
+        },
+        {
+          "hours": 3.5,
+          "from_utc": "2025-09-22T08:00:00Z",
+          "to_utc": "2025-09-22T11:30:00Z"
+        },
+        {
+          "hours": 3.4833333333333334,
+          "from_utc": "2026-04-21T09:31:00Z",
+          "to_utc": "2026-04-21T13:00:00Z"
+        },
+        {
+          "hours": 2.0,
+          "from_utc": "2026-03-16T17:00:00Z",
+          "to_utc": "2026-03-16T19:00:00Z"
+        }
+      ],
+      "rows_by_year": {
+        "2025": 8083,
+        "2026": 9874
+      },
+      "zero_values": 0,
+      "conflicting_duplicate_timestamps": 3,
+      "conflicting_duplicate_examples": [
+        "2026-02-22T07:00:00Z",
+        "2026-03-02T03:00:00Z",
+        "2026-03-02T03:30:00Z"
+      ],
+      "longest_contiguous_zero_run": {
+        "rows": 0,
+        "from_utc": null,
+        "to_utc": null,
+        "hours_first_to_last": 0
+      }
+    },
+    {
+      "station": "L1284",
+      "location": "Toome",
+      "metric": "Turbidity",
+      "units": [
+        "Nephelometric Turbidity Unit (NTU)"
+      ],
+      "row_count": 16556,
+      "first_utc": "2025-07-10T09:16:00Z",
+      "last_utc": "2026-09-16T18:00:00Z",
+      "unique_timestamps": 16549,
+      "duplicate_timestamp_rows": 7,
+      "null_values": 0,
+      "negative_values": 0,
+      "above_published_range": 0,
+      "minimum": 0,
+      "maximum": 39.9959526062012,
+      "median": 4.004947662353516,
+      "quartiles": [
+        0.23112865164876,
+        4.004947662353516,
+        15.53208541870115
+      ],
+      "median_interval_minutes": 30.0,
+      "common_intervals_minutes": [
+        [
+          30.0,
+          14260
+        ],
+        [
+          60.0,
+          2023
+        ],
+        [
+          90.0,
+          93
+        ],
+        [
+          120.0,
+          75
+        ],
+        [
+          150.0,
+          17
+        ]
+      ],
+      "gaps_greater_than_30_minutes": 2274,
+      "largest_gaps": [
+        {
+          "hours": 245.0,
+          "from_utc": "2026-03-21T03:30:00Z",
+          "to_utc": "2026-03-31T08:30:00Z"
+        },
+        {
+          "hours": 89.0,
+          "from_utc": "2026-01-15T12:30:00Z",
+          "to_utc": "2026-01-19T05:30:00Z"
+        },
+        {
+          "hours": 73.5,
+          "from_utc": "2025-08-29T23:30:00Z",
+          "to_utc": "2025-09-02T01:00:00Z"
+        },
+        {
+          "hours": 51.5,
+          "from_utc": "2026-03-14T12:30:00Z",
+          "to_utc": "2026-03-16T16:00:00Z"
+        },
+        {
+          "hours": 45.0,
+          "from_utc": "2026-06-25T23:00:00Z",
+          "to_utc": "2026-06-27T20:00:00Z"
+        },
+        {
+          "hours": 37.0,
+          "from_utc": "2025-08-28T09:30:00Z",
+          "to_utc": "2025-08-29T22:30:00Z"
+        },
+        {
+          "hours": 26.0,
+          "from_utc": "2025-09-17T09:30:00Z",
+          "to_utc": "2025-09-18T11:30:00Z"
+        },
+        {
+          "hours": 24.0,
+          "from_utc": "2025-08-27T09:30:00Z",
+          "to_utc": "2025-08-28T09:30:00Z"
+        },
+        {
+          "hours": 22.5,
+          "from_utc": "2025-09-16T11:00:00Z",
+          "to_utc": "2025-09-17T09:30:00Z"
+        },
+        {
+          "hours": 20.183333333333334,
+          "from_utc": "2026-03-07T21:00:00Z",
+          "to_utc": "2026-03-08T17:11:00Z"
+        }
+      ],
+      "rows_by_year": {
+        "2025": 7107,
+        "2026": 9449
+      },
+      "zero_values": 3614,
+      "conflicting_duplicate_timestamps": 2,
+      "conflicting_duplicate_examples": [
+        "2026-03-02T03:00:00Z",
+        "2026-03-02T03:30:00Z"
+      ],
+      "longest_contiguous_zero_run": {
+        "rows": 239,
+        "from_utc": "2025-12-31T23:00:00Z",
+        "to_utc": "2026-01-05T22:00:00Z",
+        "hours_first_to_last": 119.0
+      }
+    }
+  ]
+}

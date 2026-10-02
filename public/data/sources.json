@@ -46,5 +46,51 @@
     "retrievedOn": "2026-09-16",
     "method": "Transcribed from official monthly table: 2026 AUG = 144.6; 2015=100.",
     "nextRelease": "2026-10-21"
+  },
+  {
+    "file": "2026-09-16/canada-vacancies.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
+    "bytes": 99676598,
+    "sha256": "bb50ed47b2b5149c481e11f7be3289f137867df7457f17d7e58e37c5ea6a0080",
+    "retrievedOn": "2026-09-16",
+    "note": "Full table or exact Canada rows for NOC 2123 and all occupations; quality flags retained."
+  },
+  {
+    "file": "2026-09-16/canada-inputs.csv",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
+    "bytes": 25697,
+    "sha256": "d4e3b34a77bb60bd48112742341963192f8408e46c39211565d9a8a8bb41c4cc",
+    "retrievedOn": "2026-09-16",
+    "note": "Full table or exact Canada rows for NOC 2123 and all occupations; quality flags retained."
+  },
+  {
+    "file": "2026-10-02/fao.csv",
+    "bytes": 48110,
+    "sha256": "1e7b4cab727d65ad85ac056a1f4ec21285c3294aebdacb08f01e10be490a4098",
+    "retrievedOn": "2026-10-02",
+    "note": "September 2026 actual and latest revised monthly history.",
+    "name": "FAO Food Price Index",
+    "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/wfs-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_84",
+    "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/"
+  },
+  {
+    "file": "2026-10-02/world-bank.xlsx",
+    "bytes": 586735,
+    "sha256": "9fdcfa8a2aed9a1bb545a10c1a5ce036c6a0acd4766f450424ca800b4b5a0225",
+    "retrievedOn": "2026-10-02",
+    "note": "Checked 2026-10-02; byte-identical to the prior archive and still ends in 2026-08.",
+    "name": "World Bank Pink Sheet",
+    "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+    "url": "https://www.worldbank.org/en/research/commodity-markets"
+  },
+  {
+    "file": "2026-10-02/ons.json",
+    "bytes": 125820,
+    "sha256": "69fc2d0432b5014bc9bc8444b8a1a4776de4d017b0c461000334d3c8ae71dd48",
+    "retrievedOn": "2026-10-02",
+    "note": "Latest observation remains 2026-08 = 144.6, already included in the 2026-09-16 refresh.",
+    "name": "ONS D7BU",
+    "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+    "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23"
   }
 ]

@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "audit_date": "2026-09-23",
+  "note": "Sources are canonical source references, not a complete HTTP request log. Pre-existing acquisition request timestamps were not retained; file mtime is recorded separately. Text files are local PDF extractions. PUM/ATBD URLs retain 2.1 in their path but their downloaded contents are 2.2.0.",
+  "files": [
+    {
+      "path": "data/lough-neagh/raw/copernicus/EOCIS-Lakes-L3U-LWLR-Lake_Catchment-20230614-Neagh-fv1.5.0.nc",
+      "bytes": 55057193,
+      "sha256": "225bfe495be535775af2318696a44337fa2c03e416b6168c198691f026362ad3",
+      "source_reference": "https://dap.ceda.ac.uk/neodc/eocis/data/CHUK/lake_catchment_indicators/neagh/EOCIS-Lakes-L3U-LWLR-Lake_Catchment-20230614-Neagh-fv1.5.0.nc?download=1",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:27:07.953997+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_access_get_probe_headers.txt",
+      "bytes": 720,
+      "sha256": "6e7dffe5863846a122bebcac12cefbfb84bba9dd90610397f6d1a6bfabdc2737",
+      "source_reference": "https://download.dataspace.copernicus.eu/odata/v1/Products(57036110-e83d-4e6a-94b1-5a56e8d10fab)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_nc)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2.nc)/$value",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T20:13:16.912312+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_access_probe_headers.txt",
+      "bytes": 612,
+      "sha256": "7050710ef128280581df36a59bac41c4b10649a04cd42ccdf4d7c14baf0a6001",
+      "source_reference": "https://download.dataspace.copernicus.eu/odata/v1/Products(57036110-e83d-4e6a-94b1-5a56e8d10fab)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_nc)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2.nc)/$value",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T20:13:06.413754+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_lwq100_catalogue_index.html",
+      "bytes": 1831,
+      "sha256": "2e2617ccb622ab78a8e170d9ffab56baca8789840ddedca7c9e1fb199e5e4122",
+      "source_reference": "https://csv.dataspace.copernicus.eu/bio-geophysical/lake_water_quality/lwq-nrt_global_100m_10daily_v2/",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:26:05.895980+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_lwq100_cog_catalogue.csv",
+      "bytes": 32710,
+      "sha256": "da83f43bce44a111307973426a6ed2aa0e96c20c17a6bf3d22ca9d36f72d154c",
+      "source_reference": "https://s3.waw3-1.cloudferro.com/swift/v1/CatalogueCSV/bio-geophysical/lake_water_quality/lwq-nrt_global_100m_10daily_v2/lwq-nrt_global_100m_10daily_v2_cog.csv",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:26:42.820330+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_lwq100_latest_catalogue.json",
+      "bytes": 4227,
+      "sha256": "67bd60da720942c9cc2458763a992172828f6ff41548cc81aa6bed171a45f362",
+      "source_reference": "https://catalogue.dataspace.copernicus.eu/odata/v1/Products",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:26:06.566692+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_lwq100_latest_file_nodes.json",
+      "bytes": 399,
+      "sha256": "0e3342367be8a4b481fb0d6da8ffb26e873213612e811fcdba5024e6c0dd6b16",
+      "source_reference": "https://download.dataspace.copernicus.eu/odata/v1/Products(57036110-e83d-4e6a-94b1-5a56e8d10fab)/Nodes(c_gls_LWQ100_202609010000_GLOBAL_MSI_V2.2.2_nc)/Nodes",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:30:23.935108+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_lwq100_latest_nodes.json",
+      "bytes": 336,
+      "sha256": "1e1e14928c6822c6c3a576a8f2ca52673184bd2059fd133eab45d0e66eb821d9",
+      "source_reference": "https://download.dataspace.copernicus.eu/odata/v1/Products(57036110-e83d-4e6a-94b1-5a56e8d10fab)/Nodes",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:28:23.718660+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/clms_unauthenticated_download_headers.txt",
+      "bytes": 720,
+      "sha256": "6b61dfd53583f0b932bdf31dab1b9e8677e5da658b0116eab08f70527730c8d4",
+      "source_reference": null,
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:30:42.227878+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/eocis_guide_v1.2.pdf",
+      "bytes": 622730,
+      "sha256": "f4aa4885a9244c5ccb88d5453f59772a7d9991a08813a7dab33cce7beb3fca25",
+      "source_reference": "https://eocis.org/wp-content/uploads/2025/03/UK_EOCIS_LakeCatchment_Quick-Start-Guide-V1.2.pdf",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:26:43.178753+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/eocis_neagh_listing.json",
+      "bytes": 1969199,
+      "sha256": "7347d6f2707712a25a35056dec95136bacdadaea02785658a7322b6605ef6fa2",
+      "source_reference": "https://data.ceda.ac.uk/neodc/eocis/data/CHUK/lake_catchment_indicators/neagh",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:27:06.678002+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/lwq100_v2.1_pum.pdf",
+      "bytes": 1534190,
+      "sha256": "1093c6bfce92afe3439978f498587fb44ea6a47ff24f1acccff81b2cd1e3e8a5",
+      "source_reference": "https://land.copernicus.eu/en/technical-library/product-user-manual-lake-water-quality-100m-version-2.1/@@download/file",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:28:24.628350+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/lwq100_v2.1_pum.txt",
+      "bytes": 51535,
+      "sha256": "ced4eb9d4ffaa2da1220729699cfeb9ea10ef169c6170ead3be24e110f1ccf46",
+      "source_reference": "https://land.copernicus.eu/en/technical-library/product-user-manual-lake-water-quality-100m-version-2.1/@@download/file",
+      "derived_from": "lwq100_v2.1_pum.pdf",
+      "filesystem_mtime_utc": "2026-09-23T19:31:06.816941+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/lwq100_v2.2_atbd.pdf",
+      "bytes": 3756268,
+      "sha256": "672ca467217f86d253c48366f6c9148f06cfde09c4396bfed37d66108251f3a5",
+      "source_reference": "https://land.copernicus.eu/en/technical-library/algorithm-theoretical-basis-document-lake-water-quality-100m-version-2.1/@@download/file",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:31:04.178801+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/lwq100_v2_pum.pdf",
+      "bytes": 1175617,
+      "sha256": "4544e62081f80ffa5723fefa3bea3e1869c1de36333c01247b8e19b4e0a34f28",
+      "source_reference": "https://land.copernicus.eu/en/technical-library/product-user-manual-lake-water-quality-100m-version-2.0/@@download/file",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:25:28.939242+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/lwq100_v2_qar.pdf",
+      "bytes": 8854744,
+      "sha256": "7bda851278caac64b7bf6179df674701b35d7fc05ca10e18d86bf8e4f39ddaf6",
+      "source_reference": "https://land.copernicus.eu/en/technical-library/quality-assessment-report-lake-water-quality-v2.0/@@download/file",
+      "derived_from": null,
+      "filesystem_mtime_utc": "2026-09-23T19:25:28.333133+00:00"
+    },
+    {
+      "path": "data/lough-neagh/raw/copernicus/lwq100_v2_qar.txt",
+      "bytes": 111519,
+      "sha256": "2c13022160c955725888b03c8c6434929760eeb13a68da6914df4d8a7d7eda4f",
+      "source_reference": "https://land.copernicus.eu/en/technical-library/quality-assessment-report-lake-water-quality-v2.0/@@download/file",
+      "derived_from": "lwq100_v2_qar.pdf",
+      "filesystem_mtime_utc": "2026-09-23T19:31:08.056326+00:00"
+    }
+  ]
+}
