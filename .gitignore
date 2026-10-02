@@ -44,7 +44,9 @@ next-env.d.ts
 /.sites-runtime/
 *.tsbuildinfo
 
-# Reproducible research downloads are cached locally; manifests/results are versioned.
-/data/lough-neagh/raw/
+# Lough Neagh feasibility research is kept local and out of the site repository.
+/data/lough-neagh/
+/docs/lough-neagh/
+/research/lough_neagh/
 __pycache__/
 *.pyc
