@@ -1,0 +1,238 @@
+{
+  "checkedAt": "2026-10-05",
+  "newActuals": {
+    "enso": [
+      {
+        "date": "2026-08",
+        "value": 1.7
+      }
+    ],
+    "rice": [
+      {
+        "date": "2026-09",
+        "value": 482.0
+      }
+    ],
+    "maize": [
+      {
+        "date": "2026-09",
+        "value": 239.6
+      }
+    ],
+    "sugar": [
+      {
+        "date": "2026-09",
+        "value": 0.41
+      }
+    ],
+    "palm": [
+      {
+        "date": "2026-09",
+        "value": 1180.0
+      },
+      {
+        "date": "2026-01",
+        "value": 1013.0
+      },
+      {
+        "date": "2026-02",
+        "value": 1064.0
+      },
+      {
+        "date": "2026-03",
+        "value": 1167.0
+      },
+      {
+        "date": "2026-04",
+        "value": 1181.0
+      },
+      {
+        "date": "2026-05",
+        "value": 1168.0
+      },
+      {
+        "date": "2026-06",
+        "value": 1142.0
+      },
+      {
+        "date": "2026-07",
+        "value": 1133.0
+      },
+      {
+        "date": "2026-08",
+        "value": 1132.0
+      }
+    ],
+    "coffee": [
+      {
+        "date": "2026-09",
+        "value": 3.69
+      }
+    ]
+  },
+  "metricsUpdated": {
+    "enso": {
+      "observationsAdded": [
+        {
+          "date": "2026-08",
+          "value": 1.7
+        }
+      ],
+      "revisedObservations": [],
+      "latestObservation": {
+        "date": "2026-08",
+        "value": 1.7
+      }
+    },
+    "rice": {
+      "observationsAdded": [
+        {
+          "date": "2026-09",
+          "value": 482.0
+        }
+      ],
+      "revisedObservations": [],
+      "latestObservation": {
+        "date": "2026-09",
+        "value": 482.0
+      }
+    },
+    "maize": {
+      "observationsAdded": [
+        {
+          "date": "2026-09",
+          "value": 239.6
+        }
+      ],
+      "revisedObservations": [],
+      "latestObservation": {
+        "date": "2026-09",
+        "value": 239.6
+      }
+    },
+    "sugar": {
+      "observationsAdded": [
+        {
+          "date": "2026-09",
+          "value": 0.41
+        }
+      ],
+      "revisedObservations": [],
+      "latestObservation": {
+        "date": "2026-09",
+        "value": 0.41
+      }
+    },
+    "palm": {
+      "observationsAdded": [
+        {
+          "date": "2026-09",
+          "value": 1180.0
+        }
+      ],
+      "revisedObservations": [
+        {
+          "date": "2026-01",
+          "previousValue": 1005.0,
+          "value": 1013.0
+        },
+        {
+          "date": "2026-02",
+          "previousValue": 1039.0,
+          "value": 1064.0
+        },
+        {
+          "date": "2026-03",
+          "previousValue": 1109.0,
+          "value": 1167.0
+        },
+        {
+          "date": "2026-04",
+          "previousValue": 1146.0,
+          "value": 1181.0
+        },
+        {
+          "date": "2026-05",
+          "previousValue": 1136.0,
+          "value": 1168.0
+        },
+        {
+          "date": "2026-06",
+          "previousValue": 1104.0,
+          "value": 1142.0
+        },
+        {
+          "date": "2026-07",
+          "previousValue": 1101.0,
+          "value": 1133.0
+        },
+        {
+          "date": "2026-08",
+          "previousValue": 1117.0,
+          "value": 1132.0
+        }
+      ],
+      "latestObservation": {
+        "date": "2026-09",
+        "value": 1180.0
+      }
+    },
+    "coffee": {
+      "observationsAdded": [
+        {
+          "date": "2026-09",
+          "value": 3.69
+        }
+      ],
+      "revisedObservations": [],
+      "latestObservation": {
+        "date": "2026-09",
+        "value": 3.69
+      }
+    }
+  },
+  "sources": [
+    {
+      "file": "2026-10-05/world-bank.xlsx",
+      "name": "World Bank Pink Sheet",
+      "url": "https://www.worldbank.org/en/research/commodity-markets",
+      "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+      "bytes": 586099,
+      "sha256": "ea1c350827878ea3bbe30e3cda16a13fd3bd5b409b8458940dc94a36b5a33154",
+      "retrievedOn": "2026-10-05",
+      "note": "Workbook now includes September 2026 prices; compared with the 2 October capture, palm-oil history for March–August was revised."
+    },
+    {
+      "file": "2026-10-05/roni.html",
+      "name": "NOAA RONI (ERSSTv6)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "bytes": 97820,
+      "sha256": "c3a07a7f28a7d69acef4fe03eb91482b062d1a1d63f462c181b0f5d5d4f23ff8",
+      "retrievedOn": "2026-10-05",
+      "note": "Updated by 5 October: added JAS 2026 = 1.7°C; no earlier observations changed from the 2 October capture."
+    }
+  ],
+  "checks": {
+    "worldBank": "The current workbook differs from the 2 October capture and now ends at 2026-09. September values were added for rice, maize, sugar, palm oil and Robusta coffee; March–August palm-oil values were revised.",
+    "noaa": "The RONI page now includes JAS 2026 = 1.7°C. It adds 2026-08; no previously captured RONI values changed.",
+    "indeed": {
+      "indeed-us-all.csv": {
+        "unchangedSinceOctober2": true,
+        "latestDate": "2026-09-25"
+      },
+      "indeed-us-sectors.csv": {
+        "unchangedSinceOctober2": true,
+        "latestDate": "2026-09-25"
+      }
+    },
+    "newYorkFedGraduates": {
+      "graduate-unemployment.csv": true,
+      "graduate-underemployment.csv": true
+    },
+    "otherSources": "FAO September 2026 (136.0) was published and imported on 2 October; ONS, BLS and Statistics Canada have no newer tracker observations due as of 5 October.",
+    "forecasts": "Original frozen scenario anchors and paths remain unchanged."
+  },
+  "frozenFileSha256": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+  "policy": "Imported newly available September commodity actuals and the latest provisional RONI observation; recorded current World Bank palm-oil revisions. No scenario anchors or paths were changed."
+}

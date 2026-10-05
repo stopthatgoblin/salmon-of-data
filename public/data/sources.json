@@ -92,5 +92,25 @@
     "name": "ONS D7BU",
     "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23"
+  },
+  {
+    "file": "2026-10-05/world-bank.xlsx",
+    "name": "World Bank Pink Sheet",
+    "url": "https://www.worldbank.org/en/research/commodity-markets",
+    "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+    "bytes": 586099,
+    "sha256": "ea1c350827878ea3bbe30e3cda16a13fd3bd5b409b8458940dc94a36b5a33154",
+    "retrievedOn": "2026-10-05",
+    "note": "Workbook now includes September 2026 prices; compared with the 2 October capture, palm-oil history for March\u2013August was revised."
+  },
+  {
+    "file": "2026-10-05/roni.html",
+    "name": "NOAA RONI (ERSSTv6)",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+    "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+    "bytes": 97820,
+    "sha256": "c3a07a7f28a7d69acef4fe03eb91482b062d1a1d63f462c181b0f5d5d4f23ff8",
+    "retrievedOn": "2026-10-05",
+    "note": "Updated by 5 October: added JAS 2026 = 1.7\u00b0C; no earlier observations changed from the 2 October capture."
   }
 ]

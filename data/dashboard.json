@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-02",
+  "asOf": "2026-10-05",
   "version": 1,
   "metrics": [
     {
@@ -1231,6 +1231,10 @@
         {
           "date": "2026-08",
           "value": 471.0
+        },
+        {
+          "date": "2026-09",
+          "value": 482.0
         }
       ],
       "frequency": "Monthly",
@@ -1244,8 +1248,8 @@
       "peak": "2027-06",
       "historyStart": "1960-01",
       "latest": {
-        "date": "2026-08",
-        "value": 471.0
+        "date": "2026-09",
+        "value": 482.0
       },
       "analogues": [
         {
@@ -1906,6 +1910,10 @@
         {
           "date": "2026-08",
           "value": 224.0
+        },
+        {
+          "date": "2026-09",
+          "value": 239.6
         }
       ],
       "frequency": "Monthly",
@@ -1919,8 +1927,8 @@
       "peak": "2027-06",
       "historyStart": "1960-01",
       "latest": {
-        "date": "2026-08",
-        "value": 224.0
+        "date": "2026-09",
+        "value": 239.6
       },
       "analogues": [
         {
@@ -2581,6 +2589,10 @@
         {
           "date": "2026-08",
           "value": 0.38
+        },
+        {
+          "date": "2026-09",
+          "value": 0.41
         }
       ],
       "frequency": "Monthly",
@@ -2594,8 +2606,8 @@
       "peak": "2027-06",
       "historyStart": "1960-01",
       "latest": {
-        "date": "2026-08",
-        "value": 0.38
+        "date": "2026-09",
+        "value": 0.41
       },
       "analogues": [
         {
@@ -3227,35 +3239,39 @@
         },
         {
           "date": "2026-01",
-          "value": 1005.0
+          "value": 1013.0
         },
         {
           "date": "2026-02",
-          "value": 1039.0
+          "value": 1064.0
         },
         {
           "date": "2026-03",
-          "value": 1109.0
+          "value": 1167.0
         },
         {
           "date": "2026-04",
-          "value": 1146.0
+          "value": 1181.0
         },
         {
           "date": "2026-05",
-          "value": 1136.0
+          "value": 1168.0
         },
         {
           "date": "2026-06",
-          "value": 1104.0
+          "value": 1142.0
         },
         {
           "date": "2026-07",
-          "value": 1101.0
+          "value": 1133.0
         },
         {
           "date": "2026-08",
-          "value": 1117.0
+          "value": 1132.0
+        },
+        {
+          "date": "2026-09",
+          "value": 1180.0
         }
       ],
       "frequency": "Monthly",
@@ -3269,8 +3285,8 @@
       "peak": "2027-09",
       "historyStart": "1960-01",
       "latest": {
-        "date": "2026-08",
-        "value": 1117.0
+        "date": "2026-09",
+        "value": 1180.0
       },
       "analogues": [
         {
@@ -3931,6 +3947,10 @@
         {
           "date": "2026-08",
           "value": 3.98
+        },
+        {
+          "date": "2026-09",
+          "value": 3.69
         }
       ],
       "frequency": "Monthly",
@@ -3944,8 +3964,8 @@
       "peak": "2027-06",
       "historyStart": "1960-01",
       "latest": {
-        "date": "2026-08",
-        "value": 3.98
+        "date": "2026-09",
+        "value": 3.69
       },
       "analogues": [
         {
@@ -5247,6 +5267,10 @@
         {
           "date": "2026-07",
           "value": 1.4
+        },
+        {
+          "date": "2026-08",
+          "value": 1.7
         }
       ],
       "frequency": "Monthly \u00b7 three-month seasons",
@@ -5260,8 +5284,8 @@
       "climate": true,
       "historyStart": "1950-01",
       "latest": {
-        "date": "2026-07",
-        "value": 1.4
+        "date": "2026-08",
+        "value": 1.7
       },
       "anchor": {
         "date": "2026-07",
@@ -5549,6 +5573,26 @@
       "name": "ONS D7BU",
       "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
       "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23"
+    },
+    {
+      "file": "2026-10-05/world-bank.xlsx",
+      "name": "World Bank Pink Sheet",
+      "url": "https://www.worldbank.org/en/research/commodity-markets",
+      "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+      "bytes": 586099,
+      "sha256": "ea1c350827878ea3bbe30e3cda16a13fd3bd5b409b8458940dc94a36b5a33154",
+      "retrievedOn": "2026-10-05",
+      "note": "Workbook now includes September 2026 prices; compared with the 2 October capture, palm-oil history for March\u2013August was revised."
+    },
+    {
+      "file": "2026-10-05/roni.html",
+      "name": "NOAA RONI (ERSSTv6)",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "bytes": 97820,
+      "sha256": "c3a07a7f28a7d69acef4fe03eb91482b062d1a1d63f462c181b0f5d5d4f23ff8",
+      "retrievedOn": "2026-10-05",
+      "note": "Updated by 5 October: added JAS 2026 = 1.7\u00b0C; no earlier observations changed from the 2 October capture."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-02",
+  "checkedAt": "2026-10-05",
   "through": "2026-12-31",
   "entries": [
     {
@@ -14,7 +14,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "date": "2026-11-03",
@@ -28,7 +28,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "date": "2026-11-06",
@@ -43,7 +43,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "date": "2026-11-10",
@@ -57,7 +57,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "date": "2026-12-01",
@@ -71,7 +71,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "date": "2026-12-04",
@@ -86,7 +86,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "date": "2026-12-10",
@@ -100,7 +100,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "month": "2026-11",
@@ -116,7 +116,7 @@
       "frequency": "quarterly",
       "date": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "title": "Canadian vacancies and offered wages",
@@ -130,7 +130,7 @@
       "frequency": "quarterly",
       "date": "2026-12-15",
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "tracker": "el-nino",
@@ -144,7 +144,7 @@
       "referencePeriod": "September 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "tracker": "el-nino",
@@ -158,7 +158,7 @@
       "referencePeriod": "October 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "tracker": "el-nino",
@@ -172,7 +172,7 @@
       "referencePeriod": "November 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "tracker": "el-nino",
@@ -186,7 +186,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     },
     {
       "tracker": "el-nino",
@@ -200,26 +200,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-09-29"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-10-02",
-      "title": "World Bank commodity prices",
-      "metrics": [
-        "Rice",
-        "Maize",
-        "Sugar",
-        "Palm oil",
-        "Coffee"
-      ],
-      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
-      "referencePeriod": "September 2026",
-      "time": null,
-      "status": "Confirmed",
-      "checkedAt": "2026-10-02",
-      "note": "Checked 2 October: the workbook still ends in August 2026 and is unchanged; September values have not appeared in the source yet."
+      "checkedAt": "2026-10-05"
     },
     {
       "tracker": "el-nino",
@@ -237,7 +218,7 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "month": "2026-11",
       "note": "Monthly publication; exact release day not yet confirmed."
     },
@@ -257,25 +238,9 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Expected month",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "month": "2026-12",
       "note": "Monthly publication; exact release day not yet confirmed."
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": null,
-      "title": "NOAA Relative Oceanic Niño Index",
-      "metrics": [
-        "El Niño"
-      ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
-      "referencePeriod": "July–September 2026",
-      "time": null,
-      "status": "By the 5th",
-      "checkedAt": "2026-09-29",
-      "month": "2026-10",
-      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
     {
       "tracker": "el-nino",
@@ -289,7 +254,7 @@
       "referencePeriod": "August–October 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "month": "2026-11",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -305,7 +270,7 @@
       "referencePeriod": "September–November 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "month": "2026-12",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -320,7 +285,7 @@
       "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
       "referencePeriod": "September 2026 conditions and outlook",
       "status": "Confirmed",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-05",
       "note": "Outlook update; the three-month RONI actuals are published separately."
     },
     {
@@ -335,10 +300,10 @@
       "status": "Confirmed",
       "tracker": "el-nino",
       "frequency": "monthly",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-05"
     }
   ],
-  "lastReleaseReviewAt": "2026-10-02",
+  "lastReleaseReviewAt": "2026-10-05",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -417,6 +382,27 @@
     {
       "tracker": "el-nino",
       "frequency": "monthly",
+      "date": null,
+      "title": "NOAA Relative Oceanic Niño Index",
+      "metrics": [
+        "El Niño"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "referencePeriod": "July–September 2026",
+      "time": null,
+      "status": "By the 5th",
+      "checkedAt": "2026-10-05",
+      "month": "2026-10",
+      "note": "Available by NOAA's fifth-of-month update window; exact posting day is not specified.",
+      "importedAt": "2026-10-05",
+      "actualsAdded": [
+        "enso: 2026-08 = 1.7°C"
+      ],
+      "revisionsIncluded": []
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
       "date": "2026-10-02",
       "title": "FAO Food Price Index",
       "metrics": [
@@ -458,6 +444,43 @@
       "revisionsIncluded": [
         "employment: 2026-07-01 and 2026-08-01",
         "real pay: 2026-07-01 and 2026-08-01"
+      ]
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-02",
+      "title": "World Bank commodity prices",
+      "metrics": [
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
+      ],
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "referencePeriod": "September 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-10-05",
+      "note": "September workbook values appeared after the 2 October check; imported on 5 October.",
+      "importedAt": "2026-10-05",
+      "actualsAdded": [
+        "rice: 2026-09",
+        "maize: 2026-09",
+        "sugar: 2026-09",
+        "palm: 2026-09",
+        "coffee: 2026-09"
+      ],
+      "revisionsIncluded": [
+        "palm: 2026-01",
+        "palm: 2026-02",
+        "palm: 2026-03",
+        "palm: 2026-04",
+        "palm: 2026-05",
+        "palm: 2026-06",
+        "palm: 2026-07",
+        "palm: 2026-08"
       ]
     }
   ]
