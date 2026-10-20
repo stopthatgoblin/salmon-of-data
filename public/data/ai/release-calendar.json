@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-06",
+  "checkedAt": "2026-10-16",
   "year": 2026,
   "entries": [
     {
@@ -12,7 +12,8 @@
       ],
       "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260827/dq260827b-eng.htm",
       "time": null,
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-09-29",
@@ -23,30 +24,8 @@
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
       "time": "10:00 US Eastern",
-      "status": "Confirmed"
-    },
-    {
-      "date": "2026-10-02",
-      "title": "US employment situation",
-      "referencePeriod": "September 2026",
-      "metrics": [
-        "Employment",
-        "Real pay \u00b7 earnings input"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed"
-    },
-    {
-      "date": "2026-10-14",
-      "title": "US consumer prices",
-      "referencePeriod": "September 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-11-03",
@@ -57,7 +36,8 @@
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
       "time": "10:00 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-11-06",
@@ -65,11 +45,12 @@
       "referencePeriod": "October 2026",
       "metrics": [
         "Employment",
-        "Real pay \u00b7 earnings input"
+        "Real pay · earnings input"
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-11-10",
@@ -80,7 +61,8 @@
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "time": "08:30 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-12-01",
@@ -91,7 +73,8 @@
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
       "time": "10:00 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-12-04",
@@ -99,11 +82,12 @@
       "referencePeriod": "November 2026",
       "metrics": [
         "Employment",
-        "Real pay \u00b7 earnings input"
+        "Real pay · earnings input"
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "date": "2026-12-10",
@@ -114,7 +98,8 @@
       ],
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "time": "08:30 US Eastern",
-      "status": "Confirmed"
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     }
   ],
   "provisional": [
@@ -141,7 +126,7 @@
       "note": "Expected in December from the quarterly release pattern. Month is an estimate; no exact day confirmed."
     }
   ],
-  "lastReleaseReviewAt": "2026-09-13",
+  "lastReleaseReviewAt": "2026-10-16",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -157,6 +142,44 @@
       "actualsAdded": [
         "real-pay: 2026-08-01"
       ]
+    },
+    {
+      "date": "2026-10-02",
+      "title": "US employment situation",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16",
+      "importedAt": "2026-10-16",
+      "actualsAdded": [
+        "employment: 2026-09-01",
+        "real-pay input: earnings 2026-09-01"
+      ],
+      "revisionsIncluded": [
+        "employment: July and August 2026 revisions"
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "title": "US consumer prices",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16",
+      "importedAt": "2026-10-16",
+      "actualsAdded": [
+        "real-pay: 2026-09-01 = 103.874753"
+      ],
+      "revisionsIncluded": []
     }
   ]
 }

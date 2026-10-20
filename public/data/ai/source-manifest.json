@@ -227,5 +227,93 @@
     "sha256": "f8ecddf53a9a9a74dda92c2c4204e6039466fcb744bc74171b73b5f6aac48119",
     "retrievedOn": "2026-10-02",
     "note": "Current CPI source capture; the latest observation remains 2026-08."
+  },
+  {
+    "file": "2026-10-16/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 202691,
+    "sha256": "f32641b75a81f38e033a7ceafdc0ba8e2ec6bfdad834fad3959fd73dc528ed71",
+    "retrievedOn": "2026-10-16",
+    "note": "Exact source capture; observations and historical revisions through 2026-10-09."
+  },
+  {
+    "file": "2026-10-16/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 12102835,
+    "sha256": "11501409680563c03e6d321e42283cbb894d74d5a58c5de8c2a1a94b7989096a",
+    "retrievedOn": "2026-10-16",
+    "note": "Exact source capture; six-family inputs and historical revisions through 2026-10-09."
+  },
+  {
+    "file": "2026-10-16/CES6054000001.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6054000001",
+    "bytes": 8030,
+    "sha256": "1e263adbd99911e41ca9aa1bd3589b808a0c59865aa5c3f220aa05063c45d208",
+    "retrievedOn": "2026-10-16",
+    "note": "Current CES source capture; latest observation is 2026-09."
+  },
+  {
+    "file": "2026-10-16/USPRIV.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=USPRIV",
+    "bytes": 18289,
+    "sha256": "16c50d5a3928b8cd53fc1ede556dbd8a84c44c78da60e4ca5278c7476c0cba09",
+    "retrievedOn": "2026-10-16",
+    "note": "Current CES source capture; latest observation is 2026-09."
+  },
+  {
+    "file": "2026-10-16/CES6000000003.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CES6000000003",
+    "bytes": 4230,
+    "sha256": "aef90874b8f88efd561b557cfa2cce96eeb6df43a589df893b7f94df8cde8cbf",
+    "retrievedOn": "2026-10-16",
+    "note": "Current average hourly earnings input through 2026-09."
+  },
+  {
+    "file": "2026-10-16/CPIAUCSL.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL",
+    "bytes": 17763,
+    "sha256": "8556b710094027fa4724641d48be620cc37c04abfa15a0c496378cf1146c1549",
+    "retrievedOn": "2026-10-16",
+    "note": "Current CPI source capture through 2026-09, released on 2026-10-14."
+  },
+  {
+    "file": "2026-10-16/JTS1000HIR.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS1000HIR",
+    "bytes": 4663,
+    "sha256": "9491b016c08aba2747252b63440c59434f521e035b285dc9feff4a744db2ec52",
+    "retrievedOn": "2026-10-16",
+    "note": "Current JOLTS all-industry hires series; latest observation is 2026-08, unchanged since the 2026-09-29 release."
+  },
+  {
+    "file": "2026-10-16/JTS540099HIR.csv",
+    "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=JTS540099HIR",
+    "bytes": 4665,
+    "sha256": "196d69d2637210bccbd7caf85f88a3af7521dd3d86fc966c4fad97e920029e89",
+    "retrievedOn": "2026-10-16",
+    "note": "Current JOLTS professional and business services hires series; latest observation is 2026-08, unchanged since the 2026-09-29 release."
+  },
+  {
+    "file": "2026-10-16/graduate-unemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-unemployment-data.csv",
+    "bytes": 16075,
+    "sha256": "202e637b06568d3632f35a42baa5db985d2f860b278b2296630e46e36eae5cbd",
+    "retrievedOn": "2026-10-16",
+    "note": "Current New York Fed graduate unemployment file; unchanged from the 2026-10-05 check."
+  },
+  {
+    "file": "2026-10-16/graduate-underemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-underemployment-data.csv",
+    "bytes": 11542,
+    "sha256": "509aad590c2f26387d07bc7e7f8e3122be60c955a549bc88a23d248c78ab9b47",
+    "retrievedOn": "2026-10-16",
+    "note": "Current New York Fed graduate underemployment file; unchanged from the 2026-10-05 check."
+  },
+  {
+    "file": "2026-10-16/canada-vacancies.zip",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/14100444-eng.zip",
+    "bytes": 99676598,
+    "sha256": "bb50ed47b2b5149c481e11f7be3289f137867df7457f17d7e58e37c5ea6a0080",
+    "retrievedOn": "2026-10-16",
+    "note": "Current Statistics Canada table 14-10-0444-01; Q2 2026 remains the latest quarter, with Q3 scheduled for 2026-12-15."
   }
 ]

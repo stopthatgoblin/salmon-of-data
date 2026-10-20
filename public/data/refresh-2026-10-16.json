@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-10-16",
+  "newActuals": {
+    "food": []
+  },
+  "sources": [
+    {
+      "file": "2026-10-16/fao.csv",
+      "bytes": 48110,
+      "sha256": "1e7b4cab727d65ad85ac056a1f4ec21285c3294aebdacb08f01e10be490a4098",
+      "retrievedOn": "2026-10-16",
+      "note": "Latest capture remains the September 2026 index; no changes from the 2026-10-02 capture.",
+      "name": "FAO Food Price Index",
+      "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/wfs-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_84",
+      "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/"
+    },
+    {
+      "file": "2026-10-16/world-bank.xlsx",
+      "bytes": 586099,
+      "sha256": "ea1c350827878ea3bbe30e3cda16a13fd3bd5b409b8458940dc94a36b5a33154",
+      "retrievedOn": "2026-10-16",
+      "note": "Byte-identical to the 2026-10-05 capture and ends in 2026-09; next update is scheduled for 2026-11-03.",
+      "name": "World Bank Pink Sheet",
+      "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+      "url": "https://www.worldbank.org/en/research/commodity-markets"
+    },
+    {
+      "file": "2026-10-16/ons.json",
+      "bytes": 125820,
+      "sha256": "69fc2d0432b5014bc9bc8444b8a1a4776de4d017b0c461000334d3c8ae71dd48",
+      "retrievedOn": "2026-10-16",
+      "note": "Latest observation remains 2026-08 = 144.6; September inflation is scheduled for 2026-10-21.",
+      "name": "ONS D7BU",
+      "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23"
+    },
+    {
+      "file": "2026-10-16/roni.html",
+      "bytes": 97820,
+      "sha256": "c3a07a7f28a7d69acef4fe03eb91482b062d1a1d63f462c181b0f5d5d4f23ff8",
+      "retrievedOn": "2026-10-16",
+      "note": "Byte-identical to the 2026-10-05 capture; latest observation remains JAS 2026 = 1.7°C.",
+      "name": "NOAA RONI (ERSSTv6)",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/"
+    },
+    {
+      "file": "2026-10-16/grains.zip",
+      "bytes": 2873599,
+      "sha256": "7047570ee818e79154d0af1d92ecdb5b6a0343900793a0b22fa4b4e55e3cd1ae",
+      "retrievedOn": "2026-10-16",
+      "note": "Updated source capture after the October WASDE; South African 2026/27 maize yield forecast remains 5.50 tonnes/ha.",
+      "name": "USDA Production, Supply & Distribution",
+      "downloadUrl": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
+      "url": "https://apps.fas.usda.gov/PSDOnline/app/index.html"
+    },
+    {
+      "file": "2026-10-16/ensodisc.html",
+      "bytes": 13499,
+      "sha256": "e0e2a3b2309a68e7dbe860438b1ecc55e660789d3db329b350a1019a355eebb4",
+      "retrievedOn": "2026-10-16",
+      "note": "Discussion issued 2026-10-08; next discussion is scheduled for 2026-11-12.",
+      "name": "NOAA ENSO Diagnostic Discussion",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+    }
+  ],
+  "checks": {
+    "food": "FAO file is unchanged from the 2026-10-02 capture; September 2026 remains the latest index at 136.0.",
+    "commodities": "World Bank workbook is unchanged from the October 5 capture and ends in September 2026; next update is scheduled for November 3.",
+    "enso": "NOAA RONI source is unchanged from October 5; latest displayed season remains JAS 2026 at 1.7°C. The next table update is due by November 5.",
+    "usda": "The October 9 WASDE and latest PSD file leave the 2026/27 South African maize yield forecast at 5.50 tonnes/ha; observed harvest history through 2025 is unchanged.",
+    "retail": "ONS D7BU latest observation remains August 2026 = 144.6; September inflation is scheduled for October 21.",
+    "noaaOutlook": "NOAA issued its October ENSO Diagnostic Discussion on October 8; the next discussion is scheduled for November 12.",
+    "forecasts": "Original frozen metric anchors and conditional paths remain unchanged."
+  },
+  "frozenFileSha256": {
+    "public/data/scenarios-v1.json": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+    "public/data/ai/frozen-metrics-v1.json": "93a384e2b0ec76018614152ca1f5065477ae0e09a3246488eefabe6f41fa0dd8"
+  },
+  "policy": "Imported current Indeed and September CPI actuals for the AI tracker; no new El Niño actuals were available. Updated the calendar for completed releases and checked each source. Original frozen forecast anchors and scenarios remain unchanged."
+}

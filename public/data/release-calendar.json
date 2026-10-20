@@ -1,106 +1,36 @@
 {
-  "checkedAt": "2026-10-05",
+  "checkedAt": "2026-10-16",
   "through": "2026-12-31",
   "entries": [
     {
-      "date": "2026-10-14",
-      "title": "US consumer prices",
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-21",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukseptember2026",
       "referencePeriod": "September 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
+      "time": "07:00 UK time",
       "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-10-05"
+      "checkedAt": "2026-10-16"
     },
     {
-      "date": "2026-11-03",
-      "title": "US job openings and labour turnover",
-      "referencePeriod": "September 2026",
-      "metrics": [
-        "Actual hiring"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
-      "time": "10:00 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
+      "tracker": "el-nino",
       "frequency": "monthly",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "date": "2026-11-06",
-      "title": "US employment situation",
-      "referencePeriod": "October 2026",
+      "date": null,
+      "title": "NOAA Relative Oceanic Niño Index",
       "metrics": [
-        "Employment",
-        "Real pay · earnings input"
+        "El Niño"
       ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "date": "2026-11-10",
-      "title": "US consumer prices",
-      "referencePeriod": "October 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "date": "2026-12-01",
-      "title": "US job openings and labour turnover",
-      "referencePeriod": "October 2026",
-      "metrics": [
-        "Actual hiring"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
-      "time": "10:00 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "date": "2026-12-04",
-      "title": "US employment situation",
-      "referencePeriod": "November 2026",
-      "metrics": [
-        "Employment",
-        "Real pay · earnings input"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "date": "2026-12-10",
-      "title": "US consumer prices",
-      "referencePeriod": "November 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-10-05"
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "referencePeriod": "August–October 2026",
+      "time": null,
+      "status": "By the 5th",
+      "checkedAt": "2026-10-16",
+      "month": "2026-11",
+      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
     {
       "month": "2026-11",
@@ -116,63 +46,40 @@
       "frequency": "quarterly",
       "date": null,
       "status": "Expected month",
-      "checkedAt": "2026-10-05"
+      "checkedAt": "2026-10-16"
     },
     {
-      "title": "Canadian vacancies and offered wages",
-      "referencePeriod": "Q3 2026",
-      "metrics": [
-        "Canada: demand",
-        "Canada: pay"
-      ],
-      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260915/dq260915a-eng.htm",
-      "tracker": "ai",
-      "frequency": "quarterly",
-      "date": "2026-12-15",
-      "status": "Confirmed",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-10-21",
-      "title": "UK consumer prices",
-      "metrics": [
-        "UK groceries"
-      ],
-      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukseptember2026",
+      "date": "2026-11-03",
+      "title": "US job openings and labour turnover",
       "referencePeriod": "September 2026",
-      "time": "07:00 UK time",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-05"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
     },
     {
       "tracker": "el-nino",
       "frequency": "monthly",
-      "date": "2026-11-18",
-      "title": "UK consumer prices",
+      "date": "2026-11-03",
+      "title": "World Bank commodity prices",
       "metrics": [
-        "UK groceries"
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
       ],
-      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukoctober2026",
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
       "referencePeriod": "October 2026",
-      "time": "07:00 UK time",
+      "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-12-16",
-      "title": "UK consumer prices",
-      "metrics": [
-        "UK groceries"
-      ],
-      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationuknovember2026",
-      "referencePeriod": "November 2026",
-      "time": "07:00 UK time",
-      "status": "Confirmed",
-      "checkedAt": "2026-10-05"
+      "checkedAt": "2026-10-16",
+      "note": "The World Bank confirms its next monthly price update for 3 November 2026."
     },
     {
       "tracker": "el-nino",
@@ -186,77 +93,77 @@
       "referencePeriod": "October 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-10-05"
+      "checkedAt": "2026-10-16"
     },
     {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-12-04",
-      "title": "FAO Food Price Index",
-      "metrics": [
-        "Food basket"
-      ],
-      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
-      "referencePeriod": "November 2026",
-      "time": null,
-      "status": "Confirmed",
-      "checkedAt": "2026-10-05"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": null,
-      "title": "World Bank commodity prices",
-      "metrics": [
-        "Rice",
-        "Maize",
-        "Sugar",
-        "Palm oil",
-        "Coffee"
-      ],
-      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "date": "2026-11-06",
+      "title": "US employment situation",
       "referencePeriod": "October 2026",
-      "time": null,
-      "status": "Expected month",
-      "checkedAt": "2026-10-05",
-      "month": "2026-11",
-      "note": "Monthly publication; exact release day not yet confirmed."
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
     },
     {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": null,
-      "title": "World Bank commodity prices",
+      "date": "2026-11-10",
+      "title": "US consumer prices",
+      "referencePeriod": "October 2026",
       "metrics": [
-        "Rice",
-        "Maize",
-        "Sugar",
-        "Palm oil",
-        "Coffee"
+        "Real pay"
       ],
-      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "USDA World Agricultural Supply and Demand Estimates",
       "referencePeriod": "November 2026",
-      "time": null,
-      "status": "Expected month",
-      "checkedAt": "2026-10-05",
-      "month": "2026-12",
-      "note": "Monthly publication; exact release day not yet confirmed."
+      "metrics": [
+        "Maize harvest"
+      ],
+      "sourceUrl": "https://usda.azureedge.us/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
+      "time": "12:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "date": "2026-11-12",
+      "title": "NOAA ENSO Diagnostic Discussion",
+      "referencePeriod": "October 2026 conditions and outlook",
+      "metrics": [
+        "El Niño outlook"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "status": "Confirmed",
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
     },
     {
       "tracker": "el-nino",
       "frequency": "monthly",
-      "date": null,
-      "title": "NOAA Relative Oceanic Niño Index",
+      "date": "2026-11-18",
+      "title": "UK consumer prices",
       "metrics": [
-        "El Niño"
+        "UK groceries"
       ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
-      "referencePeriod": "August–October 2026",
-      "time": null,
-      "status": "By the 5th",
-      "checkedAt": "2026-10-05",
-      "month": "2026-11",
-      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukoctober2026",
+      "referencePeriod": "October 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     },
     {
       "tracker": "el-nino",
@@ -270,28 +177,91 @@
       "referencePeriod": "September–November 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-10-05",
+      "checkedAt": "2026-10-16",
       "month": "2026-12",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
     {
       "tracker": "el-nino",
       "frequency": "monthly",
-      "date": "2026-10-08",
-      "title": "NOAA ENSO Diagnostic Discussion",
+      "date": null,
+      "title": "World Bank commodity prices",
       "metrics": [
-        "El Niño outlook"
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
       ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-      "referencePeriod": "September 2026 conditions and outlook",
-      "status": "Confirmed",
-      "checkedAt": "2026-10-05",
-      "note": "Outlook update; the three-month RONI actuals are published separately."
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "referencePeriod": "November 2026",
+      "time": null,
+      "status": "Expected month",
+      "checkedAt": "2026-10-16",
+      "month": "2026-12",
+      "note": "Monthly publication; exact release day not yet confirmed."
     },
     {
-      "date": "2026-10-09",
-      "title": "USDA World Agricultural Supply and Demand Estimates",
+      "date": "2026-12-01",
+      "title": "US job openings and labour turnover",
       "referencePeriod": "October 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-12-04",
+      "title": "FAO Food Price Index",
+      "metrics": [
+        "Food basket"
+      ],
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "referencePeriod": "November 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "date": "2026-12-04",
+      "title": "US employment situation",
+      "referencePeriod": "November 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "date": "2026-12-10",
+      "title": "US consumer prices",
+      "referencePeriod": "November 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "date": "2026-12-10",
+      "title": "USDA World Agricultural Supply and Demand Estimates",
+      "referencePeriod": "December 2026",
       "metrics": [
         "Maize harvest"
       ],
@@ -300,10 +270,38 @@
       "status": "Confirmed",
       "tracker": "el-nino",
       "frequency": "monthly",
-      "checkedAt": "2026-10-05"
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260915/dq260915a-eng.htm",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": "2026-12-15",
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-12-16",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationuknovember2026",
+      "referencePeriod": "November 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16"
     }
   ],
-  "lastReleaseReviewAt": "2026-10-05",
+  "lastReleaseReviewAt": "2026-10-16",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -482,6 +480,64 @@
         "palm: 2026-07",
         "palm: 2026-08"
       ]
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-10-08",
+      "title": "NOAA ENSO Diagnostic Discussion",
+      "metrics": [
+        "El Niño outlook"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "referencePeriod": "September 2026 conditions and outlook",
+      "status": "Confirmed",
+      "checkedAt": "2026-10-16",
+      "note": "October discussion published; next discussion is scheduled for 12 November 2026. The frozen scenario paths were not changed.",
+      "publishedAt": "2026-10-08",
+      "importedAt": "2026-10-16",
+      "actualsAdded": [],
+      "revisionsIncluded": []
+    },
+    {
+      "date": "2026-10-09",
+      "title": "USDA World Agricultural Supply and Demand Estimates",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Maize harvest"
+      ],
+      "sourceUrl": "https://usda.azureedge.us/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
+      "time": "12:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16",
+      "publishedAt": "2026-10-09",
+      "importedAt": "2026-10-16",
+      "actualsAdded": [],
+      "revisionsIncluded": [],
+      "note": "October WASDE checked; the South African 2026/27 maize yield forecast remains 5.50 tonnes/ha. No observed harvest point was added."
+    },
+    {
+      "date": "2026-10-14",
+      "title": "US consumer prices",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-16",
+      "publishedAt": "2026-10-14",
+      "importedAt": "2026-10-16",
+      "actualsAdded": [
+        "real-pay: 2026-09-01 = 103.874753"
+      ],
+      "revisionsIncluded": [],
+      "note": "September CPI released 14 October and imported into the real-pay chart."
     }
   ]
 }
