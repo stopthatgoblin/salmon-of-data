@@ -4,8 +4,8 @@ The native `/dashboards/ni-electricity/` route includes the overview map, 13 sta
 
 ## Architecture
 
-- GitHub Actions runs the original Python collectors. Their calculation files were copied unchanged into `electricity/dashboard/` and `electricity/research/dispatch_proxy/`.
-- Overview: `2,17,32,47 * * * *` in UTC. History: **07:00 Europe/London**, including British Summer Time, with hourly catch-up opportunities from 08:05 to 12:05 if needed. A successful daily run suppresses catch-ups. Schedules can be delayed or missed.
+- The private Cloudflare timer `salmon-electricity-scheduler` triggers GitHub Actions, which runs the original Python collectors. Their calculation files were copied unchanged into `electricity/dashboard/` and `electricity/research/dispatch_proxy/`.
+- Overview: `2,17,32,47 * * * *` in UTC. History: **07:00 Europe/London**, including British Summer Time, with hourly catch-up opportunities from 08:05 to 12:05 if needed. A successful daily run suppresses catch-ups. Native GitHub schedules remain a backup; recent collections suppress duplicate work. GitHub runner queues and upstream publication can still delay readings.
 - `electricity/cloud.py` restores compressed source state from KV, runs the original code, validates the result and publishes complete data before advancing pointers. It rejects backwards grid times, broken balances, partial days and loss of previously accepted historical readings, including archived station history.
 - A later incomplete history refresh retains previously accepted complete daily values and their observation counts. Grid inputs and derived flows retain their accepted day together, so a partial refresh cannot mix revised inputs with older balance estimates. Complete revisions replace old values, genuine gaps remain gaps, and retained dates are recorded in the public JSON and private history audit. Range shrinkage and invalid data still fail validation.
 - Each dataset retains three state slots and three public versions. Raw dispatch XML is limited to 14 days; accepted historical caches are retained. Archives above 20 MiB fail safely for review. Readers retain an older valid version during KV propagation; a collector refuses to resume from an older archive while its newest state is unavailable.
@@ -65,7 +65,7 @@ Map context includes Ireland, Scotland, England, Wales and the Isle of Man from 
 
 ## Manual cloud refresh and failures
 
-If native GitHub schedule delivery stalls while manual collections work, the [prepared Cloudflare timer](external-timer.md) can trigger the same jobs independently. Its timers remain disabled until the restricted GitHub credential is added and activation is verified.
+The [private Cloudflare timer](external-timer.md) triggers the same jobs independently of GitHub's native schedule delivery. Its restricted GitHub credential is an encrypted Worker secret. The timer's code and configuration are deployed separately from the static website; renew the credential before its expiry.
 
 After publication:
 
@@ -76,7 +76,7 @@ After publication:
 5. Open the run and confirm both collection steps succeeded. Inspect the observation date on the dashboard; successful collection does not guarantee the upstream feed has published newer observations.
 6. Check [the production manifest](https://salmonofdata.com/api/electricity/manifest.json) for each dataset's `ok`, `lastSuccess`, `lastAttempt`, source `time` and version.
 
-Enable GitHub workflow-failure notifications in your personal notification settings. Public-repository schedules are disabled after 60 days without repository activity; successful scheduled jobs alone do not keep them enabled. Check the Actions page periodically and re-enable if needed. A separate external stale-data alert has not been configured; the dashboard labels stale readings and retained failures.
+Enable GitHub workflow-failure notifications in your personal notification settings. Native GitHub public-repository schedules are disabled after 60 days without repository activity; successful scheduled jobs alone do not keep them enabled. Check the Actions page periodically and re-enable if needed. A separate external stale-data alert has not been configured; the dashboard labels stale readings and retained failures.
 
 Keep Workers on **Free** for a $0 platform-spend limit for this design: daily allowance exhaustion makes operations fail instead of buying overages. No Workers Paid upgrade or R2 is used. Traffic can exhaust free reads/requests; this is an availability limit. Do not enable paid products as an automatic response. [Cloudflare limits and costs](cloudflare-options.md).
 

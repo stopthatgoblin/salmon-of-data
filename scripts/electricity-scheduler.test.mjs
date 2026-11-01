@@ -43,12 +43,38 @@ test('timer dispatch is pinned to production main, protects credentials and pres
   const request = async (url, options) => {
     calls++;
     assert.equal(url, 'https://api.github.com/repos/stopthatgoblin/salmon-of-data/actions/workflows/ni-electricity.yml/dispatches');
-    assert.equal(options.redirect, 'error');
+    assert.equal(options.redirect, 'manual');
     assert.deepEqual(JSON.parse(options.body), { ref: 'main', inputs: { dataset: 'snapshot', target: 'production', automatic: 'true', preview_watch: 'false' } });
     return new Response(null, { status: 204 });
   };
   assert.deepEqual(await collectOnSchedule(controller, env, request, now), { action: 'dispatch', dataset: 'snapshot', status: 204 });
   assert.equal(calls, 1);
   await assert.rejects(collectOnSchedule(controller, env, async () => new Response('sensitive upstream response', { status: 403 }), now), error => error.message === 'GitHub collector dispatch failed: HTTP 403');
+  await assert.rejects(collectOnSchedule(controller, env, async (_url, options) => {
+    assert.equal(options.redirect, 'manual');
+    return new Response(null, { status: 302, headers: { Location: 'https://example.invalid/' } });
+  }, now), error => error.message === 'GitHub collector dispatch failed: HTTP 302');
   await assert.rejects(collectOnSchedule(controller, { ...env, GITHUB_ACTIONS_TOKEN: '' }, request, now), /Missing encrypted/);
+});
+
+test('07:00 history dispatch runs once per UK date and skips the other UTC candidate', async () => {
+  for (const [day, hour, otherHour] of [['2026-11-02', '07', '06'], ['2026-07-15', '06', '07']]) {
+    const now = Date.parse(`${day}T${hour}:00:00Z`);
+    let pointer = { records: [{}], successfulDate: '2026-07-01', lastAttempt: '2026-07-01T07:00:00Z' };
+    let dispatches = 0, reads = 0;
+    const env = { GITHUB_ACTIONS_TOKEN: 'test-only-placeholder', ELECTRICITY_DATA: { async get(key) {
+      assert.equal(key, 'public/history/current'); reads++; return pointer;
+    } } };
+    const request = async (_url, options) => {
+      assert.deepEqual(JSON.parse(options.body).inputs, { dataset: 'history', target: 'production', automatic: 'true', preview_watch: 'false' });
+      dispatches++; return new Response(null, { status: 204 });
+    };
+    const controller = { cron: historyCron, scheduledTime: now };
+    assert.equal((await collectOnSchedule(controller, env, request, now)).action, 'dispatch');
+    pointer = { ...pointer, successfulDate: day, lastSuccess: new Date(now).toISOString() };
+    assert.equal((await collectOnSchedule(controller, env, request, now)).action, 'skip');
+    const before = reads;
+    assert.equal((await collectOnSchedule({ cron: historyCron, scheduledTime: Date.parse(`${day}T${otherHour}:00:00Z`) }, env, request, now)).action, 'skip');
+    assert.equal(reads, before); assert.equal(dispatches, 1);
+  }
 });

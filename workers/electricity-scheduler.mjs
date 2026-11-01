@@ -40,7 +40,9 @@ export async function collectOnSchedule(controller, env, request = fetch, now = 
   const pointer = await env.ELECTRICITY_DATA.get(`public/${dataset}/current`, { type: 'json', cacheTtl: 60 });
   if (!collectionDue(dataset, pointer, now)) return { action: 'skip', dataset, reason: 'recent successful collection or retry guard' };
   const response = await request(workflowURL, {
-    method: 'POST', redirect: 'error', signal: AbortSignal.timeout(15000),
+    // Workers supports manual/follow, not Fetch's redirect:error. Reject every
+    // 3xx below without forwarding the Authorization header to another host.
+    method: 'POST', redirect: 'manual', signal: AbortSignal.timeout(15000),
     headers: {
       Authorization: `Bearer ${env.GITHUB_ACTIONS_TOKEN}`,
       Accept: 'application/vnd.github+json', 'Content-Type': 'application/json',

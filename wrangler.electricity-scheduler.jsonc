@@ -11,6 +11,6 @@
       "id": "01af7cb09c1c4828b3023de16af4362b"
     }
   ],
-  // Arm only after the encrypted GitHub secret has been added and verified.
-  "triggers": { "crons": [] }
+  // The handler selects 07:00 UK time from the two UTC daily candidates.
+  "triggers": { "crons": ["2,17,32,47 * * * *", "0 6,7 * * *", "5 7-12 * * *"] }
 }
