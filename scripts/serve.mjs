@@ -12,6 +12,7 @@ http.createServer(async(req,res)=>{
  let pathname;try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname)}catch{res.writeHead(400);res.end('Bad request');return;}
  if(pathname.startsWith('/api/electricity/')){
   const response=await electricityWorker.fetch(new Request(`http://localhost${req.url}`,{method:req.method,headers:req.headers}),{
+   ELECTRICITY_PREVIEW:'true',
    ELECTRICITY_DATA:{async get(key,options){
     if(!electricityStore)return null;
     const file=path.resolve(electricityStore,key);

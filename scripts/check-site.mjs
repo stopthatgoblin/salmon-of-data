@@ -12,7 +12,7 @@ console.log('OK source downloads');
 const electricityRoot=path.join(root,'data/ni-electricity');
 for(const name of ['snapshot.json','history.json','edition.json'])assert.ok(fs.existsSync(path.join(electricityRoot,name)),`Missing electricity dataset: ${name}`);
 const electricityPage=fs.readFileSync(path.join(root,'dashboards/ni-electricity.html'),'utf8');
-for(const content of ['Live dashboard','07:00 Europe/London','refresh-health','station-dialog','trend-image-png','trend-image-svg','trend-download','Open Data Licence'])assert.ok(electricityPage.includes(content),`Electricity page missing ${content}`);
+for(const content of ["Today's expected peak",'07:00 Europe/London','refresh-health','station-dialog','trend-image-png','trend-image-svg','trend-download','Open Data Licence'])assert.ok(electricityPage.includes(content),`Electricity page missing ${content}`);
 assert.ok(!electricityPage.includes('auto-refresh.js'));
 assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="/dashboards/ni-electricity/"'));
 console.log('OK electricity route, navigation, downloads and live-update labels');

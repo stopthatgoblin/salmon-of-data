@@ -64,3 +64,38 @@ test('live polling retries missing versions independently and retains valid read
     globalThis.window = saved.window; globalThis.document = saved.document;
   }
 });
+
+test('initial connection checks and one transient failure do not announce an outage', async t => {
+  const nodes = new Map();
+  const root = { querySelector(selector) {
+    if (!nodes.has(selector)) nodes.set(selector, { dataset: {}, hidden: true });
+    return nodes.get(selector);
+  } };
+  const page = Object.assign(new EventTarget(), { hidden: false });
+  let interval;
+  const window = Object.assign(new EventTarget(), {
+    matchMedia: () => ({ matches: true }), setInterval(callback) { interval = callback; return 1; }, clearInterval() {},
+  });
+  const version = 'e'.repeat(24);
+  let mode = 'failed';
+  t.mock.method(globalThis, 'fetch', async () => mode === 'failed' ? new Response(null, { status: 503 }) : Response.json({ schema: 1, enabled: true, mode: 'preview', snapshot: { version }, history: { version } }));
+  const saved = { window: globalThis.window, document: globalThis.document };
+  globalThis.window = window; globalThis.document = page;
+  const controller = new AbortController();
+  try {
+    const snapshot = { ...data('snapshot'), time: new Date().toISOString() };
+    mountLive(root, snapshot, data('history'), new EventTarget(), controller.signal, { snapshot: version, history: version });
+    assert.match(nodes.get('.snapshot-label').innerHTML, /Checking for updates/);
+    await flush();
+    assert.match(nodes.get('.snapshot-label').innerHTML, /Checking for updates/);
+    await interval();
+    assert.match(nodes.get('.snapshot-label').innerHTML, /Connection unavailable/);
+    mode = 'healthy';
+    await interval();
+    assert.match(nodes.get('.snapshot-label').innerHTML, /Preview readings/);
+    assert.match(nodes.get('#refresh-health').textContent, /Preview collectors run on demand/);
+  } finally {
+    controller.abort();
+    globalThis.window = saved.window; globalThis.document = saved.document;
+  }
+});

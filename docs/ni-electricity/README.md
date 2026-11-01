@@ -10,6 +10,7 @@ The native `/dashboards/ni-electricity/` route includes the overview map, 13 sta
 - Each dataset retains three state slots and three public versions. Raw dispatch XML is limited to 14 days; accepted historical caches are retained. Archives above 20 MiB fail safely for review. Readers retain an older valid version during KV propagation; a collector refuses to resume from an older archive while its newest state is unavailable.
 - Normal publication takes four KV writes and, after the third version, one delete. The usual 96 overview runs plus one successful history run use **388 writes and about 97 deletes/day**. Failed runs use at most two health writes; bounded retries and morning catch-ups leave room within the standard Free quotas. Other apps share account allowances.
 - The existing `salmon-of-data` Worker exposes only manifest, snapshot and history GET/HEAD reads at `/api/electricity/`. Private source archives have no public route. Static site assets use Cloudflare's asset service directly.
+- The overview is optionally enriched with official current-day demand, wind and solar forecasts. Demand combines available actuals and the remaining forecast, allowing only a short publication boundary between them. Wind/solar takes the maximum of matching forecast sums across all 96 quarter-hours, rather than adding separate peaks. Forecast outages retain same-day accepted peaks or show unavailable; they do not block valid actual readings. Yesterday’s peaks are never labelled as today’s.
 - The browser polls the manifest every minute while visible, and on focus/return. It downloads changed versions, keeps chart selections and open station details, shows delayed readings and respects reduced-motion preferences. Failed requests leave the displayed data intact.
 - Bundled accepted JSON provides an explicitly dated fallback during API outages and for a plain local preview. `edition.json` describes these fallback files; `automaticUpdates: false` describes the files themselves, not the live service.
 
@@ -21,6 +22,8 @@ The original signed flows, aligned actual readings, station dispatch-target esti
 
 The separate preview Worker is [salmon-electricity-preview](https://salmon-electricity-preview.peterdonaghy.workers.dev/dashboards/ni-electricity/), bound only to `ni-electricity-preview`. Production uses `ni-electricity-prod`. Both namespace IDs were checked against the hosting account. Source-state seeding and fresh collections restored from preview KV succeeded on 1 November 2026.
 
+The preview manifest explicitly reports preview mode. Its collectors run on demand while under review; the production schedules activate when the workflow reaches `main`. Initial browser checks show a neutral connecting state, and a single transient status failure does not announce an outage.
+
 Production publication remains a separate final step. The `codex/ni-electricity` branch tests both collectors against preview on push. Scheduled production jobs require the workflow on `main`.
 
 ## Local review
@@ -30,7 +33,7 @@ Use Node 24 and Python 3.11 (the adapter and original collectors use only Python
 ```sh
 npm run check
 python3 -m unittest discover -s electricity/dashboard -p 'test_*.py'
-python3 -m unittest discover -s electricity -p 'test_cloud.py'
+python3 -m unittest discover -s electricity -p 'test_*.py'
 npm run build
 node scripts/check-site.mjs
 npm start

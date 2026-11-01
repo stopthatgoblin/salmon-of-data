@@ -8,6 +8,40 @@ export function mountOverview(root, data, map, events, signal) {
   const dialog = root.querySelector('#' + 'station-dialog');
   const tabs = [...root.querySelectorAll('[role="tab"]')];
   const svgNS = 'http://www.w3.org/2000/svg';
+  const mobile = window.matchMedia('(max-width:1000px)');
+
+  function renderPeaks() {
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
+    const part = type => parts.find(value => value.type === type).value;
+    const today = `${part('year')}-${part('month')}-${part('day')}`;
+    root.querySelectorAll('[data-expected-peak]').forEach(element => {
+      const peak = data.expectedPeaks?.date === today ? data.expectedPeaks[element.dataset.expectedPeak] : null;
+      const available = Number.isFinite(peak?.value);
+      element.textContent = `Today's expected peak: ${available ? n(peak.value) + ' MW' : 'unavailable'}`;
+      element.title = available ? `${peak.basis} Forecast collected ${new Date(peak.retrievedAt).toLocaleString('en-GB', { timeZone: 'Europe/London' })}.` : 'A complete current-day source forecast is not available.';
+    });
+  }
+
+  function positionMoyleFlow() {
+    const path = root.querySelector('.moyle-flow');
+    let target = { x: 864, y: 165 };
+    if (!mobile.matches) {
+      const svg = root.querySelector('#electricity-map');
+      if (!svg.getScreenCTM || !svg.createSVGPoint) return;
+      const matrix = svg.getScreenCTM();
+      if (!matrix) return;
+      const box = root.querySelector('[data-interconnector="moyle"]').getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      const point = svg.createSVGPoint();
+      point.x = box.left - 4;
+      point.y = box.top + box.height * .45;
+      target = point.matrixTransform(matrix.inverse());
+    }
+    // End immediately outside the card border, keeping the export arrow visible.
+    path.setAttribute('d', data.moyle < 0
+      ? `M752 254C790 205 ${target.x - 60} ${target.y} ${target.x} ${target.y}`
+      : `M${target.x} ${target.y}C${target.x - 60} ${target.y} 790 205 752 254`);
+  }
 
   ['Ireland', 'Scotland'].forEach(name => {
     const path = document.createElementNS(svgNS, 'path');
@@ -77,14 +111,14 @@ export function mountOverview(root, data, map, events, signal) {
   root.querySelectorAll('[data-snapshot-time]').forEach(el => {el.dateTime = data.time; el.textContent = stamp(data.time);});
   root.querySelectorAll('[data-snapshot-short]').forEach(el => el.textContent = stamp(data.time));
   root.querySelectorAll('[data-report-link]').forEach(el => {if(data[el.dataset.reportLink]) el.href = `https://reports.sem-o.com/documents/${data[el.dataset.reportLink]}`;});
-  root.querySelector('#' + 'supply-bar').setAttribute('aria-label', `Electricity: power stations ${n(stationOutput)}, wind ${n(data.wind)}, solar ${n(data.solar)}, other ${n(data.other)}, signed Moyle ${n(data.moyle)}, signed North–South ${n(data.northSouth)} megawatts. The bar shows positive contributions; exports and negative balances are listed in the legend.`);
+  root.querySelector('#' + 'supply-bar').setAttribute('aria-label', `Electricity: power stations ${n(stationOutput)}, wind ${n(data.wind)}, solar ${n(data.solar)}, other ${n(data.other)}, signed Moyle ${n(data.moyle)}, signed North–South ${n(data.northSouth)} megawatts. The bar shows positive contributions. Interconnector exports are shown on their map cards.`);
   const sources = [
     { label: 'Power stations', value: stationOutput, colour: 'var(--salmon)', estimated: true },
     { label: 'Wind', value: data.wind, colour: 'var(--wind)' },
     { label: 'Solar', value: data.solar, colour: 'var(--solar)' },
     { label: 'Other', value: data.other, colour: 'var(--other)', estimated: true },
-    { label: 'Moyle', value: data.moyle, colour: 'var(--moyle)', interconnector: true },
-    { label: 'North–South', value: data.northSouth, colour: 'var(--ns)', estimated: true, interconnector: true }
+    { label: 'Moyle Interconnector', value: data.moyle, colour: 'var(--moyle)', interconnector: true },
+    { label: 'North-South Interconnector', value: data.northSouth, colour: 'var(--ns)', estimated: true, interconnector: true }
   ];
   root.querySelector('#' + 'supply-bar').replaceChildren();
   root.querySelector('#' + 'supply-legend').replaceChildren();
@@ -96,9 +130,9 @@ export function mountOverview(root, data, map, events, signal) {
     segment.style.background = source.colour;
     segment.title = `${source.label}: ${n(source.value)} MW${source.estimated ? ' (estimated)' : ''}`;
     root.querySelector('#' + 'supply-bar').append(segment);
+    if (source.interconnector && source.value <= 0) return;
     const item = document.createElement('span');
-    const exporting = source.interconnector && source.value < 0;
-    item.innerHTML = `<i class="source-dot" style="background:${source.colour}"></i>${escape(source.label)}${exporting ? ' (export)' : ''} <b>${n(exporting ? Math.abs(source.value) : source.value)}</b>`;
+    item.innerHTML = `<i class="source-dot" style="background:${source.colour}"></i>${escape(source.label)} <b>${n(source.value)}</b>`;
     root.querySelector('#' + 'supply-legend').append(item);
   });
 
@@ -114,6 +148,8 @@ export function mountOverview(root, data, map, events, signal) {
     const marker = root.querySelector(`[data-map-plant="${station.id}"]`);
     marker.classList.toggle('muted', station.output === 0);
   });
+  renderPeaks();
+  positionMoyleFlow();
   }
   renderOverview();
   root.querySelectorAll('.plant-callout').forEach(button => {
@@ -135,6 +171,7 @@ export function mountOverview(root, data, map, events, signal) {
     root.querySelector('.metrics').hidden = selected === 'trends';
     root.querySelector('.snapshot-stamp').hidden = selected === 'trends';
     root.dataset.view = selected;
+    if (selected === 'overview') positionMoyleFlow();
     if (updateHash) history.replaceState(null, '', `#${selected}`);
     events.dispatchEvent(new CustomEvent('dashboard:viewchange', { detail: selected }));
   }
@@ -189,7 +226,6 @@ export function mountOverview(root, data, map, events, signal) {
   root.querySelector('.close-dialog').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 
-  const mobile = window.matchMedia('(max-width:1000px)');
   function updateMapViewport() {
     root.querySelector('#' + 'electricity-map').setAttribute('viewBox', mobile.matches ? '260 75 620 480' : '70 20 1130 590');
     // Keep the sea name clear of station cards and inside the cropped mobile map.
@@ -198,8 +234,10 @@ export function mountOverview(root, data, map, events, signal) {
     seaLabel.setAttribute('x', x);
     seaLabel.setAttribute('y', y);
     seaLabel.setAttribute('transform', `rotate(-12 ${x} ${y})`);
+    positionMoyleFlow();
   }
   mobile.addEventListener('change', updateMapViewport, { signal });
+  window.addEventListener('resize', positionMoyleFlow, { signal });
   updateMapViewport();
   setView(location.hash.slice(1), { updateHash: false });
   window.addEventListener('hashchange', () => {
@@ -214,4 +252,5 @@ export function mountOverview(root, data, map, events, signal) {
       if (focused) root.querySelector(`[data-switch="${focused}"]`)?.focus();
     }
   }, { signal });
+  events.addEventListener('dashboard:clock', renderPeaks, { signal });
 }

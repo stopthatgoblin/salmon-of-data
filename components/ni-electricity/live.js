@@ -36,25 +36,33 @@ export function mountLive(root, snapshot, history, events, signal, initialVersio
   const versions = { ...initialVersions };
   let busy = false;
   let status;
-  let reachable = false;
+  let checked = false;
+  let failures = 0;
+  let lastContact = Object.values(initialVersions).some(Boolean) ? Date.now() : 0;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const date = value => value ? new Date(value).toLocaleString('en-GB', { timeZone: 'Europe/London' }) : 'not yet available';
 
   function showHealth() {
+    events.dispatchEvent(new CustomEvent('dashboard:clock'));
     const label = root.querySelector('.snapshot-label');
     const health = root.querySelector('#refresh-health');
-    const edition = root.querySelector('.electricity-edition');
     const delayed = Date.now() - Date.parse(data.snapshot.time) > 45 * 60000;
     const failed = status?.snapshot?.ok === false;
-    label.innerHTML = `<i></i> ${!reachable ? 'Saved readings' : delayed ? 'Delayed data' : failed ? 'Update delayed' : 'Updates every 15 min'}`;
-    label.dataset.health = !reachable || delayed || failed ? 'delayed' : 'ok';
+    const checking = !checked || failures === 1 && lastContact && Date.now() - lastContact < 5 * 60000;
+    const unavailable = checked && failures > 0 && !checking;
+    const preview = status?.mode === 'preview';
+    label.innerHTML = `<i></i> ${checking ? 'Checking for updates' : unavailable ? 'Connection unavailable' : delayed ? 'Delayed data' : failed ? 'Update delayed' : preview ? 'Preview readings' : 'Updates every 15 min'}`;
+    label.dataset.health = checking ? 'checking' : unavailable || delayed || failed ? 'delayed' : 'ok';
     label.title = 'Grid observation time shown alongside. Station dispatch instructions are published in hourly batches.';
-    edition.innerHTML = reachable ? 'Live dashboard<br><span>Overview · 15 min / history · daily</span>' : 'Saved readings<br><span>Live service temporarily unavailable</span>';
-    if (!reachable) {
-      health.textContent = 'Showing the last loaded readings. The live service is unavailable or this is a local preview; this page will retry automatically while visible.';
+    if (checking) {
+      health.textContent = 'Checking for updates. The observation time beside the tabs identifies the readings currently shown.';
       return;
     }
-    health.textContent = `Overview collection is scheduled every 15 minutes; history daily at 07:00 Europe/London. GitHub schedules can run late. ${failed ? 'The last overview update failed; accepted readings are retained.' : 'Last successful overview collection: ' + date(status.snapshot?.lastSuccess) + '.'} ${status.history?.ok === false ? 'The last history update failed; accepted history is retained.' : 'Last successful history collection: ' + date(status.history?.lastSuccess) + '.'} ${delayed ? 'Grid readings are more than 45 minutes old.' : ''}`;
+    if (unavailable) {
+      health.textContent = 'The data service could not be reached. Showing the last loaded readings; this page retries every minute while visible and when you return.';
+      return;
+    }
+    health.textContent = `${preview ? 'Preview collectors run on demand during review. Production is configured for overview collection every 15 minutes and history daily at 07:00 Europe/London.' : 'Overview collection is scheduled every 15 minutes; history daily at 07:00 Europe/London.'} GitHub schedules can run late. ${failed ? 'The last overview update failed; accepted readings are retained.' : 'Last successful overview collection: ' + date(status.snapshot?.lastSuccess) + '.'} ${status.history?.ok === false ? 'The last history update failed; accepted history is retained.' : 'Last successful history collection: ' + date(status.history?.lastSuccess) + '.'} ${delayed ? 'Grid readings are more than 45 minutes old.' : ''}`;
   }
 
   function showUpdate(name) {
@@ -77,7 +85,9 @@ export function mountLive(root, snapshot, history, events, signal, initialVersio
       const manifest = await response.json();
       if (manifest.schema !== 1 || manifest.enabled !== true) throw new Error('Invalid manifest');
       status = manifest;
-      reachable = true;
+      checked = true;
+      failures = 0;
+      lastContact = Date.now();
       // A missing version in one dataset never prevents the other updating.
       await Promise.all(['snapshot', 'history'].map(async name => {
         const version = status[name]?.version;
@@ -97,7 +107,8 @@ export function mountLive(root, snapshot, history, events, signal, initialVersio
         }
       }));
     } catch {
-      reachable = false;
+      checked = true;
+      failures++;
     } finally {
       if (!signal.aborted) showHealth();
       busy = false;

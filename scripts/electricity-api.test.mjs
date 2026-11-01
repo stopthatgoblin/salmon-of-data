@@ -31,6 +31,9 @@ test('electricity API keeps last accepted data readable during KV propagation', 
   assert.equal(pinned.headers.get('Cache-Control'), 'no-store');
   const manifest = await (await worker.fetch(request('manifest.json'), env)).json();
   assert.equal(manifest.snapshot.version, current);
+  assert.equal(manifest.mode, 'live');
+  const preview = await (await worker.fetch(request('manifest.json'), { ...env, ELECTRICITY_PREVIEW: 'true' })).json();
+  assert.equal(preview.mode, 'preview');
 });
 
 test('electricity API exposes only public datasets and handles HEAD/conditional reads', async () => {

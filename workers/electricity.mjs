@@ -26,7 +26,7 @@ export default {
           return { ...pointer, version: pointer.records[0].version };
         }));
         if (!snapshot || !history) return unavailable();
-        response = Response.json({ schema: 1, enabled: true, snapshot, history }, { headers: { ...jsonHeaders, 'Cache-Control': 'public, max-age=30' } });
+        response = Response.json({ schema: 1, enabled: true, mode: env.ELECTRICITY_PREVIEW === 'true' ? 'preview' : 'live', snapshot, history }, { headers: { ...jsonHeaders, 'Cache-Control': 'public, max-age=30' } });
       } else {
         const dataset = name.slice(0, -5);
         const requested = url.searchParams.get('v');

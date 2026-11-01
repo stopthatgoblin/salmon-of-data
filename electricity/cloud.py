@@ -22,6 +22,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
+import forecasts
 
 ROOT = Path(__file__).resolve().parent
 UTC = timezone.utc
@@ -316,6 +317,10 @@ def run(kv, name, force=False):
             script = work / f'dashboard/refresh_{name}.py'
             subprocess.run([sys.executable, str(script)], check=True, timeout=600 if name == 'snapshot' else 1800)
             data = json.loads((work / f'dashboard/dist/assets/{name}.json').read_bytes())
+            if name == 'snapshot':
+                source = work / 'dashboard/runtime/source-snapshots' / data['sourceSnapshot']
+                data['expectedPeaks'] = forecasts.collect(json.loads(source.read_bytes()), previous.get('expectedPeaks'))
+                (work / 'dashboard/dist/assets/snapshot.json').write_bytes(encode(data))
             validate(name, data, previous)
             if name == 'snapshot':
                 prune_snapshot_cache(work)
