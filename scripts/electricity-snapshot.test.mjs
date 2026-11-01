@@ -52,10 +52,6 @@ test('electricity overview labels imports, exports and zero consistently', () =>
     assert.equal(node('#net-flow-share').hidden, shareHidden);
     assert.equal(signedNumber.textContent, String(data.moyle + northSouth));
     assert.match(node('[data-interconnector="northSouth"]').innerHTML, northSouth < 0 ? /Exporting/ : northSouth > 0 ? /Importing/ : /No net flow/);
-    const legend = node('#supply-legend').children.map(child => child.innerHTML).join('');
-    assert.equal(legend.includes('Moyle Interconnector'), moyle > 0);
-    assert.equal(legend.includes('North-South Interconnector'), northSouth > 0);
-    assert.ok(!legend.includes('(export)'));
     assert.equal(node('.moyle-flow').dataset.direction, moyle < 0 ? 'export' : moyle > 0 ? 'import' : 'balanced');
   }
 });

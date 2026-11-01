@@ -133,31 +133,6 @@ export function mountOverview(root, data, map, events, signal) {
   root.querySelectorAll('[data-snapshot-time]').forEach(el => {el.dateTime = data.time; el.textContent = stamp(data.time);});
   root.querySelectorAll('[data-snapshot-short]').forEach(el => el.textContent = stamp(data.time));
   root.querySelectorAll('[data-report-link]').forEach(el => {if(data[el.dataset.reportLink]) el.href = `https://reports.sem-o.com/documents/${data[el.dataset.reportLink]}`;});
-  root.querySelector('#' + 'supply-bar').setAttribute('aria-label', `Electricity: power stations ${n(stationOutput)}, wind ${n(data.wind)}, solar ${n(data.solar)}, other ${n(data.other)}, signed Moyle ${n(data.moyle)}, signed North–South ${n(data.northSouth)} megawatts. The bar shows positive contributions. Interconnector exports are shown on their map cards.`);
-  const sources = [
-    { label: 'Power stations', value: stationOutput, colour: 'var(--salmon)', estimated: true },
-    { label: 'Wind', value: data.wind, colour: 'var(--wind)' },
-    { label: 'Solar', value: data.solar, colour: 'var(--solar)' },
-    { label: 'Other', value: data.other, colour: 'var(--other)', estimated: true },
-    { label: 'Moyle Interconnector', value: data.moyle, colour: 'var(--moyle)', interconnector: true },
-    { label: 'North-South Interconnector', value: data.northSouth, colour: 'var(--ns)', estimated: true, interconnector: true }
-  ];
-  root.querySelector('#' + 'supply-bar').replaceChildren();
-  root.querySelector('#' + 'supply-legend').replaceChildren();
-  sources.forEach(source => {
-    const segment = document.createElement('div');
-    segment.className = 'supply-segment';
-    segment.style.flexGrow = Math.max(0, source.value);
-    if (source.value <= 0) segment.hidden = true;
-    segment.style.background = source.colour;
-    segment.title = `${source.label}: ${n(source.value)} MW${source.estimated ? ' (estimated)' : ''}`;
-    root.querySelector('#' + 'supply-bar').append(segment);
-    if (source.interconnector && source.value <= 0) return;
-    const item = document.createElement('span');
-    item.innerHTML = `<i class="source-dot" style="background:${source.colour}"></i>${escape(source.label)} <b>${n(source.value)}</b>`;
-    root.querySelector('#' + 'supply-legend').append(item);
-  });
-
   data.stations.forEach(station => {
     const button = root.querySelector(`.plant-callout[data-station="${station.id}"]`);
     const utilisation = capacityUsage(station.output, station.available);
