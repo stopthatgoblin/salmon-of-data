@@ -1,0 +1,18 @@
+{
+  "edition": "fallback",
+  "automaticUpdates": false,
+  "sourceLicence": "https://www.smartgriddashboard.com/ni/open-data-license/",
+  "datasets": {
+    "snapshot.json": {
+      "asOf": "2026-11-01T12:45:00Z",
+      "sha256": "7bfbf8d87ee9fe3ff85112a940b4ba9450aaf2e9f9371782abb5ff0084d86b6e",
+      "bytes": 5217
+    },
+    "history.json": {
+      "asOf": "2026-11-01T12:53:00Z",
+      "sha256": "7f944d04c990ef15d692e95ab1a356bcf63eb090247b1485f9ed562d683ca0cb",
+      "bytes": 597176
+    }
+  },
+  "description": "Accepted bundled fallback. The live API and visible-page polling supply newer versions."
+}

@@ -1,8 +1,10 @@
 # Salmon of Data
 
-A local, editorial-style website with a tracker directory, About section, Markdown blog and eight-tab El Niño impact tracker and the fully integrated eight-tab AI displacement tracker, including its release calendar.
+A local, editorial-style website with a tracker directory, About section, Markdown blog, El Niño and AI displacement trackers, and Northern Ireland elections and electricity dashboards.
 
 ## Local preview
+
+The new [Northern Ireland electricity dashboard](http://127.0.0.1:3100/dashboards/ni-electricity/) includes the overview map, station details and historical explorer, with CSV / PNG / SVG downloads. The overview collector is scheduled every 15 minutes and history daily at 07:00 Europe/London, using GitHub Actions and Workers Free + KV. The live API, retained fallback data and visible-page polling are implemented. See [integration notes](docs/ni-electricity/README.md) and [Cloudflare free options and cost controls](docs/ni-electricity/cloudflare-options.md).
 
 Use Node 22.13 or newer (tested with the bundled Node 24 runtime).
 
@@ -12,7 +14,7 @@ npm run build
 npm start
 ```
 
-Open http://127.0.0.1:3100/. The finished static site is in `dist/client`. No public deployment or domain change has been made.
+Open http://127.0.0.1:3100/. The website assets are built into `dist/client`. Building locally does not publish them; electricity automation and publication status are recorded in the integration notes.
 
 For editing with live updates, stop the static preview first, then run:
 

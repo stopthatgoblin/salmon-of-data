@@ -5,17 +5,18 @@ import {createHash} from 'node:crypto';
 const read=p=>JSON.parse(fs.readFileSync(new URL('../'+p,import.meta.url)));
 const report=read('public/data/ai/refresh-2026-09-13.json');
 const dashboard=read('data/ai/dashboard.json');
-test('September refresh actuals reproduce from complete source inputs',()=>{
- const recruitment=dashboard.metrics.find(m=>m.id==='recruitment');
+test('September refresh vintage reproduces from its complete source inputs',()=>{
+ // Current observations include later provider revisions. Replay the saved
+ // September vintage against its own report, rather than today's revised data.
+ const recruitment=report.newActuals.recruitment;
  for(const [date,...inputs] of report.recruitmentInputs){
   assert.equal(inputs.length,7);assert.ok(inputs.every(Number.isFinite));
   const value=Number((inputs.slice(0,6).reduce((a,b)=>a+b,0)/6/inputs[6]*100).toFixed(6));
-  assert.equal(recruitment.data.find(p=>p.date===date).value,value);
+  assert.equal(recruitment.find(p=>p.date===date).value,value);
  }
- const pay=dashboard.metrics.find(m=>m.id==='real-pay');
  for(const input of report.newActuals['real-pay']){
   const value=Number((input.nominalHourlyPay/input.cpi/input.base2019MeanPayDividedByCpi*100).toFixed(6));
-  assert.equal(pay.data.find(p=>p.date===input.date).value,value);
+  assert.equal(input.value,value);
  }
  assert.deepEqual(dashboard,read('public/data/ai/dashboard-snapshot.json'));
 });

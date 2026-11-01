@@ -171,7 +171,7 @@ function MetricView({ m }: { m: Metric }) {
           </span>
           <span className="chart-actions"><a href={`/data/ai/${m.id}.csv`} download>Download CSV ↓</a><ChartDownload chartRef={chartRef} filename={'salmonofdata-ai-'+m.id} freezeNote={`Forecast frozen 6 September 2026. Latest data at the freeze: ${periodLabel(anchor.date)} - ${fmt(anchor.value,m)}. Future actuals overlay unchanged predictions. Horizon: December 2029.`}/></span>
         </div>
-        <p className="chart-explainer"><strong>What this chart shows:</strong> {m.chartExplainer}</p>
+        {'chartExplainer' in m && typeof m.chartExplainer === 'string' && <p className="chart-explainer"><strong>What this chart shows:</strong> {m.chartExplainer}</p>}
         <p className="chart-source"><strong>Source:</strong> <a href={m.sourceUrl} target="_blank" rel="noreferrer">{m.source} ↗</a></p>
         <ChartLicence tracker="ai" metric={m.id}/><div className="chart-brand">SALMONOFDATA.COM</div>
       </section>
