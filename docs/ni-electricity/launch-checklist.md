@@ -9,7 +9,7 @@ Selected architecture: GitHub Actions + Workers Free + KV. Updated 1 November 20
 - Documented existing Cloudflare Worker: `salmon-of-data`, serving `dist/client` using `wrangler.static.jsonc`.
 - Documented domain: `salmonofdata.com`; confirm these production settings in Cloudflare before changing them.
 - Integration branch: `codex/ni-electricity`. This branch tests collectors against preview. Production schedules and website publication use `main`.
-- Original collector: `/Volumes/External SSD/Projects/NI electricity/dashboard`, with helpers in `../research/dispatch_proxy/`.
+- Original collector: `../../NI electricity/dashboard` relative to the repository root, with helpers in `../research/dispatch_proxy/` relative to that collector.
 - Active Mac working copy: `~/Library/Application Support/SalmonOfDataElectricity/`.
 
 ## What the owner needs to provide or enable

@@ -1,12 +1,13 @@
 // Only /api/electricity/* invokes this Worker. Other site assets are served
 // directly by Cloudflare's static asset service, without Worker requests.
+import { apiSecurityHeaders } from './security-headers.mjs';
 const prefix = '/api/electricity/';
 const versionPattern = /^[a-f0-9]{24}$/;
-const jsonHeaders = { 'Content-Type': 'application/json; charset=utf-8', 'X-Content-Type-Options': 'nosniff' };
+const jsonHeaders = { ...apiSecurityHeaders, 'Content-Type': 'application/json; charset=utf-8' };
 
 function unavailable() {
   return Response.json({ error: 'Electricity data is temporarily unavailable. Please retry.' }, {
-    status: 503, headers: { 'Cache-Control': 'no-store', 'Retry-After': '60' },
+    status: 503, headers: { ...jsonHeaders, 'Cache-Control': 'no-store', 'Retry-After': '60' },
   });
 }
 
@@ -14,9 +15,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (!url.pathname.startsWith(prefix)) return env.ASSETS.fetch(request);
-    if (!['GET', 'HEAD'].includes(request.method)) return new Response(null, { status: 405, headers: { Allow: 'GET, HEAD' } });
+    if (!['GET', 'HEAD'].includes(request.method)) return new Response(null, { status: 405, headers: { ...apiSecurityHeaders, Allow: 'GET, HEAD' } });
     const name = url.pathname.slice(prefix.length);
-    if (!['manifest.json', 'snapshot.json', 'history.json'].includes(name)) return new Response(null, { status: 404 });
+    if (!['manifest.json', 'snapshot.json', 'history.json'].includes(name)) return new Response(null, { status: 404, headers: apiSecurityHeaders });
     try {
       let response;
       if (name === 'manifest.json') {
@@ -30,7 +31,7 @@ export default {
       } else {
         const dataset = name.slice(0, -5);
         const requested = url.searchParams.get('v');
-        if (requested && !versionPattern.test(requested)) return new Response(null, { status: 400 });
+        if (requested && !versionPattern.test(requested)) return new Response(null, { status: 400, headers: apiSecurityHeaders });
         // Pin changed-version reads to the announced version. A propagation miss
         // is retried by the browser; its current valid UI remains intact.
         const versions = requested ? [requested] : (await env.ELECTRICITY_DATA.get(`public/${dataset}/current`, { type: 'json', cacheTtl: 60 }))?.records?.map(item => item.version) || [];

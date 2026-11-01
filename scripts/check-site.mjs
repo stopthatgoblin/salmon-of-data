@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import { staticSecurityHeaders, headersFile } from './build-security.mjs';
 const root=path.resolve('dist/client');
 const posts=JSON.parse(fs.readFileSync('data/posts.json','utf8'));
 const routes=['','trackers/el-nino','trackers/ai','trackers/ai/calendar','dashboards/ni-elections','dashboards/ni-electricity','blog',...posts.map(p=>'blog/'+p.slug)];
@@ -16,3 +17,8 @@ for(const content of ["Today's expected peak",'07:00 Europe/London','refresh-hea
 assert.ok(!electricityPage.includes('auto-refresh.js'));
 assert.ok(fs.readFileSync(path.join(root,'index.html'),'utf8').includes('href="/dashboards/ni-electricity/"'));
 console.log('OK electricity route, navigation, downloads and live-update labels');
+
+function htmlFiles(directory){return fs.readdirSync(directory,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?htmlFiles(path.join(directory,entry.name)):entry.name.endsWith('.html')?[path.join(directory,entry.name)]:[]);}
+const pages=htmlFiles(root).map(file=>fs.readFileSync(file,'utf8'));
+assert.equal(fs.readFileSync(path.join(root,'_headers'),'utf8'),headersFile(staticSecurityHeaders(pages)),'Security headers must match every generated HTML page, including 404.');
+console.log('OK strict CSP hashes and Cloudflare security headers');

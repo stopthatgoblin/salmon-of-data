@@ -6,11 +6,11 @@ Prepared 31 October 2026. This is the proposed web architecture and implementati
 
 The user wants the standalone electricity dashboard integrated into the existing Salmon of Data website, with current readings refreshed every 15 minutes and daily historical data / derived metrics refreshed automatically. Keep the existing minimalist design, source definitions and attribution.
 
-Local paths:
+Local paths, relative to the website repository:
 
-- Main website repository: `/Volumes/External SSD/Projects/salmon-2026/el-nino-tracker` (despite the folder name, `package.json` identifies `salmon-of-data`).
-- Prototype source: `/Volumes/External SSD/Projects/NI electricity/dashboard`.
-- Required collector helpers: `/Volumes/External SSD/Projects/NI electricity/research/dispatch_proxy/{analyse.py,collect.py,snapshot.py}`.
+- Main website repository: `.` (`package.json` identifies `salmon-of-data`).
+- Prototype source: `../../NI electricity/dashboard`.
+- Required collector helpers: `../../NI electricity/research/dispatch_proxy/{analyse.py,collect.py,snapshot.py}`.
 - Active Mac copy: `~/Library/Application Support/SalmonOfDataElectricity/`, containing `dashboard/` and `research/dispatch_proxy/`.
 - Local prototype: `http://127.0.0.1:8765/#overview` and `#trends`.
 
@@ -129,7 +129,7 @@ When a validated snapshot or history version updates an open page, give the affe
 7. Once web collection is verified, Peter can disable local collection using the command below. Publishing alone does not disable Mac jobs. Keep the old working copy for rollback.
 
 ```sh
-python3 "/Volumes/External SSD/Projects/NI electricity/dashboard/schedule_mac.py" stop-updates
+python3 "../../NI electricity/dashboard/schedule_mac.py" stop-updates
 ```
 
 `start-updates` reverses that action. `uninstall` removes all three Mac agents, including the preview server. `status` reports current local health. Disabling Mac collection does not stop the cloud collector; their schedules are independent.

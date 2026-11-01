@@ -26,11 +26,9 @@ npm run dev
 
 This uses the same port. Markdown additions, edits and removals are watched automatically by the development server. After editing, `npm run build` refreshes the static version served by `npm start`. Refresh the browser after rebuilding the static site.
 
-If the system Node is older, first select the bundled runtime:
+Use a Node version manager to select the version pinned in `.node-version` if your system Node is older.
 
-```sh
-export PATH="/Users/peterdonaghy/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH"
-```
+See [security maintenance](docs/security.md) for dependency checks, response headers and repository privacy.
 
 ## Add a blog post
 
@@ -58,7 +56,7 @@ High/Medium/Low lines are **judgement-based conditional scenarios**, not fitted 
 This is a dated snapshot, not an activated live-import pipeline. To reproduce it:
 
 ```sh
-/Users/peterdonaghy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/build-data.py
+python3 scripts/build-data.py
 ```
 
 The builder's source cutoff is intentionally explicit. Future data updates should archive new source files, advance the cutoff and retrieval date, and preserve `scenarios-v1.json` and the original raw archive. New observations can cross the original forecast date without rebasing scenario paths. If scenario definitions change, publish a new version and explain it rather than overwriting v1.

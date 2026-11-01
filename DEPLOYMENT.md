@@ -1,6 +1,6 @@
 # Publish Salmon of Data
 
-This project exports a static website. Use **Cloudflare Workers Static Assets** with GitHub integration; no custom Worker script or database is required. These steps publish the current committed snapshots and Markdown posts. They do not fetch new actuals or alter the frozen forecasts.
+This project exports a static website using **Cloudflare Workers Static Assets** with GitHub integration. A small read-only Worker serves electricity data from KV; its collector is scheduled separately. These steps publish the current committed snapshots and Markdown posts. They do not fetch new actuals or alter the frozen forecasts. See [security maintenance](docs/security.md) before publishing.
 
 ## 1. Put the project on GitHub
 
@@ -9,7 +9,7 @@ Create an empty repository named `salmon-of-data` on GitHub. Do not initialize i
 In Terminal:
 
 ```sh
-cd "/Volumes/External SSD/Projects/salmon-2026/el-nino-tracker"
+cd /path/to/salmon-of-data
 git init -b main
 git add .
 git status --short
@@ -30,7 +30,7 @@ Use the existing `salmon-of-data` Worker connected to `stopthatgoblin/salmon-of-
 | Root directory | `/` |
 | Build command | `npm run build` |
 | Deploy command | `npx wrangler deploy --config wrangler.static.jsonc` |
-| Build variable | `NODE_VERSION` = `24.19.0` |
+| Node version | Selected by `.node-version` (`24.22.1`); update any explicit `NODE_VERSION` override to match |
 
 Commit and push `wrangler.static.jsonc` before retrying. The non-default filename avoids Vinext detecting this static export as a server-based Worker build. The explicit deploy command selects this configuration. It selects `dist/client`, serves the exported HTML routes, and prevents Wrangler's automatic framework setup. Keep the installed dependency versions and lockfile; no forced dependency upgrade is needed. The earlier log successfully built the website, then failed when automatic setup attempted a conflicting Wrangler upgrade.
 
