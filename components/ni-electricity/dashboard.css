@@ -28,8 +28,8 @@
 .ni-electricity .fault-note{white-space:normal;font-size:10px;line-height:1.5}
 @media(min-width:1001px){
  .ni-electricity .map-stage{container-type:inline-size}
- .ni-electricity .generation-label{grid-template-columns:2.58cqw auto;column-gap:.726cqw}
- .ni-electricity .generation-label svg{width:2.58cqw;height:2.58cqw}
+ .ni-electricity .generation-label{grid-template-columns:2.1cqw auto;column-gap:.45cqw}
+ .ni-electricity .generation-label svg{width:2.1cqw;height:2.1cqw}
  .ni-electricity .generation-label>span{font-size:.968cqw}
  .ni-electricity .generation-label strong{font-size:2.34cqw}
  .ni-electricity .generation-label small{font-size:.806cqw}
@@ -59,7 +59,7 @@
  .ni-electricity .plant-callout.kilroot{left:72.832%;top:47.797%}
  .ni-electricity .interconnector.moyle{left:72.832%;top:13.559%;width:21%}
  .ni-electricity .interconnector.north-south{left:3.54%;top:auto;bottom:12px;width:20.796%}
- .ni-electricity .wind-label{left:35.398%;top:37.288%}.ni-electricity .solar-label{left:35.398%;top:60.169%}.ni-electricity .other-label{left:52.655%;top:60.169%}
+ .ni-electricity .wind-label{left:35.398%;top:37.288%}.ni-electricity .solar-label{left:35.398%;top:54.237%}.ni-electricity .other-label{left:51.327%;top:54.237%}
  .ni-electricity .plant-name,.ni-electricity .generation-label>span,.ni-electricity .callout-heading{font:400 clamp(16px,1.69cqw,20px)/1.2 var(--serif);letter-spacing:-.3px}
  .ni-electricity .generation-label sup{font:9px Arial,sans-serif;letter-spacing:0}
 }

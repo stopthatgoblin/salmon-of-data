@@ -37,7 +37,7 @@ export const dashboardMarkup = /* html */ `
               <g id="land-context"></g><path id="ni-land" class="ni-land"/><path id="lakes" class="lakes"/>
               <text x="1060" y="62" class="country-label">SCOTLAND</text>
               <text x="440" y="575" class="country-label">REPUBLIC OF IRELAND</text>
-              <text x="520" y="340" class="ni-label" text-anchor="middle"><tspan x="520">NORTHERN</tspan><tspan x="520" dy="19">IRELAND</tspan></text>
+              <text x="625" y="450" class="ni-label" text-anchor="middle"><tspan x="625">NORTHERN</tspan><tspan x="625" dy="19">IRELAND</tspan></text>
               <text x="940" y="545" class="sea-label" text-anchor="middle" transform="rotate(-12 940 545)">Irish Sea</text>
               <g class="leaders"><path d="M337 168 404 168 458 197"/><path d="M710 180 710 221 740 261"/><path d="M742.1 296.6 838 296.6 893 368"/></g>
               <path class="flow-path moyle-flow" d="M989 149C925 148 861 173 752 254" marker-end="url(#moyle-arrow)"/>
