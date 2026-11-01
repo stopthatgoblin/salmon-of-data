@@ -1,18 +1,18 @@
 // Approved standalone dashboard markup, adapted for the shared site shell.
 export const dashboardMarkup = /* html */ `
     <h1 class="electricity-sr-only">Northern Ireland electricity</h1>
-    <div class="metrics" aria-label="Electricity system summary">
-      <div class="metric demand"><span>Electricity demand</span><strong data-reading="demand">— <small>MW</small></strong><p class="expected-peak" data-expected-peak="demand">Today's expected peak: — MW</p></div>
-      <div class="metric renewables"><span>NI wind & solar</span><strong data-reading="renewables">— <small>MW</small></strong><p><b id="renewables-share">—</b> of demand</p><p class="expected-peak" data-expected-peak="windSolar">Today's expected peak: — MW</p></div>
-      <div class="metric"><span>Generated in NI</span><strong data-reading="generation">— <small>MW</small></strong><p><b data-share="generation">—</b> of demand</p></div>
-      <div class="metric"><span id="net-flow-label">Net imports</span><strong data-reading="imports">— <small>MW</small></strong><p id="net-flow-share"><b data-share="imports">—</b> of demand</p></div>
-    </div>
-
     <div class="tabs" role="tablist" aria-label="Dashboard views">
       <button id="tab-overview" role="tab" aria-selected="true" aria-controls="overview" tabindex="0">Overview</button>
       <button id="tab-trends" role="tab" aria-selected="false" aria-controls="trends" tabindex="-1">Trends</button>
       <button id="tab-definitions" role="tab" aria-selected="false" aria-controls="definitions" tabindex="-1">Definitions & sources</button>
       <div class="snapshot-stamp"><span class="snapshot-label"><i></i> Snapshot</span><time data-snapshot-time>—</time></div>
+    </div>
+
+    <div class="metrics" aria-label="Electricity system summary">
+      <div class="metric demand"><span>Electricity demand</span><strong data-reading="demand">— <small>MW</small></strong><p class="expected-peak" data-expected-peak="demand">Today's expected peak: — MW</p></div>
+      <div class="metric renewables"><span>NI wind & solar</span><strong data-reading="renewables">— <small>MW</small></strong><p><b id="renewables-share">—</b> of demand</p><p class="expected-peak" data-expected-peak="windSolar">Today's expected peak: — MW</p></div>
+      <div class="metric"><span>Generated in NI</span><strong data-reading="generation">— <small>MW</small></strong><p><b data-share="generation">—</b> of demand</p></div>
+      <div class="metric"><span id="net-flow-label">Net imports</span><strong data-reading="imports">— <small>MW</small></strong><p id="net-flow-share"><b data-share="imports">—</b> of demand</p></div>
     </div>
 
     <section id="overview" role="tabpanel" aria-labelledby="tab-overview">
@@ -35,11 +35,11 @@ export const dashboardMarkup = /* html */ `
             </defs>
             <g clip-path="url(#map-clip)">
               <g id="land-context"></g><path id="ni-land" class="ni-land"/><path id="lakes" class="lakes"/>
-              <text x="1060" y="62" class="country-label">SCOTLAND</text>
+              <text x="1060" y="310" class="country-label">SCOTLAND</text>
               <text x="440" y="575" class="country-label">REPUBLIC OF IRELAND</text>
-              <text x="625" y="450" class="ni-label" text-anchor="middle"><tspan x="625">NORTHERN</tspan><tspan x="625" dy="19">IRELAND</tspan></text>
-              <text x="940" y="545" class="sea-label" text-anchor="middle" transform="rotate(-12 940 545)">Irish Sea</text>
-              <g class="leaders"><path d="M337 168 404 168 458 197"/><path d="M710 180 710 221 740 261"/><path d="M742.1 296.6 838 296.6 893 368"/></g>
+              <text x="625" y="450" class="ni-label" text-anchor="middle">NORTHERN IRELAND</text>
+              <text x="840" y="535" class="sea-label" text-anchor="middle" transform="rotate(-12 840 535)">Irish Sea</text>
+              <g class="leaders"><path data-leader="coolkeeragh" d="M337 168 404 168 458 197"/><path data-leader="ballylumford" d="M710 180 710 221 740 261"/><path data-leader="kilroot" d="M742.1 296.6 838 296.6 893 368"/></g>
               <path class="flow-path moyle-flow" d="M989 149C925 148 861 173 752 254" marker-end="url(#moyle-arrow)"/>
               <path class="flow-path ns-flow" d="M345 510C385 510 365 450 400 410" marker-end="url(#ns-arrow)"/>
               <g class="plant-dot muted" data-map-plant="coolkeeragh"><circle cx="458" cy="197" r="11"/><circle cx="458" cy="197" r="4"/></g>

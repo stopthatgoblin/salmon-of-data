@@ -18,7 +18,7 @@
 
 /* Compact overview and map readings. */
 .ni-electricity .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.ni-electricity .metrics{border-bottom:0}.ni-electricity .tabs{border-top:1px solid var(--line)}
+.ni-electricity .metrics{border-bottom:0;padding-block:14px 12px}.ni-electricity .tabs{border-top:1px solid var(--line)}
 .ni-electricity .tabs .snapshot-stamp{margin-left:auto;flex-direction:row;align-items:center;gap:12px;padding:0;font-size:11px}
 .ni-electricity .tabs .snapshot-label{font-size:10px}.ni-electricity .tabs .snapshot-stamp time{font-size:11px}
 .ni-electricity .interconnector{border:1px solid #d5d6ca;background:#fffdf8f5;box-shadow:0 2px 6px #182e3203;padding:15px 17px 13px}
@@ -40,7 +40,7 @@
  .ni-electricity .interconnector{padding:11px 12px}.ni-electricity .flow-direction{font-size:9px;gap:4px}.ni-electricity .fault-note{font-size:9px}.ni-electricity .flow-capacity{font-size:9px}
 }
 @media(max-width:1000px){
- .ni-electricity .metrics{padding-top:5px}.ni-electricity .tabs{flex-wrap:wrap;gap:0 25px}
+ .ni-electricity .metrics{padding:0}.ni-electricity .metric{padding-block:13px 12px}.ni-electricity .tabs{flex-wrap:wrap;gap:0 25px}
  .ni-electricity .tabs .snapshot-stamp{width:100%;margin-left:0;padding:9px 0 11px;border-top:1px solid var(--line);font-size:10px;gap:10px}
  .ni-electricity .tabs .snapshot-stamp time{font-size:10px}.ni-electricity .tabs>button{padding-top:14px}
  .ni-electricity .interconnector{padding:13px 12px 12px;grid-column:span 3;min-width:0}
@@ -54,11 +54,11 @@
 .ni-electricity .plant-callout .plant-capacity{margin-top:0}.ni-electricity .plant-callout .plant-meter>span{background:var(--salmon)}
 @media(min-width:1001px){
  .ni-electricity .map-stage{aspect-ratio:1130/590}
- .ni-electricity .plant-callout.coolkeeragh{left:2.655%;top:11.0177%}
+ .ni-electricity .plant-callout.coolkeeragh{left:2.655%;top:4.237%}
  .ni-electricity .plant-callout.ballylumford{left:45.487%;top:4.237%}
- .ni-electricity .plant-callout.kilroot{left:72.832%;top:47.797%}
- .ni-electricity .interconnector.moyle{left:72.832%;top:13.559%;width:21%}
- .ni-electricity .interconnector.north-south{left:3.54%;top:auto;bottom:12px;width:20.796%}
+ .ni-electricity .plant-callout.kilroot{left:72.832%;top:auto;bottom:12px}
+ .ni-electricity .interconnector.moyle{left:72.832%;top:4.237%;width:21%}
+ .ni-electricity .interconnector.north-south{left:2.655%;top:auto;bottom:12px;width:21%}
  .ni-electricity .wind-label{left:35.398%;top:37.288%}.ni-electricity .solar-label{left:35.398%;top:54.237%}.ni-electricity .other-label{left:51.327%;top:54.237%}
  .ni-electricity .plant-name,.ni-electricity .generation-label>span,.ni-electricity .callout-heading{font:400 clamp(16px,1.69cqw,20px)/1.2 var(--serif);letter-spacing:-.3px}
  .ni-electricity .generation-label sup{font:9px Arial,sans-serif;letter-spacing:0}
@@ -86,6 +86,7 @@
 .ni-electricity .flow-value .estimate-tag{font:400 10px/1.2 Arial,Helvetica,sans-serif;letter-spacing:0;margin-left:7px}
 @media(max-width:480px){.ni-electricity .callout-heading .source-dot{display:none}}
 @media(max-width:380px){.ni-electricity .interconnector{grid-column:1/-1}}
+@media(max-width:600px){.ni-electricity .supply-legend{grid-template-columns:repeat(2,minmax(0,1fr))}.ni-electricity .supply-legend>span{white-space:normal;min-width:0}}
 
 /* A quiet, single-series historical view. */
 .ni-electricity[data-view=trends] .tabs{margin-top:22px;border-top:0}

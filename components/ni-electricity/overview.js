@@ -22,7 +22,7 @@ export function mountOverview(root, data, map, events, signal) {
     });
   }
 
-  function positionMoyleFlow() {
+  function positionMapConnections() {
     const path = root.querySelector('.moyle-flow');
     let target = { x: 864, y: 165 };
     if (!mobile.matches) {
@@ -36,11 +36,33 @@ export function mountOverview(root, data, map, events, signal) {
       point.x = box.left - 4;
       point.y = box.top + box.height * .45;
       target = point.matrixTransform(matrix.inverse());
+      const toMap = (x, y) => {
+        const point = svg.createSVGPoint();
+        point.x = x;
+        point.y = y;
+        return point.matrixTransform(matrix.inverse());
+      };
+      // Measure the cards so leaders stay attached when titles or values wrap.
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+      for (const [id, x, y] of [['coolkeeragh', 458, 197], ['ballylumford', 740, 261], ['kilroot', 742.1, 296.6]]) {
+        const card = root.querySelector(`[data-station="${id}"]`).getBoundingClientRect();
+        const topLeft = toMap(card.left, card.top);
+        const bottomRight = toMap(card.right, card.bottom);
+        const edgeX = clamp(x, topLeft.x, bottomRight.x);
+        const edgeY = clamp(y, topLeft.y, bottomRight.y);
+        const middleX = (edgeX + x) / 2;
+        root.querySelector(`[data-leader="${id}"]`).setAttribute('d', `M${edgeX} ${edgeY}L${middleX} ${edgeY}L${x} ${y}`);
+      }
+      const nsBox = root.querySelector('[data-interconnector="northSouth"]').getBoundingClientRect();
+      const ns = toMap(nsBox.right + 4, nsBox.top + nsBox.height * .5);
+      root.querySelector('.ns-flow').setAttribute('d', data.northSouth < 0
+        ? `M400 410C365 450 ${ns.x + 40} ${ns.y} ${ns.x} ${ns.y}`
+        : `M${ns.x} ${ns.y}C${ns.x + 40} ${ns.y} 365 450 400 410`);
     }
     // End immediately outside the card border, keeping the export arrow visible.
     path.setAttribute('d', data.moyle < 0
-      ? `M752 254C790 205 ${target.x - 60} ${target.y} ${target.x} ${target.y}`
-      : `M${target.x} ${target.y}C${target.x - 60} ${target.y} 790 205 752 254`);
+      ? `M752 254C850 254 ${target.x - 60} ${target.y} ${target.x} ${target.y}`
+      : `M${target.x} ${target.y}C${target.x - 60} ${target.y} 850 254 752 254`);
   }
 
   ['Ireland', 'Scotland', 'England', 'Wales', 'Isle of Man'].forEach(name => {
@@ -149,7 +171,7 @@ export function mountOverview(root, data, map, events, signal) {
     marker.classList.toggle('muted', station.output === 0);
   });
   renderPeaks();
-  positionMoyleFlow();
+  positionMapConnections();
   }
   renderOverview();
   root.querySelectorAll('.plant-callout').forEach(button => {
@@ -171,7 +193,7 @@ export function mountOverview(root, data, map, events, signal) {
     root.querySelector('.metrics').hidden = selected !== 'overview';
     root.querySelector('.snapshot-stamp').hidden = selected !== 'overview';
     root.dataset.view = selected;
-    if (selected === 'overview') positionMoyleFlow();
+    if (selected === 'overview') positionMapConnections();
     if (updateHash) history.replaceState(null, '', `#${selected}`);
     events.dispatchEvent(new CustomEvent('dashboard:viewchange', { detail: selected }));
   }
@@ -230,14 +252,14 @@ export function mountOverview(root, data, map, events, signal) {
     root.querySelector('#' + 'electricity-map').setAttribute('viewBox', mobile.matches ? '260 75 620 480' : '70 20 1130 590');
     // Keep the sea name clear of station cards and inside the cropped mobile map.
     const seaLabel = root.querySelector('.sea-label');
-    const [x, y] = mobile.matches ? [820, 510] : [940, 545];
+    const [x, y] = mobile.matches ? [820, 510] : [840, 535];
     seaLabel.setAttribute('x', x);
     seaLabel.setAttribute('y', y);
     seaLabel.setAttribute('transform', `rotate(-12 ${x} ${y})`);
-    positionMoyleFlow();
+    positionMapConnections();
   }
   mobile.addEventListener('change', updateMapViewport, { signal });
-  window.addEventListener('resize', positionMoyleFlow, { signal });
+  window.addEventListener('resize', positionMapConnections, { signal });
   updateMapViewport();
   setView(location.hash.slice(1), { updateHash: false });
   window.addEventListener('hashchange', () => {
