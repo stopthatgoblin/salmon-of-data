@@ -19,7 +19,7 @@ export const dashboardMarkup = /* html */ `
       <section class="map-section" aria-label="Map of electricity generation and imports">
         <div class="map-toolbar"><span>Select a power station to explore its units <span aria-hidden="true">↗</span></span></div>
         <div class="map-stage" id="map-stage">
-          <svg id="electricity-map" viewBox="70 20 1130 590" aria-label="Northern Ireland, with neighbouring Ireland, Great Britain and the Isle of Man" role="img">
+          <svg id="electricity-map" viewBox="70 20 1130 530" aria-label="Northern Ireland, with neighbouring Ireland, Great Britain and the Isle of Man" role="img">
             <defs>
               <clipPath id="map-clip"><rect width="1240" height="630" rx="0"/></clipPath>
               <marker id="moyle-arrow" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="9" markerHeight="9" orient="auto"><path d="M2 2 10 6 2 10" fill="none" stroke="#527d8b" stroke-width="1.5" stroke-linejoin="round"/></marker>
@@ -30,10 +30,10 @@ export const dashboardMarkup = /* html */ `
             </defs>
             <g clip-path="url(#map-clip)">
               <g id="land-context"></g><path id="ni-land" class="ni-land"/><path id="lakes" class="lakes"/>
-              <text x="1060" y="310" class="country-label">SCOTLAND</text>
-              <text x="440" y="575" class="country-label">REPUBLIC OF IRELAND</text>
+              <text x="1035" y="240" class="country-label scotland-label">SCOTLAND</text>
+              <text x="420" y="535" class="country-label roi-label">REPUBLIC OF IRELAND</text>
               <text x="625" y="450" class="ni-label" text-anchor="middle">NORTHERN IRELAND</text>
-              <text x="840" y="535" class="sea-label" text-anchor="middle" transform="rotate(-12 840 535)">Irish Sea</text>
+              <text x="840" y="510" class="sea-label" text-anchor="middle" transform="rotate(-12 840 510)">Irish Sea</text>
               <g class="leaders"><path data-leader="coolkeeragh" d="M337 168 404 168 458 197"/><path data-leader="ballylumford" d="M710 180 710 221 740 261"/><path data-leader="kilroot" d="M742.1 296.6 838 296.6 893 368"/></g>
               <path class="flow-path moyle-flow" d="M989 149C925 148 861 173 752 254" marker-end="url(#moyle-arrow)"/>
               <path class="flow-path ns-flow" d="M345 510C385 510 365 450 400 410" marker-end="url(#ns-arrow)"/>

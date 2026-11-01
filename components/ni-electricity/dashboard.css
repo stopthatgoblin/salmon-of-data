@@ -18,7 +18,7 @@
 
 /* Compact overview and map readings. */
 .ni-electricity .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.ni-electricity .metrics{border-bottom:0;padding-block:10px 8px}.ni-electricity .tabs{border-top:1px solid var(--line)}
+.ni-electricity .metrics{border-bottom:0;padding-block:10px 4px}.ni-electricity .tabs{border-top:1px solid var(--line)}
 .ni-electricity .tabs .snapshot-stamp{margin-left:auto;flex-direction:row;align-items:center;gap:12px;padding:0;font-size:11px}
 .ni-electricity .tabs .snapshot-label{font-size:10px}.ni-electricity .tabs .snapshot-stamp time{font-size:11px}
 .ni-electricity .interconnector{border:1px solid #d5d6ca;background:#fffdf8f5;box-shadow:0 2px 6px #182e3203;padding:15px 17px 13px}
@@ -49,17 +49,17 @@
 }
 
 /* Map framing and equal typographic hierarchy for regional generation. */
-.ni-electricity .map-toolbar{justify-content:flex-end;padding-top:8px}.ni-electricity .map-footer{justify-content:flex-end;border-top:0;padding:10px 0 2px}
+.ni-electricity .map-toolbar{justify-content:flex-end;padding-top:2px}.ni-electricity .map-footer{justify-content:flex-end;border-top:0;padding:10px 0 2px}
 .ni-electricity .plant-callout .plant-meter{margin:9px 0 6px;display:block;width:100%;height:3px;background:#e3e5dd}
 .ni-electricity .plant-callout .plant-capacity{margin-top:0}.ni-electricity .plant-callout .plant-meter>span{background:var(--salmon)}
 @media(min-width:1001px){
- .ni-electricity .map-stage{aspect-ratio:1130/590}
- .ni-electricity .plant-callout.coolkeeragh{left:2.655%;top:4.237%}
- .ni-electricity .plant-callout.ballylumford{left:37.7435%;top:4.237%}
+ .ni-electricity .map-stage{aspect-ratio:1130/530;margin-top:0}
+ .ni-electricity .plant-callout.coolkeeragh{left:2.655%;top:2.5%}
+ .ni-electricity .plant-callout.ballylumford{left:37.7435%;top:2.5%}
  .ni-electricity .plant-callout.kilroot{left:72.832%;top:auto;bottom:7%}
- .ni-electricity .interconnector.moyle{left:72.832%;top:4.237%;width:21%}
+ .ni-electricity .interconnector.moyle{left:72.832%;top:2.5%;width:21%}
  .ni-electricity .interconnector.north-south{left:2.655%;top:auto;bottom:7%;width:21%}
- .ni-electricity .wind-label{left:35.398%;top:37.288%}.ni-electricity .solar-label{left:35.398%;top:54.237%}.ni-electricity .other-label{left:51.327%;top:54.237%}
+ .ni-electricity .wind-label{left:35.398%;top:41.5094%}.ni-electricity .solar-label{left:35.398%;top:60.3774%}.ni-electricity .other-label{left:51.327%;top:60.3774%}
  .ni-electricity .plant-name,.ni-electricity .generation-label>span,.ni-electricity .callout-heading{font:400 clamp(16px,1.69cqw,20px)/1.2 var(--serif);letter-spacing:-.3px}
  .ni-electricity .generation-label sup{font:9px Arial,sans-serif;letter-spacing:0}
 }
@@ -165,3 +165,6 @@
 .ni-electricity .snapshot-label[data-health=checking] i{background:var(--muted)}
 
 .ni-electricity .electricity-connection{margin-top:18px;color:var(--muted);font-size:11px;line-height:1.7}.ni-electricity .electricity-connection summary{cursor:pointer}.ni-electricity .electricity-connection p{margin:10px 0}.ni-electricity .electricity-connection button{margin-left:8px}
+
+/* Preserve the inland Scotland label in the narrower desktop composition. */
+.ni-electricity .scotland-label.compact{letter-spacing:1px}

@@ -36,6 +36,13 @@ export function mountOverview(root, data, map, events, signal) {
       point.x = box.left - 4;
       point.y = box.top + box.height * .45;
       target = point.matrixTransform(matrix.inverse());
+      // On narrow desktop maps the card is taller in map units. Place the
+      // country name on mainland Scotland beside it, rather than under it.
+      const compact = window.matchMedia('(max-width:1100px)').matches;
+      const scotland = root.querySelector('.scotland-label');
+      scotland.setAttribute('x', compact ? 1133 : 1035);
+      scotland.setAttribute('y', compact ? 200 : 240);
+      scotland.classList.toggle('compact', compact);
       const toMap = (x, y) => {
         const point = svg.createSVGPoint();
         point.x = x;
@@ -224,10 +231,10 @@ export function mountOverview(root, data, map, events, signal) {
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 
   function updateMapViewport() {
-    root.querySelector('#' + 'electricity-map').setAttribute('viewBox', mobile.matches ? '260 75 620 480' : '70 20 1130 590');
+    root.querySelector('#' + 'electricity-map').setAttribute('viewBox', mobile.matches ? '260 75 620 480' : '70 20 1130 530');
     // Keep the sea name clear of station cards and inside the cropped mobile map.
     const seaLabel = root.querySelector('.sea-label');
-    const [x, y] = mobile.matches ? [820, 510] : [840, 535];
+    const [x, y] = mobile.matches ? [820, 510] : [840, 510];
     seaLabel.setAttribute('x', x);
     seaLabel.setAttribute('y', y);
     seaLabel.setAttribute('transform', `rotate(-12 ${x} ${y})`);
