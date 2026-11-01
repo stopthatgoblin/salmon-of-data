@@ -25,7 +25,7 @@ Production publication remains a separate final step. The `codex/ni-electricity`
 
 ## Local review
 
-Use Node 24 and Python 3.12 (the adapter and original collectors use only Python's standard library):
+Use Node 24 and Python 3.11 (the adapter and original collectors use only Python's standard library). Python 3.11 preserves the local collector's floating-point summation behaviour; Python 3.12 can differ by 0.0001 MW in rounded internal station history:
 
 ```sh
 npm run check
