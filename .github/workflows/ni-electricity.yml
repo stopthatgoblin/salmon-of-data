@@ -32,6 +32,10 @@ on:
         description: Run a temporary two-hour preview test, collecting every 15 minutes
         type: boolean
         default: false
+      automatic:
+        description: Respect collection cadence and daily success guards (external timer)
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -53,7 +57,7 @@ jobs:
       # fall through to the production namespace.
       ELECTRICITY_KV_NAMESPACE_ID: ${{ vars[(github.event_name == 'push' && github.ref == 'refs/heads/codex/ni-electricity' || github.event.inputs.target == 'preview') && 'ELECTRICITY_PREVIEW_KV_NAMESPACE_ID' || 'ELECTRICITY_KV_NAMESPACE_ID'] }}
       PYTHONUNBUFFERED: '1'
-      ELECTRICITY_FORCE: ${{ github.event_name != 'schedule' }}
+      ELECTRICITY_FORCE: ${{ github.event_name != 'schedule' && !inputs.automatic }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:

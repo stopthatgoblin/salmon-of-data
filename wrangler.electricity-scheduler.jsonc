@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "salmon-electricity-scheduler",
+  "main": "workers/electricity-scheduler.mjs",
+  "compatibility_date": "2026-09-11",
+  "workers_dev": false,
+  "preview_urls": false,
+  "kv_namespaces": [
+    {
+      "binding": "ELECTRICITY_DATA",
+      "id": "01af7cb09c1c4828b3023de16af4362b"
+    }
+  ],
+  // Arm only after the encrypted GitHub secret has been added and verified.
+  "triggers": { "crons": [] }
+}

@@ -64,6 +64,8 @@ Map context includes Ireland, Scotland, England, Wales and the Isle of Man from 
 
 ## Manual cloud refresh and failures
 
+If native GitHub schedule delivery stalls while manual collections work, the [prepared Cloudflare timer](external-timer.md) can trigger the same jobs independently. Its timers remain disabled until the restricted GitHub credential is added and activation is verified.
+
 After publication:
 
 1. Open [repository Actions](https://github.com/stopthatgoblin/salmon-of-data/actions).
