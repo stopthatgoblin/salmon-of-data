@@ -191,7 +191,7 @@ export function mountOverview(root, data, map, events, signal) {
   });
 
   function renderStation(id) {
-    dialog.dataset.station = id;
+    dialog.dataset.activeStation = id;
     const station = data.stations.find(item => item.id === id);
     if (!station) return;
     const availableCount = station.units.filter(unit => unit.available > 0).length;
@@ -206,7 +206,7 @@ export function mountOverview(root, data, map, events, signal) {
   }
 
   root.addEventListener('click', event => {
-    const stationButton = event.target.closest('[data-station]');
+    const stationButton = event.target.closest('.plant-callout[data-station]');
     const switchButton = event.target.closest('[data-switch]');
     const viewButton = event.target.closest('button[data-view]');
     if (stationButton) {
@@ -248,7 +248,7 @@ export function mountOverview(root, data, map, events, signal) {
     const focused = document.activeElement?.closest('[data-switch]')?.dataset.switch;
     renderOverview();
     if (dialog.open) {
-      renderStation(dialog.dataset.station);
+      renderStation(dialog.dataset.activeStation);
       if (focused) root.querySelector(`[data-switch="${focused}"]`)?.focus();
     }
   }, { signal });
