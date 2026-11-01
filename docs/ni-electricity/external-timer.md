@@ -8,6 +8,14 @@ This addresses a different failure from a collector error: on 1 November 2026 pr
 
 Cloudflare's timer dispatches the existing workflow on production `main`, with `automatic: true`. That retains the Python collectors, KV state, daily-success checks, retry limits, signed-flow rules and history validation. Recent overview collections suppress duplicates if GitHub's native schedule also fires. GitHub runner queue delays and upstream source delays can still occur; the extra timer removes reliance on GitHub's own cron delivery.
 
+## Activation evidence
+
+On 1 November 2026, the 18:02 GMT Cloudflare cron invocation completed successfully and GitHub accepted its dispatch with HTTP 204. It created [production run 41334550610](https://github.com/stopthatgoblin/salmon-of-data/actions/runs/41334550610) on `main`, verifying the encrypted credential and real timer path. The daily dispatch is covered by tests at 07:00 in GMT and BST, with successful-day suppression; the first future daily invocation is not represented as already observed.
+
+During that production collection, the upstream demand, generation and Moyle feeds returned empty `Rows` arrays. Direct source checks, alternative supported range requests and an uncached demand request confirmed missing source data; wind and solar were available. The collector and its manual retry rejected the incomplete snapshot and preserved the accepted edition. The configured timer continues retrying every 15 minutes. A successful timer dispatch is distinct from a successful source collection.
+
+Cloudflare's supported `redirect: "manual"` mode is used, with every non-success status (including redirects) rejected. The initial runtime check exposed unsupported `redirect: "error"`; the deployed correction preserves the credential's fixed-host boundary. See [Workers request redirect behaviour](https://developers.cloudflare.com/workers/runtime-apis/request/).
+
 ## Credential setup and renewal
 
 1. Open [GitHub fine-grained personal access tokens](https://github.com/settings/personal-access-tokens), then **Generate new token**.
