@@ -106,8 +106,15 @@ def collect(source_snapshot, previous=None, now=None):
                     'basis': 'Highest available reported demand or remaining published forecast today; a short publication gap can exist between the two feeds.',
                     'observations': len(actual), 'forecastReadings': len(feeds['demand']),
                     'sources': [urls['demand'], *dict.fromkeys(actual_urls)]}
-        except (ValueError, KeyError, TypeError):
-            pass
+            else:
+                required = {f'{minute // 60:02}:{minute % 60:02}:00' for minute in range(0, 1440, 30)}
+                print('Optional demand peak coverage:', json.dumps({'actualCount': len(actual),
+                    'actualFirst': min(actual, default=None), 'actualLast': max(actual, default=None),
+                    'forecastCount': len(feeds['demand']), 'forecastFirst': min(feeds['demand'], default=None),
+                    'forecastLast': max(feeds['demand'], default=None),
+                    'missingHalfHours': sorted(required - (actual.keys() | feeds['demand'].keys()))}))
+        except (ValueError, KeyError, TypeError) as error:
+            print(f'Optional demand peak unavailable: {type(error).__name__}: {error}')
     if 'wind' in feeds and 'solar' in feeds:
         peak = wind_solar_peak(feeds['wind'], feeds['solar'])
         if peak is not None:
