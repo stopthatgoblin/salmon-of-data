@@ -1,11 +1,16 @@
 name: NI electricity data
 
 on:
-  # Validate this integration branch against preview before merging to main.
+  # Validate collector changes against preview; refresh production when the
+  # collector or its schedule changes on the default branch.
   push:
-    branches: [codex/ni-electricity]
+    branches: [main, codex/ni-electricity]
+    paths:
+      - '.github/workflows/ni-electricity.yml'
+      - 'electricity/**'
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    - cron: '2,17,32,47 * * * *'
+      timezone: UTC
     - cron: '0 7 * * *'
       timezone: Europe/London
     # Catch up on a delayed/failed daily run, once an hour through the morning.
@@ -34,7 +39,7 @@ permissions:
 # One collector at a time per namespace, including manual runs. Do not cancel
 # a publication between writing accepted state and advancing its public pointer.
 concurrency:
-  group: ni-electricity-${{ github.event_name == 'push' && 'preview' || github.event.inputs.target || 'production' }}
+  group: ni-electricity-${{ github.event_name == 'push' && github.ref == 'refs/heads/codex/ni-electricity' && 'preview' || github.event.inputs.target || 'production' }}
   cancel-in-progress: false
 
 jobs:
@@ -46,7 +51,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
       # Select the variable name first: an unset preview ID must fail, never
       # fall through to the production namespace.
-      ELECTRICITY_KV_NAMESPACE_ID: ${{ vars[(github.event_name == 'push' || github.event.inputs.target == 'preview') && 'ELECTRICITY_PREVIEW_KV_NAMESPACE_ID' || 'ELECTRICITY_KV_NAMESPACE_ID'] }}
+      ELECTRICITY_KV_NAMESPACE_ID: ${{ vars[(github.event_name == 'push' && github.ref == 'refs/heads/codex/ni-electricity' || github.event.inputs.target == 'preview') && 'ELECTRICITY_PREVIEW_KV_NAMESPACE_ID' || 'ELECTRICITY_KV_NAMESPACE_ID'] }}
       PYTHONUNBUFFERED: '1'
       ELECTRICITY_FORCE: ${{ github.event_name != 'schedule' }}
     steps:
@@ -63,12 +68,12 @@ jobs:
           python -m unittest discover -s electricity/dashboard -p 'test_*.py'
           python -m unittest discover -s electricity -p 'test_*.py'
       - name: Refresh overview
-        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' && inputs.dataset != 'history' || github.event.schedule == '7,22,37,52 * * * *'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' && inputs.dataset != 'history' || github.event.schedule == '2,17,32,47 * * * *'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python electricity/cloud.py snapshot
       - name: Refresh historical explorer
-        if: always() && !cancelled() && steps.rules.outcome == 'success' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' && inputs.dataset != 'snapshot' || github.event_name == 'schedule' && github.event.schedule != '7,22,37,52 * * * *')
+        if: always() && !cancelled() && steps.rules.outcome == 'success' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' && inputs.dataset != 'snapshot' || github.event_name == 'schedule' && github.event.schedule != '2,17,32,47 * * * *')
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: python electricity/cloud.py history

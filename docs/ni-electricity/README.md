@@ -5,7 +5,7 @@ The native `/dashboards/ni-electricity/` route includes the overview map, 13 sta
 ## Architecture
 
 - GitHub Actions runs the original Python collectors. Their calculation files were copied unchanged into `electricity/dashboard/` and `electricity/research/dispatch_proxy/`.
-- Overview: `7,22,37,52 * * * *`. History: **07:00 Europe/London**, including British Summer Time, with hourly catch-up opportunities from 08:05 to 12:05 if needed. A successful daily run suppresses catch-ups. Schedules can be delayed or missed.
+- Overview: `2,17,32,47 * * * *` in UTC. History: **07:00 Europe/London**, including British Summer Time, with hourly catch-up opportunities from 08:05 to 12:05 if needed. A successful daily run suppresses catch-ups. Schedules can be delayed or missed.
 - `electricity/cloud.py` restores compressed source state from KV, runs the original code, validates the result and publishes complete data before advancing pointers. It rejects backwards grid times, broken balances, partial days and loss of previously accepted historical readings, including archived station history.
 - Each dataset retains three state slots and three public versions. Raw dispatch XML is limited to 14 days; accepted historical caches are retained. Archives above 20 MiB fail safely for review. Readers retain an older valid version during KV propagation; a collector refuses to resume from an older archive while its newest state is unavailable.
 - Normal publication takes four KV writes and, after the third version, one delete. The usual 96 overview runs plus one successful history run use **388 writes and about 97 deletes/day**. Failed runs use at most two health writes; bounded retries and morning catch-ups leave room within the standard Free quotas. Other apps share account allowances.
@@ -26,7 +26,7 @@ The preview manifest explicitly reports preview mode. Its collectors run on dema
 
 Initial browser checks show a neutral connecting state, and a single transient status failure does not announce an outage. Requests support browsers without `AbortSignal.any`/`timeout`. Overview → Data freshness & connection shows connection-check and collection times, an HTTP/network failure reason where available, and a manual retry button. Definitions & sources contains durable methodology, source links and series start dates; it excludes live summary metrics, current coverage counts, end dates, collection status and fault reporting. Announced versions that have not loaded yet are identified separately from service connectivity.
 
-Production is published at [salmonofdata.com](https://salmonofdata.com/dashboards/ni-electricity/), with the workflow on `main` activating the collection schedules. The `codex/ni-electricity` branch tests both collectors against preview on push. Publication and production collection were authorised on 1 November 2026. Production refreshes use the separate production namespace.
+Production is published at [salmonofdata.com](https://salmonofdata.com/dashboards/ni-electricity/), with the workflow on `main` activating the collection schedules. Pushes that change `electricity/**` or the workflow run both collectors: `main` writes to production and `codex/ni-electricity` writes to preview. Other site edits do not trigger collection. Each namespace has its own concurrency group, so a temporary preview watch cannot block production. Publication and production collection were authorised on 1 November 2026. Production refreshes use the separate production namespace.
 
 ## Local review
 
