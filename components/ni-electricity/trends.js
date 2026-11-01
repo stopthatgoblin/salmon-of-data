@@ -306,11 +306,8 @@ export function mountTrends(root, rawHistory, model, events, signal) {
   });
 
   function renderHistoryMetadata() {
-  const coverageRows = history.series.map(series => `<tr><th scope="row">${esc(series.label)}</th><td>${series.first ? dateLabel(series.first) : '—'}</td><td>${series.last ? dateLabel(series.last) : '—'}</td><td>${whole.format(series.days)}</td></tr>`).join('');
+  const coverageRows = history.series.map(series => `<tr><th scope="row">${esc(series.label)}</th><td>${series.first ? dateLabel(series.first) : '—'}</td></tr>`).join('');
   root.querySelector('#' + 'history-coverage-rows').innerHTML = coverageRows;
-  root.querySelector('#' + 'history-refreshed').textContent = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/London' }).format(new Date(history.generatedAt));
-  root.querySelector('#' + 'history-last-day').textContent = dateLabel(history.last);
-  root.querySelector('#' + 'history-request-failures').textContent = history.requestFailures ? `${history.requestFailures} source requests failed during this build; affected dates remain missing.` : 'All history requests completed successfully; the upstream feeds themselves still have missing observations.';
   }
   renderHistoryMetadata();
   events.addEventListener('dashboard:viewchange', event => { if (event.detail === 'trends') render(); }, { signal });

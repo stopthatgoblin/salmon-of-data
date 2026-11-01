@@ -168,8 +168,8 @@ export function mountOverview(root, data, map, events, signal) {
       root.querySelector('#' + tab.getAttribute('aria-controls')).hidden = !active;
       if (active && focus) tab.focus();
     });
-    root.querySelector('.metrics').hidden = selected === 'trends';
-    root.querySelector('.snapshot-stamp').hidden = selected === 'trends';
+    root.querySelector('.metrics').hidden = selected !== 'overview';
+    root.querySelector('.snapshot-stamp').hidden = selected !== 'overview';
     root.dataset.view = selected;
     if (selected === 'overview') positionMoyleFlow();
     if (updateHash) history.replaceState(null, '', `#${selected}`);

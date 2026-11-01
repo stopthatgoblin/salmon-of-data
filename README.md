@@ -1,6 +1,8 @@
 # Salmon of Data
 
-A local, editorial-style website with a tracker directory, About section, Markdown blog, El Niño and AI displacement trackers, and Northern Ireland elections and electricity dashboards.
+An editorial-style website with a tracker directory, About section, Markdown blog, El Niño and AI displacement trackers, and Northern Ireland elections and electricity dashboards.
+
+The complete site is published at [salmonofdata.com](https://salmonofdata.com/). Electricity runs on Workers Free + KV with GitHub Actions collection. The shared release calendar covers monthly and quarterly releases for the AI and El Niño trackers.
 
 ## Local preview
 

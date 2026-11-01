@@ -162,3 +162,5 @@
 .ni-electricity .metric .expected-peak{font-size:10px;line-height:1.5;color:var(--muted);margin-top:4px}
 .ni-electricity .snapshot-label[data-health=checking]{color:var(--muted)}
 .ni-electricity .snapshot-label[data-health=checking] i{background:var(--muted)}
+
+.ni-electricity .electricity-connection{margin-top:18px;color:var(--muted);font-size:11px;line-height:1.7}.ni-electricity .electricity-connection summary{cursor:pointer}.ni-electricity .electricity-connection p{margin:10px 0}.ni-electricity .electricity-connection button{margin-left:8px}

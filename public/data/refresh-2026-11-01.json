@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-11-01",
+  "newActuals": {
+    "retail": [
+      {
+        "date": "2026-09",
+        "value": 144.3
+      }
+    ]
+  },
+  "sources": [
+    {
+      "file": "2026-11-01/fao.csv",
+      "bytes": 48110,
+      "sha256": "1e7b4cab727d65ad85ac056a1f4ec21285c3294aebdacb08f01e10be490a4098",
+      "retrievedOn": "2026-11-01",
+      "note": "Source recaptured for the 1 November 2026 review; original capture retained.",
+      "name": "FAO Food Price Index",
+      "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/wfs-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_84",
+      "url": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/"
+    },
+    {
+      "file": "2026-11-01/world-bank.xlsx",
+      "bytes": 586099,
+      "sha256": "ea1c350827878ea3bbe30e3cda16a13fd3bd5b409b8458940dc94a36b5a33154",
+      "retrievedOn": "2026-11-01",
+      "note": "Source recaptured for the 1 November 2026 review; original capture retained.",
+      "name": "World Bank Pink Sheet",
+      "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+      "url": "https://www.worldbank.org/en/research/commodity-markets"
+    },
+    {
+      "file": "2026-11-01/ons.json",
+      "bytes": 126298,
+      "sha256": "4c586c69a5593cff94dffe547a4f76674d285b94a1d0aeb40b0c2ebc95468c22",
+      "retrievedOn": "2026-11-01",
+      "note": "Source recaptured for the 1 November 2026 review; original capture retained.",
+      "name": "ONS D7BU",
+      "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23"
+    },
+    {
+      "file": "2026-11-01/roni.html",
+      "bytes": 97820,
+      "sha256": "c3a07a7f28a7d69acef4fe03eb91482b062d1a1d63f462c181b0f5d5d4f23ff8",
+      "retrievedOn": "2026-11-01",
+      "note": "Source recaptured for the 1 November 2026 review; original capture retained.",
+      "name": "NOAA RONI (ERSSTv6)",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/"
+    },
+    {
+      "file": "2026-11-01/grains.zip",
+      "bytes": 2873599,
+      "sha256": "7047570ee818e79154d0af1d92ecdb5b6a0343900793a0b22fa4b4e55e3cd1ae",
+      "retrievedOn": "2026-11-01",
+      "note": "Source recaptured for the 1 November 2026 review; original capture retained.",
+      "name": "USDA Production, Supply & Distribution",
+      "downloadUrl": "https://apps.fas.usda.gov/psdonline/downloads/psd_grains_pulses_csv.zip",
+      "url": "https://apps.fas.usda.gov/PSDOnline/app/index.html"
+    },
+    {
+      "file": "2026-11-01/ensodisc.html",
+      "bytes": 13499,
+      "sha256": "e0e2a3b2309a68e7dbe860438b1ecc55e660789d3db329b350a1019a355eebb4",
+      "retrievedOn": "2026-11-01",
+      "note": "Source recaptured for the 1 November 2026 review; original capture retained.",
+      "name": "NOAA ENSO Diagnostic Discussion",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+    }
+  ],
+  "checks": {
+    "retail": "September 2026 D7BU = 144.3, released 21 October, imported from the official ONS time series.",
+    "otherSources": "FAO, World Bank, NOAA RONI, NOAA discussion and USDA PSD captures are byte-identical to 16 October. No newer observations or revisions to import."
+  },
+  "frozenFileSha256": {
+    "public/data/scenarios-v1.json": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+    "public/data/ai/frozen-metrics-v1.json": "93a384e2b0ec76018614152ca1f5065477ae0e09a3246488eefabe6f41fa0dd8"
+  },
+  "policy": "Source review updates current observations only. Original frozen forecast anchors and scenarios remain unchanged."
+}
