@@ -47,6 +47,73 @@ class CloudTests(unittest.TestCase):
         self.assertFalse(cloud.history_due({'lastAttempt': '2026-11-01T07:30:00Z'}, NOW))
         self.assertTrue(cloud.history_due({'lastAttempt': '2026-11-01T07:00:00Z'}, NOW))
 
+    def test_incomplete_source_refresh_retains_a_coherent_accepted_grid_day(self):
+        original = self.data('history')
+        changed = copy.deepcopy(original)
+        columns = {series['key']: i for i, series in enumerate(original['series'])}
+        row = next(row for row in changed['days'] if all(value is not None for value in row['v']))
+        prior = next(old for old in original['days'] if old['date'] == row['date'])
+        for key in ['generation', 'otherNI', 'northSouth']:
+            row['v'][columns[key]], row['n'][columns[key]] = None, 95
+        row['v'][columns['demand']] += 100
+        row['v'][columns['ballylumford']] += 3
+        cloud.preserve_complete_history(changed, original)
+        for key in cloud.PUBLIC_SERIES:
+            self.assertEqual(row['v'][columns[key]], prior['v'][columns[key]])
+            self.assertEqual(row['n'][columns[key]], prior['n'][columns[key]])
+        self.assertEqual(row['v'][columns['ballylumford']], prior['v'][columns['ballylumford']] + 3)
+        self.assertIn(row['date'], changed['retainedCompleteDays']['series']['generation'])
+        cloud.validate('history', changed, original, NOW)
+
+    def test_complete_revisions_and_real_zero_replace_archive_while_new_gaps_remain(self):
+        original = self.data('history')
+        changed = copy.deepcopy(original)
+        columns = {series['key']: i for i, series in enumerate(original['series'])}
+        row = next(row for row in changed['days'] if all(value is not None for value in row['v']))
+        row['v'][columns['wind']] = 0
+        row['v'][columns['otherNI']] = round(row['v'][columns['generation']] - row['v'][columns['solar']], 4)
+        gap = next(row for row in changed['days'] if row['v'][columns['solar']] is None)
+        cloud.preserve_complete_history(changed, original)
+        self.assertEqual(row['v'][columns['wind']], 0)
+        self.assertIsNone(gap['v'][columns['solar']])
+        self.assertNotIn('retainedCompleteDays', changed)
+        cloud.validate('history', changed, original, NOW)
+
+    def test_missing_station_day_is_retained_without_discarding_complete_grid_revision(self):
+        original = self.data('history')
+        changed = copy.deepcopy(original)
+        columns = {series['key']: i for i, series in enumerate(original['series'])}
+        row = next(row for row in changed['days'] if all(value is not None for value in row['v']))
+        prior = next(old for old in original['days'] if old['date'] == row['date'])
+        row['v'][columns['ballylumford']], row['n'][columns['ballylumford']] = None, 47
+        row['v'][columns['demand']] += 100
+        row['v'][columns['northSouth']] += 100
+        cloud.preserve_complete_history(changed, original)
+        self.assertEqual(row['v'][columns['ballylumford']], prior['v'][columns['ballylumford']])
+        self.assertEqual(row['n'][columns['ballylumford']], 48)
+        self.assertEqual(row['v'][columns['demand']], prior['v'][columns['demand']] + 100)
+        self.assertEqual(set(changed['retainedCompleteDays']['series']), {'ballylumford'})
+        cloud.validate('history', changed, original, NOW)
+
+    def test_archive_preservation_does_not_mask_shrinking_ranges(self):
+        original = self.data('history')
+        changed = copy.deepcopy(original)
+        changed['days'].pop()
+        changed['last'] = changed['days'][-1]['date']
+        cloud.preserve_complete_history(changed, original)
+        with self.assertRaisesRegex(ValueError, 'range shrank'):
+            cloud.validate('history', changed, original, NOW)
+
+    def test_retained_grid_cohort_cannot_hide_invalid_fresh_readings(self):
+        original = self.data('history')
+        changed = copy.deepcopy(original)
+        columns = {series['key']: i for i, series in enumerate(original['series'])}
+        row = next(row for row in changed['days'] if all(value is not None for value in row['v']))
+        row['v'][columns['generation']] = None
+        row['v'][columns['demand']] = float('nan')
+        with self.assertRaises(ValueError):
+            cloud.preserve_complete_history(changed, original)
+
     def test_bounded_publication_and_fallback_when_state_arrives_late(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

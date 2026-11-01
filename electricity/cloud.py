@@ -282,6 +282,42 @@ def history_due(pointer, now=None):
     return not last or now - stamp(last) >= timedelta(minutes=55)
 
 
+def preserve_complete_history(data, previous):
+    """Retain accepted complete days when a later source refresh omits them.
+
+    Grid inputs and their derived flows are one cohort: preserve its original
+    vintage together instead of combining revised inputs with older residuals.
+    Complete revisions still replace old values; genuinely missing days remain
+    gaps. Range/schema/quality validation below continues to fail closed.
+    """
+    # Reject malformed/non-finite fresh values before a retained cohort could
+    # replace them. Missing values are permitted; invalid values are not.
+    validate('history', data)
+    columns = {series['key']: i for i, series in enumerate(data['series'])}
+    old_columns = {series['key']: i for i, series in enumerate(previous['series'])}
+    old_rows = {row['date']: row for row in previous['days']}
+    retained = {}
+    for row in data['days']:
+        old = old_rows.get(row['date'])
+        if not old:
+            continue
+        missing = {key for key, index in columns.items() if key in old_columns
+                   and old['v'][old_columns[key]] is not None and row['v'][index] is None}
+        restore = (PUBLIC_SERIES & columns.keys() & old_columns.keys()) if missing & PUBLIC_SERIES else set()
+        restore = restore | (missing - PUBLIC_SERIES)
+        for key in sorted(restore):
+            index, old_index = columns[key], old_columns[key]
+            row['v'][index], row['n'][index] = old['v'][old_index], old['n'][old_index]
+            if row['v'][index] is not None:
+                retained.setdefault(key, []).append(row['date'])
+    for index, series in enumerate(data['series']):
+        dates = [row['date'] for row in data['days'] if row['v'][index] is not None]
+        series.update(first=dates[0] if dates else None, last=dates[-1] if dates else None, days=len(dates))
+    if retained:
+        data['retainedCompleteDays'] = {'previousGeneratedAt': previous['generatedAt'], 'series': retained}
+        print(json.dumps({'retainedCompleteHistory': {key: len(days) for key, days in retained.items()}}))
+
+
 def prune_snapshot_cache(work, now=None):
     cutoff = ((now or datetime.now(UTC)) - timedelta(days=14)).strftime('%Y%m%d')
     for path in (work / 'research/dispatch_proxy/cache').glob('*.xml'):
@@ -320,8 +356,15 @@ def run(kv, name, force=False):
             if name == 'snapshot':
                 source = work / 'dashboard/runtime/source-snapshots' / data['sourceSnapshot']
                 data['expectedPeaks'] = forecasts.collect(json.loads(source.read_bytes()), previous.get('expectedPeaks'))
-                (work / 'dashboard/dist/assets/snapshot.json').write_bytes(encode(data))
+            else:
+                preserve_complete_history(data, previous)
+                if data.get('retainedCompleteDays'):
+                    audit_path = work / 'dashboard/history-audit.json'
+                    audit = json.loads(audit_path.read_bytes())
+                    audit['retainedCompleteDays'] = data['retainedCompleteDays']
+                    audit_path.write_bytes(encode(audit))
             validate(name, data, previous)
+            (work / f'dashboard/dist/assets/{name}.json').write_bytes(encode(data))
             if name == 'snapshot':
                 prune_snapshot_cache(work)
             publish(kv, name, work, data, pointer)
