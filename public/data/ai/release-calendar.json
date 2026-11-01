@@ -1,32 +1,8 @@
 {
-  "checkedAt": "2026-10-16",
+  "checkedAt": "2026-11-01",
   "year": 2026,
+  "lastReleaseReviewAt": "2026-11-01",
   "entries": [
-    {
-      "date": "2026-09-15",
-      "title": "Canadian vacancies and offered wages",
-      "referencePeriod": "Q2 2026",
-      "metrics": [
-        "Canada: demand",
-        "Canada: pay"
-      ],
-      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260827/dq260827b-eng.htm",
-      "time": null,
-      "status": "Confirmed",
-      "checkedAt": "2026-10-16"
-    },
-    {
-      "date": "2026-09-29",
-      "title": "US job openings and labour turnover",
-      "referencePeriod": "August 2026",
-      "metrics": [
-        "Actual hiring"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
-      "time": "10:00 US Eastern",
-      "status": "Confirmed",
-      "checkedAt": "2026-10-16"
-    },
     {
       "date": "2026-11-03",
       "title": "US job openings and labour turnover",
@@ -37,7 +13,9 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
       "time": "10:00 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-01"
     },
     {
       "date": "2026-11-06",
@@ -50,7 +28,9 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-01"
     },
     {
       "date": "2026-11-10",
@@ -62,7 +42,9 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-01"
     },
     {
       "date": "2026-12-01",
@@ -74,7 +56,9 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
       "time": "10:00 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-01"
     },
     {
       "date": "2026-12-04",
@@ -87,7 +71,9 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-01"
     },
     {
       "date": "2026-12-10",
@@ -99,7 +85,23 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16"
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-01"
+    },
+    {
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260915/dq260915a-eng.pdf",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": "2026-12-15",
+      "status": "Confirmed",
+      "checkedAt": "2026-11-01"
     }
   ],
   "provisional": [
@@ -112,21 +114,14 @@
         "Underemployment"
       ],
       "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
-      "note": "Expected in November: the New York Fed generally updates in February, May, August and November. No exact day confirmed."
-    },
-    {
-      "month": "2026-12",
-      "title": "Canadian vacancies and offered wages",
-      "referencePeriod": "Q3 2026",
-      "metrics": [
-        "Canada: demand",
-        "Canada: pay"
-      ],
-      "sourceUrl": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410044401",
-      "note": "Expected in December from the quarterly release pattern. Month is an estimate; no exact day confirmed."
+      "note": "Expected in November: the New York Fed generally updates in February, May, August and November. No exact day confirmed.",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": null,
+      "status": "Expected month",
+      "checkedAt": "2026-11-01"
     }
   ],
-  "lastReleaseReviewAt": "2026-10-16",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -138,9 +133,50 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-06",
       "importedAt": "2026-09-13",
       "actualsAdded": [
         "real-pay: 2026-08-01"
+      ]
+    },
+    {
+      "date": "2026-09-15",
+      "title": "Canadian vacancies and offered wages",
+      "referencePeriod": "Q2 2026",
+      "metrics": [
+        "Canada: demand",
+        "Canada: pay"
+      ],
+      "sourceUrl": "https://www150.statcan.gc.ca/n1/daily-quotidien/260915/dq260915a-eng.htm",
+      "time": null,
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "checkedAt": "2026-09-16",
+      "importedAt": "2026-09-16",
+      "actualsAdded": [
+        "canada-vacancies: 2026-06-30",
+        "canada-pay: 2026-06-30"
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "August 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-09-29",
+      "importedAt": "2026-09-29",
+      "actualsAdded": [
+        "hiring: 2026-08-01"
       ]
     },
     {
@@ -154,14 +190,17 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
-      "checkedAt": "2026-10-16",
-      "importedAt": "2026-10-16",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-10-02",
+      "importedAt": "2026-10-02",
       "actualsAdded": [
         "employment: 2026-09-01",
         "real-pay input: earnings 2026-09-01"
       ],
       "revisionsIncluded": [
-        "employment: July and August 2026 revisions"
+        "employment: 2026-07-01 and 2026-08-01",
+        "real pay: 2026-07-01 and 2026-08-01"
       ]
     },
     {
@@ -174,12 +213,16 @@
       "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
       "time": "08:30 US Eastern",
       "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
       "checkedAt": "2026-10-16",
+      "publishedAt": "2026-10-14",
       "importedAt": "2026-10-16",
       "actualsAdded": [
         "real-pay: 2026-09-01 = 103.874753"
       ],
-      "revisionsIncluded": []
+      "revisionsIncluded": [],
+      "note": "September CPI released 14 October and imported into the real-pay chart."
     }
   ]
 }

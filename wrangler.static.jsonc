@@ -1,10 +1,20 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "salmon-of-data",
+  "main": "workers/electricity.mjs",
   "compatibility_date": "2026-09-11",
   "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/electricity/*"],
     "directory": "./dist/client",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "ELECTRICITY_DATA",
+      "id": "01af7cb09c1c4828b3023de16af4362b",
+      "preview_id": "dacea186fcb3499a9e25d148173289ba"
+    }
+  ]
 }

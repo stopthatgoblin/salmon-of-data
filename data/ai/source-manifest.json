@@ -315,5 +315,37 @@
     "sha256": "bb50ed47b2b5149c481e11f7be3289f137867df7457f17d7e58e37c5ea6a0080",
     "retrievedOn": "2026-10-16",
     "note": "Current Statistics Canada table 14-10-0444-01; Q2 2026 remains the latest quarter, with Q3 scheduled for 2026-12-15."
+  },
+  {
+    "file": "2026-11-01/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 203835,
+    "sha256": "9eb6dd259dff925cbb8c6e511cf0ee9e4fd4fc2f0722102ece1bca2a24e66f93",
+    "retrievedOn": "2026-11-01",
+    "note": "Source recaptured for the 1 November 2026 review; original capture retained."
+  },
+  {
+    "file": "2026-11-01/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 12172138,
+    "sha256": "422ece5548bfed1b75e4d3fc2f4867ef4b96b105af3dc97ec027d2ccf63566af",
+    "retrievedOn": "2026-11-01",
+    "note": "Source recaptured for the 1 November 2026 review; original capture retained."
+  },
+  {
+    "file": "2026-11-01/graduate-unemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-unemployment-data.csv",
+    "bytes": 16075,
+    "sha256": "202e637b06568d3632f35a42baa5db985d2f860b278b2296630e46e36eae5cbd",
+    "retrievedOn": "2026-11-01",
+    "note": "Source recaptured for the 1 November 2026 review; original capture retained."
+  },
+  {
+    "file": "2026-11-01/graduate-underemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-underemployment-data.csv",
+    "bytes": 11542,
+    "sha256": "509aad590c2f26387d07bc7e7f8e3122be60c955a549bc88a23d248c78ab9b47",
+    "retrievedOn": "2026-11-01",
+    "note": "Source recaptured for the 1 November 2026 review; original capture retained."
   }
 ]

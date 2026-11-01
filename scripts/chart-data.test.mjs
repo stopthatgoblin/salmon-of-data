@@ -16,8 +16,9 @@ test('frozen anchors and ordered paths are internally consistent',()=>{
 });
 test('future observations do not move frozen scenario lines',()=>{
  const m=data.metrics[0],start=monthNumber('2026-01'),end=monthNumber('2027-12');
- const original=chartRows(m.history,m.paths,start,end);
- const updated=chartRows([...m.history,{date:'2026-10',value:142}],m.paths,start,end);
+ const initial=m.history.filter(p=>p.date<'2026-09');
+ const original=chartRows(initial,m.paths,start,end);
+ const updated=chartRows([...initial,{date:'2026-10',value:142}],m.paths,start,end);
  assert.deepEqual(original.map(({high,medium,low})=>({high,medium,low})),updated.map(({high,medium,low})=>({high,medium,low})));
  assert.equal(updated.find(p=>p.date==='2026-10').actual,142);
  assert.equal(updated.find(p=>p.date==='2026-09').actual,null);

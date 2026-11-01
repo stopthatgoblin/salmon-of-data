@@ -63,6 +63,6 @@ function MetricPanel({m}:{m:Metric}){
 }
 export function Tracker(){const [active,setActive]=useState('enso');return <>
 
- <p className="freeze-note">Data checked 2 October 2026: FAO through September; World Bank prices remain through August while the scheduled September file is pending; NOAA RONI remains through JJA. No newer USDA harvest data was available. <a href="/data/refresh-2026-10-02.json" download>Download update details ↓</a></p>
+ <p className="freeze-note">Data reviewed {new Date(snapshot.asOf+'T00:00:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'})}. Each panel shows its latest published observation. New actuals and source revisions extend the solid line; the original forecast anchors and paths remain frozen. <a href={`/data/refresh-${snapshot.asOf}.json`} download>Download update details ↓</a></p>
  <Tabs value={active} onValueChange={value=>setActive(String(value))} className="tracker-tabs"><div className="tabs-scroll"><TabsList className="metric-tabs" aria-label="Tracker metrics" variant="line">{metrics.map((m,i)=><TabsTrigger key={m.id} value={m.id}><span className="tab-number">{String(i+1).padStart(2,'0')}</span>{m.label}</TabsTrigger>)}</TabsList></div>{metrics.map(m=><TabsContent key={m.id} value={m.id}><MetricPanel m={m}/></TabsContent>)}</Tabs>
  </>}

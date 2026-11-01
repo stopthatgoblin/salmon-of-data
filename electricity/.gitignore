@@ -1,0 +1,7 @@
+dashboard/history-cache/
+dashboard/dist/
+dashboard/runtime/
+dashboard/*audit.json
+research/dispatch_proxy/cache/
+research/dispatch_proxy/manifest.json
+research/dispatch_proxy/snapshot_*.json

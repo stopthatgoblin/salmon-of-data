@@ -1,13 +1,41 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import electricityWorker from '../workers/electricity.mjs';
+const electricityStore=process.env.ELECTRICITY_LOCAL_KV_DIR && path.resolve(process.env.ELECTRICITY_LOCAL_KV_DIR);
+// Opt-in mirror for reviewing the same accepted data as the hosted preview.
+const electricityPreview=process.env.ELECTRICITY_PREVIEW_API;
+if(electricityPreview && new URL(electricityPreview).origin!=='https://salmon-electricity-preview.peterdonaghy.workers.dev')throw new Error('Unknown electricity preview origin.');
 const root=path.resolve(import.meta.dirname,'../dist/client');
 const port=Number(process.env.PORT||3100);
 if(!fs.existsSync(path.join(root,'index.html')))throw new Error('Run npm run build before npm start.');
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.rsc':'text/x-component; charset=utf-8','.csv':'text/csv; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.woff2':'font/woff2','.ico':'image/x-icon'};
-http.createServer((req,res)=>{
+http.createServer(async(req,res)=>{
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}
  let pathname;try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname)}catch{res.writeHead(400);res.end('Bad request');return;}
+ if(pathname.startsWith('/api/electricity/')){
+  if(electricityPreview){
+   try{
+    const response=await fetch(new URL(req.url,electricityPreview),{method:req.method,headers:{'User-Agent':'Mozilla/5.0 SalmonOfDataLocalPreview'},signal:AbortSignal.timeout(20000)});
+    const body=req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer());
+    res.writeHead(response.status,Object.fromEntries([...response.headers].filter(([key])=>['content-type','cache-control','etag','x-electricity-version','retry-after'].includes(key))));
+    res.end(body);
+   }catch{res.writeHead(503,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify({error:'Hosted preview could not be reached.'}));}
+   return;
+  }
+  const response=await electricityWorker.fetch(new Request(`http://localhost${req.url}`,{method:req.method,headers:req.headers}),{
+   ELECTRICITY_PREVIEW:'true',
+   ELECTRICITY_DATA:{async get(key,options){
+    if(!electricityStore)return null;
+    const file=path.resolve(electricityStore,key);
+    if(!file.startsWith(electricityStore+path.sep)||!fs.existsSync(file))return null;
+    const raw=await fs.promises.readFile(file);
+    return options?.type==='json'?JSON.parse(raw):new Blob([raw]).stream();
+   }}
+  });
+  res.writeHead(response.status,Object.fromEntries(response.headers));
+  res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+ }
  let file=path.resolve(root,'.'+pathname);
  if(file!==root&&!file.startsWith(root+path.sep)){res.writeHead(403);res.end('Forbidden');return;}
  try{if(fs.statSync(file).isDirectory())file=path.join(file,'index.html');}catch{}
