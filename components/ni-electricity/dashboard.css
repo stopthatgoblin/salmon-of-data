@@ -59,7 +59,7 @@
  .ni-electricity .plant-callout.kilroot{left:72.832%;top:47.797%}
  .ni-electricity .interconnector.moyle{left:72.832%;top:13.559%;width:21%}
  .ni-electricity .interconnector.north-south{left:3.54%;top:auto;bottom:12px;width:20.796%}
- .ni-electricity .wind-label{left:37.168%;top:30.508%}.ni-electricity .solar-label{left:47.788%;top:36.441%}.ni-electricity .other-label{left:50.442%;top:62.712%}
+ .ni-electricity .wind-label{left:35.398%;top:37.288%}.ni-electricity .solar-label{left:35.398%;top:60.169%}.ni-electricity .other-label{left:52.655%;top:60.169%}
  .ni-electricity .plant-name,.ni-electricity .generation-label>span,.ni-electricity .callout-heading{font:400 clamp(16px,1.69cqw,20px)/1.2 var(--serif);letter-spacing:-.3px}
  .ni-electricity .generation-label sup{font:9px Arial,sans-serif;letter-spacing:0}
 }

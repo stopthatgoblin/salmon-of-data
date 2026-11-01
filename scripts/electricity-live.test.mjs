@@ -10,7 +10,7 @@ const flush = async () => { for (let i = 0; i < 5; i++) await setImmediate(); };
 test('live polling retries missing versions independently and retains valid readings', async t => {
   const nodes = new Map();
   const root = { querySelector(selector) {
-    if (!nodes.has(selector)) nodes.set(selector, { dataset: {}, hidden: true });
+    if (!nodes.has(selector)) nodes.set(selector, { dataset: {}, hidden: true, addEventListener() {} });
     return nodes.get(selector);
   } };
   const page = Object.assign(new EventTarget(), { hidden: false });
@@ -68,7 +68,7 @@ test('live polling retries missing versions independently and retains valid read
 test('initial connection checks and one transient failure do not announce an outage', async t => {
   const nodes = new Map();
   const root = { querySelector(selector) {
-    if (!nodes.has(selector)) nodes.set(selector, { dataset: {}, hidden: true });
+    if (!nodes.has(selector)) nodes.set(selector, { dataset: {}, hidden: true, addEventListener() {} });
     return nodes.get(selector);
   } };
   const page = Object.assign(new EventTarget(), { hidden: false });
@@ -78,6 +78,8 @@ test('initial connection checks and one transient failure do not announce an out
   });
   const version = 'e'.repeat(24);
   let mode = 'failed';
+  t.mock.method(AbortSignal, 'any', () => { throw new Error('unsupported'); });
+  t.mock.method(AbortSignal, 'timeout', () => { throw new Error('unsupported'); });
   t.mock.method(globalThis, 'fetch', async () => mode === 'failed' ? new Response(null, { status: 503 }) : Response.json({ schema: 1, enabled: true, mode: 'preview', snapshot: { version }, history: { version } }));
   const saved = { window: globalThis.window, document: globalThis.document };
   globalThis.window = window; globalThis.document = page;
@@ -90,6 +92,7 @@ test('initial connection checks and one transient failure do not announce an out
     assert.match(nodes.get('.snapshot-label').innerHTML, /Checking for updates/);
     await interval();
     assert.match(nodes.get('.snapshot-label').innerHTML, /Connection unavailable/);
+    assert.match(nodes.get('#refresh-health').textContent, /HTTP 503/);
     mode = 'healthy';
     await interval();
     assert.match(nodes.get('.snapshot-label').innerHTML, /Preview readings/);

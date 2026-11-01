@@ -22,7 +22,9 @@ The original signed flows, aligned actual readings, station dispatch-target esti
 
 The separate preview Worker is [salmon-electricity-preview](https://salmon-electricity-preview.peterdonaghy.workers.dev/dashboards/ni-electricity/), bound only to `ni-electricity-preview`. Production uses `ni-electricity-prod`. Both namespace IDs were checked against the hosting account. Source-state seeding and fresh collections restored from preview KV succeeded on 1 November 2026.
 
-The preview manifest explicitly reports preview mode. Its collectors run on demand while under review; the production schedules activate when the workflow reaches `main`. Initial browser checks show a neutral connecting state, and a single transient status failure does not announce an outage.
+The preview manifest explicitly reports preview mode. Its collectors run on demand while under review; the production schedules activate when the workflow reaches `main`. The optional `preview_watch` workflow-dispatch input performs seven further overview collections at 15-minute intervals after the initial collection, giving eight collections across a two-hour review window. It is restricted to preview, stops automatically and uses the same collector and GitHub secret as production. An upstream failure retains accepted readings and later intervals retry. This temporary test is not a permanent preview schedule.
+
+Initial browser checks show a neutral connecting state, and a single transient status failure does not announce an outage. Requests support browsers without `AbortSignal.any`/`timeout`. Definitions & sources shows connection-check and collection times, an HTTP/network failure reason where available, and a manual retry button. Announced versions that have not loaded yet are identified separately from service connectivity.
 
 Production publication remains a separate final step. The `codex/ni-electricity` branch tests both collectors against preview on push. Scheduled production jobs require the workflow on `main`.
 
@@ -50,7 +52,15 @@ python3 electricity/cloud.py history --force --local-dir outputs/ni-electricity/
 ELECTRICITY_LOCAL_KV_DIR=outputs/ni-electricity/kv-preview npm start
 ```
 
-The current localhost preview uses this separate store. Its collectors are manual; the existing Mac LaunchAgents were not changed.
+To review the hosted preview's actual updates on localhost instead, use:
+
+```sh
+ELECTRICITY_PREVIEW_API=https://salmon-electricity-preview.peterdonaghy.workers.dev npm start
+```
+
+The current localhost preview uses this opt-in public API mirror. A standalone local store only changes when its collector runs. The existing Mac LaunchAgents were not changed.
+
+Map context includes Ireland, Scotland, England, Wales and the Isle of Man from Natural Earth in the original shared projection. Overview, unit details, chart labels/tooltips and image exports display whole MW and calculated whole percentages. Calculations, source JSON and CSV retain precision.
 
 ## Manual cloud refresh and failures
 

@@ -1,6 +1,6 @@
 // Adapted from NI electricity/dashboard/dist/app.js.
 export function mountOverview(root, data, map, events, signal) {
-  const format = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 });
+  const format = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   const n = value => format.format(value);
   const capacityUsage = (output, capacity) => capacity > 0 ? Math.abs(output) / capacity * 100 : null;
   const capacityPercent = value => value === null ? '—' : `${Math.round(value)}%`;
@@ -43,7 +43,7 @@ export function mountOverview(root, data, map, events, signal) {
       : `M${target.x} ${target.y}C${target.x - 60} ${target.y} 790 205 752 254`);
   }
 
-  ['Ireland', 'Scotland'].forEach(name => {
+  ['Ireland', 'Scotland', 'England', 'Wales', 'Isle of Man'].forEach(name => {
     const path = document.createElementNS(svgNS, 'path');
     path.setAttribute('d', map[name]);
     path.setAttribute('class', 'context-land');
@@ -54,7 +54,7 @@ export function mountOverview(root, data, map, events, signal) {
 
   function renderOverview() {
   root.querySelector('#' + 'renewables-share').textContent = data.demand > 0
-    ? `${((data.wind + data.solar) / data.demand * 100).toFixed(1)}%`
+    ? `${Math.round((data.wind + data.solar) / data.demand * 100)}%`
     : '—';
 
   // Positive flows enter NI. The label and arrow use the same sign convention.
@@ -65,7 +65,7 @@ export function mountOverview(root, data, map, events, signal) {
       path: '.moyle-flow', marker: 'moyle-arrow',
       importPath: 'M989 149C925 148 861 173 752 254',
       exportPath: 'M752 254C861 173 925 148 989 149',
-      note: 'Half capacity following a technical fault.'
+      note: 'Collector capacity assumption; see sources.'
     },
     {
       key: 'northSouth', name: 'North-South Interconnector', remote: 'ROI', value: data.northSouth,
@@ -99,7 +99,7 @@ export function mountOverview(root, data, map, events, signal) {
   });
 
   const stationOutput = data.stations.reduce((sum, station) => sum + station.output, 0);
-  const totals = { ...data, imports: data.moyle + data.northSouth, renewables: data.wind + data.solar, stations: stationOutput, niOther: data.generation - data.wind - data.solar, renewablesPercent: ((data.wind + data.solar) / data.demand * 100).toFixed(1) };
+  const totals = { ...data, imports: data.moyle + data.northSouth, renewables: data.wind + data.solar, stations: stationOutput, niOther: data.generation - data.wind - data.solar, renewablesPercent: Math.round((data.wind + data.solar) / data.demand * 100) };
   const dateFormat = new Intl.DateTimeFormat('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Europe/London', timeZoneName:'short' });
   const stamp = value => dateFormat.format(new Date(value)).replace('GMT+0', 'GMT').replace('GMT+1', 'BST');
   root.querySelectorAll('[data-reading]').forEach(el => el.innerHTML = `${n(el.dataset.reading === 'imports' ? Math.abs(totals.imports) : totals[el.dataset.reading])} <small>MW</small>`);
@@ -230,7 +230,7 @@ export function mountOverview(root, data, map, events, signal) {
     root.querySelector('#' + 'electricity-map').setAttribute('viewBox', mobile.matches ? '260 75 620 480' : '70 20 1130 590');
     // Keep the sea name clear of station cards and inside the cropped mobile map.
     const seaLabel = root.querySelector('.sea-label');
-    const [x, y] = mobile.matches ? [820, 510] : [1040, 535];
+    const [x, y] = mobile.matches ? [820, 510] : [940, 545];
     seaLabel.setAttribute('x', x);
     seaLabel.setAttribute('y', y);
     seaLabel.setAttribute('transform', `rotate(-12 ${x} ${y})`);

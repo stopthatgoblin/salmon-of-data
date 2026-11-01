@@ -30,7 +30,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
   const pngDownload = root.querySelector('#' + 'trend-image-png');
   const svgDownload = root.querySelector('#' + 'trend-image-svg');
   const downloadStatus = root.querySelector('#' + 'trend-download-status');
-  const display = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 });
+  const display = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   const whole = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   const day = value => new Date(`${value}T00:00:00Z`);
   const dateLabel = (value, options = {}) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC', ...options }).format(day(value));
