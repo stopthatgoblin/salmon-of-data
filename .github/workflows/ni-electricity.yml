@@ -40,7 +40,9 @@ jobs:
     if: github.repository == 'stopthatgoblin/salmon-of-data' && (github.event_name == 'push' || github.event.inputs.target == 'preview' || github.ref == 'refs/heads/main')
     env:
       CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-      ELECTRICITY_KV_NAMESPACE_ID: ${{ (github.event_name == 'push' || github.event.inputs.target == 'preview') && vars.ELECTRICITY_PREVIEW_KV_NAMESPACE_ID || vars.ELECTRICITY_KV_NAMESPACE_ID }}
+      # Select the variable name first: an unset preview ID must fail, never
+      # fall through to the production namespace.
+      ELECTRICITY_KV_NAMESPACE_ID: ${{ vars[(github.event_name == 'push' || github.event.inputs.target == 'preview') && 'ELECTRICITY_PREVIEW_KV_NAMESPACE_ID' || 'ELECTRICITY_KV_NAMESPACE_ID'] }}
       PYTHONUNBUFFERED: '1'
       ELECTRICITY_FORCE: ${{ github.event_name != 'schedule' }}
     steps:

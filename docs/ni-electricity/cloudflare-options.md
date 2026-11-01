@@ -1,14 +1,14 @@
 # Cloudflare options for the electricity dashboard
 
-Checked against official documentation on **31 October 2026**. No cloud resources or subscriptions were created or modified.
+Pricing checked against official documentation on **31 October 2026**. Implementation updated **1 November 2026**: the selected Workers Free + KV service is deployed to an isolated preview. No paid subscription or R2 bucket was enabled.
 
-## Recommended production service
+## Selected production service
 
-**Selected option:** the user has now chosen **GitHub Actions + Workers Free + KV**, replacing the earlier R2 proposal below. The compressed existing cache measures about 9.2 MB, so the complete local collector state has a practical KV starting point. See [the concrete launch checklist](launch-checklist.md) for account setup, state preservation, parity checks and publication order. No cloud resources have been deployed yet.
+**Selected option:** the user has now chosen **GitHub Actions + Workers Free + KV**, replacing the earlier R2 proposal below. The compressed existing cache measures about 9.2 MB, so the complete local collector state has a practical KV starting point. See [the concrete launch checklist](launch-checklist.md) for account setup, state preservation, parity checks and publication order. The [operating guide](README.md) records implementation, preview validation and publication status.
 
 The production requirement is automatic collection: the overview every 15 minutes, and history once per UK calendar day at **07:00 Europe/London**. This supersedes the handover's suggested 07:10 history start. The static edition is the local review stage; publishing its bundled files alone does not meet the production requirement.
 
-Given the user's tolerance for occasional delayed or missed refreshes and the public repository, recommend **GitHub Actions running the Python collector, private R2 storage, and a small read-only Cloudflare Worker on the Free plan**, retaining the existing website deployment. The handover's native scheduled Cloudflare collector remains an alternative if tighter scheduling becomes necessary. The front end can remain statically hosted while it reads changing, versioned datasets through a read-only API. Data refreshes do not require a site rebuild or Git commit, and collection runs independently of visitors and the Mac.
+The selected implementation uses **GitHub Actions running the original Python collector, private compressed KV state, and a small read-only Cloudflare Worker on the Free plan**, retaining the existing website deployment. R2 is not used. The handover's native scheduled Cloudflare collector remains an alternative if tighter scheduling becomes necessary. The front end can remain statically hosted while it reads changing, versioned datasets through a read-only API. Data refreshes do not require a site rebuild or Git commit, and collection runs independently of visitors and the Mac.
 
 - Overview: request a run every 15 minutes, e.g. `7,22,37,52 * * * *` to avoid the start of the hour. GitHub supports schedules as often as every five minutes. Preserve the source's actual observation time and mark delayed data; scheduled runs can be delayed or dropped.
 - History: request the daily job at 07:00 Belfast time, including BST/GMT changes. GitHub's current schedule documentation supports an IANA timezone such as Europe/London. Persist the successful UK date and permit bounded catch-up attempts after failure. Publication follows successful validation; neither a scheduler nor this site can force an upstream feed to publish on time. If the native Cloudflare collector is used instead, its UTC cron needs an explicit Europe/London due-date check.
@@ -17,17 +17,17 @@ Given the user's tolerance for occasional delayed or missed refreshes and the pu
 
 GitHub's standard Linux runner can reuse the existing Python collection logic. Persistent caches must be restored/published to durable storage, publication must serialize competing writers, and source access must be tested from GitHub's runner network. Do not rely on an ephemeral runner disk as the only historical archive. A native Workers collector would require a runtime port and CPU/memory benchmarks instead. At 31 days, the normal schedule is 2,976 overview runs and 31 daily history runs, plus bounded retries. Public-repository schedules disable after 60 days without repository activity; this needs an operational reminder or independent freshness monitoring.
 
-**Budget:** target $0 using free public-repository compute and Workers Free, with R2 kept inside its storage and operation allowances. R2 remains metered beyond those allowances. The $5 Workers subscription is not required merely because collection runs every 15 minutes. Keep the Free plan until measured traffic/CPU or a different collector architecture justifies Paid. If an absolute dollar ceiling is required, prefer products that stop at free quotas, or verify a provider-enforced cap covering every enabled metered product. Do not treat CPU limits or budget alerts as a dollar cap.
+**Budget:** target $0 using free public-repository compute, Workers Free and standard KV. Normal collection uses about 388 KV writes/day, plus bounded health writes and catch-ups; state uses three slots per dataset. Free quotas stop operations instead of buying overages. This limit applies to the selected service; existing subscriptions or domain renewals are separate. The $5 Workers subscription is not required merely because collection runs every 15 minutes. Keep the Free plan until measured traffic/CPU or a different collector architecture justifies Paid. If an absolute dollar ceiling is required, prefer products that stop at free quotas, or verify a provider-enforced cap covering every enabled metered product. Do not treat CPU limits or budget alerts as a dollar cap.
 
-## Current static edition: $0 additional hosting cost
+## Static assets and bundled fallback
 
 The existing `wrangler.static.jsonc` already serves `dist/client` as Worker Static Assets. The new dashboard, JSON data, map and explorer compile into that same directory. Charts, grouping and exports run in the browser.
 
-[Cloudflare states](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) that requests to static assets are free and unlimited and asset storage has no additional charge. This static edition therefore does **not** require Workers Paid, R2, a database or a data API. Keep assets served directly; invoking a dynamic Worker first or enabling the separate paid Workers Cache product changes the cost model. Existing account subscriptions, domain costs and any build allowances are separate from this dashboard's asset serving.
+[Cloudflare states](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) that requests to static assets are free and unlimited and asset storage has no additional charge. The static assets themselves do **not** require Workers Paid or R2. The live data API uses the Free Worker and KV allowances separately. Keep assets served directly; invoking a dynamic Worker first or enabling the separate paid Workers Cache product changes the cost model. Existing account subscriptions, domain costs and any build allowances are separate from this dashboard's asset serving.
 
 Manual dataset replacement and a normal site rebuild can remain free. A future deployment can use the site's existing GitHub → Cloudflare workflow without changing its hosting architecture.
 
-## Future automatic updates: free possibilities
+## Alternative free approaches considered
 
 | Option | Cost position | Tradeoff |
 |---|---|---|
@@ -40,7 +40,20 @@ Workers Free currently includes 100,000 requests/day. KV includes 100,000 reads/
 
 The Mac option depends on the Mac staying online. GitHub Actions is an approximate schedule, suitable for the user's accepted tolerance; it is the preferred initial approach. Consider the native Cloudflare collector if observed schedule delays become unacceptable.
 
-## Illustrative audience costs
+## Selected KV service: illustrative free capacity
+
+Assume one five-minute visit per user per month, about 10 API requests and 18 KV reads per visit, with traffic spread evenly. Static asset requests are separate and free. The manifest uses two KV reads per check; longer sessions and repeat visits increase usage. Normal writes are below the daily free allowance, and retained state is tens of MB. Other Workers/KV workloads share account allowances.
+
+| Monthly visits | API requests/month | Average KV reads/day | Workers Free + KV charge | Expected capacity |
+|---:|---:|---:|---:|---|
+| 1,000 | 10,000 | 600 | $0 | Within free allowances |
+| 10,000 | 100,000 | 6,000 | $0 | Within free allowances |
+| 100,000 | 1,000,000 | 60,000 | $0 | Within free allowances if traffic is spread |
+| 1,000,000 | 10,000,000 | 600,000 | $0 | Exceeds free daily capacity; requests fail |
+
+These are capacity scenarios, not a promise based on unique-user count. At roughly 18 KV reads per visit, around 5,500 five-minute visits in one day can consume the read allowance. A tab left open for an hour makes about 60 manifest checks. Staying on Free caps spend for this service by limiting availability.
+
+## Earlier R2 comparison: not the selected deployment
 
 These are planning scenarios, not a measured bill. Both columns use free standard GitHub-hosted Linux collection in the public repository; only the Cloudflare serving plan differs. They include the Workers plan fee and modeled R2 reads, before taxes. Ordinary static website assets are served directly at no per-request charge.
 
