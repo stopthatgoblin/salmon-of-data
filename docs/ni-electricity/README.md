@@ -17,6 +17,8 @@ The native `/dashboards/ni-electricity/` route includes the overview map, 13 sta
 
 The original signed flows, aligned actual readings, station dispatch-target estimates, complete-day rules, missing-data gaps, 95% monthly/annual coverage threshold, day-weighted headline and source attribution remain. Station dispatch estimates differ from metered output. Moyle's 250 MW assumption and North–South's 300 MW reference remain collector assumptions, not live capacity feeds.
 
+The overview's Moyle fault note uses the [Mutual Energy statement reported by UTV on 31 October 2026](https://www.itv.com/news/utv/2026-10-31/fault-in-electricity-system-between-ni-and-gb), checked on 2 November 2026. The note appears while the configured Moyle availability is 250 MW. It is maintained information, not an automatic fault-status feed: review it and the collector's capacity metadata when the fault is resolved. Current fault information stays out of the durable Definitions & sources text.
+
 ## Account setup and preview
 
 [The owner setup guide](setup-guide.md) records the verified settings. No separate Node dashboard selector is required: Cloudflare reads `.node-version` (`24.19.0`). GitHub permits all actions, including the pinned official checkout and Python actions. The collector token remains a GitHub secret.

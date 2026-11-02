@@ -9,8 +9,8 @@ export function mountOverview(root, data, map, events, signal) {
   const tabs = [...root.querySelectorAll('[role="tab"]')];
   const svgNS = 'http://www.w3.org/2000/svg';
   const mobile = window.matchMedia('(max-width:1000px)');
-  // Midpoint of the Ballylumford and Kilroot map markers.
-  const moyleNi = { x: 741.05, y: 278.8 };
+  // Islandmagee's seaward coastline, between the two station markers.
+  const moyleNi = { x: 756.9, y: 278.3 };
 
   function renderPeaks() {
     const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
@@ -99,7 +99,8 @@ export function mountOverview(root, data, map, events, signal) {
       path: '.moyle-flow', marker: 'moyle-arrow',
       importPath: `M989 149C925 148 861 173 ${moyleNi.x} ${moyleNi.y}`,
       exportPath: `M${moyleNi.x} ${moyleNi.y}C861 173 925 148 989 149`,
-      note: 'Collector capacity assumption; see sources.'
+      note: data.moyleAvailable === 250 ? 'Capacity currently reduced from 500MW to 250MW due to a fault' : '',
+      noteSource: 'https://www.itv.com/news/utv/2026-10-31/fault-in-electricity-system-between-ni-and-gb',
     },
     {
       key: 'northSouth', name: 'North-South Interconnector', remote: 'ROI', value: data.northSouth,
@@ -124,7 +125,7 @@ export function mountOverview(root, data, map, events, signal) {
       <div class="flow-direction"><strong>${state}</strong><span>${direction}</span></div>
       <div class="capacity-track"><span style="width:${Math.min(100, utilisation ?? 0)}%"></span><small class="capacity-percent" title="${utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of ${capacityBasis}`}">${capacityPercent(utilisation)}</small></div>
       <div class="flow-capacity"><b>${n(flow.capacity)} MW</b> ${flow.capacityLabel}</div>
-      ${flow.note ? `<p class="fault-note">${flow.note}</p>` : ''}`;
+      ${flow.note ? `<p class="fault-note">${escape(flow.note)}${flow.noteSource ? ` <a href="${escape(flow.noteSource)}" target="_blank" rel="noopener" aria-label="Source for Moyle capacity reduction">↗</a>` : ''}</p>` : ''}`;
     const path = root.querySelector(flow.path);
     path.setAttribute('d', exporting ? flow.exportPath : flow.importPath);
     path.dataset.direction = importing ? 'import' : exporting ? 'export' : 'balanced';
