@@ -9,6 +9,8 @@ export function mountOverview(root, data, map, events, signal) {
   const tabs = [...root.querySelectorAll('[role="tab"]')];
   const svgNS = 'http://www.w3.org/2000/svg';
   const mobile = window.matchMedia('(max-width:1000px)');
+  // Midpoint of the Ballylumford and Kilroot map markers.
+  const moyleNi = { x: 741.05, y: 278.8 };
 
   function renderPeaks() {
     const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
@@ -25,6 +27,7 @@ export function mountOverview(root, data, map, events, signal) {
   function positionMapConnections() {
     const path = root.querySelector('.moyle-flow');
     let target = { x: 864, y: 165 };
+    let northSouthRoi = { x: 345, y: 510 };
     if (!mobile.matches) {
       const svg = root.querySelector('#electricity-map');
       if (!svg.getScreenCTM || !svg.createSVGPoint) return;
@@ -61,15 +64,17 @@ export function mountOverview(root, data, map, events, signal) {
         root.querySelector(`[data-leader="${id}"]`).setAttribute('d', `M${edgeX} ${edgeY}L${middleX} ${edgeY}L${x} ${y}`);
       }
       const nsBox = root.querySelector('[data-interconnector="northSouth"]').getBoundingClientRect();
-      const ns = toMap(nsBox.right + 4, nsBox.top + nsBox.height * .5);
-      root.querySelector('.ns-flow').setAttribute('d', data.northSouth < 0
-        ? `M400 410C365 450 ${ns.x + 40} ${ns.y} ${ns.x} ${ns.y}`
-        : `M${ns.x} ${ns.y}C${ns.x + 40} ${ns.y} 365 450 400 410`);
+      northSouthRoi = toMap(nsBox.right + 4, nsBox.bottom - 4);
     }
+    // The box-side endpoint sits over ROI; the other endpoint stays in NI.
+    const ns = northSouthRoi;
+    root.querySelector('.ns-flow').setAttribute('d', data.northSouth < 0
+      ? `M400 410C365 450 ${ns.x + 40} ${ns.y} ${ns.x} ${ns.y}`
+      : `M${ns.x} ${ns.y}C${ns.x + 40} ${ns.y} 365 450 400 410`);
     // End immediately outside the card border, keeping the export arrow visible.
     path.setAttribute('d', data.moyle < 0
-      ? `M752 254C850 254 ${target.x - 60} ${target.y} ${target.x} ${target.y}`
-      : `M${target.x} ${target.y}C${target.x - 60} ${target.y} 850 254 752 254`);
+      ? `M${moyleNi.x} ${moyleNi.y}C850 ${moyleNi.y} ${target.x - 60} ${target.y} ${target.x} ${target.y}`
+      : `M${target.x} ${target.y}C${target.x - 60} ${target.y} 850 ${moyleNi.y} ${moyleNi.x} ${moyleNi.y}`);
   }
 
   ['Ireland', 'Scotland', 'England', 'Wales', 'Isle of Man'].forEach(name => {
@@ -92,8 +97,8 @@ export function mountOverview(root, data, map, events, signal) {
       key: 'moyle', name: 'Moyle Interconnector', remote: 'Scotland', value: data.moyle,
       capacity: data.moyleAvailable, capacityLabel: 'available', colour: 'moyle',
       path: '.moyle-flow', marker: 'moyle-arrow',
-      importPath: 'M989 149C925 148 861 173 752 254',
-      exportPath: 'M752 254C861 173 925 148 989 149',
+      importPath: `M989 149C925 148 861 173 ${moyleNi.x} ${moyleNi.y}`,
+      exportPath: `M${moyleNi.x} ${moyleNi.y}C861 173 925 148 989 149`,
       note: 'Collector capacity assumption; see sources.'
     },
     {

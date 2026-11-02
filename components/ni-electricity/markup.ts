@@ -35,7 +35,7 @@ export const dashboardMarkup = /* html */ `
               <text x="625" y="450" class="ni-label" text-anchor="middle">NORTHERN IRELAND</text>
               <text x="840" y="510" class="sea-label" text-anchor="middle" transform="rotate(-12 840 510)">Irish Sea</text>
               <g class="leaders"><path data-leader="coolkeeragh" d="M337 168 404 168 458 197"/><path data-leader="ballylumford" d="M710 180 710 221 740 261"/><path data-leader="kilroot" d="M742.1 296.6 838 296.6 893 368"/></g>
-              <path class="flow-path moyle-flow" d="M989 149C925 148 861 173 752 254" marker-end="url(#moyle-arrow)"/>
+              <path class="flow-path moyle-flow" d="M989 149C925 148 861 173 741.05 278.8" marker-end="url(#moyle-arrow)"/>
               <path class="flow-path ns-flow" d="M345 510C385 510 365 450 400 410" marker-end="url(#ns-arrow)"/>
               <g class="plant-dot muted" data-map-plant="coolkeeragh"><circle cx="458" cy="197" r="11"/><circle cx="458" cy="197" r="4"/></g>
               <g class="plant-dot" data-map-plant="ballylumford"><circle cx="740" cy="261" r="11"/><circle cx="740" cy="261" r="4"/></g>
