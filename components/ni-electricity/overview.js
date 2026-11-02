@@ -131,7 +131,7 @@ export function mountOverview(root, data, map, events, signal) {
   const totals = { ...data, imports: data.moyle + data.northSouth, renewables: data.wind + data.solar, stations: stationOutput, niOther: data.generation - data.wind - data.solar, renewablesPercent: Math.round((data.wind + data.solar) / data.demand * 100) };
   const dateFormat = new Intl.DateTimeFormat('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Europe/London', timeZoneName:'short' });
   const stamp = value => dateFormat.format(new Date(value)).replace('GMT+0', 'GMT').replace('GMT+1', 'BST');
-  root.querySelectorAll('[data-reading]').forEach(el => el.innerHTML = `${n(el.dataset.reading === 'imports' ? Math.abs(totals.imports) : totals[el.dataset.reading])} <small>MW</small>`);
+  root.querySelectorAll('[data-reading]').forEach(el => el.innerHTML = `${n(el.dataset.reading === 'imports' ? Math.abs(totals.imports) : totals[el.dataset.reading])} <small>MW</small>${el.dataset.reading === 'other' ? ' <sup>est.</sup>' : ''}`);
   root.querySelectorAll('[data-share]').forEach(el => el.textContent = data.demand > 0 ? `${Math.round(totals[el.dataset.share] / data.demand * 100)}%` : '—');
   root.querySelector('#' + 'net-flow-label').textContent = totals.imports > 0 ? 'Net imports' : totals.imports < 0 ? 'Net exports' : 'Net flow';
   root.querySelector('#' + 'net-flow-share').hidden = totals.imports <= 0 || data.demand <= 0;

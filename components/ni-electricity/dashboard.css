@@ -59,12 +59,14 @@
  .ni-electricity .plant-callout.kilroot{left:72.832%;top:auto;bottom:7%}
  .ni-electricity .interconnector.moyle{left:72.832%;top:2.5%;width:21%}
  .ni-electricity .interconnector.north-south{left:2.655%;top:auto;bottom:7%;width:21%}
- .ni-electricity .wind-label{left:35.398%;top:41.5094%}.ni-electricity .solar-label{left:35.398%;top:60.3774%}.ni-electricity .other-label{left:51.327%;top:60.3774%}
+ .ni-electricity .wind-label{left:27.4336%;top:49.0566%}.ni-electricity .other-label{left:27.4336%;top:60.3774%}.ni-electricity .solar-label{left:51.327%;top:60.3774%}
  .ni-electricity .plant-name,.ni-electricity .generation-label>span,.ni-electricity .callout-heading{font:400 clamp(16px,1.69cqw,20px)/1.2 var(--serif);letter-spacing:-.3px}
  .ni-electricity .generation-label sup{font:9px Arial,sans-serif;letter-spacing:0}
 }
 @media(max-width:1000px){
+ .ni-electricity .generation-label{min-width:0;grid-template-rows:25px minmax(2.4em,1fr) auto}.ni-electricity .generation-label>span{overflow-wrap:anywhere}
  .ni-electricity .generation-label>span,.ni-electricity .callout-heading{font:400 21px/1.2 var(--serif);letter-spacing:-.3px}
+ .ni-electricity .generation-label>span{font-size:clamp(16px,4.14vw,21px)}
  .ni-electricity .map-toolbar>span{max-width:none}.ni-electricity .plant-callout .plant-meter{grid-column:1/-1;grid-row:3;margin:12px 0 0}.ni-electricity .plant-callout .plant-capacity{margin-top:5px}
  .ni-electricity .map-footer{padding-top:0}.ni-electricity .map-footer .text-button{max-width:none}
 }
@@ -148,9 +150,13 @@
 /* A single quiet credit anchors the overview; chart exports retain their own. */
 .ni-electricity .chart-attribution{font:9.5px/1.65 Arial,Helvetica,sans-serif;color:var(--muted);margin-top:11px}
 .ni-electricity .chart-attribution a{color:inherit;text-decoration:underline;text-decoration-color:#5b686a55;text-underline-offset:3px}.ni-electricity .chart-attribution a:hover{color:var(--teal)}
-.ni-electricity .map-footer{justify-content:space-between}.ni-electricity .map-footer>.chart-attribution{margin-top:0;text-align:left}
+.ni-electricity .map-footer{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px}
+.ni-electricity .map-notes{min-width:0}.ni-electricity .map-notes .chart-attribution{margin-top:0;text-align:left}
+.ni-electricity .map-methodology{font:10px/1.6 Arial,Helvetica,sans-serif;margin-top:5px;max-width:890px}
+.ni-electricity .map-footer-actions{display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;align-self:stretch;gap:12px}
+.ni-electricity .map-footer .chart-brand{padding:0;white-space:nowrap}
 .ni-electricity .trend-chart-footer .chart-attribution{margin-top:5px}.ni-electricity .snapshot-label[data-health=delayed]{color:var(--salmon)}.ni-electricity .snapshot-label[data-health=delayed] i{background:var(--salmon)}
-@media(max-width:1000px){.ni-electricity .map-footer>.chart-attribution{max-width:calc(100% - 118px)}.ni-electricity .chart-attribution{font-size:9px}.ni-electricity .snapshot-label{max-width:120px;line-height:1.4}}
+@media(max-width:1000px){.ni-electricity .map-footer{grid-template-columns:1fr;gap:14px}.ni-electricity .map-footer-actions{flex-direction:row;align-items:center;justify-content:space-between;gap:12px}.ni-electricity .chart-attribution{font-size:9px}.ni-electricity .snapshot-label{max-width:120px;line-height:1.4}}
 
 /* One gentle pass after new validated data, without blocking interaction. */
 .ni-electricity .sea-label{display:block;fill:#748784;paint-order:stroke;stroke:var(--background);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
