@@ -38,7 +38,11 @@ export async function collectOnSchedule(controller, env, request = fetch, now = 
   if (!dataset) return { action: 'skip', reason: 'outside UK collection hours' };
   if (!env.GITHUB_ACTIONS_TOKEN) throw new Error('Missing encrypted GITHUB_ACTIONS_TOKEN secret');
   const pointer = await env.ELECTRICITY_DATA.get(`public/${dataset}/current`, { type: 'json', cacheTtl: 60 });
-  if (!collectionDue(dataset, pointer, now)) return { action: 'skip', dataset, reason: 'recent successful collection or retry guard' };
+  const roiPointer = env.ELECTRICITY_ROI_ENABLED === 'true'
+    ? await env.ELECTRICITY_DATA.get(`public/roi/${dataset}/current`, { type: 'json', cacheTtl: 60 }) : null;
+  if (env.ELECTRICITY_ROI_ENABLED === 'true' && !roiPointer?.records?.length) throw new Error('ROI state has not been initialized; run both datasets with include_roi first');
+  const roiDue = roiPointer ? collectionDue(dataset, roiPointer, now) : false;
+  if (!collectionDue(dataset, pointer, now) && !roiDue) return { action: 'skip', dataset, reason: 'recent successful collection or retry guard' };
   const response = await request(workflowURL, {
     // Workers supports manual/follow, not Fetch's redirect:error. Reject every
     // 3xx below without forwarding the Authorization header to another host.

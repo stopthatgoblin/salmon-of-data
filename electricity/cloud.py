@@ -228,8 +228,8 @@ def restore(raw, work, name, version):
                 target.write_bytes(tar.extractfile(item).read())
 
 
-def load_state(kv, name, work, require_latest=False):
-    pointer = kv.get_json(f'private/{name}/current')
+def load_state(kv, name, work, require_latest=False, prefix=""):
+    pointer = kv.get_json(f'private/{prefix}{name}/current')
     if not pointer:
         raise RuntimeError(f'{name} has not been seeded. Refusing a cold historical rebuild.')
     # Readers try the last accepted archive if a newer pointer arrived first.
@@ -245,15 +245,15 @@ def load_state(kv, name, work, require_latest=False):
     raise RuntimeError('No complete durable state available; retry later without replacing published data')
 
 
-def publish(kv, name, work, data, pointer=None, now=None):
+def publish(kv, name, work, data, pointer=None, now=None, prefix=""):
     now = now or datetime.now(UTC)
     raw = encode(data)
     version = hashlib.sha256(raw).hexdigest()[:24]
     records = (pointer or {}).get('records', [])
     slot = ((records[0]['slot'] + 1) % 3) if records else 0
     packed = archive(work, name, version)
-    record = {'version': version, 'slot': slot, 'stateKey': f'private/{name}/state-{slot}',
-              'stateSha256': hashlib.sha256(packed).hexdigest(), 'key': f'public/{name}/{version}',
+    record = {'version': version, 'slot': slot, 'stateKey': f'private/{prefix}{name}/state-{slot}',
+              'stateSha256': hashlib.sha256(packed).hexdigest(), 'key': f'public/{prefix}{name}/{version}',
               'time': data.get('time', data.get('last')), 'collectedAt': data.get('retrievedAt', data.get('generatedAt'))}
     # All required bytes precede either pointer. Public versions never expose archives.
     kv.put(record['stateKey'], packed)
@@ -261,10 +261,10 @@ def publish(kv, name, work, data, pointer=None, now=None):
     retained = [record] + [item for item in records if item['version'] != version][:2]
     next_pointer = {'schema': 1, 'records': retained, 'ok': True, 'lastSuccess': iso(now),
                     'successfulDate': now.astimezone(UK).date().isoformat(), 'lastAttempt': iso(now)}
-    kv.put(f'private/{name}/current', encode(next_pointer))
+    kv.put(f'private/{prefix}{name}/current', encode(next_pointer))
     public = {key: value for key, value in next_pointer.items() if key != 'records'}
     public['records'] = [{key: value for key, value in item.items() if key not in ('stateKey', 'stateSha256', 'slot')} for item in retained]
-    kv.put(f'public/{name}/current', encode(public))
+    kv.put(f'public/{prefix}{name}/current', encode(public))
     for old in records:
         if not any(item['version'] == old['version'] for item in retained):
             kv.delete(old['key'])

@@ -28,6 +28,7 @@ http.createServer(async(req,res)=>{
   }
   const response=await electricityWorker.fetch(new Request(`http://localhost${req.url}`,{method:req.method,headers:req.headers}),{
    ELECTRICITY_PREVIEW:'true',
+   ELECTRICITY_MODE:process.env.ELECTRICITY_LOCAL_LIVE==='true'?'local':undefined,
    ELECTRICITY_DATA:{async get(key,options){
     if(!electricityStore)return null;
     const file=path.resolve(electricityStore,key);

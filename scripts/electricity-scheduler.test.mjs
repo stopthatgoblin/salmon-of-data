@@ -78,3 +78,35 @@ test('07:00 history dispatch runs once per UK date and skips the other UTC candi
     assert.equal(reads, before); assert.equal(dispatches, 1);
   }
 });
+
+test('ROI alone can trigger the shared timer and missing enabled state fails explicitly', async () => {
+  const now = Date.parse('2026-11-04T12:17:00Z');
+  const controller = { cron: overviewCron, scheduledTime: now };
+  let roi = { records: [{}], lastSuccess: '2026-11-04T12:00:00Z' };
+  const env = { GITHUB_ACTIONS_TOKEN: 'test-only', ELECTRICITY_ROI_ENABLED: 'true', ELECTRICITY_DATA: { async get(key) {
+    return key === 'public/roi/snapshot/current' ? roi : { records: [{}], lastSuccess: '2026-11-04T12:16:00Z' };
+  } } };
+  let calls = 0;
+  const request = async () => { calls++; return new Response(null, { status: 204 }); };
+  assert.equal((await collectOnSchedule(controller, env, request, now)).action, 'dispatch');
+  assert.equal(calls, 1);
+  roi.lastSuccess = '2026-11-04T12:16:00Z';
+  assert.equal((await collectOnSchedule(controller, env, request, now)).action, 'skip');
+  roi = null;
+  await assert.rejects(collectOnSchedule(controller, env, request, now), /ROI state has not been initialized/);
+});
+
+test('ROI daily history retries even after NI history succeeded today', async () => {
+  const now = Date.parse('2026-11-04T09:05:00Z');
+  const controller = {cron:catchupCron,scheduledTime:now};
+  let roi = {records:[{}],successfulDate:'2026-11-03',lastAttempt:'2026-11-04T07:00:00Z',ok:false};
+  const env = {GITHUB_ACTIONS_TOKEN:'test-only',ELECTRICITY_ROI_ENABLED:'true',ELECTRICITY_DATA:{async get(key) {
+    return key === 'public/roi/history/current' ? roi : {records:[{}],successfulDate:'2026-11-04'};
+  }}};
+  let calls=0;
+  const request=async (_url,options)=>{assert.equal(JSON.parse(options.body).inputs.dataset,'history');calls++;return new Response(null,{status:204});};
+  assert.equal((await collectOnSchedule(controller,env,request,now)).action,'dispatch');
+  roi={...roi,successfulDate:'2026-11-04',lastAttempt:'2026-11-04T09:00:00Z',ok:true};
+  assert.equal((await collectOnSchedule(controller,env,request,now)).action,'skip');
+  assert.equal(calls,1);
+});

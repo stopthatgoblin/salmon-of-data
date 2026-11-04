@@ -1,0 +1,107 @@
+"""ROI alignment, independent publication and retention on source failure."""
+import copy
+import hashlib
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+
+import cloud
+import roi_cloud
+from roi import collect
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def snapshot():
+    data = json.loads((ROOT / 'public/data/roi-electricity/snapshot.json').read_text())
+    data['ni']['version'] = 'a' * 24
+    data['ni']['dataBasis'] = 'accepted-ni-snapshot'
+    data['sources']['grid'] = {key: value for key, value in data['sources']['grid'].items() if key.startswith('ROI:')}
+    return data
+
+
+class ROITests(unittest.TestCase):
+    def test_signed_balances_unknown_output_and_alignment(self):
+        data = snapshot()
+        roi_cloud.validate(data)
+        changed = copy.deepcopy(data)
+        station = next(s for s in changed['stations'] if s['output'])
+        previous = station['output']
+        station['output'] = station['units'][0]['output'] = None
+        changed['otherGeneration'] += previous
+        changed['other'] += previous
+        roi_cloud.validate(changed)
+        for key in ['other', 'reconciliation']:
+            changed = copy.deepcopy(data)
+            changed[key] += 10
+            with self.assertRaisesRegex(ValueError, 'balance'):
+                roi_cloud.validate(changed)
+        changed = copy.deepcopy(data)
+        changed['ni']['time'] = '2026-11-04T10:00:00Z'
+        with self.assertRaisesRegex(ValueError, 'aligned'):
+            roi_cloud.validate(changed)
+        changed = copy.deepcopy(data)
+        changed['time'] = '2026-11-03T10:00:00Z'
+        with self.assertRaisesRegex(ValueError, 'backwards'):
+            roi_cloud.validate(changed, data)
+
+    def test_roi_selects_exact_accepted_ni_time_without_refetching_ni(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(collect, 'CACHE', Path(directory)):
+            rows = [dict(Region=region, FieldName=field, EffectiveTime='04-Nov-2026 19:00:00', Value=i)
+                    for i, (region, field) in enumerate(collect.FIELDS)]
+            rows += [dict(row, EffectiveTime='04-Nov-2026 19:15:00', Value=999) for row in rows]
+            payload = dict(url='https://www.smartgriddashboard.com/api/chart/', retrievedAt='2026-11-04T19:30:00Z', data=dict(Rows=rows))
+            (Path(directory) / 'ROI-demand.json').write_text(json.dumps(payload))
+            at, values, provenance = collect.grid_capture({'time': '2026-11-04T19:00:00Z'})
+            self.assertEqual(collect.iso(at), '2026-11-04T19:00:00Z')
+            self.assertEqual(values[collect.FIELDS[0]], 0)
+            self.assertEqual(len(provenance), 6)
+            with self.assertRaisesRegex(ValueError, 'accepted NI'):
+                collect.grid_capture({'time': '2026-11-04T18:45:00Z'})
+            rows.append(dict(rows[0], Value=998))
+            (Path(directory) / 'ROI-demand.json').write_text(json.dumps(payload))
+            with self.assertRaisesRegex(ValueError, 'Conflicting'):
+                collect.grid_capture({'time': '2026-11-04T19:00:00Z'})
+
+    def test_regional_publication_restores_own_state_and_never_changes_ni(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            kv = cloud.FileKV(root / 'kv')
+            kv.put('public/snapshot/current', b'{"NI":"unchanged"}')
+            work = root / 'work'
+            output = work / 'dashboard/dist/assets/snapshot.json'
+            output.parent.mkdir(parents=True)
+            data = snapshot()
+            output.write_bytes(cloud.encode(data))
+            cloud.publish(kv, 'snapshot', work, data, prefix='roi/')
+            self.assertEqual(kv.get('public/snapshot/current'), b'{"NI":"unchanged"}')
+            _, restored = cloud.load_state(kv, 'snapshot', root / 'restored', require_latest=True, prefix='roi/')
+            self.assertEqual(restored, data)
+            pointer = kv.get_json('public/roi/snapshot/current')
+            accepted = kv.get(pointer['records'][0]['key'])
+            with patch.object(roi_cloud, 'accepted_ni', side_effect=RuntimeError('source failure')):
+                with self.assertRaisesRegex(RuntimeError, 'source failure'):
+                    roi_cloud.run(kv, force=True)
+            after = kv.get_json('public/roi/snapshot/current')
+            self.assertFalse(after['ok'])
+            self.assertEqual(after['records'], pointer['records'])
+            self.assertEqual(kv.get(after['records'][0]['key']), accepted)
+            self.assertEqual(kv.get('public/snapshot/current'), b'{"NI":"unchanged"}')
+
+    def test_missing_latest_ni_version_never_falls_back_to_different_inputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            kv = cloud.FileKV(directory)
+            ni = (ROOT / 'public/data/ni-electricity/snapshot.json').read_bytes()
+            version = hashlib.sha256(ni).hexdigest()[:24]
+            kv.put('public/snapshot/' + version, ni)
+            kv.put('public/snapshot/current', cloud.encode({'records': [{'version': 'b' * 24}, {'version': version}]}))
+            with self.assertRaisesRegex(RuntimeError, 'propagating'):
+                roi_cloud.accepted_ni(kv)
+            kv.put('public/snapshot/current', cloud.encode({'records': [{'version': version}]}))
+            self.assertEqual(roi_cloud.accepted_ni(kv)['version'], version)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,6 +1,6 @@
 # Salmon of Data
 
-An editorial-style website with a tracker directory, About section, Markdown blog, El Niño and AI displacement trackers, and Northern Ireland elections and electricity dashboards.
+An editorial-style website with a tracker directory, About section, Markdown blog, El Niño and AI displacement trackers, and Northern Ireland elections and NI/Republic of Ireland electricity dashboards.
 
 The complete site is published at [salmonofdata.com](https://salmonofdata.com/). Electricity runs on Workers Free + KV with GitHub Actions collection. The shared release calendar covers monthly and quarterly releases for the AI and El Niño trackers.
 
@@ -29,6 +29,14 @@ This uses the same port. Markdown additions, edits and removals are watched auto
 Use a Node version manager to select the version pinned in `.node-version` if your system Node is older.
 
 See [security maintenance](docs/security.md) for dependency checks, response headers and repository privacy.
+
+## Republic of Ireland electricity
+
+The native [ROI dashboard](http://127.0.0.1:3100/dashboards/roi-electricity/) reuses the local ROI design and adds real overview collection, independent publication and live browser updates. Trends uses real historical daily averages from EirGrid and the accepted NI North–South balance, with complete-day rules and CSV/image downloads. The original sample history is excluded. NI and ROI share generation and interconnector icons.
+
+After building, use `npm run start:live` for localhost **with 15-minute collection**. This reads the accepted public NI version and collects matching ROI inputs into an ignored local store, without production credentials. Seed ROI history once with `python3 electricity/roi_cloud.py history --force --local-dir outputs/electricity-local --work-dir outputs/roi-history-backfill`; the local server then refreshes history daily after 07:00 UK time. Keep the process running and the Mac awake. Plain `npm start` does not start collection.
+
+The [ROI integration and activation guide](docs/roi-electricity/README.md) gives the exact order for local backfill, preview collection, pushing to live, initializing both production datasets, enabling the GitHub variable and deploying the separate timer. Production ROI collection is gated off until those steps are completed.
 
 ## Add a blog post
 

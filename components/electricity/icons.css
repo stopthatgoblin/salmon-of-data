@@ -1,0 +1,13 @@
+:is(.ni-electricity,.roi-electricity) .station-type-icon{--icon-colour:#9e5c43;display:inline-flex;align-items:center;justify-content:center;flex:0 0 31px;width:31px;height:31px;border-radius:50%;background:#9e5c430c;color:var(--icon-colour)}
+:is(.ni-electricity,.roi-electricity) .station-type-icon svg{display:block;width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round}
+:is(.ni-electricity,.roi-electricity) .station-type-icon.oil{--icon-colour:#527581;background:#5275810d}
+:is(.ni-electricity,.roi-electricity) .station-type-icon.pumped{--icon-colour:#667f79;background:#667f790d}
+:is(.ni-electricity,.roi-electricity) .station-type-icon.hydro{--icon-colour:#136b72;background:#136b720b}
+:is(.ni-electricity,.roi-electricity) .station-type-icon.biomass{--icon-colour:#70844d;background:#70844d0e}
+:is(.ni-electricity,.roi-electricity) .station-type-icon.interconnector-icon{--icon-colour:#527d8b;background:#527d8b0d}
+:is(.ni-electricity,.roi-electricity) .plant-reading .station-type-icon{margin-left:auto;align-self:center}
+:is(.ni-electricity,.roi-electricity) .interconnector .flow-value{display:flex;gap:7px;align-items:baseline}
+:is(.ni-electricity,.roi-electricity) .flow-value .station-type-icon{margin-left:auto;align-self:center}
+:is(.ni-electricity,.roi-electricity) #station-title{display:flex;gap:12px;align-items:center}
+:is(.ni-electricity,.roi-electricity) #station-title .station-type-icon{flex-basis:38px;width:38px;height:38px}
+@media(max-width:1000px){:is(.ni-electricity,.roi-electricity) .station-type-icon{flex-basis:26px;width:26px;height:26px}:is(.ni-electricity,.roi-electricity) .station-type-icon svg{width:22px;height:22px}}

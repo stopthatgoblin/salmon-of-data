@@ -1,0 +1,55 @@
+{
+  "source": "https://reports.sem-o.com/documents/PUB_DailyRegisteredUnits_202611041101.xml",
+  "technicalSource": "https://reports.sem-o.com/documents/PUB_DailyTechnicalOfferData_202611041015.xml",
+  "notes": "Selected registered generating units at the mapped stations. Huntstown TEG and Poolbeg Flexgen are included; batteries and neighbouring Cushaling peakers stay in Other/Unallocated. Whitegate is the Bord Gais Energy 445 MW resource GU_400930 (the register uses its ID as its unit name). Aghada AD1 is absent from the current register and excluded. Technical maximums and availability come from SEMO, not the design capacities.",
+  "stations": {
+    "huntstown": [
+      "GU_400480",
+      "GU_400540",
+      "GU_405860"
+    ],
+    "dublin-bay": [
+      "GU_400500"
+    ],
+    "poolbeg": [
+      "GU_400324",
+      "GU_400325",
+      "GU_403620"
+    ],
+    "turlough-hill": [
+      "GU_400360",
+      "GU_400361",
+      "GU_400362",
+      "GU_400363"
+    ],
+    "great-island": [
+      "GU_400762"
+    ],
+    "edenderry": [
+      "GU_401860"
+    ],
+    "tynagh": [
+      "GU_400530"
+    ],
+    "moneypoint": [
+      "GU_400270",
+      "GU_400271",
+      "GU_400272"
+    ],
+    "ardnacrusha": [
+      "GU_400200",
+      "GU_400201",
+      "GU_400202",
+      "GU_400203"
+    ],
+    "aghada": [
+      "GU_400850",
+      "GU_400181",
+      "GU_400182",
+      "GU_400183"
+    ],
+    "whitegate": [
+      "GU_400930"
+    ]
+  }
+}

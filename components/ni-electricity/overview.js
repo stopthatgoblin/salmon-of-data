@@ -1,3 +1,4 @@
+import { generationIcon, interconnectorIcon } from '../electricity/icons.js';
 // Adapted from NI electricity/dashboard/dist/app.js.
 export function mountOverview(root, data, map, events, signal) {
   const format = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
@@ -121,7 +122,7 @@ export function mountOverview(root, data, map, events, signal) {
     const card = root.querySelector(`[data-interconnector="${flow.key}"]`);
     card.setAttribute('aria-label', `${flow.name}: ${state.toLowerCase()} ${amount} megawatts, ${direction}. ${n(flow.capacity)} megawatts ${flow.capacityLabel}${flow.estimated ? '. Estimated flow' : ''}. ${capacityPercent(utilisation)} of ${capacityBasis}.`);
     card.innerHTML = `<div class="callout-heading"><span class="source-dot ${flow.colour}-colour"></span><span class="interconnector-name">${flow.name}</span></div>
-      <div class="flow-value">${amount} <small>MW</small>${flow.estimated ? ' <span class="estimate-tag">est.</span>' : ''}</div>
+      <div class="flow-value">${amount} <small>MW</small>${flow.estimated ? ' <span class="estimate-tag">est.</span>' : ''}${interconnectorIcon()}</div>
       <div class="flow-direction"><strong>${state}</strong><span>${direction}</span></div>
       <div class="capacity-track"><span style="width:${Math.min(100, utilisation ?? 0)}%"></span><small class="capacity-percent" title="${utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of ${capacityBasis}`}">${capacityPercent(utilisation)}</small></div>
       <div class="flow-capacity"><b>${n(flow.capacity)} MW</b> ${flow.capacityLabel}</div>
@@ -152,7 +153,7 @@ export function mountOverview(root, data, map, events, signal) {
     const percentage = Math.min(100, utilisation ?? 0);
     button.setAttribute('aria-label', `${station.name}: estimated output ${n(station.output)} megawatts, ${n(station.available)} megawatts available. ${utilisation === null ? 'No available capacity.' : `${capacityPercent(utilisation)} of available capacity.`} Explore ${station.units.length} units.`);
     button.innerHTML = `<span class="plant-name">${escape(station.name)} <span class="plant-open" aria-hidden="true">↗</span></span>
-      <span class="plant-reading"><strong>${n(station.output)}</strong><small>MW</small><span class="estimate-tag">est.</span></span>
+      <span class="plant-reading"><strong>${n(station.output)}</strong><small>MW</small><span class="estimate-tag">est.</span>${generationIcon(station.generationType ?? 'gas')}</span>
       <span class="plant-meter capacity-track" aria-hidden="true"><span style="width:${percentage}%"></span><small class="capacity-percent" title="${utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of reported available capacity`}">${capacityPercent(utilisation)}</small></span>
       <span class="plant-capacity"><span><b>${n(station.available)} MW</b> available</span><span class="units-link">${station.units.length} units <span aria-hidden="true">↗</span></span></span>`;
     const marker = root.querySelector(`[data-map-plant="${station.id}"]`);
@@ -207,7 +208,7 @@ export function mountOverview(root, data, map, events, signal) {
     const availableCount = station.units.filter(unit => unit.available > 0).length;
     root.querySelector('#' + 'station-switcher').innerHTML = data.stations.map(item => `<button data-switch="${item.id}" aria-pressed="${item.id === id}">${escape(item.name)}</button>`).join('');
     root.querySelector('#' + 'station-detail').innerHTML = `
-      <div class="station-title-row"><h2 id="station-title">${escape(station.name)}</h2><span class="station-status">${availableCount} of ${station.units.length} units available</span></div>
+      <div class="station-title-row"><h2 id="station-title">${generationIcon(station.generationType ?? 'gas')}${escape(station.name)}</h2><span class="station-status">${availableCount} of ${station.units.length} units available</span></div>
       <div class="station-summary"><div><span>Estimated output</span><strong>${n(station.output)} <small>MW</small></strong></div><div><span>Reported available</span><strong>${n(station.available)} <small>MW</small></strong></div><div><span>Technical maximum</span><strong>${n(station.maximum)} <small>MW</small></strong></div></div>
       <table class="unit-table"><caption>Generating units <span class="estimate-tag">MW</span></caption><thead><tr><th scope="col">Unit / fuel</th><th scope="col">Output <span class="estimate-tag">est.</span></th><th scope="col">Available</th><th scope="col">Maximum</th></tr></thead><tbody>${station.units.map(unit => {
         const statusClass = !unit.available ? 'unavailable' : unit.status === 'Start instructed' ? 'starting' : unit.output ? 'running' : '';

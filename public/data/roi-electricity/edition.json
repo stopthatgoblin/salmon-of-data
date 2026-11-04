@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "automaticUpdates": false,
+  "description": "Bundled accepted ROI overview and real historical data for API-outage fallback. The live API updates separately.",
+  "datasets": {
+    "snapshot.json": {
+      "sha256": "e9b5d61f30034f342617267fed2e6869ce3adb64affc86ede86836dc74e7be4d",
+      "sourceVersion": "3dd30c2557cafbc8d0d441e1"
+    },
+    "history.json": {
+      "sha256": "16bfdf6ea9a9f216bfa4b60081a8c4260a24815b6af6307dd532f1f0cf3f6f04",
+      "sourceVersion": "3003d308aafe675c45a5f4dd"
+    }
+  }
+}

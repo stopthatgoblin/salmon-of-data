@@ -15,7 +15,9 @@
     "prebuild": "node scripts/build-posts.mjs",
     "postbuild": "node scripts/build-security.mjs",
     "check": "tsc --noEmit && node --experimental-strip-types --test scripts/*.test.mjs",
-    "build:posts": "node scripts/build-posts.mjs"
+    "build:posts": "node scripts/build-posts.mjs",
+    "start:live": "node scripts/serve-electricity-live.mjs",
+    "electricity:fallback": "node scripts/export-electricity-fallback.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

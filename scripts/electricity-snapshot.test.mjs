@@ -1,3 +1,4 @@
+import { generationIcon, interconnectorIcon } from '../components/electricity/icons.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
@@ -26,7 +27,7 @@ test('electricity snapshot retains signed balance, station totals and recorded p
 });
 
 test('electricity overview labels imports, exports and zero consistently', () => {
-  const source = fs.readFileSync('components/ni-electricity/overview.js', 'utf8').replace('export function', 'function');
+  const source = fs.readFileSync('components/ni-electricity/overview.js', 'utf8').replace(/^import .*;\n/gm, '').replace('export function', 'function');
   for (const [northSouth, label, value, shareHidden, moyle] of [
     [-145, 'Net imports', '100', false, 245],
     [-345, 'Net exports', '100', true, 245],
@@ -45,7 +46,7 @@ test('electricity overview labels imports, exports and zero consistently', () =>
     const selectors = { '[data-reading]': [reading], '[data-share]': [share], '[data-number]': [signedNumber] };
     const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selectors[selector] || [], addEventListener() {} };
     const data = { time: '2026-10-31T21:00:00Z', demand: 1000, generation: 1000 - moyle - northSouth, wind: 300, solar: 0, other: 0, moyle, northSouth, moyleAvailable: 250, northSouthReferenceCapacity: 300, stations: [] };
-    const context = { root, data, map: {}, events: { dispatchEvent() {}, addEventListener() {} }, signal: {}, document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) }, window: { matchMedia: () => ({ matches: false, addEventListener() {} }), addEventListener() {} }, history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent: class {} };
+    const context = { generationIcon, interconnectorIcon, root, data, map: {}, events: { dispatchEvent() {}, addEventListener() {} }, signal: {}, document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) }, window: { matchMedia: () => ({ matches: false, addEventListener() {} }), addEventListener() {} }, history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent: class {} };
     vm.runInNewContext(`${source}\nmountOverview(root, data, map, events, signal);`, context);
     assert.equal(node('#net-flow-label').textContent, label);
     assert.equal(reading.innerHTML, `${value} <small>MW</small>`);
