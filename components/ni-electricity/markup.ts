@@ -1,4 +1,6 @@
 // Approved standalone dashboard markup, adapted for the shared site shell.
+import { themeToggleMarkup } from '../electricity/theme.js';
+
 export const dashboardMarkup = /* html */ `
     <h1 class="electricity-sr-only">Northern Ireland electricity</h1>
     <div class="tabs">
@@ -8,6 +10,7 @@ export const dashboardMarkup = /* html */ `
         <button id="tab-definitions" role="tab" aria-selected="false" aria-controls="definitions" tabindex="-1">Definitions & sources</button>
       </div>
       <a class="dashboard-switch" href="/dashboards/roi-electricity/">Switch to ROI <span aria-hidden="true">↗</span></a>
+      ${themeToggleMarkup}
       <div class="snapshot-stamp"><span class="snapshot-label"><i></i> Snapshot</span><time data-snapshot-time>-</time></div>
     </div>
 

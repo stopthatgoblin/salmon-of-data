@@ -1,4 +1,5 @@
 import { trendsMarkup } from './trends-markup.js';
+import { themeToggleMarkup } from '../electricity/theme.js';
 
 export const dashboardMarkup = /* html */ `
   <h1 class="electricity-sr-only">Republic of Ireland electricity</h1>
@@ -9,6 +10,7 @@ export const dashboardMarkup = /* html */ `
       <button id="tab-definitions" role="tab" aria-selected="false" aria-controls="definitions" tabindex="-1">Definitions & sources</button>
     </div>
     <a class="dashboard-switch" href="/dashboards/ni-electricity/">Switch to NI <span aria-hidden="true">↗</span></a>
+    ${themeToggleMarkup}
     <div class="snapshot-stamp"><span class="snapshot-label"><i></i> Checking for updates</span><time data-snapshot-time></time></div>
   </div>
   <p class="preview-note" hidden></p>

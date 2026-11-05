@@ -96,6 +96,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
 
   function chartMarkup(series, exportWidth = 0) {
     const interactive = !exportWidth;
+    const colour = interactive ? 'var(--series-colour)' : series.colour;
     const W = exportWidth || Math.max(300, Math.round(chart.clientWidth || 1080)), H = W < 600 ? 310 : 370;
     if (interactive) chartWidth = W;
     const left = W < 600 ? 48 : 66, right = W < 600 ? 16 : 24, top = 24, bottom = 48;
@@ -127,12 +128,12 @@ export function mountTrends(root, rawHistory, model, events, signal) {
       path += `${penDown ? 'L' : 'M'}${x(i).toFixed(2)},${y(value).toFixed(2)}`;
       penDown = true;
     });
-    markup += `<path class="trend-line" d="${path}" style="stroke:${series.colour}"/>`;
+    markup += `<path class="trend-line" d="${path}" style="stroke:${colour}"/>`;
     groups.forEach((group, i) => {
       const value = group.chartValues[sourceIndex];
       if (value === null) return;
       const isolated = (!groups[i - 1] || groups[i - 1].chartValues[sourceIndex] === null) && (!groups[i + 1] || groups[i + 1].chartValues[sourceIndex] === null);
-      if (groups.length <= 36 || isolated) markup += `<circle cx="${x(i)}" cy="${y(value)}" r="3" fill="${series.colour}"/>`;
+      if (groups.length <= 36 || isolated) markup += `<circle cx="${x(i)}" cy="${y(value)}" r="3" fill="${colour}"/>`;
     });
     const tickIndexes = new Set([0, groups.length - 1]);
     const gap = Math.max(1, Math.ceil(groups.length / (W < 600 ? 3 : 6)));
@@ -145,7 +146,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
       markup += `<text class="trend-axis trend-date" x="${x(i)}" y="${H - 15}" text-anchor="${groups.length === 1 ? 'middle' : i === 0 ? 'start' : i === groups.length - 1 ? 'end' : 'middle'}">${esc(label)}</text>`;
     });
     if (!interactive) return markup + '</svg>';
-    markup += `<line id="trend-cursor" class="trend-cursor" x1="0" x2="0" y1="${top}" y2="${H - bottom}" visibility="hidden"/><circle id="trend-cursor-dot" r="4.5" fill="${series.colour}" stroke="#fffdf8" stroke-width="2" visibility="hidden"/>`;
+    markup += `<line id="trend-cursor" class="trend-cursor" x1="0" x2="0" y1="${top}" y2="${H - bottom}" visibility="hidden"/><circle id="trend-cursor-dot" r="4.5" fill="${colour}" stroke="var(--paper)" stroke-width="2" visibility="hidden"/>`;
     // One transparent focusable target per available period also supports keyboard inspection.
     hitRegions = groups.map((group, i) => ({ x: x(i), y: group.chartValues[sourceIndex] === null ? null : y(group.chartValues[sourceIndex]) }));
     groups.forEach((group, i) => {
@@ -231,7 +232,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
     root.querySelector('#' + 'trend-date-range').textContent = acceptedDays.length ? `${dateLabel(acceptedDays[0].date)} - ${dateLabel(acceptedDays[acceptedDays.length - 1].date)}` : 'No readings in this range';
     root.querySelector('#' + 'trend-partial-note').hidden = resolution === 'daily' || !groups.some(group => group.partialPeriod);
     chart.innerHTML = chartMarkup(series);
-    chart.style.setProperty('--series-colour', series.colour);
+    chart.style.setProperty('--series-colour', `var(--series-${series.key}, ${series.colour})`);
     hidePeriod();
     if (csvUrl) URL.revokeObjectURL(csvUrl);
     csvUrl = URL.createObjectURL(new Blob([model.csv(history, groups, resolution)], { type: 'text/csv;charset=utf-8' }));

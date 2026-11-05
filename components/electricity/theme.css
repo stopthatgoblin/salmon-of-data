@@ -1,0 +1,185 @@
+:is(.ni-electricity, .roi-electricity) .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: 7px;
+  min-height: 32px;
+  margin: 5px 0 9px;
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+:is(.ni-electricity, .roi-electricity) .theme-toggle:hover,
+:is(.ni-electricity, .roi-electricity) .theme-toggle[aria-pressed=true] {
+  color: var(--ink);
+  border-color: var(--teal);
+}
+
+:is(.ni-electricity, .roi-electricity) .theme-toggle svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+
+:is(.ni-electricity, .roi-electricity) .theme-toggle-track {
+  display: inline-flex;
+  align-items: center;
+  width: 24px;
+  height: 14px;
+  padding: 2px;
+  border-radius: 10px;
+  background: var(--line);
+}
+
+:is(.ni-electricity, .roi-electricity) .theme-toggle-track::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paper);
+  transition: transform 150ms ease;
+}
+
+:is(.ni-electricity, .roi-electricity) .theme-toggle[aria-pressed=true] .theme-toggle-track {
+  background: var(--teal);
+}
+
+:is(.ni-electricity, .roi-electricity) .theme-toggle[aria-pressed=true] .theme-toggle-track::after {
+  transform: translateX(10px);
+}
+
+@media (max-width: 1000px) {
+  :is(.ni-electricity, .roi-electricity) .theme-toggle { margin: 6px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.ni-electricity, .roi-electricity) .theme-toggle-track::after { transition: none; }
+}
+
+:root[data-electricity-theme=light] { color-scheme: light; }
+
+/* Keep the site shell, dashboard, map and native form controls on one palette. */
+:root[data-electricity-theme=dark],
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) {
+  color-scheme: dark;
+  --background: #111d20;
+  --paper: #1a2b2f;
+  --foreground: #eeeae1;
+  --ink: #eeeae1;
+  --muted: #a7b8b6;
+  --muted-foreground: #a7b8b6;
+  --line: #3d5356;
+  --border: #3d5356;
+  --teal: #80c9c6;
+  --ring: #80c9c6;
+  --accent: #ee9a85;
+  --salmon: #ee9a85;
+  --wind: #80c9c6;
+  --solar: #e2bc72;
+  --other: #adc0a5;
+  --moyle: #8fbfcc;
+  --ns: #abc6c9;
+  --series-wind: var(--wind);
+  --series-solar: var(--solar);
+  --series-otherNI: var(--other);
+  --series-otherROI: var(--other);
+  --series-generation: var(--salmon);
+  --series-demand: var(--ink);
+  --series-moyle: var(--moyle);
+  --series-eastWest: var(--moyle);
+  --series-greenlink: #a7c69e;
+  --series-northSouth: var(--ns);
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .context-land {
+  fill: #1b2a2e;
+  stroke: #35494b;
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .ni-land {
+  fill: #294442;
+  stroke: #658c80;
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .lakes { stroke: #64877d; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .country-label { fill: #9eafaa; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .ni-label { fill: #b5c9be; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .sea-label { fill: #99b2ae; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .city-label { fill: #b5c9be; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .leaders { stroke: #78958e; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .connector-leaders { stroke: #829da2; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .map-compass { fill: var(--muted); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .map-compass path { stroke: var(--muted); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) :is(#moyle-arrow, #import-arrow) path { stroke: var(--moyle); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) #ns-arrow path { stroke: var(--ns); }
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-dot circle:first-child {
+  fill: #ee9a8520;
+  stroke: #ee9a8566;
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-dot.muted circle:first-child {
+  fill: #9eb5aa20;
+  stroke: #9eb5aa66;
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-dot.muted circle:nth-child(2) { fill: #9eb5aa; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-dot.is-hover circle:first-child { fill: #ee9a8533; }
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) :is(.plant-callout, .interconnector) {
+  background: var(--paper);
+  border-color: var(--line);
+  box-shadow: 0 2px 8px #00000014;
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-callout:hover,
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-callout:focus-visible { border-color: var(--salmon); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .plant-callout.coolkeeragh .plant-reading strong { color: var(--muted); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) :is(.capacity-track, .plant-callout .plant-meter) { background: #3d5350; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .solar-label { color: var(--solar); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .other-label { color: var(--other); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .fault-note { color: #dcc0a4; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .chart-brand { color: var(--muted); }
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .station-type-icon {
+  --icon-colour: #efb29c;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .station-type-icon.oil { --icon-colour: #9bc5d0; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .station-type-icon.pumped { --icon-colour: #adc5b5; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .station-type-icon.hydro { --icon-colour: var(--teal); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .station-type-icon.biomass { --icon-colour: #b5c58d; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .station-type-icon.interconnector-icon { --icon-colour: var(--moyle); }
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) dialog { box-shadow: -20px 0 70px #00000040; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) dialog::backdrop { background: #00000088; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) :is(.source-list li, .unit-table td) { border-color: var(--line); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .unit-table thead { background: transparent; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) :is(.unit-table, .history-coverage) th {
+  background: transparent;
+  border-color: var(--line);
+}
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .unit-status i { background: var(--other); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .unit-status.starting i { background: var(--solar); }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .unit-zero { color: var(--muted); }
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .trend-group button:hover:not([aria-pressed=true]) { background: #294442; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .trend-grid { stroke: #354c4e; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .trend-zero { stroke: #78958e; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .trend-cursor { stroke: #9eb5aa; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .trend-hit:focus {
+  stroke: var(--series-colour);
+  fill: #1a2b2fbb;
+}
+
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .trend-empty { background: #1a2b2f80; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .download-link { border-bottom-color: #80c9c666; }
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) .chart-attribution a { text-decoration-color: #a7b8b666; }

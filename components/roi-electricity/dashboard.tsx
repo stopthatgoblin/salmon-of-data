@@ -6,6 +6,8 @@ import './dashboard.css';
 import '../electricity/icons.css';
 import '../electricity/navigation.css';
 import './roi.css';
+import '../electricity/theme.css';
+import { mountTheme } from '../electricity/theme.js';
 import { readInitialDataset } from './live.js';
 
 export default function ROIElectricityDashboard() {
@@ -20,6 +22,7 @@ export default function ROIElectricityDashboard() {
     const element = root.current!;
     // Each mount owns its DOM and handlers, including during React effect replay.
     element.innerHTML = dashboardMarkup;
+    mountTheme(element, signal);
     async function load() {
       try {
         const [runtime, snapshot, history] = await Promise.all([

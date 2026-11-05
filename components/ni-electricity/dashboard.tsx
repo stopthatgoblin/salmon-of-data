@@ -5,6 +5,8 @@ import { dashboardMarkup } from './markup';
 import './dashboard.css';
 import '../electricity/icons.css';
 import '../electricity/navigation.css';
+import '../electricity/theme.css';
+import { mountTheme } from '../electricity/theme.js';
 import { readInitialDataset } from './live.js';
 
 export default function NIElectricityDashboard() {
@@ -19,6 +21,7 @@ export default function NIElectricityDashboard() {
     const element = root.current!;
     // Each mount owns its DOM and handlers, including during React effect replay.
     element.innerHTML = dashboardMarkup;
+    mountTheme(element, signal);
     async function load() {
       try {
         const [runtime, snapshot, history] = await Promise.all([
