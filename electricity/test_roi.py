@@ -105,12 +105,12 @@ class ROITests(unittest.TestCase):
             self.assertEqual(kv.get('public/snapshot/current'), b'{"NI":"unchanged"}')
             _, restored = cloud.load_state(kv, 'snapshot', root / 'restored', require_latest=True, prefix='roi/')
             self.assertEqual(restored, data)
-            pointer = kv.get_json('public/roi/snapshot/current')
+            pointer = kv.get_json('private/roi/snapshot/current')
             accepted = kv.get(pointer['records'][0]['key'])
             with patch.object(roi_cloud, 'accepted_ni', side_effect=RuntimeError('source failure')):
                 with self.assertRaisesRegex(RuntimeError, 'source failure'):
                     roi_cloud.run(kv, force=True)
-            after = kv.get_json('public/roi/snapshot/current')
+            after = kv.get_json('private/roi/snapshot/current')
             self.assertFalse(after['ok'])
             self.assertEqual(after['records'], pointer['records'])
             self.assertEqual(kv.get(after['records'][0]['key']), accepted)
@@ -127,6 +127,11 @@ class ROITests(unittest.TestCase):
                 roi_cloud.accepted_ni(kv)
             kv.put('public/snapshot/current', cloud.encode({'records': [{'version': version}]}))
             self.assertEqual(roi_cloud.accepted_ni(kv)['version'], version)
+            # A newer canonical publication must never fall back to the frozen
+            # public pointer while its version is still propagating.
+            kv.put('private/snapshot/current', cloud.encode({'records': [{'version': 'b' * 24}]}))
+            with self.assertRaisesRegex(RuntimeError, 'propagating'):
+                roi_cloud.accepted_ni(kv)
 
 
 if __name__ == '__main__':

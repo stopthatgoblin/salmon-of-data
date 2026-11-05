@@ -42,6 +42,10 @@ The Mac option depends on the Mac staying online. GitHub Actions is an approxima
 
 ## Selected KV service: illustrative free capacity
 
+Production uses three writes per accepted dataset publication. NI and ROI at 15-minute overview cadence plus one history publication each need about **582 writes/day**, with one additional health write for a failed attempt. The 1,000-write daily allowance is account-wide, including previews and manual runs. A 50% email is expected once usage crosses 500 writes; it does not by itself mean the Free allowance will be exhausted. Check the separate read/write/delete/list totals before attributing a notice to visitors. [KV metrics](https://developers.cloudflare.com/kv/observability/metrics-analytics/).
+
+The live API now caches successful responses at the edge: 60 seconds for manifests/current JSON and one day for immutable versioned JSON. This reduces repeated KV reads from visitors at the same edge location; it does not remove API Worker invocations. Static assets still bypass the Worker. Local review bypasses the cache. The capacity examples below are conservative uncached scenarios; cache effectiveness depends on traffic distribution. No traffic-based collection or paid-plan upgrade is enabled. These changes create headroom but cannot guarantee service under arbitrary traffic or unrelated account workloads.
+
 Assume one five-minute visit per user per month, about 10 API requests and 18 KV reads per visit, with traffic spread evenly. Static asset requests are separate and free. The manifest uses two KV reads per check; longer sessions and repeat visits increase usage. Normal writes are below the daily free allowance, and retained state is tens of MB. Other Workers/KV workloads share account allowances.
 
 | Monthly visits | API requests/month | Average KV reads/day | Workers Free + KV charge | Expected capacity |

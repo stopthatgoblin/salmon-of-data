@@ -8,7 +8,10 @@ const target=path.resolve('public/data/roi-electricity');
 const datasets={};
 await fs.mkdir(target,{recursive:true});
 for(const name of ['snapshot','history']) {
-  const pointer=JSON.parse(await fs.readFile(path.join(store,`public/roi/${name}/current`),'utf8'));
+  let rawPointer;
+  try { rawPointer=await fs.readFile(path.join(store,`private/roi/${name}/current`),'utf8'); }
+  catch(error) { if(error.code!=='ENOENT')throw error; rawPointer=await fs.readFile(path.join(store,`public/roi/${name}/current`),'utf8'); }
+  const pointer=JSON.parse(rawPointer);
   const version=pointer.records?.[0]?.version;
   if(!/^[a-f0-9]{24}$/.test(version)) throw new Error(`No accepted local ROI ${name} version`);
   const raw=await fs.readFile(path.join(store,`public/roi/${name}/${version}`));

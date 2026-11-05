@@ -69,8 +69,8 @@ async function tick() {
     console.log('[electricity local] Accepted ROI overview published to the local store.');
   } catch (error) {
     console.error(`[electricity local] ${error.message}. Previous accepted readings retained; the next interval retries.`);
-    for (const visibility of ['public', 'private']) {
-      const key = `${visibility}/roi/snapshot/current`;
+    {
+      const key = 'private/roi/snapshot/current';
       try {
         const current = JSON.parse(await fs.readFile(path.join(directory, key), 'utf8'));
         await write(key, JSON.stringify({ ...current, ok: false, lastAttempt: new Date().toISOString() }));
@@ -106,8 +106,8 @@ async function checkHistory() {
     console.log('[electricity local] Daily ROI history collection completed.');
   } catch(error) {
     console.error(`[electricity local] ${error.message}. Accepted history retained.`);
-    for (const visibility of ['public','private']) {
-      const key = `${visibility}/roi/history/current`;
+    {
+      const key = 'private/roi/history/current';
       try {
         const current = JSON.parse(await fs.readFile(path.join(directory,key),'utf8'));
         await write(key,JSON.stringify({...current,ok:false,lastAttempt:new Date().toISOString()}));

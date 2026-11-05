@@ -53,6 +53,7 @@ class KV:
         self.url = f'https://api.cloudflare.com/client/v4/accounts/{account}/storage/kv/namespaces/{namespace}/values/'
         self.token = token or os.environ['CLOUDFLARE_API_TOKEN']
         self.writes = 0
+        self.operations = dict(get=0, put=0, delete=0)
 
     def request(self, method, key, value=None):
         if method != 'GET':
@@ -63,6 +64,7 @@ class KV:
             data=value, method=method, headers={'Authorization': 'Bearer ' + self.token,
                 'Content-Type': 'application/octet-stream', 'User-Agent': 'SalmonOfDataElectricity/1'})
         for attempt in range(3):
+            self.operations[method.lower()] += 1
             try:
                 with urllib.request.urlopen(request, timeout=60) as response:
                     body = response.read()
@@ -101,8 +103,10 @@ class FileKV:
     def __init__(self, directory):
         self.directory = Path(directory)
         self.writes = 0
+        self.operations = dict(get=0, put=0, delete=0)
 
     def get(self, key):
+        self.operations['get'] += 1
         path = self.directory / key
         return path.read_bytes() if path.exists() else None
 
@@ -111,6 +115,7 @@ class FileKV:
         return json.loads(raw) if raw is not None else None
 
     def put(self, key, value):
+        self.operations['put'] += 1
         path = self.directory / key
         path.parent.mkdir(parents=True, exist_ok=True)
         temporary = path.with_suffix('.tmp')
@@ -119,6 +124,7 @@ class FileKV:
         self.writes += 1
 
     def delete(self, key):
+        self.operations['delete'] += 1
         (self.directory / key).unlink(missing_ok=True)
         self.writes += 1
 
@@ -262,14 +268,20 @@ def publish(kv, name, work, data, pointer=None, now=None, prefix=""):
     next_pointer = {'schema': 1, 'records': retained, 'ok': True, 'lastSuccess': iso(now),
                     'successfulDate': now.astimezone(UK).date().isoformat(), 'lastAttempt': iso(now)}
     kv.put(f'private/{prefix}{name}/current', encode(next_pointer))
-    public = {key: value for key, value in next_pointer.items() if key != 'records'}
-    public['records'] = [{key: value for key, value in item.items() if key not in ('stateKey', 'stateSha256', 'slot')} for item in retained]
-    kv.put(f'public/{prefix}{name}/current', encode(public))
+    # The API and timer read this same commit record, filtering archive fields
+    # from public responses. Avoid a fourth write for a duplicate public pointer.
     for old in records:
         if not any(item['version'] == old['version'] for item in retained):
             kv.delete(old['key'])
     print(json.dumps({'dataset': name, 'version': version, 'sourceTime': record['time'],
-                      'stateBytes': len(packed), 'mutations': kv.writes}))
+                      'stateBytes': len(packed), 'mutations': kv.writes, 'operations': kv.operations}))
+
+
+def snapshot_recent(pointer, now=None):
+    """Deduplicate delayed native schedules and the timer within each UTC slot."""
+    now = now or datetime.now(UTC)
+    last = (pointer or {}).get('lastSuccess')
+    return bool(last and int(stamp(last).timestamp() // 900) >= int(now.timestamp() // 900))
 
 
 def history_due(pointer, now=None):
@@ -340,8 +352,8 @@ def run(kv, name, force=False):
     if name == 'history' and not force and not history_due(pointer):
         print('History already collected today, before 07:00, or within the retry interval.')
         return
-    # Do not start duplicated overview jobs less than 10 minutes apart.
-    if name == 'snapshot' and not force and pointer and pointer.get('lastSuccess') and datetime.now(UTC) - stamp(pointer['lastSuccess']) < timedelta(minutes=10):
+    # Native schedules and the external timer share one accepted UTC slot.
+    if name == 'snapshot' and not force and pointer and snapshot_recent(pointer):
         print('A recent overview run already completed.')
         return
     attempt = iso()
@@ -373,9 +385,6 @@ def run(kv, name, force=False):
         if pointer:
             pointer = {**(kv.get_json(f'private/{name}/current') or pointer), 'ok': False, 'lastAttempt': attempt}
             kv.put(f'private/{name}/current', encode(pointer))
-            public = kv.get_json(f'public/{name}/current')
-            if public:
-                kv.put(f'public/{name}/current', encode({**public, 'ok': False, 'lastAttempt': attempt}))
         raise
 
 

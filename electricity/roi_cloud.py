@@ -18,7 +18,7 @@ PREFIX = 'roi/'
 
 
 def accepted_ni(kv, name="snapshot"):
-    pointer = kv.get_json(f'public/{name}/current')
+    pointer = kv.get_json(f'private/{name}/current') or kv.get_json(f'public/{name}/current')
     if not pointer or not pointer.get('records'):
         raise RuntimeError('Accepted NI snapshot is unavailable; ROI must use the same NI version')
     version = pointer['records'][0]['version']
@@ -86,7 +86,7 @@ def validate(data, previous=None):
 
 def run(kv, force=False):
     pointer = kv.get_json('private/roi/snapshot/current')
-    if not force and pointer and pointer.get('lastSuccess') and datetime.now(cloud.UTC) - cloud.stamp(pointer['lastSuccess']) < timedelta(minutes=10):
+    if not force and pointer and cloud.snapshot_recent(pointer):
         print('A recent ROI overview collection already completed.')
         return
     attempt = cloud.iso()
@@ -114,11 +114,10 @@ def run(kv, force=False):
             cloud.publish(kv, 'snapshot', work, data, pointer, prefix=PREFIX)
     except Exception:
         if pointer:
-            for visibility in ['private', 'public']:
-                key = f'{visibility}/roi/snapshot/current'
-                current = kv.get_json(key)
-                if current:
-                    kv.put(key, cloud.encode({**current, 'ok': False, 'lastAttempt': attempt}))
+            key = 'private/roi/snapshot/current'
+            current = kv.get_json(key)
+            if current:
+                kv.put(key, cloud.encode({**current, 'ok': False, 'lastAttempt': attempt}))
         raise
 
 
@@ -158,11 +157,10 @@ def run_history(kv, force=False, work_dir=None, start_year=2010):
             'completeDays': {series['key']: series['days'] for series in data['series']}}))
     except Exception:
         if pointer:
-            for visibility in ['private', 'public']:
-                key = f'{visibility}/roi/history/current'
-                current = kv.get_json(key)
-                if current:
-                    kv.put(key, cloud.encode({**current, 'ok': False, 'lastAttempt': attempt}))
+            key = 'private/roi/history/current'
+            current = kv.get_json(key)
+            if current:
+                kv.put(key, cloud.encode({**current, 'ok': False, 'lastAttempt': attempt}))
         raise
     finally:
         if temporary:

@@ -22,6 +22,7 @@ test('external timer suppresses duplicate collections and daily successes withou
   const pointer = { records: [{}], lastSuccess: '2026-11-01T07:00:00Z', successfulDate: '2026-11-01' };
   assert.equal(collectionDue('snapshot', pointer, now), false);
   assert.equal(collectionDue('snapshot', pointer, now + 10 * 60000), true);
+  assert.equal(collectionDue('snapshot', {...pointer,lastSuccess:'2026-11-01T07:02:00Z'},Date.parse('2026-11-01T07:14:59Z')),false);
   assert.equal(collectionDue('history', pointer, now), false);
   assert.equal(collectionDue('history', { ...pointer, successfulDate: '2026-10-31', lastAttempt: '2026-11-01T07:00:00Z', ok: false }, now), false);
   assert.equal(collectionDue('history', { ...pointer, successfulDate: '2026-10-31', lastAttempt: '2026-11-01T06:00:00Z', ok: false }, now), true);
@@ -35,7 +36,7 @@ test('timer dispatch is pinned to production main, protects credentials and pres
   const controller = { cron: overviewCron, scheduledTime: now };
   const env = { GITHUB_ACTIONS_TOKEN: 'test-only-placeholder', ELECTRICITY_DATA: {
     async get(key) {
-      assert.equal(key, 'public/snapshot/current');
+      assert.equal(key, 'private/snapshot/current');
       return { records: [{}], lastSuccess: '2026-11-01T15:57:00Z' };
     },
   } };
@@ -63,7 +64,7 @@ test('07:00 history dispatch runs once per UK date and skips the other UTC candi
     let pointer = { records: [{}], successfulDate: '2026-07-01', lastAttempt: '2026-07-01T07:00:00Z' };
     let dispatches = 0, reads = 0;
     const env = { GITHUB_ACTIONS_TOKEN: 'test-only-placeholder', ELECTRICITY_DATA: { async get(key) {
-      assert.equal(key, 'public/history/current'); reads++; return pointer;
+      assert.equal(key, 'private/history/current'); reads++; return pointer;
     } } };
     const request = async (_url, options) => {
       assert.deepEqual(JSON.parse(options.body).inputs, { dataset: 'history', target: 'production', automatic: 'true', preview_watch: 'false' });
@@ -84,7 +85,7 @@ test('ROI alone can trigger the shared timer and missing enabled state fails exp
   const controller = { cron: overviewCron, scheduledTime: now };
   let roi = { records: [{}], lastSuccess: '2026-11-04T12:00:00Z' };
   const env = { GITHUB_ACTIONS_TOKEN: 'test-only', ELECTRICITY_ROI_ENABLED: 'true', ELECTRICITY_DATA: { async get(key) {
-    return key === 'public/roi/snapshot/current' ? roi : { records: [{}], lastSuccess: '2026-11-04T12:16:00Z' };
+    return key.includes('/roi/') ? roi : { records: [{}], lastSuccess: '2026-11-04T12:16:00Z' };
   } } };
   let calls = 0;
   const request = async () => { calls++; return new Response(null, { status: 204 }); };
@@ -101,7 +102,7 @@ test('ROI daily history retries even after NI history succeeded today', async ()
   const controller = {cron:catchupCron,scheduledTime:now};
   let roi = {records:[{}],successfulDate:'2026-11-03',lastAttempt:'2026-11-04T07:00:00Z',ok:false};
   const env = {GITHUB_ACTIONS_TOKEN:'test-only',ELECTRICITY_ROI_ENABLED:'true',ELECTRICITY_DATA:{async get(key) {
-    return key === 'public/roi/history/current' ? roi : {records:[{}],successfulDate:'2026-11-04'};
+    return key.includes('/roi/') ? roi : {records:[{}],successfulDate:'2026-11-04'};
   }}};
   let calls=0;
   const request=async (_url,options)=>{assert.equal(JSON.parse(options.body).inputs.dataset,'history');calls++;return new Response(null,{status:204});};

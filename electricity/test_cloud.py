@@ -47,6 +47,12 @@ class CloudTests(unittest.TestCase):
         self.assertFalse(cloud.history_due({'lastAttempt': '2026-11-01T07:30:00Z'}, NOW))
         self.assertTrue(cloud.history_due({'lastAttempt': '2026-11-01T07:00:00Z'}, NOW))
 
+    def test_native_and_external_overview_jobs_share_one_utc_quarter_hour(self):
+        pointer = {'lastSuccess': '2026-11-01T07:02:00Z'}
+        self.assertTrue(cloud.snapshot_recent(pointer, datetime.fromisoformat('2026-11-01T07:14:59+00:00')))
+        self.assertFalse(cloud.snapshot_recent(pointer, datetime.fromisoformat('2026-11-01T07:15:00+00:00')))
+        self.assertFalse(cloud.snapshot_recent(None, NOW))
+
     def test_incomplete_source_refresh_retains_a_coherent_accepted_grid_day(self):
         original = self.data('history')
         changed = copy.deepcopy(original)
@@ -128,9 +134,12 @@ class CloudTests(unittest.TestCase):
                 cloud.publish(kv, 'snapshot', work, data, pointer, NOW)
                 pointer = kv.get_json('private/snapshot/current')
             self.assertEqual(len(pointer['records']), 3)
-            self.assertEqual(len(list((root / 'kv/public/snapshot').iterdir())), 4)  # 3 datasets + pointer
+            self.assertEqual(len(list((root / 'kv/public/snapshot').iterdir())), 3)  # Only the three immutable public datasets
             self.assertEqual(len(list((root / 'kv/private/snapshot').glob('state-*'))), 3)
-            self.assertLessEqual(kv.writes, 5 * 5)
+            self.assertEqual(kv.writes, 3 * 5 + 2)  # 3 puts/run and two retention deletes
+            self.assertEqual(kv.operations['put'], 15)
+            self.assertEqual(kv.operations['delete'], 2)
+            self.assertIsNone(kv.get('public/snapshot/current'))
             # Current state not visible yet at this location: restore the previous
             # accepted archive rather than start an empty backfill.
             kv.delete(pointer['records'][0]['stateKey'])
@@ -148,12 +157,14 @@ class CloudTests(unittest.TestCase):
             (work / 'dashboard/dist/assets/snapshot.json').write_bytes(cloud.encode(data))
             cloud.publish(kv, 'snapshot', work, data, now=NOW)
             before = {p.name: p.read_bytes() for p in (root / 'kv/private/snapshot').glob('state-*')}
-            records = kv.get_json('public/snapshot/current')['records']
+            records = kv.get_json('private/snapshot/current')['records']
+            before_writes = kv.writes
             with patch.object(cloud.subprocess, 'run', side_effect=RuntimeError('upstream unavailable')):
                 with self.assertRaises(RuntimeError):
                     cloud.run(kv, 'snapshot', force=True)
-            self.assertEqual(kv.get_json('public/snapshot/current')['records'], records)
-            self.assertFalse(kv.get_json('public/snapshot/current')['ok'])
+            self.assertEqual(kv.get_json('private/snapshot/current')['records'], records)
+            self.assertFalse(kv.get_json('private/snapshot/current')['ok'])
+            self.assertEqual(kv.writes - before_writes, 1)
             self.assertEqual(before, {p.name: p.read_bytes() for p in (root / 'kv/private/snapshot').glob('state-*')})
 
     def test_cold_start_and_unsafe_archive_are_rejected(self):

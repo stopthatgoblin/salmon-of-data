@@ -1,5 +1,6 @@
 // Private, timer-only Worker. The GitHub credential is an encrypted Worker
 // secret, never an asset, a URL parameter, a log message or an HTTP endpoint.
+import { readElectricityPointer } from './electricity-state.mjs';
 const workflowURL = 'https://api.github.com/repos/stopthatgoblin/salmon-of-data/actions/workflows/ni-electricity.yml/dispatches';
 export const overviewCron = '2,17,32,47 * * * *';
 export const historyCron = '0 6,7 * * *';
@@ -25,7 +26,7 @@ export function collectionDue(dataset, pointer, now = Date.now()) {
   if (!pointer?.records?.length) throw new Error('Electricity state has not been seeded');
   if (dataset === 'snapshot') {
     const last = Date.parse(pointer.lastSuccess);
-    return !Number.isFinite(last) || now - last >= 10 * 60000;
+    return !Number.isFinite(last) || Math.floor(now / 900000) > Math.floor(last / 900000);
   }
   const today = ukDate.format(new Date(now));
   if (pointer.successfulDate === today) return false;
@@ -37,9 +38,9 @@ export async function collectOnSchedule(controller, env, request = fetch, now = 
   const dataset = scheduledDataset(controller.cron, controller.scheduledTime);
   if (!dataset) return { action: 'skip', reason: 'outside UK collection hours' };
   if (!env.GITHUB_ACTIONS_TOKEN) throw new Error('Missing encrypted GITHUB_ACTIONS_TOKEN secret');
-  const pointer = await env.ELECTRICITY_DATA.get(`public/${dataset}/current`, { type: 'json', cacheTtl: 60 });
+  const pointer = await readElectricityPointer(env.ELECTRICITY_DATA, dataset);
   const roiPointer = env.ELECTRICITY_ROI_ENABLED === 'true'
-    ? await env.ELECTRICITY_DATA.get(`public/roi/${dataset}/current`, { type: 'json', cacheTtl: 60 }) : null;
+    ? await readElectricityPointer(env.ELECTRICITY_DATA, dataset, 'roi/') : null;
   if (env.ELECTRICITY_ROI_ENABLED === 'true' && !roiPointer?.records?.length) throw new Error('ROI state has not been initialized; run both datasets with include_roi first');
   const roiDue = roiPointer ? collectionDue(dataset, roiPointer, now) : false;
   if (!collectionDue(dataset, pointer, now) && !roiDue) return { action: 'skip', dataset, reason: 'recent successful collection or retry guard' };

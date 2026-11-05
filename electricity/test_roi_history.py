@@ -79,13 +79,13 @@ class HistoryTests(unittest.TestCase):
             (work/'dashboard/history-audit.json').write_text('{}')
             kv.put('public/roi/snapshot/current',b'{"unchanged":true}')
             cloud.publish(kv,'history',work,data,prefix='roi/')
-            pointer=kv.get_json('public/roi/history/current')
+            pointer=kv.get_json('private/roi/history/current')
             _,restored=cloud.load_state(kv,'history',root/'restored',require_latest=True,prefix='roi/')
             self.assertEqual(restored,data)
             with patch.object(roi_cloud,'accepted_ni',return_value=ni), patch.object(history,'collect',side_effect=RuntimeError('source failure')):
                 with self.assertRaisesRegex(RuntimeError,'source failure'):
                     roi_cloud.run_history(kv,force=True)
-            after=kv.get_json('public/roi/history/current')
+            after=kv.get_json('private/roi/history/current')
             self.assertEqual(after['records'],pointer['records'])
             self.assertFalse(after['ok'])
             self.assertEqual(kv.get('public/roi/snapshot/current'),b'{"unchanged":true}')
