@@ -73,7 +73,7 @@ export function mountOverview(root, data, map, events, signal) {
       root.querySelector('#metric-definitions dl>div:nth-child(5) dd').textContent = 'Selected registered generating units at the mapped stations. Output is a last-published dispatch-target proxy, seeded from earlier half-hourly meter data (MWh converted to average MW). This follows the NI approach; it does not establish current metered output. Missing or expired numeric instructions show a dash. Huntstown TEG and Poolbeg Flexgen are included; batteries and neighbouring Cushaling peakers stay in Other/Unallocated. Icons indicate the station’s principal generation type.';
       root.querySelector('#estimates>p:first-of-type').textContent = 'Grid readings are reported actuals; station outputs and North-South are estimates. Dispatch publications lag the grid readings, and a carried-forward target is not a live meter measurement. Unknown outputs remain unallocated. Technical declarations come from the latest available publications. Trends shows complete daily averages from public sources.';
       root.querySelector('#estimates>p:last-of-type').textContent = 'Moneypoint uses the current registered oil-fired units. The original Tarbert oil station is excluded. This is a selected station set; smaller plants, temporary generation, batteries and other unmatched generation remain in Other/Unallocated. Signed residuals can be negative when proxy estimates and reported regional generation do not reconcile.';
-      root.querySelector('#capacity>p:first-of-type').textContent = 'Available capacity comes from SEMO’s published outturn availability baseline and subsequent hourly changes. The percentage is the magnitude of estimated output divided by availability. Zero output does not establish an outage; zero declared availability is a separate observation.';
+      root.querySelector('#capacity>p:first-of-type').textContent = 'Available capacity comes from SEMO’s published outturn availability baseline and subsequent hourly changes. The percentage is the magnitude of estimated output divided by availability. Turlough Hill shows technical capacity and uses that capacity for its percentage. Zero output does not establish an outage; zero declared availability is a separate observation.';
       root.querySelector('#capacity>p:nth-of-type(2)').textContent = 'Technical maximum in the drawer comes from the latest available SEMO technical offer report for the selected registered resource IDs. These values can differ from nominal station ratings. Snapshot source records retain report dates and unit mapping.';
       root.querySelector('#data-sources>p:first-of-type').textContent = 'The overview uses public EirGrid actuals and SEMO unit reports. ROI grid series and the accepted NI inputs share one timestamp. Plant estimates, availability and technical parameters retain their report provenance in snapshot.json. The overview is collected every 15 minutes; history is collected daily.';
       root.querySelector('#data-sources .source-list li:first-child small').textContent = 'Captured ROI demand, generation, wind, solar, East-West and Greenlink, plus matching NI inputs for the shared North-South estimate.';
@@ -85,12 +85,16 @@ export function mountOverview(root, data, map, events, signal) {
   }
   renderReadings();
 
+  const stationCapacity = station => station.id === 'turlough-hill'
+    ? {value:station.maximum,label:'capacity'}
+    : {value:station.available,label:'available'};
   function stationContent(station) {
-    const ratio = usage(station.output, station.available);
+    const capacity = stationCapacity(station);
+    const ratio = usage(station.output, capacity.value);
     return `<span class="plant-name">${escape(station.name)} <span class="plant-open" aria-hidden="true">↗</span></span>
       <span class="plant-reading"><strong>${n(station.output)}</strong><small>MW</small><span class="estimate-tag">est.</span>${generationIcon(station.generationType)}</span>
       <span class="plant-meter capacity-track" aria-hidden="true"><span style="width:${Math.min(100, ratio ?? 0)}%"></span><small class="capacity-percent">${percent(ratio)}</small></span>
-      <span class="plant-capacity"><span><b>${n(station.available)} MW</b> available</span><span class="units-link">${station.units.length} ${station.units.length === 1 ? 'unit' : 'units'} ↗</span></span>`;
+      <span class="plant-capacity"><span><b>${n(capacity.value)} MW</b> ${capacity.label}</span><span class="units-link">${station.units.length} ${station.units.length === 1 ? 'unit' : 'units'} ↗</span></span>`;
   }
   function flowContent(flow) {
     const importing = flow.value > 0;
@@ -107,7 +111,7 @@ export function mountOverview(root, data, map, events, signal) {
   }
   const stationCards = root.querySelector('#station-cards');
   data.stations.forEach(station => {
-    const ratio = usage(station.output, station.available);
+    const capacity = stationCapacity(station);
     const button = document.createElement('button');
     button.className = `plant-callout ${station.id}`;
     button.dataset.station = station.id;
@@ -116,7 +120,7 @@ export function mountOverview(root, data, map, events, signal) {
     const cardY = ['whitegate','great-island'].includes(station.id) ? 930 : station.card[1];
     button.style.setProperty('--card-y', `${cardY / mapHeight * 100}%`);
     button.setAttribute('aria-haspopup', 'dialog');
-    button.setAttribute('aria-label', `${station.name}, ${station.fuel}: ${captured ? 'estimated' : 'sample'} output ${n(station.output)} megawatts, ${n(station.available)} megawatts available. Explore ${station.units.length} ${captured ? 'registered' : 'illustrative'} units.`);
+    button.setAttribute('aria-label', `${station.name}, ${station.fuel}: ${captured ? 'estimated' : 'sample'} output ${n(station.output)} megawatts, ${n(capacity.value)} megawatts ${capacity.label}. Explore ${station.units.length} ${captured ? 'registered' : 'illustrative'} units.`);
     button.innerHTML = stationContent(station);
     stationCards.append(button);
     const point = stationPoint(station);
@@ -189,7 +193,7 @@ export function mountOverview(root, data, map, events, signal) {
     dialog.dataset.activeStation = id;
     const availableCount = station.units.filter(unit => unit.available > 0).length;
     const unitStatus = unit => captured
-      ? unit.output === null ? 'Output unknown' : !unit.available ? 'Declared unavailable' : unit.basis === 'meter_seed' ? 'Earlier meter seed' : unit.basis?.includes('SYNC') ? 'Start instructed' : unit.output ? 'Last published target' : 'No generation indicated'
+      ? unit.output === null ? 'Output unknown' : !unit.available ? 'Declared unavailable' : unit.basis === 'meter_seed' ? 'Earlier meter seed' : unit.basis?.includes('SYNC') ? 'Start instructed' : unit.output ? 'Generation indicated' : 'No generation indicated'
       : !unit.available ? 'Sample: unavailable' : unit.output ? 'Sample: generating' : 'Sample: no generation';
     root.querySelector('#station-switcher').innerHTML = data.stations.map(item => `<button data-switch="${item.id}" aria-pressed="${item.id === id}">${escape(item.name)}</button>`).join('');
     root.querySelector('#station-detail').innerHTML = `<div class="station-title-row"><h2 id="station-title">${generationIcon(station.generationType)}${escape(station.name)}</h2><span class="station-status">${availableCount} of ${station.units.length} units available</span></div>
@@ -263,8 +267,9 @@ export function mountOverview(root, data, map, events, signal) {
     renderReadings();
     for (const station of data.stations) {
       const button = root.querySelector(`.plant-callout[data-station="${station.id}"]`);
+      const capacity = stationCapacity(station);
       button.innerHTML = stationContent(station);
-      button.setAttribute('aria-label', `${station.name}, estimated output ${n(station.output)} megawatts, ${n(station.available)} megawatts available. Explore ${station.units.length} registered units.`);
+      button.setAttribute('aria-label', `${station.name}, estimated output ${n(station.output)} megawatts, ${n(capacity.value)} megawatts ${capacity.label}. Explore ${station.units.length} registered units.`);
       root.querySelector(`[data-map-plant="${station.id}"]`).classList.toggle('muted', station.output === 0);
     }
     for (const flow of data.interconnectors) {

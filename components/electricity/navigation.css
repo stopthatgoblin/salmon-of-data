@@ -1,0 +1,34 @@
+:is(.ni-electricity, .roi-electricity) .dashboard-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: inherit;
+}
+
+:is(.ni-electricity, .roi-electricity) .dashboard-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 0 15px;
+  color: var(--teal);
+  font-size: 13px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+:is(.ni-electricity, .roi-electricity) .dashboard-switch:hover {
+  color: var(--salmon);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+:is(.ni-electricity, .roi-electricity) .dashboard-switch:focus-visible {
+  outline: 2px solid var(--salmon);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1000px) {
+  :is(.ni-electricity, .roi-electricity) .dashboard-switch {
+    padding: 14px 0 13px;
+    font-size: 12px;
+  }
+}

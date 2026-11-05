@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { dashboardMarkup } from './markup';
 import './dashboard.css';
 import '../electricity/icons.css';
+import '../electricity/navigation.css';
 import './roi.css';
 import { readInitialDataset } from './live.js';
 

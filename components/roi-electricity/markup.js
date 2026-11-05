@@ -2,10 +2,13 @@ import { trendsMarkup } from './trends-markup.js';
 
 export const dashboardMarkup = /* html */ `
   <h1 class="electricity-sr-only">Republic of Ireland electricity</h1>
-  <div class="tabs" role="tablist" aria-label="Dashboard views">
-    <button id="tab-overview" role="tab" aria-selected="true" aria-controls="overview" tabindex="0">Overview</button>
-    <button id="tab-trends" role="tab" aria-selected="false" aria-controls="trends" tabindex="-1">Trends</button>
-    <button id="tab-definitions" role="tab" aria-selected="false" aria-controls="definitions" tabindex="-1">Definitions & sources</button>
+  <div class="tabs">
+    <div class="dashboard-tabs" role="tablist" aria-label="Dashboard views">
+      <button id="tab-overview" role="tab" aria-selected="true" aria-controls="overview" tabindex="0">Overview</button>
+      <button id="tab-trends" role="tab" aria-selected="false" aria-controls="trends" tabindex="-1">Trends</button>
+      <button id="tab-definitions" role="tab" aria-selected="false" aria-controls="definitions" tabindex="-1">Definitions & sources</button>
+    </div>
+    <a class="dashboard-switch" href="/dashboards/ni-electricity/">Switch to NI <span aria-hidden="true">↗</span></a>
     <div class="snapshot-stamp"><span class="snapshot-label"><i></i> Checking for updates</span><time data-snapshot-time></time></div>
   </div>
   <p class="preview-note" hidden></p>

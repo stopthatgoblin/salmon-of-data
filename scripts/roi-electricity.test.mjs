@@ -100,6 +100,9 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
   next.demand += 1;
   next.interconnectors.find(flow => flow.id === 'eastWest').value = -100;
   next.stations[0].units[0].output += 1; next.stations[0].output += 1;
+  // Pumped storage uses technical capacity even when declared availability changes.
+  const storage = next.stations.find(station => station.id === 'turlough-hill');
+  storage.available = 0; storage.maximum = 292; storage.output = 146;
   events.dispatchEvent(new CustomEvent('dashboard:snapshot', { detail: next }));
   assert.equal(dialog.open, true);
   assert.equal(node(`[data-interconnector="eastWest"]`), card);
@@ -109,6 +112,9 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
   assert.match(node('#station-detail').innerHTML, new RegExp(String(Math.round(next.stations[0].units[0].output))));
   assert.equal(demand.innerHTML, `${new Intl.NumberFormat('en-IE').format(next.demand)} <small>MW</small>`);
   assert.equal(peak.textContent,"Today's expected peak: 5,520 MW at 18:00");
+  const storageCard = node('.plant-callout[data-station="turlough-hill"]').innerHTML;
+  assert.match(storageCard, /292 MW<\/b> capacity/);
+  assert.match(storageCard, /capacity-percent">50%/);
   assert.equal(node('.preview-note').hidden,true);
   events.dispatchEvent(new CustomEvent('dashboard:snapshot',{detail:{...next,expectedPeaks:{...next.expectedPeaks,date:'2000-01-01'}}}));
   assert.equal(peak.textContent,"Today's expected peak: unavailable");
