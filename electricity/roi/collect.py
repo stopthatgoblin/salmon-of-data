@@ -19,6 +19,8 @@ CACHE = ROOT / 'runtime'
 SNAPSHOT = ROOT.parent.parent / 'public/data/roi-electricity/snapshot.json'
 REPORTS = 'https://reports.sem-o.com'
 MAPPING = json.loads((ROOT/'units.json').read_text())['stations']
+LAYOUT = json.loads((ROOT/'layout.json').read_text())
+STATIONS = LAYOUT['stations']
 UNITS = {unit for units in MAPPING.values() for unit in units}
 FIELDS = [('ROI', name) for name in ['SYSTEM_DEMAND','GEN_EXP','WIND_ACTUAL','SOLAR_ACTUAL','INTER_EWIC','INTER_GRNLK']]
 NOW = datetime.now(timezone.utc).replace(tzinfo=None)
@@ -264,14 +266,21 @@ def build(ni):
     at, grid, provenance = grid_capture(ni)
     units, plant_sources = station_capture(at)
     snapshot = json.loads(SNAPSHOT.read_text())
+    # Restored archives can predate station additions and layout changes.
+    snapshot['stations'] = [dict(station) for station in STATIONS]
     for station in snapshot['stations']:
         station['units'] = [units[uid] for uid in MAPPING[station['id']]]
         for field in ['output','available','maximum']:
             station[field] = round(sum(u[field] for u in station['units']),4) if all(finite(u[field]) for u in station['units']) else None
         station['outputBasis'] = 'last-published-dispatch-target-proxy'
         station['note'] = 'Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.'
+        if station['id'] == 'aughinish':
+            station['note'] += ' Aughinish Alumina CHP uses registered generating units SK3 and SK4. The demand-side unit is excluded. CHP generation and surplus grid export are different measures.'
+        if station['id'] == 'tarbert-teg':
+            station['note'] += ' Tarbert TEG is the existing temporary emergency plant, registered as TARBERT TEG 2. It is separate from the retired oil station and future HVO project. An earlier meter seed does not establish current operating status.'
     snapshot.update(dataBasis='public-source-capture',time=iso(at),capturedAt=iso(datetime.utcnow()),retrievedAt=max(p['retrievedAt'] for p in provenance.values()),demand=grid['ROI','SYSTEM_DEMAND'],generation=grid['ROI','GEN_EXP'],wind=grid['ROI','WIND_ACTUAL'],solar=grid['ROI','SOLAR_ACTUAL'],ni=dict(time=ni['time'],version=ni['version'],demand=ni['demand'],generation=ni['generation'],moyle=ni['moyle'],dataBasis='accepted-ni-snapshot'),expectedPeaks=peaks(at),sources=dict(grid=provenance,plants=plant_sources),northSouthBasis='ni-balance-reversed')
     for flow in snapshot['interconnectors']:
+        flow['card'] = LAYOUT['interconnectorCards'][flow['id']]
         if flow['id'] == 'eastWest':
             flow['remoteLocation'] = [-4.64, 53.32]
         flow['value'] = grid['ROI','INTER_EWIC'] if flow['id']=='eastWest' else grid['ROI','INTER_GRNLK'] if flow['id']=='greenlink' else -(snapshot['ni']['demand']-snapshot['ni']['generation']-snapshot['ni']['moyle'])

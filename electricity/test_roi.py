@@ -24,6 +24,35 @@ def snapshot():
 
 
 class ROITests(unittest.TestCase):
+    def test_station_catalog_upgrades_old_archives_and_reallocates_output(self):
+        data = snapshot()
+        added = {'aughinish', 'tarbert-teg'}
+        legacy = copy.deepcopy(data)
+        allocated = sum(s['output'] or 0 for s in legacy['stations'] if s['id'] in added)
+        legacy['stations'] = [s for s in legacy['stations'] if s['id'] not in added]
+        legacy['otherGeneration'] += allocated
+        legacy['other'] += allocated
+        for station in legacy['stations']:
+            station['card'] = [0, 0]
+        units = {unit['id']: unit for station in data['stations'] for unit in station['units']}
+        grid = {tuple(key.split(':')): source['value'] for key, source in data['sources']['grid'].items()}
+        at = datetime.fromisoformat(data['time'].removesuffix('Z'))
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'snapshot.json'
+            output.write_bytes(cloud.encode(legacy))
+            with patch.object(collect, 'SNAPSHOT', output), patch.object(collect, 'CACHE', Path(directory)), \
+                 patch.object(collect, 'grid_capture', return_value=(at, grid, data['sources']['grid'])), \
+                 patch.object(collect, 'station_capture', return_value=(units, data['sources']['plants'])), \
+                 patch.object(collect, 'peaks', return_value=data['expectedPeaks']):
+                rebuilt = collect.build(data['ni'])
+        roi_cloud.validate(rebuilt, legacy)
+        self.assertEqual([s['id'] for s in rebuilt['stations']], [s['id'] for s in collect.STATIONS])
+        self.assertEqual([s['card'] for s in rebuilt['stations']], [s['card'] for s in collect.STATIONS])
+        self.assertEqual(rebuilt['generation'], legacy['generation'])
+        self.assertAlmostEqual(rebuilt['other'], legacy['other'] - allocated)
+        self.assertEqual(collect.MAPPING['aughinish'], ['GU_400120', 'GU_400121'])
+        self.assertEqual(collect.MAPPING['tarbert-teg'], ['GU_406490'])
+
     def test_demand_peak_time_matches_actual_or_forecast_and_rejects_gaps(self):
         at = datetime(2026, 11, 4, 14)
         start = at.replace(hour=0)

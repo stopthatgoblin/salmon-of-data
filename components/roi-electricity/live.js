@@ -1,5 +1,7 @@
 import { createLiveClient } from '../ni-electricity/live.js';
 import { reconcileSnapshot } from './balance.js';
+import layout from '../../electricity/roi/layout.json' with {type:'json'};
+const stationLayout = layout.stations;
 
 export function validateUpdate(name, next, current) {
   if (name === 'history') {
@@ -15,7 +17,7 @@ export function validateUpdate(name, next, current) {
   for (const key of ['other', 'otherGeneration', 'reconciliation']) {
     if (!Number.isFinite(next[key]) || Math.abs(next[key] - balanced[key]) > .001) throw new Error('Invalid ROI balance');
   }
-  if (next.stations?.length !== 11 || new Set(next.stations.map(s => s.id)).size !== 11) throw new Error('Incomplete ROI stations');
+  if (next.stations?.length !== stationLayout.length || next.stations.some((station, index) => station.id !== stationLayout[index].id)) throw new Error('Incomplete ROI stations');
   if (current && next.stations.map(s => s.id).join() !== current.stations.map(s => s.id).join()) throw new Error('ROI station set changed');
 }
 const client = createLiveClient({

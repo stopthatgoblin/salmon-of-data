@@ -1,38 +1,39 @@
 {
   "dataBasis": "public-source-capture",
-  "time": "2026-11-04T21:45:00Z",
-  "demand": 4588,
-  "generation": 3894,
-  "wind": 1556,
-  "solar": 1,
+  "time": "2026-11-05T22:30:00Z",
+  "demand": 4374,
+  "generation": 3378,
+  "wind": 558,
+  "solar": 2,
   "ni": {
-    "time": "2026-11-04T21:45:00Z",
-    "version": "4143adf793bf77c78470ea34",
-    "demand": 920,
-    "generation": 580,
+    "time": "2026-11-05T22:30:00Z",
+    "version": "77cd28f05fd6ea0e0b6db8dc",
+    "demand": 837,
+    "generation": 542,
     "moyle": 245,
     "dataBasis": "accepted-ni-snapshot"
   },
   "northSouthBasis": "ni-balance-reversed",
   "expectedPeaks": {
-    "demand": 5517,
-    "windSolar": 1758,
-    "date": "2026-11-04",
+    "demand": 5543,
+    "demandTime": "17:45",
+    "windSolar": 1692,
+    "date": "2026-11-05",
     "sources": [
       {
         "chart": "demand",
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=demand&dateRange=custom&dateFrom=03-Nov-2026&dateTo=04-Nov-2026&areas=demandforecast",
-        "retrievedAt": "2026-11-04T22:14:11Z"
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=demand&dateRange=custom&dateFrom=05-Nov-2026&dateTo=05-Nov-2026&areas=demandforecast",
+        "retrievedAt": "2026-11-05T23:16:51Z"
       },
       {
         "chart": "wind",
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=wind&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=windforecast",
-        "retrievedAt": "2026-11-04T22:14:11Z"
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=wind&dateRange=custom&dateFrom=05-Nov-2026&dateTo=05-Nov-2026&areas=windforecast",
+        "retrievedAt": "2026-11-05T23:16:52Z"
       },
       {
         "chart": "solar",
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=solar&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=solarforecast",
-        "retrievedAt": "2026-11-04T22:14:11Z"
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=solar&dateRange=custom&dateFrom=05-Nov-2026&dateTo=05-Nov-2026&areas=solarforecast",
+        "retrievedAt": "2026-11-05T23:16:52Z"
       }
     ],
     "basis": "Demand combines reported actuals with remaining ROI forecasts; wind/solar uses matching quarter-hours across the whole forecast day. Missing forecasts are omitted."
@@ -41,7 +42,6 @@
     {
       "id": "huntstown",
       "name": "Huntstown",
-      "index": 1,
       "region": "County Dublin",
       "location": [
         -6.354,
@@ -51,71 +51,7 @@
         318.4,
         10
       ],
-      "output": 666,
-      "available": 785,
-      "maximum": 792,
       "fuel": "Natural gas",
-      "units": [
-        {
-          "id": "GU_400480",
-          "name": "HNC",
-          "output": 270,
-          "available": 336,
-          "maximum": 342,
-          "fuel": "Natural gas",
-          "basis": "MWOF",
-          "dispatch": {
-            "value": 270,
-            "basis": "MWOF",
-            "effective": "2026-11-04T16:28:00Z",
-            "issued": "2026-11-04T16:26:58Z",
-            "published": "2026-11-04T17:15:00Z",
-            "source": "PUB_HrlyDispatchInstr_202611041600.xml"
-          },
-          "availabilityIssued": "2026-11-03T12:23:53",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400540",
-          "name": "HN2",
-          "output": 396,
-          "available": 399,
-          "maximum": 400,
-          "fuel": "Natural gas",
-          "basis": "MWOF",
-          "dispatch": {
-            "value": 396,
-            "basis": "MWOF",
-            "effective": "2026-11-04T20:38:00Z",
-            "issued": "2026-11-04T20:36:58Z",
-            "published": "2026-11-04T21:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611042000.xml"
-          },
-          "availabilityIssued": "2026-11-03T11:02:46",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_405860",
-          "name": "Huntstown TEG",
-          "output": 0,
-          "available": 50,
-          "maximum": 50,
-          "fuel": "Natural gas",
-          "basis": "meter_seed",
-          "dispatch": {
-            "value": 0,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
-          },
-          "availabilityIssued": "2026-06-19T16:07:46",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
       "generationType": "gas",
       "leaderSide": "bottom",
       "leaderWaypoints": [
@@ -128,12 +64,76 @@
           380
         ]
       ],
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "index": 1,
+      "units": [
+        {
+          "id": "GU_400480",
+          "name": "HNC",
+          "output": 220.0,
+          "available": 336.0,
+          "maximum": 342.0,
+          "fuel": "Natural gas",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 220.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T17:39:00Z",
+            "issued": "2026-11-05T17:37:04Z",
+            "published": "2026-11-05T18:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611051700.xml"
+          },
+          "availabilityIssued": "2026-11-03T12:23:53",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400540",
+          "name": "HN2",
+          "output": 369.0,
+          "available": 396.0,
+          "maximum": 400.0,
+          "fuel": "Natural gas",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 369.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:55:00Z",
+            "issued": "2026-11-05T21:53:55Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-05T12:58:41",
+          "availabilitySource": "PUB_HrlyOutturnAvailability_202611051200.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_405860",
+          "name": "Huntstown TEG",
+          "output": 0.0,
+          "available": 50.0,
+          "maximum": 50.0,
+          "fuel": "Natural gas",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-06-19T16:07:46",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 589.0,
+      "available": 782.0,
+      "maximum": 792.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "dublin-bay",
       "name": "Dublin Bay",
-      "index": 2,
       "region": "County Dublin",
       "location": [
         -6.202,
@@ -143,48 +143,46 @@
         1000,
         110
       ],
-      "output": 0,
-      "available": 0,
-      "maximum": 415,
       "fuel": "Natural gas",
-      "units": [
-        {
-          "id": "GU_400500",
-          "name": "DBP",
-          "output": 0,
-          "available": 0,
-          "maximum": 415,
-          "fuel": "Multi-fuel",
-          "basis": "DESY+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+MWOF",
-            "effective": "2026-11-03T23:42:00Z",
-            "issued": "2026-11-03T23:40:18Z",
-            "published": "2026-11-04T00:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611032300.xml"
-          },
-          "availabilityIssued": "2026-11-04T04:36:50",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611040400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
       "generationType": "gas",
-      "labelOffset": [
-        -38,
-        24
-      ],
       "markerOffset": [
         -8,
         8
       ],
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "labelOffset": [
+        -38,
+        24
+      ],
+      "index": 2,
+      "units": [
+        {
+          "id": "GU_400500",
+          "name": "DBP",
+          "output": 0.0,
+          "available": 0.0,
+          "maximum": 415.0,
+          "fuel": "Multi-fuel",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-11-04T04:36:50",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 0.0,
+      "available": 0.0,
+      "maximum": 415.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "poolbeg",
       "name": "Poolbeg",
-      "index": 3,
       "region": "County Dublin",
       "location": [
         -6.191,
@@ -192,245 +190,90 @@
       ],
       "card": [
         1000,
-        570
+        505
       ],
-      "output": 473.59,
-      "available": 538,
-      "maximum": 539.5,
       "fuel": "Natural gas",
-      "units": [
-        {
-          "id": "GU_400324",
-          "name": "PBA",
-          "output": 237.59,
-          "available": 238,
-          "maximum": 240,
-          "fuel": "Multi-fuel",
-          "basis": "meter_seed",
-          "dispatch": {
-            "value": 237.59,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
-          },
-          "availabilityIssued": "2026-10-31T12:07:06",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400325",
-          "name": "PBB",
-          "output": 236,
-          "available": 236,
-          "maximum": 236,
-          "fuel": "Multi-fuel",
-          "basis": "MWOF",
-          "dispatch": {
-            "value": 236,
-            "basis": "MWOF",
-            "effective": "2026-11-04T18:34:00Z",
-            "issued": "2026-11-04T18:32:24Z",
-            "published": "2026-11-04T19:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611041800.xml"
-          },
-          "availabilityIssued": "2026-11-04T16:44:17",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611041600.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_403620",
-          "name": "Poolbeg Flexgen",
-          "output": 0,
-          "available": 64,
-          "maximum": 63.5,
-          "fuel": "Multi-fuel",
-          "basis": "DESY+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+MWOF",
-            "effective": "2026-11-04T19:24:00Z",
-            "issued": "2026-11-04T19:22:31Z",
-            "published": "2026-11-04T20:15:00Z",
-            "source": "PUB_HrlyDispatchInstr_202611041900.xml"
-          },
-          "availabilityIssued": "2026-11-03T01:58:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
       "generationType": "gas",
-      "labelOffset": [
-        13,
-        -15
-      ],
       "markerOffset": [
         8,
         -8
       ],
-      "outputBasis": "last-published-dispatch-target-proxy"
-    },
-    {
-      "id": "turlough-hill",
-      "name": "Turlough Hill",
-      "index": 4,
-      "region": "County Wicklow",
-      "location": [
-        -6.402,
-        53.033
+      "labelOffset": [
+        13,
+        -15
       ],
-      "card": [
-        1000,
-        740
-      ],
-      "output": 0,
-      "available": 292,
-      "maximum": 292,
-      "fuel": "Pumped-storage hydro",
+      "index": 3,
       "units": [
         {
-          "id": "GU_400360",
-          "name": "TH · 400360",
-          "output": 0,
-          "available": 73,
-          "maximum": 73,
-          "fuel": "Pumped-storage hydro",
-          "basis": "DESY+GOOP+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+GOOP+MWOF",
-            "effective": "2026-11-04T20:02:00Z",
-            "issued": "2026-11-04T20:00:31Z",
-            "published": "2026-11-04T21:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611042000.xml"
-          },
-          "availabilityIssued": "2026-07-31T12:21:57",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400361",
-          "name": "TH · 400361",
-          "output": 0,
-          "available": 73,
-          "maximum": 73,
-          "fuel": "Pumped-storage hydro",
-          "basis": "DESY+GOOP+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+GOOP+MWOF",
-            "effective": "2026-11-04T20:54:00Z",
-            "issued": "2026-11-04T20:52:56Z",
-            "published": "2026-11-04T21:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611042000.xml"
-          },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400362",
-          "name": "TH · 400362",
-          "output": 0,
-          "available": 73,
-          "maximum": 73,
-          "fuel": "Pumped-storage hydro",
-          "basis": "DESY+GOOP+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+GOOP+MWOF",
-            "effective": "2026-11-04T20:59:00Z",
-            "issued": "2026-11-04T20:57:21Z",
-            "published": "2026-11-04T21:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611042000.xml"
-          },
-          "availabilityIssued": "2026-09-18T13:44:23",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400363",
-          "name": "TH · 400363",
-          "output": 0,
-          "available": 73,
-          "maximum": 73,
-          "fuel": "Pumped-storage hydro",
-          "basis": "DESY+GOOP+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+GOOP+MWOF",
-            "effective": "2026-11-04T20:02:00Z",
-            "issued": "2026-11-04T20:00:31Z",
-            "published": "2026-11-04T21:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611042000.xml"
-          },
-          "availabilityIssued": "2026-11-04T15:06:24",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611041500.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
-      "generationType": "pumped",
-      "outputBasis": "last-published-dispatch-target-proxy"
-    },
-    {
-      "id": "great-island",
-      "name": "Great Island",
-      "index": 5,
-      "region": "County Wexford",
-      "location": [
-        -7.007,
-        52.285
-      ],
-      "card": [
-        698.4,
-        1010
-      ],
-      "output": 360,
-      "available": 459,
-      "maximum": 464,
-      "fuel": "Natural gas",
-      "units": [
-        {
-          "id": "GU_400762",
-          "name": "Gt Island CCGT",
-          "output": 360,
-          "available": 459,
-          "maximum": 464,
+          "id": "GU_400324",
+          "name": "PBA",
+          "output": 238.0,
+          "available": 238.0,
+          "maximum": 240.0,
           "fuel": "Multi-fuel",
           "basis": "MWOF",
           "dispatch": {
-            "value": 360,
+            "value": 238.0,
             "basis": "MWOF",
-            "effective": "2026-11-04T20:09:00Z",
-            "issued": "2026-11-04T20:07:09Z",
-            "published": "2026-11-04T21:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611042000.xml"
+            "effective": "2026-11-05T06:31:00Z",
+            "issued": "2026-11-05T06:29:59Z",
+            "published": "2026-11-05T07:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611050600.xml"
           },
-          "availabilityIssued": "2026-11-04T06:01:55",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611040600.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-10-31T12:07:06",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400325",
+          "name": "PBB",
+          "output": 236.0,
+          "available": 236.0,
+          "maximum": 236.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 236.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T14:30:00Z",
+            "issued": "2026-11-05T14:28:48Z",
+            "published": "2026-11-05T15:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611051400.xml"
+          },
+          "availabilityIssued": "2026-11-04T16:44:17",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_403620",
+          "name": "Poolbeg Flexgen",
+          "output": 0.0,
+          "available": 64.0,
+          "maximum": 63.5,
+          "fuel": "Multi-fuel",
+          "basis": "DESY+MWOF",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "DESY+MWOF",
+            "effective": "2026-11-05T21:26:00Z",
+            "issued": "2026-11-05T21:24:17Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         }
       ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
-      "generationType": "gas",
-      "leaderSide": "top",
-      "leaderWaypoints": [
-        [
-          810,
-          960
-        ],
-        [
-          683,
-          960
-        ]
-      ],
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "output": 474.0,
+      "available": 538.0,
+      "maximum": 539.5,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "edenderry",
       "name": "Edenderry",
-      "index": 6,
       "region": "County Offaly",
       "location": [
         -7.054,
@@ -438,51 +281,53 @@
       ],
       "card": [
         20,
-        150
+        100
       ],
-      "output": 80.1,
-      "available": 80,
-      "maximum": 118,
       "fuel": "Biomass",
-      "units": [
-        {
-          "id": "GU_401860",
-          "name": "ED1",
-          "output": 80.1,
-          "available": 80,
-          "maximum": 118,
-          "fuel": "Biomass",
-          "basis": "meter_seed",
-          "dispatch": {
-            "value": 80.1,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
-          },
-          "availabilityIssued": "2026-10-07T11:57:22",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
       "generationType": "biomass",
       "leaderSide": "right",
       "leaderWaypoints": [
         [
           460,
-          218
+          168
         ],
         [
           460,
           470
         ]
       ],
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "index": 4,
+      "units": [
+        {
+          "id": "GU_401860",
+          "name": "ED1",
+          "output": 80.0,
+          "available": 80.0,
+          "maximum": 118.0,
+          "fuel": "Biomass",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 80.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T14:08:00Z",
+            "issued": "2026-11-05T14:06:07Z",
+            "published": "2026-11-05T15:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611051400.xml"
+          },
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 80.0,
+      "available": 80.0,
+      "maximum": 118.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "tynagh",
       "name": "Tynagh",
-      "index": 7,
       "region": "County Galway",
       "location": [
         -8.373,
@@ -490,121 +335,145 @@
       ],
       "card": [
         20,
-        320
+        244
       ],
-      "output": 350,
-      "available": 376,
-      "maximum": 404,
       "fuel": "Natural gas",
+      "generationType": "gas",
+      "index": 5,
       "units": [
         {
           "id": "GU_400530",
           "name": "TYC",
-          "output": 350,
-          "available": 376,
-          "maximum": 404,
+          "output": 376.0,
+          "available": 378.0,
+          "maximum": 404.0,
           "fuel": "Natural gas",
           "basis": "MWOF",
           "dispatch": {
-            "value": 350,
+            "value": 376.0,
             "basis": "MWOF",
-            "effective": "2026-11-04T19:33:00Z",
-            "issued": "2026-11-04T19:31:01Z",
-            "published": "2026-11-04T20:15:00Z",
-            "source": "PUB_HrlyDispatchInstr_202611041900.xml"
+            "effective": "2026-11-05T15:58:00Z",
+            "issued": "2026-11-05T15:56:08Z",
+            "published": "2026-11-05T16:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611051500.xml"
           },
-          "availabilityIssued": "2026-11-04T12:01:53",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611041200.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-11-05T21:54:16",
+          "availabilitySource": "PUB_HrlyOutturnAvailability_202611052100.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         }
       ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
-      "generationType": "gas",
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "output": 376.0,
+      "available": 378.0,
+      "maximum": 404.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
-      "id": "moneypoint",
-      "name": "Moneypoint",
-      "index": 8,
-      "region": "County Clare",
+      "id": "turlough-hill",
+      "name": "Turlough Hill",
+      "region": "County Wicklow",
       "location": [
-        -9.422481,
-        52.615019
+        -6.402,
+        53.033
       ],
       "card": [
-        20,
-        660
+        1000,
+        680
       ],
-      "output": 125,
-      "available": 625,
-      "maximum": 855,
-      "fuel": "Oil · reserve",
+      "fuel": "Pumped-storage hydro",
+      "generationType": "pumped",
+      "index": 6,
       "units": [
         {
-          "id": "GU_400270",
-          "name": "MP1",
-          "output": 0,
-          "available": 250,
-          "maximum": 285,
-          "fuel": "Oil",
-          "basis": "meter_seed",
-          "dispatch": {
-            "value": 0,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
-          },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400271",
-          "name": "MP2",
-          "output": 125,
-          "available": 125,
-          "maximum": 285,
-          "fuel": "Oil",
+          "id": "GU_400360",
+          "name": "TH · 400360",
+          "output": 5.0,
+          "available": 73.0,
+          "maximum": 73.0,
+          "fuel": "Pumped-storage hydro",
           "basis": "MWOF",
           "dispatch": {
-            "value": 125,
+            "value": 5.0,
             "basis": "MWOF",
-            "effective": "2026-11-04T18:22:00Z",
-            "issued": "2026-11-04T18:20:39Z",
-            "published": "2026-11-04T19:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611041800.xml"
+            "effective": "2026-11-05T22:00:00Z",
+            "issued": "2026-11-05T21:58:33Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
           },
-          "availabilityIssued": "2026-11-04T18:18:39",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611041800.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-07-31T12:21:57",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         },
         {
-          "id": "GU_400272",
-          "name": "MP3",
-          "output": 0,
-          "available": 250,
-          "maximum": 285,
-          "fuel": "Oil",
-          "basis": "meter_seed",
+          "id": "GU_400361",
+          "name": "TH · 400361",
+          "output": 5.0,
+          "available": 73.0,
+          "maximum": 73.0,
+          "fuel": "Pumped-storage hydro",
+          "basis": "MWOF",
           "dispatch": {
-            "value": 0,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
+            "value": 5.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:39:00Z",
+            "issued": "2026-11-05T21:37:09Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
           },
-          "availabilityIssued": "2026-10-23T16:08:41",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400362",
+          "name": "TH · 400362",
+          "output": 0.0,
+          "available": 73.0,
+          "maximum": 73.0,
+          "fuel": "Pumped-storage hydro",
+          "basis": "DESY+GOOP+MWOF",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "DESY+GOOP+MWOF",
+            "effective": "2026-11-05T21:50:00Z",
+            "issued": "2026-11-05T21:48:39Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-09-18T13:44:23",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400363",
+          "name": "TH · 400363",
+          "output": 0.0,
+          "available": 73.0,
+          "maximum": 73.0,
+          "fuel": "Pumped-storage hydro",
+          "basis": "DESY+GOOP+MWOF",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "DESY+GOOP+MWOF",
+            "effective": "2026-11-05T21:36:00Z",
+            "issued": "2026-11-05T21:34:01Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-04T15:06:24",
+          "availabilitySource": "PUB_HrlyOutturnAvailability_202611041500.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         }
       ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
-      "generationType": "oil",
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "output": 10.0,
+      "available": 292.0,
+      "maximum": 292.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "ardnacrusha",
       "name": "Ardnacrusha",
-      "index": 9,
       "region": "County Clare",
       "location": [
         -8.612,
@@ -612,96 +481,354 @@
       ],
       "card": [
         20,
-        490
+        388
       ],
-      "output": 45.62,
-      "available": 46,
-      "maximum": 86,
       "fuel": "Hydro",
+      "generationType": "hydro",
+      "index": 7,
       "units": [
         {
           "id": "GU_400200",
           "name": "AA1",
-          "output": 0,
-          "available": 0,
-          "maximum": 21,
+          "output": 0.0,
+          "available": 0.0,
+          "maximum": 21.0,
           "fuel": "Hydro",
-          "basis": "DESY+MWOF",
+          "basis": "meter_seed",
           "dispatch": {
-            "value": 0,
-            "basis": "DESY+MWOF",
-            "effective": "2026-11-03T18:32:00Z",
-            "issued": "2026-11-03T18:30:53Z",
-            "published": "2026-11-03T19:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611031800.xml"
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
           },
           "availabilityIssued": "2026-11-04T09:00:00",
-          "availabilitySource": "PUB_HrlyOutturnAvailability_202611040900.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         },
         {
           "id": "GU_400201",
           "name": "AA2",
-          "output": 21.68,
-          "available": 22,
-          "maximum": 22,
+          "output": 12.0,
+          "available": 22.0,
+          "maximum": 22.0,
           "fuel": "Hydro",
-          "basis": "meter_seed",
+          "basis": "MWOF",
           "dispatch": {
-            "value": 21.68,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
+            "value": 12.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T22:00:00Z",
+            "issued": "2026-11-05T21:50:26Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
           },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-10-23T10:35:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         },
         {
           "id": "GU_400202",
           "name": "AA3",
-          "output": 0,
-          "available": 0,
-          "maximum": 19,
+          "output": 0.0,
+          "available": 0.0,
+          "maximum": 19.0,
           "fuel": "Hydro",
           "basis": "meter_seed",
           "dispatch": {
-            "value": 0,
+            "value": 0.0,
             "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
           },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         },
         {
           "id": "GU_400203",
           "name": "AA4",
-          "output": 23.94,
-          "available": 24,
-          "maximum": 24,
+          "output": 23.98,
+          "available": 24.0,
+          "maximum": 24.0,
           "fuel": "Hydro",
           "basis": "meter_seed",
           "dispatch": {
-            "value": 23.94,
+            "value": 23.98,
             "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
           },
-          "availabilityIssued": "2026-10-29T17:35:59",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
         }
       ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
-      "generationType": "hydro",
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "output": 35.98,
+      "available": 46.0,
+      "maximum": 86.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
+    },
+    {
+      "id": "aughinish",
+      "name": "Aughinish Alumina",
+      "shortName": "Aughinish",
+      "region": "County Limerick",
+      "location": [
+        -9.0596,
+        52.6324
+      ],
+      "card": [
+        20,
+        532
+      ],
+      "fuel": "Natural gas CHP",
+      "generationType": "gas",
+      "labelOffset": [
+        4,
+        -18
+      ],
+      "index": 8,
+      "units": [
+        {
+          "id": "GU_400120",
+          "name": "SK3",
+          "output": 70.0,
+          "available": 82.0,
+          "maximum": 83.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 70.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:50:00Z",
+            "issued": "2026-11-05T21:48:52Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-02T22:50:31",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400121",
+          "name": "SK4",
+          "output": 70.0,
+          "available": 87.0,
+          "maximum": 83.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 70.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:50:00Z",
+            "issued": "2026-11-05T21:48:52Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-03T12:24:11",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 140.0,
+      "available": 169.0,
+      "maximum": 166.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated. Aughinish Alumina CHP uses registered generating units SK3 and SK4. The demand-side unit is excluded. CHP generation and surplus grid export are different measures."
+    },
+    {
+      "id": "moneypoint",
+      "name": "Moneypoint",
+      "region": "County Clare",
+      "location": [
+        -9.422481,
+        52.615019
+      ],
+      "card": [
+        20,
+        676
+      ],
+      "fuel": "Oil · reserve",
+      "generationType": "oil",
+      "markerOffset": [
+        -8,
+        -8
+      ],
+      "labelOffset": [
+        -25,
+        -13
+      ],
+      "index": 9,
+      "units": [
+        {
+          "id": "GU_400270",
+          "name": "MP1",
+          "output": 0.0,
+          "available": 250.0,
+          "maximum": 285.0,
+          "fuel": "Oil",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-09-14T16:47:43",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400271",
+          "name": "MP2",
+          "output": 125.0,
+          "available": 200.0,
+          "maximum": 285.0,
+          "fuel": "Oil",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 125.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T18:15:00Z",
+            "issued": "2026-11-05T18:15:11Z",
+            "published": "2026-11-05T19:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611051800.xml"
+          },
+          "availabilityIssued": "2026-11-05T10:12:00",
+          "availabilitySource": "PUB_HrlyOutturnAvailability_202611051000.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400272",
+          "name": "MP3",
+          "output": 0.0,
+          "available": 250.0,
+          "maximum": 285.0,
+          "fuel": "Oil",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-10-23T16:08:41",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 125.0,
+      "available": 700.0,
+      "maximum": 855.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
+    },
+    {
+      "id": "tarbert-teg",
+      "name": "Tarbert TEG",
+      "region": "County Kerry · Temporary emergency generation",
+      "location": [
+        -9.366,
+        52.589
+      ],
+      "card": [
+        20,
+        820
+      ],
+      "fuel": "Distillate oil",
+      "generationType": "oil",
+      "markerOffset": [
+        8,
+        10
+      ],
+      "labelOffset": [
+        -2,
+        33
+      ],
+      "index": 10,
+      "units": [
+        {
+          "id": "GU_406490",
+          "name": "TARBERT TEG 2",
+          "output": 0.0,
+          "available": 150.0,
+          "maximum": 160.0,
+          "fuel": "Distillate oil",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 0.0,
+      "available": 150.0,
+      "maximum": 160.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated. Tarbert TEG is the existing temporary emergency plant, registered as TARBERT TEG 2. It is separate from the retired oil station and future HVO project. An earlier meter seed does not establish current operating status."
+    },
+    {
+      "id": "great-island",
+      "name": "Great Island",
+      "region": "County Wexford",
+      "location": [
+        -7.007,
+        52.285
+      ],
+      "card": [
+        698.4,
+        964
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "leaderSide": "top",
+      "leaderWaypoints": [
+        [
+          810,
+          930
+        ],
+        [
+          683,
+          930
+        ]
+      ],
+      "index": 11,
+      "units": [
+        {
+          "id": "GU_400762",
+          "name": "Gt Island CCGT",
+          "output": 440.0,
+          "available": 459.0,
+          "maximum": 464.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 440.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:37:00Z",
+            "issued": "2026-11-05T21:35:33Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-05T03:09:52",
+          "availabilitySource": "PUB_HrlyOutturnAvailability_202611050400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 440.0,
+      "available": 459.0,
+      "maximum": 464.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "aghada",
       "name": "Aghada",
-      "index": 10,
       "region": "County Cork",
       "location": [
         -8.228029,
@@ -709,106 +836,104 @@
       ],
       "card": [
         20,
-        830
+        964
       ],
-      "output": 460,
-      "available": 719,
-      "maximum": 719,
       "fuel": "Natural gas / distillate",
-      "units": [
-        {
-          "id": "GU_400850",
-          "name": "AD2",
-          "output": 445,
-          "available": 449,
-          "maximum": 449,
-          "fuel": "Multi-fuel",
-          "basis": "MWOF",
-          "dispatch": {
-            "value": 445,
-            "basis": "MWOF",
-            "effective": "2026-11-04T15:49:00Z",
-            "issued": "2026-11-04T15:47:33Z",
-            "published": "2026-11-04T16:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611041500.xml"
-          },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400181",
-          "name": "AT11",
-          "output": 15,
-          "available": 90,
-          "maximum": 90,
-          "fuel": "Multi-fuel",
-          "basis": "MWOF+SYNC",
-          "dispatch": {
-            "value": 15,
-            "basis": "MWOF+SYNC",
-            "effective": "2026-11-04T17:30:00Z",
-            "issued": "2026-11-04T17:14:02Z",
-            "published": "2026-11-04T18:15:02Z",
-            "source": "PUB_HrlyDispatchInstr_202611041700.xml"
-          },
-          "availabilityIssued": "2026-10-23T11:40:56",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400182",
-          "name": "AT12",
-          "output": 0,
-          "available": 90,
-          "maximum": 90,
-          "fuel": "Multi-fuel",
-          "basis": "DESY+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+MWOF",
-            "effective": "2026-11-04T18:31:00Z",
-            "issued": "2026-11-04T18:29:12Z",
-            "published": "2026-11-04T19:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611041800.xml"
-          },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        },
-        {
-          "id": "GU_400183",
-          "name": "AT14",
-          "output": 0,
-          "available": 90,
-          "maximum": 90,
-          "fuel": "Multi-fuel",
-          "basis": "DESY+MWOF",
-          "dispatch": {
-            "value": 0,
-            "basis": "DESY+MWOF",
-            "effective": "2026-11-04T18:35:00Z",
-            "issued": "2026-11-04T18:33:15Z",
-            "published": "2026-11-04T19:15:01Z",
-            "source": "PUB_HrlyDispatchInstr_202611041800.xml"
-          },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
       "generationType": "gas",
       "markerOffset": [
         5,
         -7
       ],
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "index": 12,
+      "units": [
+        {
+          "id": "GU_400850",
+          "name": "AD2",
+          "output": 445.0,
+          "available": 448.0,
+          "maximum": 449.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 445.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:24:00Z",
+            "issued": "2026-11-05T21:22:06Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-11-05T19:35:20",
+          "availabilitySource": "PUB_HrlyOutturnAvailability_202611051900.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400181",
+          "name": "AT11",
+          "output": 0.0,
+          "available": 90.0,
+          "maximum": 90.0,
+          "fuel": "Multi-fuel",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-10-23T11:40:56",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400182",
+          "name": "AT12",
+          "output": 70.0,
+          "available": 90.0,
+          "maximum": 90.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 70.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T21:45:00Z",
+            "issued": "2026-11-05T21:43:10Z",
+            "published": "2026-11-05T22:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052100.xml"
+          },
+          "availabilityIssued": "2026-10-17T19:28:40",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        },
+        {
+          "id": "GU_400183",
+          "name": "AT14",
+          "output": 15.0,
+          "available": 90.0,
+          "maximum": 90.0,
+          "fuel": "Multi-fuel",
+          "basis": "MWOF",
+          "dispatch": {
+            "value": 15.0,
+            "basis": "MWOF",
+            "effective": "2026-11-05T20:35:00Z",
+            "issued": "2026-11-05T20:33:40Z",
+            "published": "2026-11-05T21:15:01Z",
+            "source": "PUB_HrlyDispatchInstr_202611052000.xml"
+          },
+          "availabilityIssued": "2026-10-21T19:45:52",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 530.0,
+      "available": 718.0,
+      "maximum": 719.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     },
     {
       "id": "whitegate",
       "name": "Whitegate",
-      "index": 11,
       "region": "County Cork",
       "location": [
         -8.257,
@@ -816,54 +941,55 @@
       ],
       "card": [
         318.4,
-        1010
+        964
       ],
-      "output": 0,
-      "available": 0,
-      "maximum": 445,
       "fuel": "Natural gas",
-      "units": [
-        {
-          "id": "GU_400930",
-          "name": "GU_400930",
-          "output": 0,
-          "available": 0,
-          "maximum": 445,
-          "fuel": "Multi-fuel",
-          "basis": "meter_seed",
-          "dispatch": {
-            "value": 0,
-            "basis": "meter_seed",
-            "effective": "2026-11-03T00:00:00Z",
-            "source": "PUB_DailyMeterDataD1_202611031500.xml"
-          },
-          "availabilityIssued": "2026-11-03T00:00:00",
-          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-          "technicalSource": "PUB_DailyTechnicalOfferData_202611041015.xml"
-        }
-      ],
-      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.",
       "generationType": "gas",
       "leaderSide": "top",
       "leaderWaypoints": [
         [
           430,
-          960
+          934
         ],
         [
-          535,
-          960
+          514,
+          934
         ]
-      ],
-      "labelOffset": [
-        -30,
-        29
       ],
       "markerOffset": [
         -5,
         7
       ],
-      "outputBasis": "last-published-dispatch-target-proxy"
+      "labelOffset": [
+        -30,
+        29
+      ],
+      "index": 13,
+      "units": [
+        {
+          "id": "GU_400930",
+          "name": "GU_400930",
+          "output": 0.0,
+          "available": 0.0,
+          "maximum": 445.0,
+          "fuel": "Multi-fuel",
+          "basis": "meter_seed",
+          "dispatch": {
+            "value": 0.0,
+            "basis": "meter_seed",
+            "effective": "2026-11-05T00:00:00Z",
+            "source": "PUB_DailyMeterDataD1_202611051500.xml"
+          },
+          "availabilityIssued": "2026-11-04T00:00:00",
+          "availabilitySource": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+          "technicalSource": "PUB_DailyTechnicalOfferData_202611051015.xml"
+        }
+      ],
+      "output": 0.0,
+      "available": 0.0,
+      "maximum": 445.0,
+      "outputBasis": "last-published-dispatch-target-proxy",
+      "note": "Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated."
     }
   ],
   "interconnectors": [
@@ -871,7 +997,7 @@
       "id": "northSouth",
       "name": "North–South Interconnector",
       "remote": "NI",
-      "value": -95,
+      "value": -50,
       "basis": "ni-balance-reversed",
       "capacity": 300,
       "capacityLabel": "reference capacity",
@@ -893,7 +1019,7 @@
       "id": "eastWest",
       "name": "East–West Interconnector",
       "remote": "Wales",
-      "value": 340,
+      "value": 530,
       "capacity": 500,
       "capacityLabel": "rated capacity",
       "estimated": false,
@@ -914,7 +1040,7 @@
       "id": "greenlink",
       "name": "Greenlink Interconnector",
       "remote": "Wales",
-      "value": 487,
+      "value": 513,
       "capacity": 500,
       "capacityLabel": "rated capacity",
       "estimated": false,
@@ -928,62 +1054,62 @@
       ],
       "card": [
         1000,
-        910
+        855
       ]
     }
   ],
-  "otherGeneration": -223.30999999999995,
-  "reconciliation": -38,
-  "other": -261.30999999999995,
-  "capturedAt": "2026-11-04T22:14:12Z",
-  "retrievedAt": "2026-11-04T22:13:55Z",
+  "otherGeneration": 18.019999999999982,
+  "reconciliation": 3,
+  "other": 21.019999999999982,
+  "capturedAt": "2026-11-05T23:24:03Z",
+  "retrievedAt": "2026-11-05T23:16:36Z",
   "sources": {
     "grid": {
       "ROI:SYSTEM_DEMAND": {
-        "time": "2026-11-04T21:45:00Z",
-        "value": 4588,
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=demand&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=demandactual",
-        "retrievedAt": "2026-11-04T22:13:55Z"
+        "time": "2026-11-05T22:30:00Z",
+        "value": 4374,
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=demand&dateRange=custom&dateFrom=05-Nov-2026&dateTo=05-Nov-2026&areas=demandactual",
+        "retrievedAt": "2026-11-05T23:16:36Z"
       },
       "ROI:GEN_EXP": {
-        "time": "2026-11-04T21:45:00Z",
-        "value": 3894,
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=generation&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=generationactual",
-        "retrievedAt": "2026-11-04T22:13:55Z"
+        "time": "2026-11-05T22:30:00Z",
+        "value": 3378,
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=generation&dateRange=custom&dateFrom=04-Nov-2026&dateTo=05-Nov-2026&areas=generationactual",
+        "retrievedAt": "2026-11-05T23:16:36Z"
       },
       "ROI:WIND_ACTUAL": {
-        "time": "2026-11-04T21:45:00Z",
-        "value": 1556,
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=wind&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=windactual",
-        "retrievedAt": "2026-11-04T22:13:53Z"
+        "time": "2026-11-05T22:30:00Z",
+        "value": 558,
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=wind&dateRange=custom&dateFrom=05-Nov-2026&dateTo=05-Nov-2026&areas=windactual",
+        "retrievedAt": "2026-11-05T23:16:35Z"
       },
       "ROI:SOLAR_ACTUAL": {
-        "time": "2026-11-04T21:45:00Z",
-        "value": 1,
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=solar&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=solaractual",
-        "retrievedAt": "2026-11-04T22:13:53Z"
+        "time": "2026-11-05T22:30:00Z",
+        "value": 2,
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=solar&dateRange=custom&dateFrom=05-Nov-2026&dateTo=05-Nov-2026&areas=solaractual",
+        "retrievedAt": "2026-11-05T23:16:35Z"
       },
       "ROI:INTER_EWIC": {
-        "time": "2026-11-04T21:45:00Z",
-        "value": 340,
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=interconnection&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=interconnection",
-        "retrievedAt": "2026-11-04T22:13:55Z"
+        "time": "2026-11-05T22:30:00Z",
+        "value": 530,
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=interconnection&dateRange=custom&dateFrom=04-Nov-2026&dateTo=05-Nov-2026&areas=interconnection",
+        "retrievedAt": "2026-11-05T23:16:36Z"
       },
       "ROI:INTER_GRNLK": {
-        "time": "2026-11-04T21:45:00Z",
-        "value": 487,
-        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=interconnection&dateRange=custom&dateFrom=04-Nov-2026&dateTo=04-Nov-2026&areas=interconnection",
-        "retrievedAt": "2026-11-04T22:13:55Z"
+        "time": "2026-11-05T22:30:00Z",
+        "value": 513,
+        "url": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=interconnection&dateRange=custom&dateFrom=04-Nov-2026&dateTo=05-Nov-2026&areas=interconnection",
+        "retrievedAt": "2026-11-05T23:16:36Z"
       }
     },
     "plants": {
-      "register": "PUB_DailyRegisteredUnits_202611041101.xml",
-      "technical": "PUB_DailyTechnicalOfferData_202611041015.xml",
-      "availabilityBaseline": "PUB_DlyGenUnitTechCharDataTrans_202611041400.xml",
-      "meterSeed": "PUB_DailyMeterDataD1_202611031500.xml",
-      "dispatchPublished": "2026-11-04T21:15:01Z",
-      "dispatchCoverageThrough": "2026-11-04T21:00:00Z",
-      "dispatchCoverageAgeMinutes": 45,
+      "register": "PUB_DailyRegisteredUnits_202611051101.xml",
+      "technical": "PUB_DailyTechnicalOfferData_202611051015.xml",
+      "availabilityBaseline": "PUB_DlyGenUnitTechCharDataTrans_202611051400.xml",
+      "meterSeed": "PUB_DailyMeterDataD1_202611051500.xml",
+      "dispatchPublished": "2026-11-05T22:15:01Z",
+      "dispatchCoverageThrough": "2026-11-05T22:00:00Z",
+      "dispatchCoverageAgeMinutes": 30.0,
       "reportManifest": "private-source-archive/plant-report-manifest.json"
     }
   },

@@ -1,0 +1,319 @@
+{
+  "stations": [
+    {
+      "id": "huntstown",
+      "name": "Huntstown",
+      "region": "County Dublin",
+      "location": [
+        -6.354,
+        53.413
+      ],
+      "card": [
+        318.4,
+        10
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "leaderSide": "bottom",
+      "leaderWaypoints": [
+        [
+          620,
+          170
+        ],
+        [
+          620,
+          380
+        ]
+      ],
+      "index": 1
+    },
+    {
+      "id": "dublin-bay",
+      "name": "Dublin Bay",
+      "region": "County Dublin",
+      "location": [
+        -6.202,
+        53.339
+      ],
+      "card": [
+        1000,
+        110
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "markerOffset": [
+        -8,
+        8
+      ],
+      "labelOffset": [
+        -38,
+        24
+      ],
+      "index": 2
+    },
+    {
+      "id": "poolbeg",
+      "name": "Poolbeg",
+      "region": "County Dublin",
+      "location": [
+        -6.191,
+        53.341
+      ],
+      "card": [
+        1000,
+        505
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "markerOffset": [
+        8,
+        -8
+      ],
+      "labelOffset": [
+        13,
+        -15
+      ],
+      "index": 3
+    },
+    {
+      "id": "edenderry",
+      "name": "Edenderry",
+      "region": "County Offaly",
+      "location": [
+        -7.054,
+        53.297
+      ],
+      "card": [
+        20,
+        100
+      ],
+      "fuel": "Biomass",
+      "generationType": "biomass",
+      "leaderSide": "right",
+      "leaderWaypoints": [
+        [
+          460,
+          168
+        ],
+        [
+          460,
+          470
+        ]
+      ],
+      "index": 4
+    },
+    {
+      "id": "tynagh",
+      "name": "Tynagh",
+      "region": "County Galway",
+      "location": [
+        -8.373,
+        53.152
+      ],
+      "card": [
+        20,
+        244
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "index": 5
+    },
+    {
+      "id": "turlough-hill",
+      "name": "Turlough Hill",
+      "region": "County Wicklow",
+      "location": [
+        -6.402,
+        53.033
+      ],
+      "card": [
+        1000,
+        680
+      ],
+      "fuel": "Pumped-storage hydro",
+      "generationType": "pumped",
+      "index": 6
+    },
+    {
+      "id": "ardnacrusha",
+      "name": "Ardnacrusha",
+      "region": "County Clare",
+      "location": [
+        -8.612,
+        52.705
+      ],
+      "card": [
+        20,
+        388
+      ],
+      "fuel": "Hydro",
+      "generationType": "hydro",
+      "index": 7
+    },
+    {
+      "id": "aughinish",
+      "name": "Aughinish Alumina",
+      "shortName": "Aughinish",
+      "region": "County Limerick",
+      "location": [
+        -9.0596,
+        52.6324
+      ],
+      "card": [
+        20,
+        532
+      ],
+      "fuel": "Natural gas CHP",
+      "generationType": "gas",
+      "labelOffset": [
+        4,
+        -18
+      ],
+      "index": 8
+    },
+    {
+      "id": "moneypoint",
+      "name": "Moneypoint",
+      "region": "County Clare",
+      "location": [
+        -9.422481,
+        52.615019
+      ],
+      "card": [
+        20,
+        676
+      ],
+      "fuel": "Oil · reserve",
+      "generationType": "oil",
+      "markerOffset": [
+        -8,
+        -8
+      ],
+      "labelOffset": [
+        -25,
+        -13
+      ],
+      "index": 9
+    },
+    {
+      "id": "tarbert-teg",
+      "name": "Tarbert TEG",
+      "region": "County Kerry · Temporary emergency generation",
+      "location": [
+        -9.366,
+        52.589
+      ],
+      "card": [
+        20,
+        820
+      ],
+      "fuel": "Distillate oil",
+      "generationType": "oil",
+      "markerOffset": [
+        8,
+        10
+      ],
+      "labelOffset": [
+        -2,
+        33
+      ],
+      "index": 10
+    },
+    {
+      "id": "great-island",
+      "name": "Great Island",
+      "region": "County Wexford",
+      "location": [
+        -7.007,
+        52.285
+      ],
+      "card": [
+        698.4,
+        964
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "leaderSide": "top",
+      "leaderWaypoints": [
+        [
+          810,
+          930
+        ],
+        [
+          683,
+          930
+        ]
+      ],
+      "index": 11
+    },
+    {
+      "id": "aghada",
+      "name": "Aghada",
+      "region": "County Cork",
+      "location": [
+        -8.228029,
+        51.835036
+      ],
+      "card": [
+        20,
+        964
+      ],
+      "fuel": "Natural gas / distillate",
+      "generationType": "gas",
+      "markerOffset": [
+        5,
+        -7
+      ],
+      "index": 12
+    },
+    {
+      "id": "whitegate",
+      "name": "Whitegate",
+      "region": "County Cork",
+      "location": [
+        -8.257,
+        51.811
+      ],
+      "card": [
+        318.4,
+        964
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "leaderSide": "top",
+      "leaderWaypoints": [
+        [
+          430,
+          934
+        ],
+        [
+          514,
+          934
+        ]
+      ],
+      "markerOffset": [
+        -5,
+        7
+      ],
+      "labelOffset": [
+        -30,
+        29
+      ],
+      "index": 13
+    }
+  ],
+  "interconnectorCards": {
+    "northSouth": [
+      698.4,
+      10
+    ],
+    "eastWest": [
+      1000,
+      275
+    ],
+    "greenlink": [
+      1000,
+      855
+    ]
+  }
+}

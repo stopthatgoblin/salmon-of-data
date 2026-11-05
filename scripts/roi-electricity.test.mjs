@@ -3,9 +3,27 @@ import fs from 'node:fs';
 import { test } from 'node:test';
 import { setImmediate } from 'node:timers/promises';
 import { reconcileSnapshot } from '../components/roi-electricity/balance.js';
-import { validateUpdate, mountLive } from '../components/roi-electricity/live.js';
+import { validateUpdate, mountLive, readInitialDataset } from '../components/roi-electricity/live.js';
 const snapshot = JSON.parse(fs.readFileSync('public/data/roi-electricity/snapshot.json'));
 const history = JSON.parse(fs.readFileSync('public/data/roi-electricity/history.json'));
+
+test('ROI falls back to the complete station edition while the API still has the old station set', async t => {
+  const legacy = structuredClone(snapshot);
+  legacy.stations = legacy.stations.filter(station => !['aughinish','tarbert-teg'].includes(station.id));
+  Object.assign(legacy, reconcileSnapshot(legacy));
+  const version = 'e'.repeat(24), requests = [];
+  t.mock.method(globalThis, 'fetch', async url => {
+    requests.push(url);
+    if (url.endsWith('manifest.json')) return Response.json({schema:1,enabled:true,snapshot:{version}});
+    if (url.startsWith('/api/')) return Response.json(legacy,{headers:{'X-Electricity-Version':version}});
+    return Response.json(snapshot);
+  });
+  const result = await readInitialDataset('snapshot', new AbortController().signal);
+  assert.equal(result.version, null);
+  assert.equal(result.data.stations.length, 13);
+  assert.ok(result.data.stations.some(station => station.id === 'aughinish'));
+  assert.ok(requests.includes('/data/roi-electricity/snapshot.json'));
+});
 
 test('ROI preserves signed reconciliation, unknown output and aligned NI inputs', () => {
   validateUpdate('snapshot', snapshot, snapshot);
