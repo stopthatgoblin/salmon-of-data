@@ -102,7 +102,10 @@ def collect(source_snapshot, previous=None, now=None):
                     actual_urls.append(payload['url'])
             peak = demand_peak(actual, feeds['demand'])
             if peak is not None:
-                result['demand'] = {'value': peak, 'retrievedAt': collected,
+                values = {**feeds['demand'], **actual}
+                # Keep the source's 24-hour clock, choosing the first tied peak.
+                peak_time = min(clock for clock, value in values.items() if value == peak)[:5]
+                result['demand'] = {'value': peak, 'time': peak_time, 'retrievedAt': collected,
                     'basis': 'Highest available reported demand or remaining published forecast today; a short publication gap can exist between the two feeds.',
                     'observations': len(actual), 'forecastReadings': len(feeds['demand']),
                     'sources': [urls['demand'], *dict.fromkeys(actual_urls)]}

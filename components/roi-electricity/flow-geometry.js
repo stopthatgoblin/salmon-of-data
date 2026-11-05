@@ -3,7 +3,7 @@ export const project = ([longitude, latitude]) => ({x:(longitude + 10.8) * 130 +
 
 export function flowGeometry(flow) {
   const roi = project(flow.roiLocation);
-  // Schematic East–West landfall on the Irish Sea coast near Holyhead.
+  // Schematic East-West landfall on the Irish Sea coast near Holyhead.
   // Keep this display geometry current even for older accepted snapshots.
   const remote = project(flow.id === 'eastWest' ? [-4.64, 53.32] : flow.remoteLocation);
   if (flow.id === 'northSouth') {

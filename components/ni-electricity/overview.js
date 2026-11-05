@@ -4,7 +4,7 @@ export function mountOverview(root, data, map, events, signal) {
   const format = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   const n = value => format.format(value);
   const capacityUsage = (output, capacity) => capacity > 0 ? Math.abs(output) / capacity * 100 : null;
-  const capacityPercent = value => value === null ? '—' : `${Math.round(value)}%`;
+  const capacityPercent = value => value === null ? '-' : `${Math.round(value)}%`;
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const dialog = root.querySelector('#' + 'station-dialog');
   const tabs = [...root.querySelectorAll('[role="tab"]')];
@@ -20,7 +20,8 @@ export function mountOverview(root, data, map, events, signal) {
     root.querySelectorAll('[data-expected-peak]').forEach(element => {
       const peak = data.expectedPeaks?.date === today ? data.expectedPeaks[element.dataset.expectedPeak] : null;
       const available = Number.isFinite(peak?.value);
-      element.textContent = `Today's expected peak: ${available ? n(peak.value) + ' MW' : 'unavailable'}`;
+      const time = element.dataset.expectedPeak === 'demand' && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(peak?.time) ? ` at ${peak.time}` : '';
+      element.textContent = `Today's expected peak: ${available ? n(peak.value) + ' MW' + time : 'unavailable'}`;
       element.title = available ? `${peak.basis} Forecast collected ${new Date(peak.retrievedAt).toLocaleString('en-GB', { timeZone: 'Europe/London' })}.` : 'A complete current-day source forecast is not available.';
     });
   }
@@ -90,7 +91,7 @@ export function mountOverview(root, data, map, events, signal) {
   function renderOverview() {
   root.querySelector('#' + 'renewables-share').textContent = data.demand > 0
     ? `${Math.round((data.wind + data.solar) / data.demand * 100)}%`
-    : '—';
+    : '-';
 
   // Positive flows enter NI. The label and arrow use the same sign convention.
   const interconnectors = [
@@ -139,7 +140,7 @@ export function mountOverview(root, data, map, events, signal) {
   const dateFormat = new Intl.DateTimeFormat('en-GB', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Europe/London', timeZoneName:'short' });
   const stamp = value => dateFormat.format(new Date(value)).replace('GMT+0', 'GMT').replace('GMT+1', 'BST');
   root.querySelectorAll('[data-reading]').forEach(el => el.innerHTML = `${n(el.dataset.reading === 'imports' ? Math.abs(totals.imports) : totals[el.dataset.reading])} <small>MW</small>${el.dataset.reading === 'other' ? ' <sup>est.</sup>' : ''}`);
-  root.querySelectorAll('[data-share]').forEach(el => el.textContent = data.demand > 0 ? `${Math.round(totals[el.dataset.share] / data.demand * 100)}%` : '—');
+  root.querySelectorAll('[data-share]').forEach(el => el.textContent = data.demand > 0 ? `${Math.round(totals[el.dataset.share] / data.demand * 100)}%` : '-');
   root.querySelector('#' + 'net-flow-label').textContent = totals.imports > 0 ? 'Net imports' : totals.imports < 0 ? 'Net exports' : 'Net flow';
   root.querySelector('#' + 'net-flow-share').hidden = totals.imports <= 0 || data.demand <= 0;
   root.querySelectorAll('[data-number]').forEach(el => el.textContent = n(totals[el.dataset.number]));

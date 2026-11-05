@@ -220,13 +220,13 @@ export function mountTrends(root, rawHistory, model, events, signal) {
     const average = acceptedDays.length ? acceptedDays.reduce((sum, row) => sum + row.v[sourceIndex], 0) / acceptedDays.length : null;
     const expected = groups.reduce((sum, group) => sum + group.expectedDays, 0);
     root.querySelector('#' + 'trend-series-title').textContent = series.label;
-    root.querySelector('#' + 'trend-average').innerHTML = `${average === null ? '—' : display.format(average)} <small>MW</small>`;
+    root.querySelector('#' + 'trend-average').innerHTML = `${average === null ? '-' : display.format(average)} <small>MW</small>`;
     root.querySelector('#' + 'trend-method').textContent = series.method === 'estimated' ? 'Estimated · + import / − export' : series.key === 'moyle' ? '+ import / − export' : '';
     root.querySelector('#' + 'trend-average-label').textContent = 'Daily average over the selected range';
-    root.querySelector('#' + 'trend-period').textContent = from.value === to.value ? from.value : `${from.value}–${to.value}`;
+    root.querySelector('#' + 'trend-period').textContent = from.value === to.value ? from.value : `${from.value}-${to.value}`;
     root.querySelector('#' + 'trend-resolution-label').textContent = averageBasis();
     root.querySelector('#' + 'trend-coverage').textContent = `${whole.format(acceptedDays.length)} of ${whole.format(expected)} elapsed days have complete readings`;
-    root.querySelector('#' + 'trend-date-range').textContent = acceptedDays.length ? `${dateLabel(acceptedDays[0].date)} – ${dateLabel(acceptedDays[acceptedDays.length - 1].date)}` : 'No readings in this range';
+    root.querySelector('#' + 'trend-date-range').textContent = acceptedDays.length ? `${dateLabel(acceptedDays[0].date)} - ${dateLabel(acceptedDays[acceptedDays.length - 1].date)}` : 'No readings in this range';
     root.querySelector('#' + 'trend-partial-note').hidden = resolution === 'daily' || !groups.some(group => group.partialPeriod);
     chart.innerHTML = chartMarkup(series);
     chart.style.setProperty('--series-colour', series.colour);
@@ -306,7 +306,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
   });
 
   function renderHistoryMetadata() {
-  const coverageRows = history.series.map(series => `<tr><th scope="row">${esc(series.label)}</th><td>${series.first ? dateLabel(series.first) : '—'}</td></tr>`).join('');
+  const coverageRows = history.series.map(series => `<tr><th scope="row">${esc(series.label)}</th><td>${series.first ? dateLabel(series.first) : '-'}</td></tr>`).join('');
   root.querySelector('#' + 'history-coverage-rows').innerHTML = coverageRows;
   }
   renderHistoryMetadata();

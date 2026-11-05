@@ -1,5 +1,6 @@
 """ROI alignment, independent publication and retention on source failure."""
 import copy
+from datetime import datetime, timedelta
 import hashlib
 import json
 from pathlib import Path
@@ -23,6 +24,31 @@ def snapshot():
 
 
 class ROITests(unittest.TestCase):
+    def test_demand_peak_time_matches_actual_or_forecast_and_rejects_gaps(self):
+        at = datetime(2026, 11, 4, 14)
+        start = at.replace(hour=0)
+        actual = {start + timedelta(minutes=i): 800 for i in range(0, 14*60-30, 15)}
+        forecast = {start + timedelta(minutes=i): 1000 for i in range(14*60, 24*60, 30)}
+        forecast.update({at.replace(hour=17, minute=30): 1500, at.replace(hour=18): 1500})
+        def write(path, values, field):
+            path.write_text(json.dumps({'url': 'https://example.test/' + path.name,
+                'retrievedAt': '2026-11-04T14:00:00Z', 'data': {'Rows': [
+                    {'Region': 'ROI', 'FieldName': field, 'Value': value,
+                     'EffectiveTime': stamp.strftime('%d-%b-%Y %H:%M:%S')} for stamp,value in values.items()]}}))
+        with tempfile.TemporaryDirectory() as directory, patch.object(collect, 'CACHE', Path(directory)), patch.object(collect, 'NOW', at):
+            write(Path(directory)/'ROI-demand-forecast.json', forecast, 'DEMAND_FORECAST_VALUE')
+            for observed, value, clock in [(1400, 1500, '17:30'), (1600, 1600, '08:15')]:
+                with self.subTest(observed=observed):
+                    actual[start + timedelta(hours=8, minutes=15)] = observed
+                    write(Path(directory)/'ROI-demand.json', actual, 'SYSTEM_DEMAND')
+                    peak = collect.peaks(at)
+                    self.assertEqual((peak['demand'], peak['demandTime']), (value, clock))
+            del actual[start + timedelta(hours=6)]
+            write(Path(directory)/'ROI-demand.json', actual, 'SYSTEM_DEMAND')
+            peak = collect.peaks(at)
+            self.assertIsNone(peak['demand'])
+            self.assertIsNone(peak['demandTime'])
+
     def test_signed_balances_unknown_output_and_alignment(self):
         data = snapshot()
         roi_cloud.validate(data)

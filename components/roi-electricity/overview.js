@@ -5,10 +5,10 @@ import {generationIcon,interconnectorIcon} from './generation-icons.js';
 export function mountOverview(root, data, map, events, signal) {
   data = reconcileSnapshot(data);
   const captured = data.dataBasis === 'public-source-capture';
-  const n = value => Number.isFinite(value) ? new Intl.NumberFormat('en-IE', { maximumFractionDigits: 0 }).format(value) : '—';
+  const n = value => Number.isFinite(value) ? new Intl.NumberFormat('en-IE', { maximumFractionDigits: 0 }).format(value) : '-';
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const usage = (output, capacity) => Number.isFinite(output) && capacity > 0 ? Math.abs(output) / capacity * 100 : null;
-  const percent = value => value === null ? '—' : `${Math.round(value)}%`;
+  const percent = value => value === null ? '-' : `${Math.round(value)}%`;
   const dialog = root.querySelector('#station-dialog');
   const tabs = [...root.querySelectorAll('[role="tab"]')];
   const svg = root.querySelector('#electricity-map');
@@ -34,10 +34,14 @@ export function mountOverview(root, data, map, events, signal) {
 
   function renderPeaks() {
     const today = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Dublin',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-    root.querySelectorAll('[data-peak]').forEach(el => {
-      const value = data.expectedPeaks?.[el.dataset.peak];
-      el.textContent = n(value);
-      el.closest('.expected-peak').hidden = data.expectedPeaks?.date !== today || !Number.isFinite(value);
+    root.querySelectorAll('[data-expected-peak]').forEach(el => {
+      const key = el.dataset.expectedPeak;
+      const value = data.expectedPeaks?.date === today ? data.expectedPeaks[key] : null;
+      const available = Number.isFinite(value);
+      const clock = data.expectedPeaks?.demandTime;
+      const time = key === 'demand' && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(clock) ? ` at ${clock}` : '';
+      el.textContent = `Today's expected peak: ${available ? n(value) + ' MW' + time : 'unavailable'}`;
+      el.hidden = key !== 'demand' && !available;
     });
   }
   function renderReadings() {
@@ -47,8 +51,8 @@ export function mountOverview(root, data, map, events, signal) {
       const value = key === 'imports' ? Math.abs(readings[key]) : readings[key];
       el.innerHTML = `${key === 'reconciliation' && value > 0 ? '+' : ''}${n(value)} <small>MW</small>${key === 'other' ? ' <sup>est.</sup>' : ''}`;
     });
-    root.querySelectorAll('[data-share]').forEach(el => { el.textContent = data.demand > 0 ? percent(readings[el.dataset.share] / data.demand * 100) : '—'; });
-    root.querySelector('#renewables-share').textContent = data.demand > 0 ? percent(readings.renewables / data.demand * 100) : '—';
+    root.querySelectorAll('[data-share]').forEach(el => { el.textContent = data.demand > 0 ? percent(readings[el.dataset.share] / data.demand * 100) : '-'; });
+    root.querySelector('#renewables-share').textContent = data.demand > 0 ? percent(readings.renewables / data.demand * 100) : '-';
     root.querySelector('#net-flow-label').textContent = readings.imports > 0 ? 'Net imports' : readings.imports < 0 ? 'Net exports' : 'Net flow';
     root.querySelector('#net-flow-share').hidden = readings.imports <= 0 || data.demand <= 0;
     renderPeaks();
@@ -57,7 +61,6 @@ export function mountOverview(root, data, map, events, signal) {
     root.querySelectorAll('[data-snapshot-short]').forEach(el => { el.textContent = stamp; });
     if (captured) {
       root.querySelector('.snapshot-label').innerHTML = '<i></i> Captured data';
-      root.querySelector('.preview-note').textContent = 'Republic of Ireland · EirGrid actuals & SEMO estimates · Station outputs are estimates';
       root.querySelector('.metrics').setAttribute('aria-label','Electricity system summary, public-source readings');
       root.querySelector('.map-notes .chart-attribution').firstChild.textContent = 'EirGrid actuals · SEMO dispatch-target estimates & availability · ';
       const sources = data.sources.plants;
@@ -66,14 +69,14 @@ export function mountOverview(root, data, map, events, signal) {
       root.querySelector('#station-dialog .chart-attribution').textContent = 'SEMO dispatch-target estimates · Published availability and technical declarations · Not live metered output';
       root.querySelector('#station-dialog .dialog-footer>span').firstChild.textContent = 'Snapshot · ';
       root.querySelector('#metric-definitions dl>div:first-child dd').textContent = 'Power required by the ROI system, in megawatts (MW), from EirGrid. Expected peaks use available published ROI forecasts; a missing forecast is omitted.';
-      root.querySelector('#metric-definitions dl>div:nth-child(3) dd').textContent = 'East–West, Greenlink and North–South flows combined. Positive means imports into ROI; negative means exports. North–South is the NI estimate with its sign reversed: −(NI demand − NI generation − Moyle imports), using grid inputs at the same observation time. This is a balance estimate, not a metered tie-line reading.';
+      root.querySelector('#metric-definitions dl>div:nth-child(3) dd').textContent = 'East-West, Greenlink and North-South flows combined. Positive means imports into ROI; negative means exports. North-South is the NI estimate with its sign reversed: −(NI demand − NI generation − Moyle imports), using grid inputs at the same observation time. This is a balance estimate, not a metered tie-line reading.';
       root.querySelector('#metric-definitions dl>div:nth-child(5) dd').textContent = 'Selected registered generating units at the mapped stations. Output is a last-published dispatch-target proxy, seeded from earlier half-hourly meter data (MWh converted to average MW). This follows the NI approach; it does not establish current metered output. Missing or expired numeric instructions show a dash. Huntstown TEG and Poolbeg Flexgen are included; batteries and neighbouring Cushaling peakers stay in Other/Unallocated. Icons indicate the station’s principal generation type.';
-      root.querySelector('#estimates>p:first-of-type').textContent = 'Grid readings are reported actuals; station outputs and North–South are estimates. Dispatch publications lag the grid readings, and a carried-forward target is not a live meter measurement. Unknown outputs remain unallocated. Technical declarations come from the latest available publications. Trends shows complete daily averages from public sources.';
+      root.querySelector('#estimates>p:first-of-type').textContent = 'Grid readings are reported actuals; station outputs and North-South are estimates. Dispatch publications lag the grid readings, and a carried-forward target is not a live meter measurement. Unknown outputs remain unallocated. Technical declarations come from the latest available publications. Trends shows complete daily averages from public sources.';
       root.querySelector('#estimates>p:last-of-type').textContent = 'Moneypoint uses the current registered oil-fired units. The original Tarbert oil station is excluded. This is a selected station set; smaller plants, temporary generation, batteries and other unmatched generation remain in Other/Unallocated. Signed residuals can be negative when proxy estimates and reported regional generation do not reconcile.';
       root.querySelector('#capacity>p:first-of-type').textContent = 'Available capacity comes from SEMO’s published outturn availability baseline and subsequent hourly changes. The percentage is the magnitude of estimated output divided by availability. Zero output does not establish an outage; zero declared availability is a separate observation.';
       root.querySelector('#capacity>p:nth-of-type(2)').textContent = 'Technical maximum in the drawer comes from the latest available SEMO technical offer report for the selected registered resource IDs. These values can differ from nominal station ratings. Snapshot source records retain report dates and unit mapping.';
       root.querySelector('#data-sources>p:first-of-type').textContent = 'The overview uses public EirGrid actuals and SEMO unit reports. ROI grid series and the accepted NI inputs share one timestamp. Plant estimates, availability and technical parameters retain their report provenance in snapshot.json. The overview is collected every 15 minutes; history is collected daily.';
-      root.querySelector('#data-sources .source-list li:first-child small').textContent = 'Captured ROI demand, generation, wind, solar, East–West and Greenlink, plus matching NI inputs for the shared North–South estimate.';
+      root.querySelector('#data-sources .source-list li:first-child small').textContent = 'Captured ROI demand, generation, wind, solar, East-West and Greenlink, plus matching NI inputs for the shared North-South estimate.';
       const sourceItem = document.createElement('li');
       sourceItem.innerHTML = '<a href="https://reports.sem-o.com/" target="_blank" rel="noopener">SEMO public reports <span>↗</span></a><small>Registered units, hourly dispatch instructions, D+1 meter seeds, outturn availability and technical offer data. Public IDs and report filenames are retained in the snapshot.</small>';
       if (!root.querySelector('#data-sources .source-list [href="https://reports.sem-o.com/"]')) root.querySelector('#data-sources .source-list').append(sourceItem);
@@ -110,7 +113,8 @@ export function mountOverview(root, data, map, events, signal) {
     button.dataset.station = station.id;
     button.dataset.index = station.index;
     button.style.setProperty('--card-x', `${station.card[0] / mapWidth * 100}%`);
-    button.style.setProperty('--card-y', `${station.card[1] / mapHeight * 100}%`);
+    const cardY = ['whitegate','great-island'].includes(station.id) ? 930 : station.card[1];
+    button.style.setProperty('--card-y', `${cardY / mapHeight * 100}%`);
     button.setAttribute('aria-haspopup', 'dialog');
     button.setAttribute('aria-label', `${station.name}, ${station.fuel}: ${captured ? 'estimated' : 'sample'} output ${n(station.output)} megawatts, ${n(station.available)} megawatts available. Explore ${station.units.length} ${captured ? 'registered' : 'illustrative'} units.`);
     button.innerHTML = stationContent(station);
@@ -207,8 +211,8 @@ export function mountOverview(root, data, map, events, signal) {
     });
     root.querySelector('.metrics').hidden = selected !== 'overview';
     root.querySelector('.snapshot-stamp').hidden = selected !== 'overview';
-    if(captured) root.querySelector('.preview-note').textContent = selected === 'overview'
-      ? 'Republic of Ireland · EirGrid actuals & SEMO estimates · Station outputs are estimates'
+    root.querySelector('.preview-note').hidden = selected === 'overview';
+    root.querySelector('.preview-note').textContent = selected === 'overview' ? ''
       : selected === 'trends' ? (root.dataset.historyAvailable === 'true' ? 'Republic of Ireland · Historical daily averages' : 'Republic of Ireland · History not yet loaded')
       : 'Republic of Ireland · Definitions & sources';
     root.dataset.view = selected;

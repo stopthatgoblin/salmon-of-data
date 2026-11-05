@@ -256,7 +256,9 @@ def peaks(at):
     missing = required-(actual.keys()|forecast.keys())
     boundary = {t for t in required if actual and forecast and max(actual)<t<min(forecast)}
     demand = max({**forecast,**actual}.values()) if actual and forecast and (not missing or missing<=boundary and len(boundary)<=2) else None
-    return dict(demand=demand,windSolar=renewable,date=at.date().isoformat(),sources=sources,basis='Demand combines reported actuals with remaining ROI forecasts; wind/solar uses matching quarter-hours across the whole forecast day. Missing forecasts are omitted.')
+    combined = {**forecast,**actual}
+    demand_time = min(t for t,value in combined.items() if value==demand).strftime('%H:%M') if demand is not None else None
+    return dict(demand=demand,demandTime=demand_time,windSolar=renewable,date=at.date().isoformat(),sources=sources,basis='Demand combines reported actuals with remaining ROI forecasts; wind/solar uses matching quarter-hours across the whole forecast day. Missing forecasts are omitted.')
 
 def build(ni):
     at, grid, provenance = grid_capture(ni)

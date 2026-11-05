@@ -43,15 +43,18 @@ test('electricity overview labels imports, exports and zero consistently', () =>
     const reading = node('reading'); reading.dataset.reading = 'imports';
     const share = node('share'); share.dataset.share = 'imports';
     const signedNumber = node('signed'); signedNumber.dataset.number = 'imports';
-    const selectors = { '[data-reading]': [reading], '[data-share]': [share], '[data-number]': [signedNumber] };
+    const peak = node('peak'); peak.dataset.expectedPeak = 'demand';
+    const selectors = { '[data-reading]': [reading], '[data-share]': [share], '[data-number]': [signedNumber], '[data-expected-peak]': [peak] };
     const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selectors[selector] || [], addEventListener() {} };
     const data = { time: '2026-10-31T21:00:00Z', demand: 1000, generation: 1000 - moyle - northSouth, wind: 300, solar: 0, other: 0, moyle, northSouth, moyleAvailable: 250, northSouthReferenceCapacity: 300, stations: [] };
+    data.expectedPeaks = {date: new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/London'}).format(new Date()), demand: {value:1295,time:'17:30',basis:'Test forecast',retrievedAt:new Date().toISOString()}};
     const context = { generationIcon, interconnectorIcon, root, data, map: {}, events: { dispatchEvent() {}, addEventListener() {} }, signal: {}, document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) }, window: { matchMedia: () => ({ matches: false, addEventListener() {} }), addEventListener() {} }, history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent: class {} };
     vm.runInNewContext(`${source}\nmountOverview(root, data, map, events, signal);`, context);
     assert.equal(node('#net-flow-label').textContent, label);
     assert.equal(reading.innerHTML, `${value} <small>MW</small>`);
     assert.equal(node('#net-flow-share').hidden, shareHidden);
     assert.equal(signedNumber.textContent, String(data.moyle + northSouth));
+    assert.equal(peak.textContent, "Today's expected peak: 1,295 MW at 17:30");
     assert.match(node('[data-interconnector="northSouth"]').innerHTML, northSouth < 0 ? /Exporting/ : northSouth > 0 ? /Importing/ : /No net flow/);
     assert.equal(node('.moyle-flow').dataset.direction, moyle < 0 ? 'export' : moyle > 0 ? 'import' : 'balanced');
   }

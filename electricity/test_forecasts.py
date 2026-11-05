@@ -42,6 +42,24 @@ class ForecastTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             forecasts.readings({'Rows': [row, {**row, 'Value': 20}]}, 'SOLAR_FCAST', '2026-11-01')
 
+    def test_collection_retains_the_matching_peak_time_and_first_tie(self):
+        now = datetime(2026, 11, 1, 14, tzinfo=timezone.utc)
+        actual = {clock: 800 for clock in self.slots(15, 0) if clock <= '13:15:00'}
+        demand = {clock: 1000 for clock in self.slots(30, 0) if clock >= '14:00:00'}
+        demand.update({'17:30:00': 1500, '18:00:00': 1500})
+        def rows(values, field):
+            return {'Rows': [{'Region': 'NI', 'FieldName': field, 'Value': value,
+                'EffectiveTime': '01-Nov-2026 ' + clock} for clock, value in values.items()]}
+        def fetch(name, day):
+            values = demand if name == 'demand' else self.slots(15, 0)
+            return rows(values, forecasts.FEEDS[name][2]), 'https://example.test/' + name
+        for observed, value, clock in [(1400, 1500, '17:30'), (1600, 1600, '08:15')]:
+            with self.subTest(observed=observed), patch.object(forecasts, 'fetch_forecast', side_effect=fetch):
+                actual['08:15:00'] = observed
+                source = {'source_grid_payloads': [{'data': rows(actual, 'SYSTEM_DEMAND'), 'url': 'https://example.test/actual'}]}
+                peak = forecasts.collect(source, now=now)['demand']
+                self.assertEqual((peak['value'], peak['time']), (value, clock))
+
     def test_failed_forecasts_preserve_only_same_day_peaks(self):
         now = datetime(2026, 11, 1, 14, tzinfo=timezone.utc)
         previous = {'date': '2026-11-01', 'demand': {'value': 1200}, 'windSolar': {'value': 400}}

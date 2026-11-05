@@ -12,7 +12,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
   const seriesChoices = [
     ['wind', 'Wind'], ['solar', 'Solar'], ['otherROI', 'Non-wind/solar generation'],
     ['generation', 'Total ROI generation'], ['demand', 'Electricity demand'],
-    ['eastWest', 'East–West Interconnector'], ['greenlink', 'Greenlink Interconnector'], ['northSouth', 'North-South Interconnector']
+    ['eastWest', 'East-West Interconnector'], ['greenlink', 'Greenlink Interconnector'], ['northSouth', 'North-South Interconnector']
   ];
   function displayedHistory(raw) {
     const indexes = seriesChoices.map(([key]) => raw.series.findIndex(series => series.key === key));
@@ -176,7 +176,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
       <svg x="40" y="205" width="1120" height="370" viewBox="0 0 1120 370">${chartMarkup(series, 1120).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '')}</svg>
       <line x1="40" x2="1160" y1="599" y2="599" stroke="#d9dbd0"/>
       <text x="40" y="622" font-size="11">${esc(coverage)}</text><text class="muted" x="40" y="642" font-size="11">${esc(range + partial)}</text>
-      <text class="muted" x="40" y="675" font-size="10">Supported by EirGrid Group Data · Daily average power</text><a href="https://www.smartgriddashboard.com/ie/open-data-license/"><text class="muted" x="40" y="693" font-size="9">EirGrid / SONI Open Data Licence; North–South is an NI balance estimate</text></a><text class="muted" x="1160" y="683" text-anchor="end" font-size="10">Average power · MW</text>
+      <text class="muted" x="40" y="675" font-size="10">Supported by EirGrid Group Data · Daily average power</text><a href="https://www.smartgriddashboard.com/ie/open-data-license/"><text class="muted" x="40" y="693" font-size="9">EirGrid / SONI Open Data Licence; North-South is an NI balance estimate</text></a><text class="muted" x="1160" y="683" text-anchor="end" font-size="10">Average power · MW</text>
     </svg>`;
   }
 
@@ -222,13 +222,13 @@ export function mountTrends(root, rawHistory, model, events, signal) {
     const average = acceptedDays.length ? acceptedDays.reduce((sum, row) => sum + row.v[sourceIndex], 0) / acceptedDays.length : null;
     const expected = groups.reduce((sum, group) => sum + group.expectedDays, 0);
     root.querySelector('#' + 'trend-series-title').textContent = series.label;
-    root.querySelector('#' + 'trend-average').innerHTML = `${average === null ? '—' : display.format(average)} <small>MW</small>`;
+    root.querySelector('#' + 'trend-average').innerHTML = `${average === null ? '-' : display.format(average)} <small>MW</small>`;
     root.querySelector('#' + 'trend-method').textContent = series.method === 'estimated' ? 'Estimated · + import / − export' : ['eastWest', 'greenlink', 'northSouth'].includes(series.key) ? '+ import / − export' : '';
     root.querySelector('#' + 'trend-average-label').textContent = 'Daily average over the selected range';
-    root.querySelector('#' + 'trend-period').textContent = from.value === to.value ? from.value : `${from.value}–${to.value}`;
+    root.querySelector('#' + 'trend-period').textContent = from.value === to.value ? from.value : `${from.value}-${to.value}`;
     root.querySelector('#' + 'trend-resolution-label').textContent = averageBasis();
     root.querySelector('#' + 'trend-coverage').textContent = `${whole.format(acceptedDays.length)} of ${whole.format(expected)} complete days of public-source data`;
-    root.querySelector('#' + 'trend-date-range').textContent = acceptedDays.length ? `${dateLabel(acceptedDays[0].date)} – ${dateLabel(acceptedDays[acceptedDays.length - 1].date)}` : 'No readings in this range';
+    root.querySelector('#' + 'trend-date-range').textContent = acceptedDays.length ? `${dateLabel(acceptedDays[0].date)} - ${dateLabel(acceptedDays[acceptedDays.length - 1].date)}` : 'No readings in this range';
     root.querySelector('#' + 'trend-partial-note').hidden = resolution === 'daily' || !groups.some(group => group.partialPeriod);
     chart.innerHTML = chartMarkup(series);
     chart.style.setProperty('--series-colour', series.colour);
@@ -308,7 +308,7 @@ export function mountTrends(root, rawHistory, model, events, signal) {
   });
 
   function renderHistoryMetadata() {
-  const coverageRows = history.series.map(series => `<tr><th scope="row">${esc(series.label)}</th><td>${series.first ? dateLabel(series.first) : '—'}</td></tr>`).join('');
+  const coverageRows = history.series.map(series => `<tr><th scope="row">${esc(series.label)}</th><td>${series.first ? dateLabel(series.first) : '-'}</td></tr>`).join('');
   root.querySelector('#' + 'history-coverage-rows').innerHTML = coverageRows;
   }
   renderHistoryMetadata();

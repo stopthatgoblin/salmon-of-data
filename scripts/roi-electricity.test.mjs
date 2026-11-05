@@ -80,17 +80,23 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
     return nodes.get(key);
   };
   const demand = node('demand'); demand.dataset.reading = 'demand';
-  const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selector === '[data-reading]' ? [demand] : [], addEventListener() {} };
+  const peak = node('peak'); peak.dataset.expectedPeak = 'demand';
+  const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selector === '[data-reading]' ? [demand] : selector === '[data-expected-peak]' ? [peak] : [], addEventListener() {} };
   const dialog = node('#station-dialog');
   const events = new EventTarget(), controller = new AbortController();
-  const context = { root, data: snapshot, map: {}, events, signal: controller.signal, reconcileSnapshot, project, flowGeometry, generationIcon, interconnectorIcon,
+  const initial = {...snapshot,expectedPeaks:{date:new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Dublin'}).format(new Date()),demand:5517,demandTime:'17:30'}};
+  const context = { root, data: initial, map: {}, events, signal: controller.signal, reconcileSnapshot, project, flowGeometry, generationIcon, interconnectorIcon,
     document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) },
     window: { matchMedia: () => ({ matches: true, addEventListener() {} }), addEventListener() {} },
     history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent, requestAnimationFrame() {} };
   vm.runInNewContext(`${source}\nmountOverview(root,data,map,events,signal);`, context);
   const card = node(`[data-interconnector="eastWest"]`);
+  assert.equal(peak.textContent,"Today's expected peak: 5,517 MW at 17:30");
+  assert.equal(node('.preview-note').hidden,true);
   dialog.open = true; dialog.dataset.activeStation = snapshot.stations[0].id;
-  const next = structuredClone(snapshot);
+  const next = structuredClone(initial);
+  next.expectedPeaks.demand = 5520;
+  next.expectedPeaks.demandTime = '18:00';
   next.demand += 1;
   next.interconnectors.find(flow => flow.id === 'eastWest').value = -100;
   next.stations[0].units[0].output += 1; next.stations[0].output += 1;
@@ -98,9 +104,14 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
   assert.equal(dialog.open, true);
   assert.equal(node(`[data-interconnector="eastWest"]`), card);
   assert.match(card.innerHTML, /Exporting/);
+  assert.match(card.innerHTML,/East-West Interconnector/);
   assert.equal(node('[data-flow="eastWest"]').dataset.direction, 'export');
   assert.match(node('#station-detail').innerHTML, new RegExp(String(Math.round(next.stations[0].units[0].output))));
   assert.equal(demand.innerHTML, `${new Intl.NumberFormat('en-IE').format(next.demand)} <small>MW</small>`);
+  assert.equal(peak.textContent,"Today's expected peak: 5,520 MW at 18:00");
+  assert.equal(node('.preview-note').hidden,true);
+  events.dispatchEvent(new CustomEvent('dashboard:snapshot',{detail:{...next,expectedPeaks:{...next.expectedPeaks,date:'2000-01-01'}}}));
+  assert.equal(peak.textContent,"Today's expected peak: unavailable");
   controller.abort();
 });
 

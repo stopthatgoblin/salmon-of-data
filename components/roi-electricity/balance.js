@@ -10,7 +10,8 @@ export function reconcileSnapshot(snapshot) {
   const northSouth = -niNorthSouth;
   const interconnectors = snapshot.interconnectors.map(flow => {
     if (!Number.isFinite(flow.value)) throw new Error('Missing interconnector reading');
-    return flow.id === 'northSouth' ? {...flow,value:northSouth,basis:'ni-balance-reversed'} : flow;
+    const display = {...flow,name:flow.name.replace(/[\u2013\u2014]/g,'-')};
+    return flow.id === 'northSouth' ? {...display,value:northSouth,basis:'ni-balance-reversed'} : display;
   });
   for (const id of ['eastWest','greenlink','northSouth']) {
     if (interconnectors.filter(flow => flow.id === id).length !== 1) throw new Error(`Missing or duplicate ${id} flow`);
