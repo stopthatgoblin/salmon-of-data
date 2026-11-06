@@ -1,101 +1,7 @@
 {
-  "checkedAt": "2026-11-01",
+  "checkedAt": "2026-11-06",
   "through": "2026-12-31",
   "entries": [
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": null,
-      "title": "NOAA Relative Oceanic Niño Index",
-      "metrics": [
-        "El Niño"
-      ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
-      "referencePeriod": "August–October 2026",
-      "time": null,
-      "status": "By the 5th",
-      "checkedAt": "2026-11-01",
-      "month": "2026-11",
-      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
-    },
-    {
-      "month": "2026-11",
-      "title": "US graduate labour market",
-      "referencePeriod": "Q3 2026",
-      "metrics": [
-        "Graduate gap",
-        "Underemployment"
-      ],
-      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
-      "note": "Expected in November: the New York Fed generally updates in February, May, August and November. No exact day confirmed.",
-      "tracker": "ai",
-      "frequency": "quarterly",
-      "date": null,
-      "status": "Expected month",
-      "checkedAt": "2026-11-01"
-    },
-    {
-      "date": "2026-11-03",
-      "title": "US job openings and labour turnover",
-      "referencePeriod": "September 2026",
-      "metrics": [
-        "Actual hiring"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
-      "time": "10:00 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-11-03",
-      "title": "World Bank commodity prices",
-      "metrics": [
-        "Rice",
-        "Maize",
-        "Sugar",
-        "Palm oil",
-        "Coffee"
-      ],
-      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
-      "referencePeriod": "October 2026",
-      "time": null,
-      "status": "Confirmed",
-      "checkedAt": "2026-11-01",
-      "note": "The World Bank confirms its next monthly price update for 3 November 2026."
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-11-06",
-      "title": "FAO Food Price Index",
-      "metrics": [
-        "Food basket"
-      ],
-      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
-      "referencePeriod": "October 2026",
-      "time": null,
-      "status": "Confirmed",
-      "checkedAt": "2026-11-01"
-    },
-    {
-      "date": "2026-11-06",
-      "title": "US employment situation",
-      "referencePeriod": "October 2026",
-      "metrics": [
-        "Employment",
-        "Real pay · earnings input"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
     {
       "date": "2026-11-10",
       "title": "US consumer prices",
@@ -185,7 +91,7 @@
     {
       "tracker": "el-nino",
       "frequency": "monthly",
-      "date": null,
+      "date": "2026-12-02",
       "title": "World Bank commodity prices",
       "metrics": [
         "Rice",
@@ -197,10 +103,10 @@
       "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
       "referencePeriod": "November 2026",
       "time": null,
-      "status": "Expected month",
-      "checkedAt": "2026-11-01",
+      "status": "Confirmed",
+      "checkedAt": "2026-11-06",
       "month": "2026-12",
-      "note": "Monthly publication; exact release day not yet confirmed."
+      "note": "Next update confirmed by the World Bank."
     },
     {
       "tracker": "el-nino",
@@ -274,7 +180,7 @@
       "checkedAt": "2026-11-01"
     }
   ],
-  "lastReleaseReviewAt": "2026-11-01",
+  "lastReleaseReviewAt": "2026-11-06",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -531,6 +437,131 @@
         "retail: 2026-09 = 144.3"
       ],
       "revisionsIncluded": []
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": null,
+      "title": "NOAA Relative Oceanic Niño Index",
+      "metrics": [
+        "El Niño"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+      "referencePeriod": "August–October 2026",
+      "time": null,
+      "status": "By the 5th",
+      "checkedAt": "2026-11-06",
+      "month": "2026-11",
+      "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day.",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "enso: 2026-09 = 2.0°C"
+      ]
+    },
+    {
+      "month": "2026-11",
+      "title": "US graduate labour market",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Graduate gap",
+        "Underemployment"
+      ],
+      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
+      "note": "Q3 data available in New York Fed source downloads; exact publication day not confirmed.",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": null,
+      "status": "Expected month",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "graduates: 2026-09-01",
+        "underemployment: 2026-09-01"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "hiring: 2026-09-01"
+      ]
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-11-03",
+      "title": "World Bank commodity prices",
+      "metrics": [
+        "Rice",
+        "Maize",
+        "Sugar",
+        "Palm oil",
+        "Coffee"
+      ],
+      "sourceUrl": "https://www.worldbank.org/en/research/commodity-markets",
+      "referencePeriod": "October 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-11-06",
+      "note": "The World Bank confirms its next monthly price update for 3 November 2026.",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "rice: 2026-10",
+        "maize: 2026-10",
+        "sugar: 2026-10",
+        "palm: 2026-10",
+        "coffee: 2026-10"
+      ]
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-11-06",
+      "title": "FAO Food Price Index",
+      "metrics": [
+        "Food basket"
+      ],
+      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "referencePeriod": "October 2026",
+      "time": null,
+      "status": "Confirmed",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "food: 2026-10 = 133.9"
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "title": "US employment situation",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "employment: 2026-10-01",
+        "real-pay earnings input: 2026-10-01"
+      ],
+      "note": "October earnings captured; October real pay awaits the CPI release."
     }
   ],
   "scope": "Monthly and quarterly releases affecting displayed AI and El Niño metrics. Daily electricity updates and the retired harvest panel are excluded."

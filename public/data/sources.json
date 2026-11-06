@@ -232,5 +232,35 @@
     "name": "NOAA ENSO Diagnostic Discussion",
     "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
     "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+  },
+  {
+    "file": "2026-11-06/world-bank.xlsx",
+    "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+    "bytes": 587760,
+    "sha256": "3c8d9d8dbb48342fdbf24777c39a8ce8964cc2fd0958f72f6779e6e4ad99cde2",
+    "retrievedOn": "2026-11-06",
+    "note": "World Bank Pink Sheet: October commodity prices",
+    "name": "World Bank Pink Sheet",
+    "downloadUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+  },
+  {
+    "file": "2026-11-06/fao.csv",
+    "url": "https://www.fao.org/media/docs/worldfoodsituationlibraries/wfs-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_85",
+    "bytes": 48217,
+    "sha256": "6f26341212b1354608984f92654d52a934dfd125e7236640d7fb4545e3db00dc",
+    "retrievedOn": "2026-11-06",
+    "note": "FAO Food Price Index: October index and revisions",
+    "name": "FAO Food Price Index",
+    "downloadUrl": "https://www.fao.org/media/docs/worldfoodsituationlibraries/wfs-library/food_price_indices_data.csv?download=true&sfvrsn=523ebd2a_85"
+  },
+  {
+    "file": "2026-11-06/roni.html",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
+    "bytes": 98060,
+    "sha256": "45a29af6d57b0a231dcc2fd50b636e823c43d591208e9dd6196358bfaed85834",
+    "retrievedOn": "2026-11-06",
+    "note": "NOAA RONI: August\u2013October 2026 season",
+    "name": "NOAA RONI",
+    "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/"
   }
 ]

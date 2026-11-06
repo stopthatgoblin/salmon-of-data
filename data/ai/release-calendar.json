@@ -1,37 +1,8 @@
 {
-  "checkedAt": "2026-11-01",
+  "checkedAt": "2026-11-06",
   "year": 2026,
-  "lastReleaseReviewAt": "2026-11-01",
+  "lastReleaseReviewAt": "2026-11-06",
   "entries": [
-    {
-      "date": "2026-11-03",
-      "title": "US job openings and labour turnover",
-      "referencePeriod": "September 2026",
-      "metrics": [
-        "Actual hiring"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
-      "time": "10:00 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
-    {
-      "date": "2026-11-06",
-      "title": "US employment situation",
-      "referencePeriod": "October 2026",
-      "metrics": [
-        "Employment",
-        "Real pay · earnings input"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
     {
       "date": "2026-11-10",
       "title": "US consumer prices",
@@ -104,24 +75,7 @@
       "checkedAt": "2026-11-01"
     }
   ],
-  "provisional": [
-    {
-      "month": "2026-11",
-      "title": "US graduate labour market",
-      "referencePeriod": "Q3 2026",
-      "metrics": [
-        "Graduate gap",
-        "Underemployment"
-      ],
-      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
-      "note": "Expected in November: the New York Fed generally updates in February, May, August and November. No exact day confirmed.",
-      "tracker": "ai",
-      "frequency": "quarterly",
-      "date": null,
-      "status": "Expected month",
-      "checkedAt": "2026-11-01"
-    }
-  ],
+  "provisional": [],
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -223,6 +177,66 @@
       ],
       "revisionsIncluded": [],
       "note": "September CPI released 14 October and imported into the real-pay chart."
+    },
+    {
+      "month": "2026-11",
+      "title": "US graduate labour market",
+      "referencePeriod": "Q3 2026",
+      "metrics": [
+        "Graduate gap",
+        "Underemployment"
+      ],
+      "sourceUrl": "https://www.newyorkfed.org/research/college-labor-market",
+      "note": "Q3 data available in New York Fed source downloads; exact publication day not confirmed.",
+      "tracker": "ai",
+      "frequency": "quarterly",
+      "date": null,
+      "status": "Expected month",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "graduates: 2026-09-01",
+        "underemployment: 2026-09-01"
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "title": "US job openings and labour turnover",
+      "referencePeriod": "September 2026",
+      "metrics": [
+        "Actual hiring"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/jolts.htm",
+      "time": "10:00 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "hiring: 2026-09-01"
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "title": "US employment situation",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Employment",
+        "Real pay · earnings input"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-06",
+      "importedAt": "2026-11-06",
+      "actualsAdded": [
+        "employment: 2026-10-01",
+        "real-pay earnings input: 2026-10-01"
+      ],
+      "note": "October earnings captured; October real pay awaits the CPI release."
     }
   ]
 }
