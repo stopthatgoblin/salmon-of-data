@@ -1,5 +1,5 @@
 // Shared map geometry. Positive flow always means an import into ROI.
-export const project = ([longitude, latitude]) => ({x:(longitude + 10.8) * 130 + 190, y:(55.6 - latitude) * 216 + 10});
+export const project = ([longitude, latitude]) => ({x:(longitude + 10.8) * 130 + 190, y:(55.6 - latitude) * 246 + 10});
 
 export function flowGeometry(flow) {
   const roi = project(flow.roiLocation);

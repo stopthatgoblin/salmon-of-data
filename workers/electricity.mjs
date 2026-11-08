@@ -27,12 +27,14 @@ export default {
     if (!url.pathname.startsWith(prefix)) return env.ASSETS.fetch(request);
     if (!['GET', 'HEAD'].includes(request.method)) return new Response(null, { status: 405, headers: { ...apiSecurityHeaders, Allow: 'GET, HEAD' } });
     const route = url.pathname.slice(prefix.length);
+    const replay=route.match(/^replay\/(ni|roi)\/(manifest|\d{4}-\d{2}-\d{2})\.json$/);
     const roi = route.startsWith('roi/');
     const name = roi ? route.slice(4) : route;
     const scope = roi ? 'roi/' : '';
-    if (!['manifest.json', 'snapshot.json', 'history.json'].includes(name)) return new Response(null, { status: 404, headers: apiSecurityHeaders });
-    const requested = name === 'manifest.json' ? null : url.searchParams.get('v');
+    if (!replay && !['manifest.json', 'snapshot.json', 'history.json'].includes(name)) return new Response(null, { status: 404, headers: apiSecurityHeaders });
+    const requested = replay?.[2]==='manifest'||name === 'manifest.json' ? null : url.searchParams.get('v');
     if (requested && !versionPattern.test(requested)) return new Response(null, { status: 400, headers: apiSecurityHeaders });
+    if(replay && replay[2]!=='manifest' && !requested)return new Response(null,{status:400,headers:apiSecurityHeaders});
     // Cache only these allowlisted public responses. Static assets still bypass
     // the Worker, and failures never enter the cache. Local review stays fresh.
     const cache = env.ELECTRICITY_MODE === 'local' ? null : globalThis.caches?.default;
@@ -47,7 +49,13 @@ export default {
     }
     try {
       let response, cacheable = false;
-      if (name === 'manifest.json') {
+      if(replay) {
+        const key=`public/replay/${replay[1]}/${replay[2]}`+(requested?`/${requested}`:'');
+        const value=await env.ELECTRICITY_DATA.get(key,{type:'stream',cacheTtl:60});
+        if(!value)return new Response(null,{status:404,headers:{...apiSecurityHeaders,'Cache-Control':'no-store'}});
+        response=new Response(value,{headers:{...jsonHeaders,...(requested?{ETag:`"${requested}"`,'X-Electricity-Version':requested}:{}),'Cache-Control':requested?'public, max-age=300, s-maxage=86400, immutable':'public, max-age=30, s-maxage=60'}});
+        cacheable=true;
+      } else if (name === 'manifest.json') {
         const [snapshot, history] = await Promise.all(['snapshot', 'history'].map(async name => {
           const pointer = await readElectricityPointer(env.ELECTRICITY_DATA, name, scope);
           if (!pointer?.records?.length) return null;

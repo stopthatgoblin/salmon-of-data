@@ -26,7 +26,7 @@ def snapshot():
 class ROITests(unittest.TestCase):
     def test_station_catalog_upgrades_old_archives_and_reallocates_output(self):
         data = snapshot()
-        added = {'aughinish', 'tarbert-teg'}
+        added = {'aughinish', 'tarbert-teg', 'north-wall-teg', 'shannonbridge-teg', 'ringsend-flexgen', 'corduff-flexgen'}
         legacy = copy.deepcopy(data)
         allocated = sum(s['output'] or 0 for s in legacy['stations'] if s['id'] in added)
         legacy['stations'] = [s for s in legacy['stations'] if s['id'] not in added]

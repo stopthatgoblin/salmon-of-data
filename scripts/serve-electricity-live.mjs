@@ -10,8 +10,9 @@ const interval = 15 * 60 * 1000;
 const env = { ...process.env, ELECTRICITY_LOCAL_KV_DIR: directory, ELECTRICITY_LOCAL_LIVE: 'true' };
 delete env.ELECTRICITY_PREVIEW_API;
 const server = spawn(process.execPath, ['scripts/serve.mjs'], { env, stdio: 'inherit' });
-let collector, timer, historyCollector, historyTimer, historyBusy = false, stopped = false;
-const stop = () => { stopped = true; clearTimeout(timer); clearInterval(historyTimer); historyCollector?.kill('SIGTERM'); collector?.kill('SIGTERM'); server.kill('SIGTERM'); };
+let collector, timer, historyCollector, historyTimer, replayCollector, replayBusy=false, historyBusy = false, stopped = false;
+let replayQueue=Promise.resolve(),replayDay='',replayAttempt=0;
+const stop = () => { stopped = true; clearTimeout(timer); clearInterval(historyTimer); replayCollector?.kill('SIGTERM'); historyCollector?.kill('SIGTERM'); collector?.kill('SIGTERM'); server.kill('SIGTERM'); };
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, stop);
 server.on('exit', code => { stop(); process.exitCode = code || 0; });
 server.on('error', error => { console.error(error.message); stop(); process.exitCode = 1; });
@@ -25,6 +26,24 @@ async function read(url) {
   const response = await fetch(new URL(url, origin), { headers: { 'User-Agent': 'Mozilla/5.0 SalmonOfDataLocalPreview' }, signal: AbortSignal.timeout(30000), cache: 'no-store' });
   if (!response.ok) throw new Error(`NI public API: HTTP ${response.status}`);
   return response;
+}
+// Serialize daily meter backfills and the live journal so both retain all
+// previously accepted readings. Public files never contain source archives.
+function runReplay(args,module='electricity.replay') {
+  replayQueue=replayQueue.then(async()=>{
+    if(stopped)return;
+    const code=await new Promise((resolve,reject)=>{
+      replayCollector=spawn(python,['-u','-m',module,...args],{env,stdio:'inherit',timeout:20*60*1000});
+      replayCollector.on('error',reject);replayCollector.on('exit',resolve);
+    });
+    if(code!==0)throw new Error(`Archive exporter exited ${code}`);
+    return true;
+  }).catch(error=>{console.error(`[electricity local] Historical archive: ${error.message}. Previous complete dates retained.`);return false;});
+  return replayQueue;
+}
+async function captureReplay(){
+  await runReplay(['--journal-local',directory]);
+  await runReplay(['--seed','--local-dir',directory],'electricity.replay_cloud');
 }
 async function mirrorNI() {
   const manifest = await (await read('/api/electricity/manifest.json')).json();
@@ -78,6 +97,7 @@ async function tick() {
     }
   }
   if (!stopped) {
+    await captureReplay();
     const delay = Math.max(0, interval - (Date.now() - started));
     console.log(`[electricity local] Next collection ${new Date(Date.now() + delay).toISOString()}`);
     timer = setTimeout(tick, delay);
@@ -115,5 +135,22 @@ async function checkHistory() {
     }
   } finally { historyBusy = false; }
 }
-historyTimer = setInterval(checkHistory,60000);
+async function checkReplay() {
+  const now=new Date(),parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/London',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'}).formatToParts(now);
+  const part=type=>parts.find(p=>p.type===type).value;
+  const today=`${part('year')}-${part('month')}-${part('day')}`;
+  if(!replayDay){
+    try{const audit=JSON.parse(await fs.readFile('outputs/electricity-replay/audit.json','utf8'));if(audit.generatedAt?.startsWith(today)&&!audit.failures?.length)replayDay=today;}catch{ /* First backfill runs below. */ }
+  }
+  if(stopped||replayBusy||Number(part('hour'))<7||replayDay===today||Date.now()-replayAttempt<55*60000)return;
+  replayBusy=true;replayAttempt=Date.now();
+  try {
+    if(!await runReplay([]))return;
+    const manifests=await Promise.all(['ni','roi'].map(async region=>JSON.parse(await fs.readFile(`public/data/electricity-replay/${region}/manifest.json`,'utf8'))));
+    if(manifests.every(m=>m.generatedAt?.startsWith(today)))replayDay=today;
+    await captureReplay();
+  } finally {replayBusy=false;}
+}
+historyTimer = setInterval(()=>{void checkHistory();void checkReplay();},60000);
 void checkHistory();
+void checkReplay();

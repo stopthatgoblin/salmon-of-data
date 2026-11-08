@@ -67,9 +67,10 @@ export function createLiveClient({ api, fallback, validateUpdate, scheduleDescri
       const checking = !checked || failures === 1 && lastContact && Date.now() - lastContact < 5 * 60000;
       const unavailable = checked && failures > 0 && !checking;
       const preview = status?.mode === 'preview';
-      label.innerHTML = `<i></i> ${checking ? 'Checking for updates' : unavailable ? 'Connection unavailable' : delayed ? 'Delayed data' : failed ? 'Update delayed' : preview ? 'Preview readings' : 'Updates every 15 min'}`;
-      label.dataset.health = checking ? 'checking' : unavailable || delayed || failed ? 'delayed' : 'ok';
-      label.title = unavailable ? `Last connection check: ${connectionError}. Retrying every minute.` : 'Grid observation time shown alongside. Station dispatch instructions are published in hourly batches.';
+      const historical=root.dataset?.replayMode==='historical';
+      label.innerHTML = `<i></i> ${historical ? 'Historical view' : checking ? 'Checking for updates' : unavailable ? 'Connection unavailable' : delayed ? 'Delayed data' : failed ? 'Update delayed' : preview ? 'Preview readings' : 'Updates every 15 min'}`;
+      label.dataset.health = historical ? 'historical' : checking ? 'checking' : unavailable || delayed || failed ? 'delayed' : 'ok';
+      label.title = historical ? 'Historical grid readings and archived station outputs. Return to live for the latest readings.' : unavailable ? `Last connection check: ${connectionError}. Retrying every minute.` : 'Grid observation time shown alongside. Station dispatch instructions are published in hourly batches.';
       if (checking) {
         health.textContent = 'Checking for updates. The observation time beside the tabs identifies the readings currently shown.';
         return;
@@ -83,6 +84,7 @@ export function createLiveClient({ api, fallback, validateUpdate, scheduleDescri
     }
 
     function showUpdate(name) {
+      if(name==='snapshot' && root.dataset?.replayMode==='historical') return;
       if (reducedMotion.matches) return;
       const selectors = name === 'snapshot' ? ['.metrics', '#overview'] : ['#trends'];
       selectors.map(selector => root.querySelector(selector)).filter(element => element && !element.hidden).forEach(element => {
@@ -134,6 +136,7 @@ export function createLiveClient({ api, fallback, validateUpdate, scheduleDescri
     }
 
     showHealth();
+    events.addEventListener('dashboard:replaymode',showHealth,{signal});
     const timer = window.setInterval(poll, 60000);
     window.addEventListener('focus', poll, { signal });
     root.querySelector('#retry-live').addEventListener('click', poll, { signal });

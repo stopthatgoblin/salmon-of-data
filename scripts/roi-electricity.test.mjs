@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { test } from 'node:test';
 import { setImmediate } from 'node:timers/promises';
+import {assetStatusMarkup,celtic} from '../components/electricity/asset-status.js';
 import { reconcileSnapshot } from '../components/roi-electricity/balance.js';
 import { validateUpdate, mountLive, readInitialDataset } from '../components/roi-electricity/live.js';
 const snapshot = JSON.parse(fs.readFileSync('public/data/roi-electricity/snapshot.json'));
@@ -9,7 +10,7 @@ const history = JSON.parse(fs.readFileSync('public/data/roi-electricity/history.
 
 test('ROI falls back to the complete station edition while the API still has the old station set', async t => {
   const legacy = structuredClone(snapshot);
-  legacy.stations = legacy.stations.filter(station => !['aughinish','tarbert-teg'].includes(station.id));
+  legacy.stations = legacy.stations.filter(station => !['north-wall-teg','shannonbridge-teg','ringsend-flexgen','corduff-flexgen'].includes(station.id));
   Object.assign(legacy, reconcileSnapshot(legacy));
   const version = 'e'.repeat(24), requests = [];
   t.mock.method(globalThis, 'fetch', async url => {
@@ -20,7 +21,7 @@ test('ROI falls back to the complete station edition while the API still has the
   });
   const result = await readInitialDataset('snapshot', new AbortController().signal);
   assert.equal(result.version, null);
-  assert.equal(result.data.stations.length, 13);
+  assert.equal(result.data.stations.length, 17);
   assert.ok(result.data.stations.some(station => station.id === 'aughinish'));
   assert.ok(requests.includes('/data/roi-electricity/snapshot.json'));
 });
@@ -98,12 +99,13 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
     return nodes.get(key);
   };
   const demand = node('demand'); demand.dataset.reading = 'demand';
+  const generation = node('generation');generation.dataset.reading='generation';
   const peak = node('peak'); peak.dataset.expectedPeak = 'demand';
-  const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selector === '[data-reading]' ? [demand] : selector === '[data-expected-peak]' ? [peak] : [], addEventListener() {} };
+  const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selector === '[data-reading]' ? [demand,generation] : selector === '[data-expected-peak]' ? [peak] : [], addEventListener() {} };
   const dialog = node('#station-dialog');
   const events = new EventTarget(), controller = new AbortController();
   const initial = {...snapshot,expectedPeaks:{date:new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Dublin'}).format(new Date()),demand:5517,demandTime:'17:30'}};
-  const context = { root, data: initial, map: {}, events, signal: controller.signal, reconcileSnapshot, project, flowGeometry, generationIcon, interconnectorIcon,
+  const context = { root, data: initial, map: {}, events, signal: controller.signal, reconcileSnapshot, assetStatusMarkup, celtic, project, flowGeometry, generationIcon, interconnectorIcon,
     document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) },
     window: { matchMedia: () => ({ matches: true, addEventListener() {} }), addEventListener() {} },
     history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent, requestAnimationFrame() {} };
@@ -130,6 +132,9 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
   assert.match(node('#station-detail').innerHTML, new RegExp(String(Math.round(next.stations[0].units[0].output))));
   assert.equal(demand.innerHTML, `${new Intl.NumberFormat('en-IE').format(next.demand)} <small>MW</small>`);
   assert.equal(peak.textContent,"Today's expected peak: 5,520 MW at 18:00");
+  const balanced=reconcileSnapshot(next);
+  assert.equal(generation.innerHTML,`${new Intl.NumberFormat('en-IE').format(balanced.generation+balanced.reconciliation)} <small>MW</small>`);
+  assert.equal(balanced.generation+balanced.reconciliation+balanced.imports,balanced.demand);
   const storageCard = node('.plant-callout[data-station="turlough-hill"]').innerHTML;
   assert.match(storageCard, /292 MW<\/b> capacity/);
   assert.match(storageCard, /capacity-percent">50%/);

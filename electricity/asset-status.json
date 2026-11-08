@@ -1,0 +1,185 @@
+{
+  "asOf": "2026-11-08",
+  "celtic": {
+    "name": "Celtic Interconnector",
+    "status": "under-construction",
+    "capacityMW": 700,
+    "expectedCommissioning": "Q4 2028",
+    "display": "Expected Q4 2028",
+    "source": "https://www.eirgrid.ie/celticinterconnector",
+    "irelandLandfall": {
+      "name": "Claycastle Beach, Youghal, County Cork",
+      "location": [
+        -7.8601083,
+        51.9342528
+      ],
+      "accuracy": "WGS84 route start AC0 from statutory application; approximate dashboard point",
+      "source": "https://www.celticinterconnectorforeshorelicence.ie/appropriate-assessment-docs/Celtic%20Stage%202%20_AppropriateAssessment_PublicNotice.pdf"
+    },
+    "franceLandfall": {
+      "name": "Kerradenec, Cleder, Brittany",
+      "approximateMapLocation": [
+        -4.1,
+        48.69
+      ],
+      "accuracy": "Schematic vicinity only, not an operator-verified exact landfall coordinate",
+      "source": "https://assets.rte-france.com/prod/public/2024-07/CelticInterconnector_1eRapport-intermediaire-concertation-continue-VF.PDF"
+    },
+    "excludeFromLiveFlowAndImports": true
+  },
+  "outages": [
+    {
+      "assetId": "moyle",
+      "scope": "Pole 1 restriction",
+      "startDate": "2026-10-21",
+      "expectedEndDate": "2026-12-13",
+      "display": "Expected full capacity 13 Dec 2026",
+      "availableMW": 250,
+      "normalCommercialMW": 450,
+      "ratedMW": 500,
+      "reason": "Fault in onshore equipment in Northern Ireland; Pole 2 remains operational",
+      "published": "2026-11-03",
+      "source": "https://www.londonstockexchange.com/en/news/article/84WR/reduction-in-available-capacity/5437-3e-17-1f-da-45c08f",
+      "confidence": "Company RNS; estimate expressly subject to revision",
+      "start": "2026-10-20T23:00:00Z",
+      "end": "2026-12-13T23:59:00Z",
+      "publishedAt": "2026-11-03T00:00:00Z"
+    },
+    {
+      "assetId": "coolkeeragh",
+      "unitIds": [
+        "GU_500040"
+      ],
+      "scope": "C30",
+      "startLocal": "2026-09-11T00:01",
+      "expectedEndLocal": "2026-11-18T12:00",
+      "display": "C30 expected return 18 Nov 2026",
+      "availableMW": 0,
+      "unavailableMW": 425,
+      "reason": "Generator issues",
+      "publishedLocal": "2026-11-06T15:30:06",
+      "source": "https://umm.nordpoolgroup.com/#/messages/f72d4267-0e17-4f79-87c3-cb2987d8ea59/5",
+      "confidence": "Primary ESB Trading UMM revision 5",
+      "start": "2026-09-10T23:01:00Z",
+      "end": "2026-11-18T12:00:00Z",
+      "publishedAt": "2026-11-06T15:30:06Z"
+    },
+    {
+      "assetId": "coolkeeragh",
+      "unitIds": [
+        "GU_500041"
+      ],
+      "scope": "CGT8",
+      "startLocal": "2026-10-24T14:20",
+      "zeroAvailabilityFromLocal": "2026-11-03T12:21",
+      "expectedEndLocal": "2026-11-17T08:00",
+      "display": "CGT8 expected return 17 Nov 2026",
+      "availableMW": 0,
+      "unavailableMW": 53,
+      "reason": "Further work required",
+      "publishedLocal": "2026-11-03T12:29:00",
+      "source": "https://umm.nordpoolgroup.com/#/messages/54fea87f-5454-4b5f-a074-2fa6146de0ba/4",
+      "confidence": "Primary ESB Trading UMM revision 4; earlier interval had 26 MW available",
+      "start": "2026-10-24T13:20:00Z",
+      "end": "2026-11-17T08:00:00Z",
+      "publishedAt": "2026-11-03T12:29:00Z"
+    },
+    {
+      "assetId": "dublin-bay",
+      "unitIds": [
+        "GU_400500"
+      ],
+      "scope": "DB1",
+      "startLocal": "2026-06-12T12:00",
+      "expectedEndLocal": "2026-11-14T18:00",
+      "display": "Expected return 14 Nov 2026",
+      "availableMW": 0,
+      "unavailableMW": 415,
+      "reason": "Generator stator replacement",
+      "publishedLocal": "2026-11-03T16:24:22",
+      "source": "https://umm.nordpoolgroup.com/#/messages/09c911d4-0227-4a23-8514-69c478d5a186/8",
+      "confidence": "Primary ESB Trading UMM revision 8",
+      "start": "2026-06-12T11:00:00Z",
+      "end": "2026-11-14T18:00:00Z",
+      "publishedAt": "2026-11-03T16:24:22Z"
+    },
+    {
+      "assetId": "whitegate",
+      "unitIds": [
+        "GU_400930"
+      ],
+      "scope": "Whitegate power station",
+      "startLocal": "2026-11-01T21:00",
+      "expectedEndLocal": "2026-11-18T21:00",
+      "display": "Expected return 18 Nov 2026",
+      "availableMW": 0,
+      "unavailableMW": 444,
+      "reason": "Stage 1 bucket replacement",
+      "publishedLocal": "2026-09-22T08:53:01",
+      "source": "https://umm.nordpoolgroup.com/#/messages/00d522ec-697d-4623-a024-312b60ea07b0/2",
+      "confidence": "Primary Bord Gais Energy UMM revision 2; overlapping routine maintenance notice ends a day earlier",
+      "start": "2026-11-01T21:00:00Z",
+      "end": "2026-11-18T21:00:00Z",
+      "publishedAt": "2026-09-22T07:53:01Z"
+    },
+    {
+      "assetId": "moneypoint",
+      "unitIds": [
+        "GU_400271"
+      ],
+      "scope": "MP2 partial restriction",
+      "startLocal": "2026-11-06T19:20",
+      "expectedEndLocal": "2026-11-09T08:00",
+      "display": "MP2 restriction expected to end 9 Nov 2026",
+      "availableMW": 205,
+      "unavailableMW": 80,
+      "reason": "Grid code compliance test",
+      "publishedLocal": "2026-11-06T20:09:07",
+      "source": "https://umm.nordpoolgroup.com/#/messages/1d38972d-7af7-41cd-ab74-663e64d06dbf/1",
+      "confidence": "Primary ESB Trading UMM list; subsequent scheduled full outage follows immediately",
+      "start": "2026-11-06T19:20:00Z",
+      "end": "2026-11-09T08:00:00Z",
+      "publishedAt": "2026-11-06T20:09:07Z"
+    },
+    {
+      "assetId": "moneypoint",
+      "unitIds": [
+        "GU_400270",
+        "GU_400271",
+        "GU_400272"
+      ],
+      "scope": "All three units; future as of 8 Nov",
+      "startLocal": "2026-11-09T08:00",
+      "expectedEndLocal": "2026-11-16T22:00",
+      "display": "Expected return 16 Nov 2026",
+      "reason": "Common control system work for auxiliary boiler / HFO project",
+      "publishedLocal": "2026-11-03T15:48:34",
+      "sources": [
+        "https://umm.nordpoolgroup.com/#/messages/be5c5abe-e963-4cb1-8298-9093559e8cfc/1",
+        "https://umm.nordpoolgroup.com/#/messages/fa329669-5b39-405e-ab51-c87f242c9be2/1",
+        "https://umm.nordpoolgroup.com/#/messages/1fa7729b-ef1a-4921-a67d-a6470db4bdfb/1"
+      ],
+      "confidence": "Three primary ESB Trading UMM list entries; not a current complete-station outage on 8 Nov",
+      "start": "2026-11-09T08:00:00Z",
+      "end": "2026-11-16T22:00:00Z",
+      "publishedAt": "2026-11-03T15:48:34Z"
+    },
+    {
+      "assetId": "turlough-hill",
+      "unitIds": [
+        "GU_400363"
+      ],
+      "scope": "TH4 pumping only",
+      "startLocal": "2026-10-29T09:15",
+      "expectedEndLocal": "2026-11-20T17:00",
+      "display": "TH4 pumping expected to return 20 Nov 2026",
+      "reason": "Water leak; unavailable for pumping",
+      "publishedLocal": "2026-11-05T10:16:47",
+      "source": "https://umm.nordpoolgroup.com/#/messages/62f2d442-a410-41f0-9c1d-fbf850cca043/7",
+      "confidence": "Primary ESB Trading market-information UMM; does not declare all generation unavailable",
+      "start": "2026-10-29T09:15:00Z",
+      "end": "2026-11-20T17:00:00Z",
+      "publishedAt": "2026-11-05T10:16:47Z"
+    }
+  ]
+}

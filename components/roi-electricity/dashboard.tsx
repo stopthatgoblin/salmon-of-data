@@ -7,6 +7,8 @@ import '../electricity/icons.css';
 import '../electricity/navigation.css';
 import './roi.css';
 import '../electricity/theme.css';
+import '../electricity/replay.css';
+import '../electricity/asset-status.css';
 import { mountTheme } from '../electricity/theme.js';
 import { readInitialDataset } from './live.js';
 

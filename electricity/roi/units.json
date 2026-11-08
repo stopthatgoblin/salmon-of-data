@@ -1,7 +1,7 @@
 {
   "source": "https://reports.sem-o.com/documents/PUB_DailyRegisteredUnits_202611051101.xml",
   "technicalSource": "https://reports.sem-o.com/documents/PUB_DailyTechnicalOfferData_202611051015.xml",
-  "notes": "Selected registered generating units at the mapped stations. Huntstown TEG and Poolbeg Flexgen are included; batteries and neighbouring Cushaling peakers stay in Other/Unallocated. Whitegate is the Bord Gais Energy 445 MW resource GU_400930 (the register uses its ID as its unit name). Aghada AD1 is absent from the current register and excluded. Technical maximums and availability come from SEMO, not the design capacities. Aughinish Alumina uses SK3 and SK4; its demand-side unit is excluded. Tarbert TEG uses the registered aggregate GU_406490, separate from the retired oil station and future HVO project.",
+  "notes": "Selected registered generating units at the mapped stations. Huntstown TEG, North Wall TEG, Shannonbridge TEG, Tarbert TEG, Poolbeg Flexgen, Ringsend Flexgen and Corduff Flexgen are included; batteries and other peakers stay in Other/Unallocated. Whitegate is the Bord Gais Energy 445 MW resource GU_400930 (the register uses its ID as its unit name). Aghada AD1 is absent from the current register and excluded. Technical maximums and availability come from SEMO, not the design capacities. Aughinish Alumina uses SK3 and SK4; its demand-side unit is excluded. Tarbert TEG uses the registered aggregate GU_406490, separate from the retired oil station and future HVO project.",
   "stations": {
     "huntstown": [
       "GU_400480",
@@ -57,6 +57,18 @@
     ],
     "whitegate": [
       "GU_400930"
+    ],
+    "north-wall-teg": [
+      "GU_405850"
+    ],
+    "shannonbridge-teg": [
+      "GU_406510"
+    ],
+    "ringsend-flexgen": [
+      "GU_403610"
+    ],
+    "corduff-flexgen": [
+      "GU_403680"
     ]
   }
 }

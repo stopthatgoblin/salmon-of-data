@@ -1,8 +1,9 @@
 import { generationIcon, interconnectorIcon } from '../electricity/icons.js';
+import { assetStatusMarkup } from '../electricity/asset-status.js';
 // Adapted from NI electricity/dashboard/dist/app.js.
 export function mountOverview(root, data, map, events, signal) {
   const format = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
-  const n = value => format.format(value);
+  const n = value => Number.isFinite(value) ? format.format(value) : '-';
   const capacityUsage = (output, capacity) => capacity > 0 ? Math.abs(output) / capacity * 100 : null;
   const capacityPercent = value => value === null ? '-' : `${Math.round(value)}%`;
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -89,6 +90,8 @@ export function mountOverview(root, data, map, events, signal) {
   root.querySelector('#' + 'lakes').setAttribute('d', map.lakes);
 
   function renderOverview() {
+  const attribution=root.querySelector('.map-notes .chart-attribution');
+  if(attribution?.firstChild)attribution.firstChild.textContent=data.replay?`Historical EirGrid readings · SEMO ${data.replayStationBasis==='meter'?'metered half-hour station averages':'archived dispatch estimates'} · `:'EirGrid actuals · SEMO dispatch-target estimates & availability · ';
   root.querySelector('#' + 'renewables-share').textContent = data.demand > 0
     ? `${Math.round((data.wind + data.solar) / data.demand * 100)}%`
     : '-';
@@ -101,8 +104,7 @@ export function mountOverview(root, data, map, events, signal) {
       path: '.moyle-flow', marker: 'moyle-arrow',
       importPath: `M989 149C925 148 861 173 ${moyleNi.x} ${moyleNi.y}`,
       exportPath: `M${moyleNi.x} ${moyleNi.y}C861 173 925 148 989 149`,
-      note: data.moyleAvailable === 250 ? 'Capacity currently reduced from 500MW to 250MW due to a fault' : '',
-      noteSource: 'https://www.itv.com/news/utv/2026-10-31/fault-in-electricity-system-between-ni-and-gb',
+      note: data.moyleAvailable === 250 ? 'Pole 1 restriction · Pole 2 remains in service' : '',
     },
     {
       key: 'northSouth', name: 'North-South Interconnector', remote: 'ROI', value: data.northSouth,
@@ -121,13 +123,13 @@ export function mountOverview(root, data, map, events, signal) {
     const utilisation = capacityUsage(flow.value, flow.capacity);
     const capacityBasis = flow.capacityLabel === 'available' ? 'available capacity' : flow.capacityLabel;
     const card = root.querySelector(`[data-interconnector="${flow.key}"]`);
-    card.setAttribute('aria-label', `${flow.name}: ${state.toLowerCase()} ${amount} megawatts, ${direction}. ${n(flow.capacity)} megawatts ${flow.capacityLabel}${flow.estimated ? '. Estimated flow' : ''}. ${capacityPercent(utilisation)} of ${capacityBasis}.`);
+    card.setAttribute('aria-label', `${flow.name}: ${state.toLowerCase()} ${amount} megawatts, ${direction}. ${Number.isFinite(flow.capacity) ? `${n(flow.capacity)} megawatts ${flow.capacityLabel}. ${capacityPercent(utilisation)} of ${capacityBasis}.` : 'Capacity not archived.'}${flow.estimated ? ' Estimated flow.' : ''}`);
     card.innerHTML = `<div class="callout-heading"><span class="source-dot ${flow.colour}-colour"></span><span class="interconnector-name">${flow.name}</span></div>
       <div class="flow-value">${amount} <small>MW</small>${flow.estimated ? ' <span class="estimate-tag">est.</span>' : ''}${interconnectorIcon()}</div>
       <div class="flow-direction"><strong>${state}</strong><span>${direction}</span></div>
-      <div class="capacity-track"><span style="width:${Math.min(100, utilisation ?? 0)}%"></span><small class="capacity-percent" title="${utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of ${capacityBasis}`}">${capacityPercent(utilisation)}</small></div>
-      <div class="flow-capacity"><b>${n(flow.capacity)} MW</b> ${flow.capacityLabel}</div>
-      ${flow.note ? `<p class="fault-note">${escape(flow.note)}${flow.noteSource ? ` <a href="${escape(flow.noteSource)}" target="_blank" rel="noopener" aria-label="Source for Moyle capacity reduction">↗</a>` : ''}</p>` : ''}`;
+      <div class="capacity-track"><span style="width:${Math.min(100, utilisation ?? 0)}%"></span><small class="capacity-percent" title="${!Number.isFinite(flow.capacity) ? 'Capacity not archived' : utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of ${capacityBasis}`}">${capacityPercent(utilisation)}</small></div>
+      <div class="flow-capacity">${Number.isFinite(flow.capacity) ? `<b>${n(flow.capacity)} MW</b> ${flow.capacityLabel}` : 'Capacity not archived'}</div>
+      ${flow.note ? `<p class="fault-note">${escape(flow.note)}</p>` : ''}${assetStatusMarkup(flow.key,data)}`;
     const path = root.querySelector(flow.path);
     path.setAttribute('d', exporting ? flow.exportPath : flow.importPath);
     path.dataset.direction = importing ? 'import' : exporting ? 'export' : 'balanced';
@@ -147,16 +149,16 @@ export function mountOverview(root, data, map, events, signal) {
   root.querySelectorAll('[data-stamp]').forEach(el => el.textContent = data[el.dataset.stamp] ? stamp(data[el.dataset.stamp]) : 'Not recorded');
   root.querySelectorAll('[data-snapshot-time]').forEach(el => {el.dateTime = data.time; el.textContent = stamp(data.time);});
   root.querySelectorAll('[data-snapshot-short]').forEach(el => el.textContent = stamp(data.time));
-  root.querySelectorAll('[data-report-link]').forEach(el => {if(data[el.dataset.reportLink]) el.href = `https://reports.sem-o.com/documents/${data[el.dataset.reportLink]}`;});
+  root.querySelectorAll('[data-report-link]').forEach(el => {if(data[el.dataset.reportLink]) el.href = `https://reports.sem-o.com/documents/${data[el.dataset.reportLink]}`;else el.removeAttribute('href');});
   data.stations.forEach(station => {
     const button = root.querySelector(`.plant-callout[data-station="${station.id}"]`);
     const utilisation = capacityUsage(station.output, station.available);
     const percentage = Math.min(100, utilisation ?? 0);
-    button.setAttribute('aria-label', `${station.name}: estimated output ${n(station.output)} megawatts, ${n(station.available)} megawatts available. ${utilisation === null ? 'No available capacity.' : `${capacityPercent(utilisation)} of available capacity.`} Explore ${station.units.length} units.`);
+    button.setAttribute('aria-label', `${station.name}: ${data.replayStationBasis==='meter'?'metered half-hour average':'estimated output'} ${n(station.output)} megawatts. ${!Number.isFinite(station.available) ? 'Capacity not archived.' : `${n(station.available)} megawatts available. ${utilisation === null ? 'No available capacity.' : `${capacityPercent(utilisation)} of available capacity.`}`} Explore ${station.units.length} units.`);
     button.innerHTML = `<span class="plant-name">${escape(station.name)} <span class="plant-open" aria-hidden="true">↗</span></span>
-      <span class="plant-reading"><strong>${n(station.output)}</strong><small>MW</small><span class="estimate-tag">est.</span>${generationIcon(station.generationType ?? 'gas')}</span>
-      <span class="plant-meter capacity-track" aria-hidden="true"><span style="width:${percentage}%"></span><small class="capacity-percent" title="${utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of reported available capacity`}">${capacityPercent(utilisation)}</small></span>
-      <span class="plant-capacity"><span><b>${n(station.available)} MW</b> available</span><span class="units-link">${station.units.length} units <span aria-hidden="true">↗</span></span></span>`;
+      <span class="plant-reading"><strong>${n(station.output)}</strong><small>MW</small><span class="estimate-tag">${data.replayStationBasis==='meter'?'avg.':'est.'}</span>${generationIcon(station.generationType ?? 'gas')}</span>
+      <span class="plant-meter capacity-track" aria-hidden="true"><span style="width:${percentage}%"></span><small class="capacity-percent" title="${!Number.isFinite(station.available) ? 'Capacity not archived' : utilisation === null ? 'No available capacity' : `${capacityPercent(utilisation)} of reported available capacity`}">${capacityPercent(utilisation)}</small></span>
+      <span class="plant-capacity"><span>${Number.isFinite(station.available)?`<b>${n(station.available)} MW</b> available`:'Capacity not archived'}</span><span class="units-link">${station.units.length} units <span aria-hidden="true">↗</span></span></span>${assetStatusMarkup(station.id,data,{compact:true})}`;
     const marker = root.querySelector(`[data-map-plant="${station.id}"]`);
     marker.classList.toggle('muted', station.output === 0);
   });
@@ -207,14 +209,15 @@ export function mountOverview(root, data, map, events, signal) {
     const station = data.stations.find(item => item.id === id);
     if (!station) return;
     const availableCount = station.units.filter(unit => unit.available > 0).length;
+    const capacityKnown=station.units.every(unit=>Number.isFinite(unit.available));
     root.querySelector('#' + 'station-switcher').innerHTML = data.stations.map(item => `<button data-switch="${item.id}" aria-pressed="${item.id === id}">${escape(item.name)}</button>`).join('');
     root.querySelector('#' + 'station-detail').innerHTML = `
-      <div class="station-title-row"><h2 id="station-title">${generationIcon(station.generationType ?? 'gas')}${escape(station.name)}</h2><span class="station-status">${availableCount} of ${station.units.length} units available</span></div>
-      <div class="station-summary"><div><span>Estimated output</span><strong>${n(station.output)} <small>MW</small></strong></div><div><span>Reported available</span><strong>${n(station.available)} <small>MW</small></strong></div><div><span>Technical maximum</span><strong>${n(station.maximum)} <small>MW</small></strong></div></div>
-      <table class="unit-table"><caption>Generating units <span class="estimate-tag">MW</span></caption><thead><tr><th scope="col">Unit / fuel</th><th scope="col">Output <span class="estimate-tag">est.</span></th><th scope="col">Available</th><th scope="col">Maximum</th></tr></thead><tbody>${station.units.map(unit => {
-        const statusClass = !unit.available ? 'unavailable' : unit.status === 'Start instructed' ? 'starting' : unit.output ? 'running' : '';
+      <div class="station-title-row"><h2 id="station-title">${generationIcon(station.generationType ?? 'gas')}${escape(station.name)}</h2><span class="station-status">${capacityKnown?`${availableCount} of ${station.units.length} units available`:'Availability not archived'}</span></div>
+      <div class="station-summary"><div><span>${data.replay?(data.replayStationBasis==='meter'?'Metered half-hour average':'Archived estimate'):'Estimated output'}</span><strong>${n(station.output)} <small>MW</small></strong></div><div><span>Reported available</span><strong>${n(station.available)} <small>MW</small></strong></div><div><span>Technical maximum</span><strong>${n(station.maximum)} <small>MW</small></strong></div></div>
+      <table class="unit-table"><caption>Generating units <span class="estimate-tag">MW</span></caption><thead><tr><th scope="col">Unit / fuel</th><th scope="col">Output <span class="estimate-tag">${data.replayStationBasis==='meter'?'avg.':'est.'}</span></th><th scope="col">Available</th><th scope="col">Maximum</th></tr></thead><tbody>${station.units.map(unit => {
+        const statusClass = unit.available===0 ? 'unavailable' : unit.status === 'Start instructed' ? 'starting' : unit.output ? 'running' : '';
         return `<tr><td><span class="unit-name">${escape(unit.name)}</span><span class="unit-fuel">${escape(unit.fuel)}</span><span class="unit-status ${statusClass}"><i></i>${escape(unit.status)}</span></td><td class="unit-output ${unit.output ? '' : 'unit-zero'}">${n(unit.output)}</td><td>${n(unit.available)}</td><td>${n(unit.maximum)}</td></tr>`;
-      }).join('')}</tbody></table>`;
+      }).join('')}</tbody></table>${assetStatusMarkup(station.id,data)}${data.replay?`<p class="station-note">${escape(station.note)}</p>`:''}`;
   }
 
   root.addEventListener('click', event => {

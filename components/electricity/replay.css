@@ -1,0 +1,18 @@
+:is(.ni-electricity,.roi-electricity) .replay-controls{border-bottom:1px solid var(--line);margin:0 0 10px;padding:7px 0 11px;font:11px/1.5 Arial,Helvetica,sans-serif;color:var(--muted)}
+:is(.ni-electricity,.roi-electricity) .replay-controls summary{display:flex;align-items:center;gap:7px;cursor:pointer;color:var(--teal);width:max-content;list-style:none;padding:4px 0}
+:is(.ni-electricity,.roi-electricity) .replay-controls summary::-webkit-details-marker{display:none}
+:is(.ni-electricity,.roi-electricity) .replay-controls summary svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+:is(.ni-electricity,.roi-electricity) .replay-mode{font-size:10px;margin-left:7px;color:var(--muted);border-left:1px solid var(--line);padding-left:12px}
+:is(.ni-electricity,.roi-electricity) .replay-panel{padding:10px 0 0}.replay-panel[hidden]{display:none}
+:is(.ni-electricity,.roi-electricity) .replay-fields{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+:is(.ni-electricity,.roi-electricity) .replay-fields label{display:grid;gap:4px;font-size:10px;color:var(--muted)}
+:is(.ni-electricity,.roi-electricity) .replay-fields :is(input,select,button){font:12px Arial,sans-serif;color:var(--ink);border:1px solid var(--line);border-radius:3px;background:var(--background);min-height:34px;padding:7px 11px}
+:is(.ni-electricity,.roi-electricity) .replay-fields :is(input,select){min-width:140px}
+:is(.ni-electricity,.roi-electricity) .replay-fields button{cursor:pointer}.replay-fields :disabled{opacity:.45;cursor:default!important}
+:is(.ni-electricity,.roi-electricity) .replay-fields button:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+:is(.ni-electricity,.roi-electricity) .replay-steps{display:flex;gap:4px}
+:is(.ni-electricity,.roi-electricity) .replay-message{font:10px/1.7 Arial,sans-serif;margin:9px 0 0;color:var(--muted)}
+:is(.ni-electricity,.roi-electricity)[data-replay-mode=historical] .replay-mode{color:var(--salmon)}
+:is(.ni-electricity,.roi-electricity)[data-replay-mode=historical] [data-expected-peak]{visibility:hidden}
+:root[data-electricity-theme=dark] .replay-fields input{color-scheme:dark}
+@media(max-width:500px){:is(.ni-electricity,.roi-electricity) .replay-fields{gap:10px}:is(.ni-electricity,.roi-electricity) .replay-fields :is(input,select){min-width:0;width:100%}:is(.ni-electricity,.roi-electricity) .replay-fields label{flex:1;min-width:120px}:is(.ni-electricity,.roi-electricity) .replay-mode{font-size:9px}}

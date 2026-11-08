@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 import json
 import math
+import time
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -36,8 +37,14 @@ def finite(value):
 
 def fetch(url):
     request = Request(url, headers={'Eirgrid-Content-Request':'Nextjs','User-Agent':'SalmonOfDataROI/1'})
-    with urlopen(request, timeout=30) as response:
-        return response.read()
+    for attempt in range(3):
+        try:
+            with urlopen(request, timeout=30) as response:
+                return response.read()
+        except Exception:
+            if attempt == 2:
+                raise
+            time.sleep(attempt+1)
 
 def save_json(path, value):
     temporary = path.with_suffix('.tmp')
@@ -278,6 +285,8 @@ def build(ni):
             station['note'] += ' Aughinish Alumina CHP uses registered generating units SK3 and SK4. The demand-side unit is excluded. CHP generation and surplus grid export are different measures.'
         if station['id'] == 'tarbert-teg':
             station['note'] += ' Tarbert TEG is the existing temporary emergency plant, registered as TARBERT TEG 2. It is separate from the retired oil station and future HVO project. An earlier meter seed does not establish current operating status.'
+        if station['id'] in ['north-wall-teg','shannonbridge-teg']:
+            station['note'] += ' Temporary emergency generation, operated on the system operator\'s instruction. Earlier meter readings do not establish current operating status.'
     snapshot.update(dataBasis='public-source-capture',time=iso(at),capturedAt=iso(datetime.utcnow()),retrievedAt=max(p['retrievedAt'] for p in provenance.values()),demand=grid['ROI','SYSTEM_DEMAND'],generation=grid['ROI','GEN_EXP'],wind=grid['ROI','WIND_ACTUAL'],solar=grid['ROI','SOLAR_ACTUAL'],ni=dict(time=ni['time'],version=ni['version'],demand=ni['demand'],generation=ni['generation'],moyle=ni['moyle'],dataBasis='accepted-ni-snapshot'),expectedPeaks=peaks(at),sources=dict(grid=provenance,plants=plant_sources),northSouthBasis='ni-balance-reversed')
     for flow in snapshot['interconnectors']:
         flow['card'] = LAYOUT['interconnectorCards'][flow['id']]

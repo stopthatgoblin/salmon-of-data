@@ -9,23 +9,31 @@
         53.413
       ],
       "card": [
-        318.4,
+        20,
         10
       ],
       "fuel": "Natural gas",
       "generationType": "gas",
-      "leaderSide": "bottom",
+      "leaderSide": "right",
+      "index": 1,
       "leaderWaypoints": [
         [
-          620,
-          170
+          460,
+          77
         ],
         [
-          620,
-          380
+          460,
+          345
+        ],
+        [
+          720,
+          500
+        ],
+        [
+          740,
+          570
         ]
-      ],
-      "index": 1
+      ]
     },
     {
       "id": "dublin-bay",
@@ -37,19 +45,20 @@
       ],
       "card": [
         1000,
-        110
+        155
       ],
       "fuel": "Natural gas",
       "generationType": "gas",
       "markerOffset": [
-        -8,
-        8
+        10,
+        -14
       ],
       "labelOffset": [
-        -38,
-        24
+        12,
+        -13
       ],
-      "index": 2
+      "index": 2,
+      "leaderSide": "left"
     },
     {
       "id": "poolbeg",
@@ -61,19 +70,20 @@
       ],
       "card": [
         1000,
-        505
+        735
       ],
       "fuel": "Natural gas",
       "generationType": "gas",
       "markerOffset": [
-        8,
-        -8
+        16,
+        24
       ],
       "labelOffset": [
         13,
-        -15
+        20
       ],
-      "index": 3
+      "index": 3,
+      "leaderSide": "left"
     },
     {
       "id": "edenderry",
@@ -85,22 +95,22 @@
       ],
       "card": [
         20,
-        100
+        155
       ],
       "fuel": "Biomass",
       "generationType": "biomass",
       "leaderSide": "right",
+      "index": 4,
       "leaderWaypoints": [
         [
-          460,
-          168
+          440,
+          222
         ],
         [
-          460,
-          470
+          440,
+          500
         ]
-      ],
-      "index": 4
+      ]
     },
     {
       "id": "tynagh",
@@ -112,11 +122,12 @@
       ],
       "card": [
         20,
-        244
+        445
       ],
       "fuel": "Natural gas",
       "generationType": "gas",
-      "index": 5
+      "index": 5,
+      "leaderSide": "right"
     },
     {
       "id": "turlough-hill",
@@ -128,11 +139,12 @@
       ],
       "card": [
         1000,
-        680
+        880
       ],
       "fuel": "Pumped-storage hydro",
       "generationType": "pumped",
-      "index": 6
+      "index": 6,
+      "leaderSide": "left"
     },
     {
       "id": "ardnacrusha",
@@ -144,11 +156,12 @@
       ],
       "card": [
         20,
-        388
+        590
       ],
       "fuel": "Hydro",
       "generationType": "hydro",
-      "index": 7
+      "index": 7,
+      "leaderSide": "right"
     },
     {
       "id": "aughinish",
@@ -161,7 +174,7 @@
       ],
       "card": [
         20,
-        532
+        735
       ],
       "fuel": "Natural gas CHP",
       "generationType": "gas",
@@ -169,7 +182,22 @@
         4,
         -18
       ],
-      "index": 8
+      "index": 8,
+      "leaderSide": "right",
+      "leaderWaypoints": [
+        [
+          267,
+          802
+        ],
+        [
+          325,
+          710
+        ],
+        [
+          380,
+          715
+        ]
+      ]
     },
     {
       "id": "moneypoint",
@@ -181,7 +209,7 @@
       ],
       "card": [
         20,
-        676
+        880
       ],
       "fuel": "Oil · reserve",
       "generationType": "oil",
@@ -193,7 +221,8 @@
         -25,
         -13
       ],
-      "index": 9
+      "index": 9,
+      "leaderSide": "right"
     },
     {
       "id": "tarbert-teg",
@@ -205,7 +234,7 @@
       ],
       "card": [
         20,
-        820
+        1025
       ],
       "fuel": "Distillate oil",
       "generationType": "oil",
@@ -217,7 +246,8 @@
         -2,
         33
       ],
-      "index": 10
+      "index": 10,
+      "leaderSide": "right"
     },
     {
       "id": "great-island",
@@ -229,21 +259,11 @@
       ],
       "card": [
         698.4,
-        964
+        1170
       ],
       "fuel": "Natural gas",
       "generationType": "gas",
       "leaderSide": "top",
-      "leaderWaypoints": [
-        [
-          810,
-          930
-        ],
-        [
-          683,
-          930
-        ]
-      ],
       "index": 11
     },
     {
@@ -256,7 +276,7 @@
       ],
       "card": [
         20,
-        964
+        1170
       ],
       "fuel": "Natural gas / distillate",
       "generationType": "gas",
@@ -264,7 +284,8 @@
         5,
         -7
       ],
-      "index": 12
+      "index": 12,
+      "leaderSide": "top"
     },
     {
       "id": "whitegate",
@@ -276,21 +297,11 @@
       ],
       "card": [
         318.4,
-        964
+        1170
       ],
       "fuel": "Natural gas",
       "generationType": "gas",
       "leaderSide": "top",
-      "leaderWaypoints": [
-        [
-          430,
-          934
-        ],
-        [
-          514,
-          934
-        ]
-      ],
       "markerOffset": [
         -5,
         7
@@ -300,20 +311,130 @@
         29
       ],
       "index": 13
+    },
+    {
+      "id": "north-wall-teg",
+      "name": "North Wall TEG",
+      "region": "County Dublin · Temporary emergency generation",
+      "location": [
+        -6.208,
+        53.349
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "markerOffset": [
+        8,
+        0
+      ],
+      "labelOffset": [
+        12,
+        0
+      ],
+      "card": [
+        1000,
+        300
+      ],
+      "leaderSide": "left",
+      "index": 14
+    },
+    {
+      "id": "shannonbridge-teg",
+      "name": "Shannonbridge TEG",
+      "region": "County Offaly · Temporary emergency generation",
+      "location": [
+        -8.034,
+        53.272
+      ],
+      "fuel": "Distillate oil",
+      "generationType": "oil",
+      "labelOffset": [
+        -22,
+        -18
+      ],
+      "card": [
+        20,
+        300
+      ],
+      "leaderSide": "right",
+      "index": 15,
+      "leaderWaypoints": [
+        [
+          400,
+          367
+        ],
+        [
+          400,
+          550
+        ]
+      ]
+    },
+    {
+      "id": "ringsend-flexgen",
+      "name": "Ringsend Flexgen",
+      "region": "County Dublin",
+      "location": [
+        -6.204,
+        53.337
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "markerOffset": [
+        4,
+        12
+      ],
+      "labelOffset": [
+        -32,
+        13
+      ],
+      "card": [
+        1000,
+        590
+      ],
+      "leaderSide": "left",
+      "index": 16
+    },
+    {
+      "id": "corduff-flexgen",
+      "name": "Corduff Flexgen",
+      "region": "County Dublin",
+      "location": [
+        -6.377,
+        53.417
+      ],
+      "fuel": "Natural gas",
+      "generationType": "gas",
+      "markerOffset": [
+        -10,
+        -12
+      ],
+      "labelOffset": [
+        -40,
+        -14
+      ],
+      "card": [
+        1000,
+        10
+      ],
+      "leaderSide": "left",
+      "index": 17
     }
   ],
   "interconnectorCards": {
     "northSouth": [
-      698.4,
+      508.4,
       10
     ],
     "eastWest": [
       1000,
-      275
+      445
     ],
     "greenlink": [
       1000,
-      855
+      1025
+    ],
+    "celtic": [
+      1000,
+      1170
     ]
   }
 }

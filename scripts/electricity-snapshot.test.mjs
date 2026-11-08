@@ -1,3 +1,4 @@
+import {assetStatusMarkup} from '../components/electricity/asset-status.js';
 import { generationIcon, interconnectorIcon } from '../components/electricity/icons.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -48,7 +49,7 @@ test('electricity overview labels imports, exports and zero consistently', () =>
     const root = { dataset: {}, querySelector: node, querySelectorAll: selector => selectors[selector] || [], addEventListener() {} };
     const data = { time: '2026-10-31T21:00:00Z', demand: 1000, generation: 1000 - moyle - northSouth, wind: 300, solar: 0, other: 0, moyle, northSouth, moyleAvailable: 250, northSouthReferenceCapacity: 300, stations: [] };
     data.expectedPeaks = {date: new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/London'}).format(new Date()), demand: {value:1295,time:'17:30',basis:'Test forecast',retrievedAt:new Date().toISOString()}};
-    const context = { generationIcon, interconnectorIcon, root, data, map: {}, events: { dispatchEvent() {}, addEventListener() {} }, signal: {}, document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) }, window: { matchMedia: () => ({ matches: false, addEventListener() {} }), addEventListener() {} }, history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent: class {} };
+    const context = { assetStatusMarkup, generationIcon, interconnectorIcon, root, data, map: {}, events: { dispatchEvent() {}, addEventListener() {} }, signal: {}, document: { createElement: () => node(Symbol()), createElementNS: () => node(Symbol()) }, window: { matchMedia: () => ({ matches: false, addEventListener() {} }), addEventListener() {} }, history: { replaceState() {} }, location: { hash: '#overview' }, CustomEvent: class {} };
     vm.runInNewContext(`${source}\nmountOverview(root, data, map, events, signal);`, context);
     assert.equal(node('#net-flow-label').textContent, label);
     assert.equal(reading.innerHTML, `${value} <small>MW</small>`);

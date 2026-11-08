@@ -1,0 +1,9 @@
+:is(.ni-electricity,.roi-electricity) .asset-return-notes{display:grid;gap:3px;margin-top:7px}
+:is(.ni-electricity,.roi-electricity) .asset-return{font:9px/1.5 Arial,sans-serif;color:var(--teal);text-decoration:none;white-space:normal}
+:is(.ni-electricity,.roi-electricity) .asset-return:hover{text-decoration:underline;text-underline-offset:3px}
+:is(.ni-electricity,.roi-electricity) .plant-callout .asset-return-notes{margin-top:6px}
+.roi-electricity .celtic-route{fill:none;stroke:var(--teal);stroke-width:1.6;stroke-dasharray:5 5;opacity:.6;vector-effect:non-scaling-stroke}
+.roi-electricity .celtic-landfall{fill:var(--background);stroke:var(--teal);stroke-width:1.5;stroke-dasharray:2 2}
+@media(max-width:1000px){.ni-electricity .plant-callout>.asset-return-notes{grid-column:1/-1;grid-row:5}}
+.roi-electricity .planned-connector .flow-capacity a{color:var(--teal);text-decoration:none}.roi-electricity .planned-connector .flow-capacity a:hover{text-decoration:underline}
+.roi-electricity .planned-capacity-track{background:none;border-top:1px dashed var(--teal);opacity:.5}

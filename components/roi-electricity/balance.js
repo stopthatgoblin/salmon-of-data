@@ -1,5 +1,6 @@
 // One shared cross-border estimate, viewed from opposite jurisdictions.
 // Preserve published ROI generation; put the signed reconciliation in Other.
+import layout from '../../electricity/roi/layout.json' with {type:'json'};
 export function reconcileSnapshot(snapshot) {
   const ni = snapshot.ni;
   for (const value of [snapshot.demand,snapshot.generation,snapshot.wind,snapshot.solar,ni?.demand,ni?.generation,ni?.moyle]) {
@@ -10,7 +11,7 @@ export function reconcileSnapshot(snapshot) {
   const northSouth = -niNorthSouth;
   const interconnectors = snapshot.interconnectors.map(flow => {
     if (!Number.isFinite(flow.value)) throw new Error('Missing interconnector reading');
-    const display = {...flow,name:flow.name.replace(/[\u2013\u2014]/g,'-')};
+    const display = {...flow,card:layout.interconnectorCards[flow.id]??flow.card,name:flow.name.replace(/[\u2013\u2014]/g,'-')};
     return flow.id === 'northSouth' ? {...display,value:northSouth,basis:'ni-balance-reversed'} : display;
   });
   for (const id of ['eastWest','greenlink','northSouth']) {
@@ -22,5 +23,6 @@ export function reconcileSnapshot(snapshot) {
   const stationOutput = snapshot.stations.reduce((sum,station) => sum + (station.output ?? 0),0);
   const otherGeneration = snapshot.generation - snapshot.wind - snapshot.solar - stationOutput;
   const reconciliation = snapshot.demand - snapshot.generation - imports;
-  return {...snapshot,interconnectors,imports,niNorthSouth,otherGeneration,reconciliation,other:otherGeneration+reconciliation,northSouthBasis:'ni-balance-reversed'};
+  const stations=snapshot.stations.map(station=>({...station,leaderWaypoints:null,markerOffset:null,labelOffset:null,...layout.stations.find(item=>item.id===station.id)}));
+  return {...snapshot,stations,interconnectors,imports,niNorthSouth,otherGeneration,reconciliation,other:otherGeneration+reconciliation,northSouthBasis:'ni-balance-reversed'};
 }

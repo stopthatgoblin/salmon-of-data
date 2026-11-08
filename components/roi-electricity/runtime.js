@@ -3,6 +3,7 @@ import * as model from './history-model.js';
 import { mountOverview } from './overview.js';
 import { mountTrends } from './trends.js';
 import { mountLive } from './live.js';
+import { mountReplay } from '../electricity/replay.js';
 export function mountElectricity(root, snapshot, history, signal, versions) {
   const events = new EventTarget();
   let trendsMounted = Boolean(history?.days?.length);
@@ -16,5 +17,5 @@ export function mountElectricity(root, snapshot, history, signal, versions) {
     }
   }, {signal});
   mountOverview(root, snapshot, map, events, signal);
-  mountLive(root, snapshot, history, events, signal, versions);
+  mountLive(root, snapshot, history, mountReplay(root,'roi',snapshot,events,signal), signal, versions);
 }
