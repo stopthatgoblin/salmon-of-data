@@ -1,18 +1,19 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, CalendarDays } from 'lucide-react';
-import IrelandGasDashboard, { type GasSnapshot } from './dashboard';
-import fallback from '@/public/data/ireland-gas/latest.json';
+import { ArrowLeft, ArrowRight, History } from 'lucide-react';
+import IrelandGasDashboard from './dashboard';
+import type { GasSnapshot } from './types';
 
 type Day = { date: string; version: string; collectedAt: string; meteredHours: number; estimatedHours: number };
 type Manifest = { schema: number; days: Day[]; latest: string; lastAttempt: string; lastSuccess: string; lastError: string | null };
-const validDate = (value: string | null): value is string => !!value && /^\d{4}-\d{2}-\d{2}$/.test(value);
+const validDate = (value: string | null): value is string => !!value && /^\d{4}-\d{2}-\d{2}$/.test(value)
+  && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0,10) === value;
 const label = (value: string) => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));
 
-function validSnapshot(input: unknown, day: string): input is GasSnapshot {
+function validSnapshot(input: unknown, day: string, version: string): input is GasSnapshot {
   const value = input as GasSnapshot;
-  if (value?.schema !== 1 || value.gasDay !== day || !Array.isArray(value.hourly) || value.hourly.length < 23 || value.hourly.length > 25) return false;
+  if (value?.schema !== 1 || value.gasDay !== day || value.version !== version || !Array.isArray(value.hourly) || value.hourly.length < 23 || value.hourly.length > 25) return false;
   return (['ni','roi'] as const).every(region=>{
     const row=value.regions?.[region];
     return row && ['totalGas','powerGas','otherGas','electricity','demand','demandShare','powerShare'].every(key=>Number.isFinite(row[key as keyof typeof row]));
@@ -21,14 +22,15 @@ function validSnapshot(input: unknown, day: string): input is GasSnapshot {
 }
 
 export default function GasLiveDashboard() {
-  const [snapshot,setSnapshot] = useState<GasSnapshot>(fallback);
+  const [snapshot,setSnapshot] = useState<GasSnapshot | null>(null);
   const [manifest,setManifest] = useState<Manifest | null>(null);
   const [selected,setSelected] = useState<string | null>(null);
   const [message,setMessage] = useState('Checking the daily archive…');
   const [loading,setLoading] = useState(true);
+  const [problem,setProblem] = useState(false);
   const selection = useRef<string | null>(null);
   const epoch = useRef(0);
-  const current = useRef({day:fallback.gasDay,version:''});
+  const current = useRef({day:'',version:''});
   const controller = useRef<AbortController | null>(null);
 
   const refresh = useCallback(async () => {
@@ -47,12 +49,12 @@ export default function GasLiveDashboard() {
       setManifest(index);
       const wanted = selection.current || index.latest;
       const record = index.days.find(row=>row.date === wanted);
-      if (!record) {setMessage('This date is not in the archive. Choose an available day.');return;}
+      if (!record) {setProblem(true);setMessage('This date is not in the archive. Choose an available day.');return;}
       if (current.current.day !== wanted || current.current.version !== record.version) {
         let data: GasSnapshot | null = null;
         for (let attempt=0;attempt<3;attempt++) {
           const result=await fetch(`/api/gas/day/${wanted}.json?v=${record.version}`,{cache:'no-cache',signal:abort.signal});
-          if (result.ok) {const value=await result.json();if(validSnapshot(value,wanted)){data=value;break;}}
+          if (result.ok) {const value=await result.json();if(validSnapshot(value,wanted,record.version)){data=value;break;}}
           // A manifest can propagate before its immutable object. Retain the UI.
           if(attempt<2) await new Promise<void>((resolve,reject)=>{
             const timer=setTimeout(resolve,1500*(attempt+1));
@@ -65,11 +67,15 @@ export default function GasLiveDashboard() {
       }
       const today = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Dublin',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
       const due = new Date(today+'T12:00:00Z');due.setUTCDate(due.getUTCDate()-1);
+      const localHour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Dublin',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
+      if(localHour<19)due.setUTCDate(due.getUTCDate()-1);
       const late = index.latest < due.toISOString().slice(0,10);
-      setMessage(index.lastError ? 'Update delayed. Showing the last accepted data.' : late ? 'The newest gas day is not yet available. Showing the last accepted data.' : selection.current ? 'Historical view. Figures include accepted revisions.' : 'Latest accepted gas day. Daily collection starts at 19:00 Ireland time.');
+      setProblem(!!index.lastError || late);
+      setMessage(index.lastError || late ? 'Update delayed. Showing the last accepted day.' : selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.');
     } catch (error) {
       if (abort.signal.aborted || generation !== epoch.current) return;
-      setMessage(selection.current ? 'Could not load the requested date. The displayed date remains unchanged.' : 'Could not refresh. Showing the saved snapshot dated below.');
+      setProblem(true);
+      setMessage(current.current.day ? 'Could not refresh. Showing the last loaded day.' : 'Gas data could not be loaded. Please retry.');
     } finally {if(generation===epoch.current)setLoading(false);}
   },[]);
 
@@ -93,20 +99,27 @@ export default function GasLiveDashboard() {
     return()=>{clearInterval(poll);controller.current?.abort();document.removeEventListener('visibilitychange',visible);window.removeEventListener('popstate',readUrl);};
   },[refresh]);
 
-  useEffect(()=>{document.title=`All-Ireland gas · ${label(snapshot.gasDay)} | Salmon of Data`;},[snapshot.gasDay]);
+  useEffect(()=>{if(snapshot)document.title=`All-Ireland gas · ${label(snapshot.gasDay)} | Salmon of Data`;},[snapshot?.gasDay]);
+  if(!snapshot)return <main className="wrap ireland-gas-page"><div className="ireland-gas gas-loading" aria-busy={loading}>
+    <h1 className="gas-sr-only">All-Ireland gas</h1><p role="status">{loading?'Loading the gas archive…':message}</p>
+    {!loading&&<><button type="button" className="gas-text-button" onClick={()=>void refresh()}>Retry</button>{selected&&<button type="button" className="gas-text-button" onClick={()=>choose(null)}>Show latest day</button>}</>}
+    <noscript>This dashboard needs JavaScript. <a href="/api/gas/manifest.json">Download the daily archive index.</a></noscript>
+  </div></main>;
   const days=manifest?.days || [];
   const active=days.findIndex(row=>row.date===(selected || manifest?.latest || snapshot.gasDay));
-  const controls=<section className="gas-live-controls" aria-label="Gas time machine">
-    <div><label htmlFor="gas-day"><CalendarDays size={14}/> Time machine</label><div className="gas-date-controls">
-      <button type="button" aria-label="Previous available gas day" disabled={loading||active<=0} onClick={()=>choose(days[active-1].date)}><ArrowLeft size={15}/></button>
+  const controls=<>
+    <details className="gas-replay-controls" aria-label="Gas time machine">
+      <summary><History size={17}/> Time machine <span className="gas-replay-mode">{selected?label(selected):'Explore the archive'}</span></summary>
+      <div className="gas-replay-panel"><div className="gas-date-controls"><label htmlFor="gas-day">Gas day
       <select id="gas-day" value={selected||manifest?.latest||snapshot.gasDay} disabled={!days.length||loading} onChange={event=>choose(event.target.value)}>
-        {!days.length&&<option value={snapshot.gasDay}>{label(snapshot.gasDay)}</option>}
         {days.map(row=><option key={row.date} value={row.date}>{label(row.date)}</option>)}
-      </select>
+      </select></label>
+      <button type="button" aria-label="Previous available gas day" disabled={loading||active<=0} onClick={()=>choose(days[active-1].date)}><ArrowLeft size={15}/></button>
       <button type="button" aria-label="Next available gas day" disabled={loading||active<0||active>=days.length-1} onClick={()=>choose(days[active+1].date)}><ArrowRight size={15}/></button>
       <button type="button" className="gas-return-latest" disabled={loading||!selected} onClick={()=>choose(null)}>Latest</button>
-    </div></div>
-    <p role="status" aria-live="polite">{loading?'Loading accepted data…':message}{selected&&snapshot.gasDay!==selected&&!loading&&<strong> Currently displayed: {label(snapshot.gasDay)}.</strong>}</p>
-  </section>;
-  return <IrelandGasDashboard snapshot={snapshot} live controls={controls}/>;
+      </div><p role="status">{loading?'Loading…':message}</p></div>
+    </details>
+    {problem&&!loading&&<p className="gas-update-note" role="status">{message} Displayed: {label(snapshot.gasDay)}.</p>}
+  </>;
+  return <IrelandGasDashboard snapshot={snapshot} controls={controls}/>;
 }
