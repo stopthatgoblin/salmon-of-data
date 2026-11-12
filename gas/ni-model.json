@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "version": "sem-2025-03-ni-v1",
+  "validFrom": "2026-09-10",
+  "grossNetFactor": 1.11,
+  "source": "https://www.semcommittee.com/publications/sem-25-010-sem-plexos-model-validation-2024-2032-and-backcast-report",
+  "sourceSha256": "1ffda1ff2370a41a48c9bfa9f3437c8c776eb613a726c40d117ac55b5ca79d5f",
+  "units": {
+    "GU_503720": {
+      "name": "B31",
+      "baseGjPerHourLhv": 336.7,
+      "segments": [
+        [
+          113.0,
+          5.73
+        ],
+        [
+          247.0,
+          5.73
+        ]
+      ],
+      "minimumStableMw": 113.0,
+      "startupGjLhv": [
+        639.0,
+        1134.0,
+        2025.0
+      ],
+      "startupCoolingHours": [
+        8.0,
+        40.0,
+        150.0
+      ]
+    },
+    "GU_503730": {
+      "name": "B32",
+      "baseGjPerHourLhv": 336.7,
+      "segments": [
+        [
+          113.0,
+          5.73
+        ],
+        [
+          247.0,
+          5.73
+        ]
+      ],
+      "minimumStableMw": 113.0,
+      "startupGjLhv": [
+        639.0,
+        1134.0,
+        2025.0
+      ],
+      "startupCoolingHours": [
+        8.0,
+        40.0,
+        150.0
+      ]
+    },
+    "GU_503740": {
+      "name": "B10",
+      "baseGjPerHourLhv": 103.0,
+      "segments": [
+        [
+          63.0,
+          6.02
+        ],
+        [
+          101.0,
+          6.02
+        ]
+      ],
+      "minimumStableMw": 63.0,
+      "startupGjLhv": [
+        135.0,
+        225.0,
+        405.0
+      ],
+      "startupCoolingHours": [
+        8.0,
+        40.0,
+        150.0
+      ]
+    },
+    "GU_500040": {
+      "name": "CPS CCGT",
+      "baseGjPerHourLhv": 635.4,
+      "segments": [
+        [
+          211.0,
+          4.21
+        ],
+        [
+          260.0,
+          5.23
+        ],
+        [
+          310.0,
+          5.25
+        ],
+        [
+          350.0,
+          5.43
+        ],
+        [
+          404.0,
+          5.49
+        ]
+      ],
+      "minimumStableMw": 211.0,
+      "startupGjLhv": [
+        2504.0,
+        2903.0,
+        4658.0
+      ],
+      "startupCoolingHours": [
+        12.0,
+        50.0,
+        150.0
+      ]
+    },
+    "GU_504110": {
+      "name": "KGT6",
+      "baseGjPerHourLhv": 703.0,
+      "segments": [
+        [
+          326.0,
+          6.79
+        ],
+        [
+          345.0,
+          10.9
+        ]
+      ],
+      "minimumStableMw": 147.0,
+      "startupGjLhv": [
+        169.4
+      ],
+      "startupCoolingHours": []
+    },
+    "GU_504120": {
+      "name": "KGT7",
+      "baseGjPerHourLhv": 703.0,
+      "segments": [
+        [
+          326.0,
+          6.79
+        ],
+        [
+          345.0,
+          10.9
+        ]
+      ],
+      "minimumStableMw": 147.0,
+      "startupGjLhv": [
+        169.4
+      ],
+      "startupCoolingHours": []
+    }
+  }
+}

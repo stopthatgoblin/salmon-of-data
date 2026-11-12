@@ -34,7 +34,7 @@ export function mountTheme(root, signal) {
     }
   }, {signal});
   signal.addEventListener('abort', () => {
-    // Only electricity pages use this theme; restore the surrounding site on exit.
+    // Only energy dashboard pages use this theme; restore the surrounding site on exit.
     if (previous === null) page.removeAttribute('data-electricity-theme');
     else page.setAttribute('data-electricity-theme', previous);
   }, {once:true});
