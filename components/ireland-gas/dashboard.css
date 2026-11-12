@@ -1,5 +1,5 @@
 .ireland-gas-page{padding-bottom:30px}
-.ireland-gas{--ink:#182e32;--gas-muted:#5b686a;--gas-line:#cbc9bf;--gas-import:#527d8b;--gas-iom:#718b93;--gas-corrib:#136b72;--gas-cross-border:#738b6d;--gas-power:#ad3930;--gas-other:#98a58e;--gas-map-paper:#f5f3eb;color:var(--ink);font:14px/1.5 Arial,Helvetica,sans-serif}
+.ireland-gas{--ink:#182e32;--gas-muted:#5b686a;--gas-line:#cbc9bf;--gas-import:#527d8b;--gas-iom:#718b93;--gas-corrib:#136b72;--gas-cross-border:#738b6d;--gas-power:#ad3930;--gas-other:#98a58e;--gas-map-paper:#f5f3eb;--gas-chart-corrib:#d69c32;color:var(--ink);font:14px/1.5 Arial,Helvetica,sans-serif}
 .ireland-gas *{box-sizing:border-box}
 .ireland-gas{--muted:var(--gas-muted);--line:var(--gas-line)}
 .ireland-gas :is(h1,h2,h3,p){margin:0}
@@ -7,27 +7,14 @@
 .ireland-gas button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .ireland-gas a{color:inherit}
 .ireland-gas :is(button,a,summary):focus-visible{outline:2px solid var(--teal);outline-offset:5px}
-.ireland-gas [hidden]{display:none!important}
-.gas-page-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;padding:30px 0 26px}
-.gas-eyebrow,.gas-kicker{font:700 10px/1.5 Arial,Helvetica,sans-serif;letter-spacing:1.5px;color:var(--gas-muted)}
-.gas-eyebrow{color:var(--gas-power);font-size:11px;letter-spacing:1.8px}
+.ireland-gas [hidden]{display:none!important}.gas-kicker{font:700 10px/1.5 Arial,Helvetica,sans-serif;letter-spacing:1.5px;color:var(--gas-muted)}
 .ireland-gas h1{font-size:clamp(36px,4.2vw,53px);line-height:1.18;letter-spacing:-1.8px;margin:7px 0 9px}
 .ireland-gas h1 em{color:var(--teal);font-weight:400}
-.gas-page-heading p{font-size:13px;color:var(--gas-muted)}
-.gas-edition{display:flex;flex-direction:column;gap:4px;text-align:right;padding-bottom:3px;white-space:nowrap}
-.gas-edition>span{display:flex;align-items:center;justify-content:flex-end;gap:7px;font-size:10px;color:var(--teal)}
-.gas-edition i{width:6px;height:6px;background:var(--teal);border-radius:50%}
-.gas-edition time{font:18px/1.5 Georgia,serif}
-.gas-edition small{font-size:10px;color:var(--gas-muted)}
 .gas-toolbar{display:flex;align-items:center;gap:24px;border-block:1px solid var(--ink);min-height:48px}
 .gas-tabs{display:flex;align-self:stretch;gap:27px}
 .gas-tabs button{position:relative;padding:14px 0;font-size:12px;color:var(--gas-muted);white-space:nowrap}
 .gas-tabs button[aria-selected=true]{color:var(--ink);font-weight:700}
-.gas-tabs button[aria-selected=true]:after{position:absolute;bottom:-1px;left:0;right:0;height:3px;background:var(--gas-power);content:''}
-.gas-electricity-link{display:flex;align-items:center;gap:5px;margin-left:auto;font-size:11px;text-decoration:none}
-.gas-electricity-link:hover,.gas-text-button:hover{color:var(--teal)}
-.gas-date-pill{font-size:10px;font-weight:700;letter-spacing:1px;border-left:1px solid var(--gas-line);padding-left:22px;white-space:nowrap}
-.gas-date-pill span{padding:0 4px;color:#93a19d}
+.gas-tabs button[aria-selected=true]:after{position:absolute;bottom:-1px;left:0;right:0;height:3px;background:var(--gas-power);content:''}.gas-text-button:hover{color:var(--teal)}
 .gas-headlines{display:grid;grid-template-columns:repeat(4,1fr);padding:25px 0 22px;border-bottom:1px solid var(--gas-line)}
 .gas-headlines>div{padding:0 24px;border-left:1px solid var(--gas-line)}
 .gas-headlines>div:first-child{border:0;padding-left:0}
@@ -41,9 +28,6 @@
 .gas-approx{font:20px Georgia,serif;align-self:center;color:var(--gas-muted);margin-right:-4px}
 .gas-headlines p{font-size:10px;color:var(--gas-muted)}
 .gas-headlines p b{color:var(--ink);font-weight:600}
-.gas-day-takeaway{display:flex;align-items:center;gap:22px;padding:18px 0;border-bottom:1px solid var(--gas-line)}
-.gas-day-takeaway>.gas-kicker{color:var(--teal);white-space:nowrap}
-.gas-day-takeaway p{font:16px/1.55 Georgia,serif;color:var(--ink)}
 .gas-main-grid{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(340px,1fr);gap:28px;padding-top:24px}
 .gas-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:15px}
 .ireland-gas .gas-section-heading h2{font-size:23px;line-height:1.3;letter-spacing:-.4px}
@@ -157,12 +141,12 @@
 .gas-chart-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;padding-left:32px}
 .gas-chart-grid>div{border-top:1px solid #d9dbd0;position:relative}
 .gas-chart-grid span{position:absolute;left:-32px;top:-7px;font-size:9px;color:var(--gas-muted)}
-.gas-chart-bars{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:8px;position:relative;height:100%;padding:0 5px}
+.gas-chart-bars{display:grid;gap:8px;position:relative;height:100%;padding:0 5px}
 .gas-chart-bars button{display:flex;flex-direction:column;justify-content:flex-end;height:100%;padding:0!important;opacity:.88;position:relative}
 .gas-chart-bars button:hover,.gas-chart-bars button.is-active{opacity:1}
 .gas-chart-bars button.is-active:after{position:absolute;inset:-5px -3px;border:1px solid #9db0a7;content:'';pointer-events:none}
 .gas-chart-bars button>span{display:block;min-height:1px;width:100%;border-bottom:1px solid var(--background)}
-.gas-bar-import{background:var(--gas-import)}.gas-bar-corrib{background:var(--teal)}
+.gas-bar-import{background:var(--gas-import)}.gas-bar-corrib{background:var(--gas-chart-corrib)}
 .gas-chart-times{display:flex;justify-content:space-between;margin:8px 0 0 32px;font-size:9px;color:var(--gas-muted)}
 .gas-chart-times small{font-size:9px;color:#89948c}
 .gas-bottom-note{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:13px 0 20px}
@@ -175,20 +159,6 @@
 .ireland-gas .gas-reuse-heading{font-size:21px;margin-top:24px}
 .gas-dashboard-footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--gas-line);padding-top:14px;font-size:9px;color:var(--gas-muted)}
 .gas-dashboard-footer>span:last-child{font:12px/1.5 Arial,sans-serif;letter-spacing:1.6px;white-space:nowrap}
-.gas-preview-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--gas-line)}
-.gas-preview-controls>a{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--gas-muted);text-decoration:none}
-.gas-preview-controls>a:hover{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
-.gas-preview-controls .theme-toggle{margin:0}
-.gas-live-controls{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0 18px}
-.gas-live-controls label{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--gas-muted);margin-bottom:7px}
-.gas-date-controls{display:flex;align-items:center;gap:7px}
-.gas-date-controls button,.gas-date-controls select{border:1px solid var(--gas-line);border-radius:3px;background:var(--paper);color:var(--ink);min-height:32px;padding:5px 9px;font:12px Arial,sans-serif}
-.gas-date-controls button{display:inline-flex;align-items:center;justify-content:center}
-.gas-date-controls button:disabled,.gas-date-controls select:disabled{opacity:.45;cursor:default}
-.gas-live-controls>p{max-width:420px;font-size:11px;line-height:1.6;color:var(--gas-muted);text-align:right}
-.gas-live-controls strong{font-weight:600}
-@media(max-width:600px){.gas-live-controls{align-items:flex-start;flex-direction:column;gap:10px}.gas-live-controls>p{text-align:left}.gas-date-controls{gap:5px}.gas-date-controls button,.gas-date-controls select{padding:5px 7px}}
-
 :root[data-electricity-theme=dark] .ireland-gas{--ink:#eeeae1;--gas-muted:#a7b8b6;--gas-line:#3d5356;--gas-import:#8fbfcc;--gas-iom:#53757e;--gas-corrib:#80c9c6;--gas-cross-border:#abc69e;--gas-power:#ee9a85;--gas-other:#adc0a5;--gas-map-paper:#142327}
 :root[data-electricity-theme=dark] .ireland-gas .gas-land{fill:#1b2a2e;stroke:#35494b}
 :root[data-electricity-theme=dark] .ireland-gas .gas-roi-land{fill:#283b35;stroke:#648272}
@@ -215,7 +185,7 @@
 :root[data-electricity-theme=dark] .ireland-gas .gas-dialog-backdrop{background:#00000088}
 :root[data-electricity-theme=dark] .ireland-gas .gas-detail-dialog{box-shadow:0 10px 70px #00000066}
 
-@media(max-width:600px){.gas-preview-controls{gap:8px}.gas-preview-controls>a{font-size:9px}.gas-dashboard-footer>span:first-child{max-width:205px}}
+@media(max-width:600px){.gas-dashboard-footer>span:first-child{max-width:205px}}
 .gas-sources{padding:30px 0}
 .gas-sources .gas-section-heading{align-items:flex-end}
 .gas-sources .gas-section-heading h2{font-size:30px;margin-top:5px}
@@ -240,7 +210,35 @@
 .gas-detail-dialog p{font-size:12px;line-height:1.8;color:var(--gas-muted);margin:14px 0!important}
 .gas-detail-dialog>.gas-text-button{margin-top:10px}
 @media(min-width:1400px){.gas-main-grid{gap:36px}.gas-region{padding:22px 23px 16px}.gas-region h3{font-size:24px}.gas-usage-heading{margin-bottom:20px}.gas-electricity-result{margin:13px 0 18px;padding-block:14px}.gas-other-caption{margin-bottom:16px!important}.gas-region{margin-bottom:18px}}
-@media(max-width:1100px){.gas-main-grid{gap:22px;grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr)}.gas-headlines>div{padding-inline:18px}.gas-headlines .gas-reading{font-size:34px}.gas-main-grid .gas-section-heading h2{font-size:21px}.gas-map-heading>span{display:none}.gas-region{padding:16px}.gas-region h3{font-size:20px}.gas-demand-line span{font-size:9px}.gas-region-heading{gap:7px}.gas-use-line .gas-reading{font-size:25px}.gas-map-section{display:flex;flex-direction:column}.gas-map{margin-block:auto}.gas-day-takeaway p{font-size:15px}.gas-chart-bars{gap:6px}}
-@media(max-width:850px){.gas-page-heading{padding:25px 0 22px;align-items:flex-start}.ireland-gas h1{font-size:37px;letter-spacing:-1.2px}.gas-edition time{font-size:16px}.gas-edition{padding-top:8px}.gas-page-heading p{font-size:11px}.gas-date-pill{display:none}.gas-toolbar{gap:16px}.gas-headlines>div{padding-inline:13px}.gas-headlines>div>span:first-child{font-size:10px}.gas-headlines .gas-reading{font-size:29px}.gas-headlines .gas-reading small{font-size:9px}.gas-headlines p{font-size:9px}.gas-day-takeaway{gap:16px}.gas-main-grid{grid-template-columns:1fr;gap:24px}.gas-map-section .gas-section-heading>span{display:flex}.gas-map{max-height:680px;margin-block:4px 0}.gas-usage-section{display:grid;grid-template-columns:1fr 1fr;gap:16px}.gas-usage-heading{grid-column:1/-1;margin:0}.gas-region{margin:0}.gas-usage-footnote{grid-column:1/-1}.gas-usage-section .gas-region h3{font-size:22px}.gas-hourly-section{margin-top:20px}.gas-chart-legend>p{font-size:9px}.gas-chart-unit>span{display:none}.gas-chart-bars{gap:5px}.gas-source-grid{gap:25px}.gas-sources .gas-section-heading h2{font-size:27px}}
-@media(max-width:600px){.ireland-gas-page.wrap{width:calc(100% - 32px)}.gas-page-heading{display:block;padding-top:23px}.ireland-gas h1{font-size:35px;margin-top:6px}.gas-edition{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;text-align:left;margin-top:20px;gap:3px 8px;padding:0}.gas-edition>span{order:2;font-size:9px}.gas-edition time{font-size:15px}.gas-edition small{flex-basis:100%;font-size:9px}.gas-toolbar{min-height:45px}.gas-tabs{gap:20px}.gas-tabs button{font-size:11px;padding:13px 0}.gas-electricity-link{font-size:0;gap:0}.gas-electricity-link svg{width:18px;height:18px}.gas-headlines{grid-template-columns:1fr 1fr;gap:20px 0;padding:20px 0}.gas-headlines>div{padding:0 0 0 16px}.gas-headlines>div:nth-child(odd){padding-left:0;border-left:0}.gas-headlines .gas-reading{font-size:34px;margin:6px 0 3px}.gas-headlines>div>span:first-child{font-size:10px}.gas-headlines p{font-size:9px}.gas-day-takeaway{display:block;padding:15px 0}.gas-day-takeaway .gas-kicker{font-size:9px}.gas-day-takeaway p{font-size:15px;line-height:1.6;margin-top:6px}.gas-main-grid{padding-top:18px;gap:22px}.gas-map-section .gas-section-heading h2{font-size:22px}.gas-map-heading>span{font-size:9px}.gas-map{width:calc(100% + 16px);margin-left:-8px}.gas-flow-note{min-height:0}.gas-usage-section{grid-template-columns:1fr;gap:14px}.gas-usage-heading{grid-column:1}.gas-usage-heading h2{font-size:23px!important}.gas-region{padding:20px}.gas-region h3{font-size:24px!important}.gas-use-line .gas-reading{font-size:30px}.gas-use-line>span:first-child{font-size:13px}.gas-total b{font-size:25px}.gas-electricity-result{padding:14px;margin:12px 0 15px}.gas-electricity-result p{font-size:11px}.gas-demand-line span{font-size:11px}.gas-demand-line b{font-size:30px}.gas-usage-footnote{font-size:9px}.gas-hourly-section{padding-top:20px}.gas-hourly-section .gas-section-heading{display:block}.gas-hourly-section .gas-section-heading h2{font-size:25px}.gas-chart-unit{display:block;margin-top:7px}.gas-chart-legend{flex-wrap:wrap;gap:9px 18px;margin-block:15px}.gas-chart-legend>p{flex-basis:100%;margin:0;min-height:15px;font-size:9px}.gas-chart{height:125px;padding-left:23px}.gas-chart-grid{padding-left:23px}.gas-chart-grid span{left:-23px}.gas-chart-bars{gap:3px;padding:0}.gas-chart-times{margin-left:23px;font-size:8px}.gas-chart-times small{font-size:8px}.gas-bottom-note{display:block;padding:13px 0 22px}.gas-bottom-note>button{margin-top:10px}.gas-data-credits p>span{display:block;margin-left:0}.gas-dashboard-footer{font-size:8px;align-items:center}.gas-dashboard-footer>span:first-child{max-width:210px}.gas-dashboard-footer>span:last-child{font-size:10px;letter-spacing:1px}.gas-sources{padding:23px 0}.gas-sources .gas-section-heading{display:block}.gas-sources .gas-section-heading>a{margin-top:15px}.gas-source-grid{grid-template-columns:1fr;gap:25px;padding-block:25px}.gas-source-grid h3{font-size:23px}.gas-detail-dialog{padding:30px 23px}.gas-detail-dialog h2{font-size:27px}.gas-detail-dialog dl>div{font-size:11px}.gas-dialog-backdrop{padding:16px}}
+@media(max-width:1100px){.gas-main-grid{gap:22px;grid-template-columns:minmax(0,1.6fr) minmax(320px,1fr)}.gas-headlines>div{padding-inline:18px}.gas-headlines .gas-reading{font-size:34px}.gas-main-grid .gas-section-heading h2{font-size:21px}.gas-map-heading>span{display:none}.gas-region{padding:16px}.gas-region h3{font-size:20px}.gas-demand-line span{font-size:9px}.gas-region-heading{gap:7px}.gas-use-line .gas-reading{font-size:25px}.gas-map-section{display:flex;flex-direction:column}.gas-map{margin-block:auto}.gas-chart-bars{gap:6px}}
+@media(max-width:850px){.ireland-gas h1{font-size:37px;letter-spacing:-1.2px}.gas-toolbar{gap:16px}.gas-headlines>div{padding-inline:13px}.gas-headlines>div>span:first-child{font-size:10px}.gas-headlines .gas-reading{font-size:29px}.gas-headlines .gas-reading small{font-size:9px}.gas-headlines p{font-size:9px}.gas-main-grid{grid-template-columns:1fr;gap:24px}.gas-map-section .gas-section-heading>span{display:flex}.gas-map{max-height:680px;margin-block:4px 0}.gas-usage-section{display:grid;grid-template-columns:1fr 1fr;gap:16px}.gas-usage-heading{grid-column:1/-1;margin:0}.gas-region{margin:0}.gas-usage-footnote{grid-column:1/-1}.gas-usage-section .gas-region h3{font-size:22px}.gas-hourly-section{margin-top:20px}.gas-chart-legend>p{font-size:9px}.gas-chart-unit>span{display:none}.gas-chart-bars{gap:5px}.gas-source-grid{gap:25px}.gas-sources .gas-section-heading h2{font-size:27px}}
+@media(max-width:600px){.ireland-gas-page.wrap{width:calc(100% - 32px)}.ireland-gas h1{font-size:35px;margin-top:6px}.gas-toolbar{min-height:45px}.gas-tabs{gap:20px}.gas-tabs button{font-size:11px;padding:13px 0}.gas-headlines{grid-template-columns:1fr 1fr;gap:20px 0;padding:20px 0}.gas-headlines>div{padding:0 0 0 16px}.gas-headlines>div:nth-child(odd){padding-left:0;border-left:0}.gas-headlines .gas-reading{font-size:34px;margin:6px 0 3px}.gas-headlines>div>span:first-child{font-size:10px}.gas-headlines p{font-size:9px}.gas-main-grid{padding-top:18px;gap:22px}.gas-map-section .gas-section-heading h2{font-size:22px}.gas-map-heading>span{font-size:9px}.gas-map{width:calc(100% + 16px);margin-left:-8px}.gas-flow-note{min-height:0}.gas-usage-section{grid-template-columns:1fr;gap:14px}.gas-usage-heading{grid-column:1}.gas-usage-heading h2{font-size:23px!important}.gas-region{padding:20px}.gas-region h3{font-size:24px!important}.gas-use-line .gas-reading{font-size:30px}.gas-use-line>span:first-child{font-size:13px}.gas-total b{font-size:25px}.gas-electricity-result{padding:14px;margin:12px 0 15px}.gas-electricity-result p{font-size:11px}.gas-demand-line span{font-size:11px}.gas-demand-line b{font-size:30px}.gas-usage-footnote{font-size:9px}.gas-hourly-section{padding-top:20px}.gas-hourly-section .gas-section-heading{display:block}.gas-hourly-section .gas-section-heading h2{font-size:25px}.gas-chart-unit{display:block;margin-top:7px}.gas-chart-legend{flex-wrap:wrap;gap:9px 18px;margin-block:15px}.gas-chart-legend>p{flex-basis:100%;margin:0;min-height:15px;font-size:9px}.gas-chart{height:125px;padding-left:23px}.gas-chart-grid{padding-left:23px}.gas-chart-grid span{left:-23px}.gas-chart-bars{gap:3px;padding:0}.gas-chart-times{margin-left:23px;font-size:8px}.gas-chart-times small{font-size:8px}.gas-bottom-note{display:block;padding:13px 0 22px}.gas-bottom-note>button{margin-top:10px}.gas-data-credits p>span{display:block;margin-left:0}.gas-dashboard-footer{font-size:8px;align-items:center}.gas-dashboard-footer>span:first-child{max-width:210px}.gas-dashboard-footer>span:last-child{font-size:10px;letter-spacing:1px}.gas-sources{padding:23px 0}.gas-sources .gas-section-heading{display:block}.gas-sources .gas-section-heading>a{margin-top:15px}.gas-source-grid{grid-template-columns:1fr;gap:25px;padding-block:25px}.gas-source-grid h3{font-size:23px}.gas-detail-dialog{padding:30px 23px}.gas-detail-dialog h2{font-size:27px}.gas-detail-dialog dl>div{font-size:11px}.gas-dialog-backdrop{padding:16px}}
 @media(prefers-reduced-motion:reduce){.gas-map-flow{transition:none}}
+
+.gas-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.gas-toolbar{border-top:0;gap:22px;min-height:64px}
+.gas-dashboard-links{display:flex;gap:16px;margin-left:auto}
+.gas-dashboard-links a{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--teal);text-decoration:none;white-space:nowrap}
+.gas-dashboard-links a:hover{text-decoration:underline;text-underline-offset:4px}
+.gas-toolbar .theme-toggle{margin:0}
+.gas-snapshot-stamp{display:flex;flex-direction:column;gap:4px;align-self:center;font-size:11px;color:var(--teal);white-space:nowrap}
+.gas-snapshot-stamp small{font-size:10px;color:var(--gas-muted)}
+.gas-replay-controls{border-bottom:1px solid var(--gas-line);padding:10px 0;margin-bottom:10px;font-size:11px;color:var(--gas-muted)}
+.gas-replay-controls summary{display:flex;align-items:center;gap:7px;width:max-content;list-style:none;cursor:pointer;color:var(--teal);padding:4px 0}
+.gas-replay-controls summary::-webkit-details-marker{display:none}
+.gas-replay-mode{border-left:1px solid var(--gas-line);padding-left:12px;margin-left:7px;font-size:10px;color:var(--gas-muted)}
+.gas-replay-panel{padding-top:10px}
+.gas-replay-panel p{font-size:10px;margin-top:9px}
+.gas-date-controls{display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap}
+.gas-date-controls label{display:grid;gap:4px;margin-right:6px;font-size:10px}
+.gas-date-controls button,.gas-date-controls select{border:1px solid var(--gas-line);border-radius:3px;background:var(--background);color:var(--ink);min-height:34px;padding:7px 11px;font:12px Arial,sans-serif}
+.gas-date-controls button{display:inline-flex;align-items:center;justify-content:center}
+.gas-date-controls :disabled{opacity:.45;cursor:default}
+.gas-date-controls button:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+.gas-chart-legend .gas-corrib-dot{background:var(--gas-chart-corrib)}
+.gas-update-note{padding:8px 0;font-size:11px;color:var(--gas-power)}
+.gas-loading{padding:24px 0;min-height:140px;color:var(--gas-muted)}
+.gas-loading button{margin:10px 16px 0 0}
+:root[data-electricity-theme=dark] .ireland-gas{--gas-chart-corrib:#e7b95a}
+@media(max-width:1000px){.gas-toolbar{flex-wrap:wrap;gap:0 20px;padding-top:7px}.gas-tabs{flex:1 0 auto;gap:24px}.gas-tabs button{font-size:12px}.gas-dashboard-links{margin-left:0}.gas-snapshot-stamp{margin-left:auto;padding:8px 0}.gas-toolbar .theme-toggle{margin:7px 0}}
+@media(max-width:600px){.gas-toolbar{gap:0 14px}.gas-tabs{flex:1 1 100%;order:1;border-top:1px solid var(--gas-line)}.gas-dashboard-links{order:0;flex:1;gap:12px}.gas-dashboard-links a{font-size:10px}.gas-toolbar .theme-toggle{order:0;min-height:28px;font-size:10px}.gas-snapshot-stamp{order:0;flex:1 0 100%;padding:5px 0 10px;font-size:11px}.gas-snapshot-stamp small{font-size:9px}.gas-replay-mode{font-size:9px}.gas-date-controls select{max-width:150px}}

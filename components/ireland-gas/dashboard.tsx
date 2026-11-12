@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, ChevronDown, Flame, Info, Moon, X, Zap } from 'lucide-react';
 import geography from '../roi-electricity/map-data.js';
-import originalSnapshot from '@/public/data/ireland-gas/2026-11-08.json';
+import type { GasSnapshot } from './types';
 import { mountTheme } from '../electricity/theme.js';
 import '../electricity/theme.css';
 import './dashboard.css';
@@ -16,19 +16,7 @@ const pct = (n: number) => `${Math.round(n)}%`;
 const regions = { ni: { name: 'Northern Ireland', basis: 'Estimated' }, roi: { name: 'Republic of Ireland', basis: 'Reported' } };
 const point = (lon: number, lat: number) => [(lon + 12.8) * 86 + 20, (56.1 - lat) * 150 + 20];
 const at = (lon: number, lat: number) => point(lon, lat).join(',');
-export type GasSnapshot = Omit<typeof originalSnapshot, 'sources' | 'units' | 'supplyUseComparison'> & {
-  sources: Record<string, string>;
-  units: {
-    ni: { id: string; name: string; electricityGwh: number; gasGwh: number; starts: { time: string; gjLhv: number }[] }[];
-    roi: { id: string; name: string | null; electricityGwh: number }[];
-  };
-  capturedAt?: string;
-  version?: string;
-  supplyUseComparison?: typeof originalSnapshot.supplyUseComparison;
-  capacityReferences?: { key: string; label: string; quantityGwh: number; capacityGwhPerDay: number; percentage: number; numerator: string; source: string; note: string }[];
-};
-
-function presentation(snapshot: GasSnapshot, isLatest = false, isLive = false) {
+function presentation(snapshot: GasSnapshot) {
 const flows = snapshot.flows;
 const total = snapshot.regions.ni.totalGas + snapshot.regions.roi.totalGas;
 const power = snapshot.regions.ni.powerGas + snapshot.regions.roi.powerGas;
@@ -49,21 +37,19 @@ const extractionDate = snapshot.reuse.entsogExtractionDate.split('-').reverse().
 const meteredHours = snapshot.electricityBasis.meteredHours;
 const estimatedHours = snapshot.electricityBasis.dispatchEstimateHours;
 const niUnitCount = snapshot.units.ni.length;
-const snapshotUrl = snapshot.version ? `/api/gas/day/${snapshot.gasDay}.json?v=${snapshot.version}` : isLive ? '/data/ireland-gas/latest.json' : `/data/ireland-gas/${snapshot.gasDay}.json`;
-const powerUseSummary = (() => {
-  const share = power / total;
-  const fractions: [number, string][] = [[.25, 'a quarter'], [1 / 3, 'a third'], [.5, 'half'], [2 / 3, 'two-thirds'], [.75, 'three-quarters']];
-  const fraction = fractions.find(([value]) => Math.abs(share - value) < .015);
-  return `About ${fraction ? fraction[1] : pct(share * 100)} of the island’s gas was used to generate electricity.*`;
-})();
+const snapshotUrl = `/api/gas/day/${snapshot.gasDay}.json?v=${snapshot.version}`;
 const gniReusePolicy = snapshot.reuse.gniPolicy;
 const entsogReuseTerms = snapshot.reuse.entsogTerms;
 const electricityLicence = snapshot.reuse.electricityLicence;
 
-return { snapshot, isLatest, isLive, flows, total, power, corribUseShare, supplyUseGap, gasStart, gasEnd, gasHours, gasDate, gasDateCompact, gasDateWithWeekday, clock, localDate, gasTimeZone, fullStamp, extractionDate, meteredHours, estimatedHours, niUnitCount, snapshotUrl, powerUseSummary, gniReusePolicy, entsogReuseTerms, electricityLicence };
+return { snapshot, flows, total, power, corribUseShare, supplyUseGap, gasStart, gasEnd, gasHours, gasDate, gasDateCompact, gasDateWithWeekday, clock, localDate, gasTimeZone, fullStamp, extractionDate, meteredHours, estimatedHours, niUnitCount, snapshotUrl, gniReusePolicy, entsogReuseTerms, electricityLicence };
 }
-const GasContext = createContext(presentation(originalSnapshot));
-const useGas = () => useContext(GasContext);
+const GasContext = createContext<ReturnType<typeof presentation> | null>(null);
+const useGas = () => {
+  const value = useContext(GasContext);
+  if (!value) throw new Error('Gas snapshot is required');
+  return value;
+};
 
 function Reading({ value, unit = 'GWh', estimated = false }: { value: number; unit?: string; estimated?: boolean }) {
   return <span className="gas-reading">{estimated && <span className="gas-approx" aria-label="approximately">≈</span>}{f(value)}<small>{unit}</small></span>;
@@ -206,7 +192,7 @@ function HourlyChart() {
     <div className="gas-chart-legend"><span><i className="gas-import-dot" /> From Scotland</span><span><i className="gas-corrib-dot" /> From Corrib</span><p>{hover === null ? 'Select an hour to see the figures' : `${hour(active.time)}-${hour(new Date(new Date(active.time).getTime()+3600000).toISOString())} · Scotland ${f(active.scotland,2)} · Corrib ${f(active.corrib,2)} GWh`}</p></div>
     <div className="gas-chart" onMouseLeave={() => setHover(null)}>
       <div className="gas-chart-grid" aria-hidden="true">{[4,3,2,1,0].map(n => <div key={n}><span>{n * chartMax / 4}</span></div>)}</div>
-      <div className="gas-chart-bars">{rows.map((r,i) => <button key={r.time} className={hover === i ? 'is-active' : ''} onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} onClick={() => setHover(i)} aria-label={`${localDate(r.time, { day: 'numeric', month: 'short', year: 'numeric' })}, ${hour(r.time)}: Scotland ${f(r.scotland,2)} GWh, Corrib ${f(r.corrib,2)} GWh`}><span className="gas-bar-corrib" style={{ height: `${r.corrib/chartMax*100}%` }} /><span className="gas-bar-import" style={{ height: `${r.scotland/chartMax*100}%` }} /></button>)}</div>
+      <div className="gas-chart-bars" style={{ gridTemplateColumns: `repeat(${rows.length}, minmax(0, 1fr))` }}>{rows.map((r,i) => <button key={r.time} className={hover === i ? 'is-active' : ''} onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} onClick={() => setHover(i)} aria-label={`${localDate(r.time, { day: 'numeric', month: 'short', year: 'numeric' })}, ${hour(r.time)}: Scotland ${f(r.scotland,2)} GWh, Corrib ${f(r.corrib,2)} GWh`}><span className="gas-bar-corrib" style={{ height: `${r.corrib/chartMax*100}%` }} /><span className="gas-bar-import" style={{ height: `${r.scotland/chartMax*100}%` }} /></button>)}</div>
     </div>
     <div className="gas-chart-times" aria-hidden="true">{tickDates.map((date, i) => <span key={date.toISOString()}>{clock(date)}{(i === 0 || tickDay(date) !== tickDay(tickDates[i - 1])) && <><br /><small>{tickDay(date)}</small></>}</span>)}</div>
   </section>;
@@ -222,7 +208,7 @@ function Sources() {
       <article><span className="gas-source-number">03</span><h3>Reported in ROI, estimated in NI</h3><p>ROI gas use comes from GNI’s published sectors. Other use is total consumption less power use. NI uses its entry allocation as a supply proxy; power gas is calculated from <strong>{niUnitCount} individual units’ heat-input curves</strong> and estimated starts. The remaining NI gas includes non-electricity use and balancing differences.</p></article>
       <article><span className="gas-source-number">04</span><h3>Electricity output</h3><p>Electricity output uses <strong>{meteredHours} hours of SEMO meter data{estimatedHours > 0 && ` and ${estimatedHours} hours of reconstructed dispatch targets`}</strong>. Gas and multi-fuel units are assumed to burn gas. The demand percentages compare regional gas-fired output with all regional EirGrid/SONI electricity demand over the same {gasHours}-hour period; they do not trace where that electricity was consumed.</p></article>
     </div>
-    <details className="gas-method-details"><summary>Calculation details & source links <ChevronDown size={16} /></summary><div><p>NI heat inputs use the public SEM 2024-2032 PLEXOS model, including no-load heat input, incremental heat rates and inferred start-up fuel. The gross/net gas energy conversion is {snapshot.niGasBasis.grossNetFactor}. Oil-only units and storage are excluded. NI’s other-use residual is entry allocation minus estimated power gas. These are research estimates and the model’s actual fuel switching is unobserved.</p><p>Electricity output divided by power-sector gas input is approximately {f(snapshot.regions.ni.electricity / snapshot.regions.ni.powerGas * 100)}% for NI and {f(snapshot.regions.roi.electricity / snapshot.regions.roi.powerGas * 100)}% for ROI. This is a different ratio from the electricity-demand percentages in the cards. Plant type, loading and start-up fuel affect conversion. NI gas is modelled while ROI gas is reported, and the gas and electricity coverage can differ, especially for CHP exports. These are indicative ratios, not audited fleet efficiencies.</p><p>SEMO’s MeteredMW field contains half-hour interval energy. Its interval MWh values are summed directly; reconstructed MW targets are integrated over time. ROI electricity includes gas/multi-fuel generating units with meter coverage, including CHP exports; it excludes unobserved on-site consumption. The {estimatedHours}-hour estimate starts on {fullStamp(new Date(snapshot.electricityBasis.estimateFromUtc))} and is seeded from the final published meter interval. Hourly and daily physical-flow series can differ slightly because of source precision and revisions; they are checked for agreement before publication.</p><p>SNIP physical entry at Twynholm was {f(flows.snipPhysical,3)} GWh, including a {f(flows.stranraer,3)} GWh offtake at Stranraer in Scotland. NI’s {f(flows.niAllocated,3)} GWh commercial allocation is used for the usage calculation. No zero physical flow is inferred from the Isle of Man’s zero commercial allocation. The North-South source reports {f(Math.abs(flows.southNorth),3)} GWh at entry for this day. It is shown separately and is not added to the NI commercial allocation without confirmation of its accounting boundary.</p><ul>
+    <details className="gas-method-details"><summary>Calculation details & source links <ChevronDown size={16} /></summary><div><p>NI heat inputs use <a href={snapshot.sources.model} target="_blank" rel="noreferrer">the public unit model linked to this snapshot</a>, including no-load heat input, incremental heat rates and inferred start-up fuel. The gross/net gas energy conversion is {snapshot.niGasBasis.grossNetFactor}. Oil-only units and storage are excluded. NI’s other-use residual is entry allocation minus estimated power gas. These are research estimates and the model’s actual fuel switching is unobserved.</p><p>Electricity output divided by power-sector gas input is approximately {f(snapshot.regions.ni.electricity / snapshot.regions.ni.powerGas * 100)}% for NI and {f(snapshot.regions.roi.electricity / snapshot.regions.roi.powerGas * 100)}% for ROI. This is a different ratio from the electricity-demand percentages in the cards. Plant type, loading and start-up fuel affect conversion. NI gas is modelled while ROI gas is reported, and the gas and electricity coverage can differ, especially for CHP exports. These are indicative ratios, not audited fleet efficiencies.</p><p>SEMO’s MeteredMW field contains half-hour interval energy. Its interval MWh values are summed directly; reconstructed MW targets are integrated over time. ROI electricity includes gas/multi-fuel generating units with meter coverage, including CHP exports; it excludes unobserved on-site consumption. {estimatedHours > 0 && <>The {estimatedHours}-hour estimate starts on {fullStamp(new Date(snapshot.electricityBasis.estimateFromUtc))} and is seeded from the final published meter interval. </>} Hourly and daily physical-flow series can differ slightly because of source precision and revisions; they are checked for agreement before publication.</p><p>SNIP physical entry at Twynholm was {f(flows.snipPhysical,3)} GWh, including a {f(flows.stranraer,3)} GWh offtake at Stranraer in Scotland. NI’s {f(flows.niAllocated,3)} GWh commercial allocation is used for the usage calculation. Isle of Man physical flow is not established by these allocations. The North-South source reports {f(Math.abs(flows.southNorth),3)} GWh at entry for this day. It is shown separately and is not added to the NI commercial allocation without confirmation of its accounting boundary.</p><ul>
       <li><a href={snapshot.sources.gniDailyPhysical} target="_blank" rel="noreferrer">Gas Networks Ireland · physical entry flows ↗</a></li>
       <li><a href={snapshot.sources.gniConsumption} target="_blank" rel="noreferrer">Gas Networks Ireland · daily market-sector consumption ↗</a></li>
       <li><a href={snapshot.sources.gniAllocations} target="_blank" rel="noreferrer">Gas Networks Ireland · commercial entry allocations ↗</a></li>
@@ -242,13 +228,13 @@ function DataCredits() {
   </section>;
 }
 
-export default function IrelandGasDashboard({ snapshot = originalSnapshot, isLatest = false, live = false, controls }: { snapshot?: GasSnapshot; isLatest?: boolean; live?: boolean; controls?: ReactNode }) {
-  const value = useMemo(() => presentation(snapshot, isLatest, live), [snapshot, isLatest, live]);
+export default function IrelandGasDashboard({ snapshot, controls }: { snapshot: GasSnapshot; controls: ReactNode }) {
+  const value = useMemo(() => presentation(snapshot), [snapshot]);
   return <GasContext.Provider value={value}><GasDashboardContents controls={controls} /></GasContext.Provider>;
 }
 
 function GasDashboardContents({ controls }: { controls?: ReactNode }) {
-  const { snapshot, isLatest, isLive, flows, total, power, corribUseShare, supplyUseGap, gasStart, gasEnd, gasHours, gasDate, gasDateCompact, gasDateWithWeekday, clock, gasTimeZone, powerUseSummary, meteredHours, estimatedHours, niUnitCount } = useGas();
+  const { snapshot, flows, total, power, corribUseShare, supplyUseGap, gasStart, gasEnd, gasHours, gasDate, gasDateCompact, clock, gasTimeZone, meteredHours, estimatedHours, niUnitCount } = useGas();
   const pageRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const controller = new AbortController();
@@ -275,10 +261,13 @@ function GasDashboardContents({ controls }: { controls?: ReactNode }) {
     northSouth: `The North-South Pipeline connects the ROI and NI gas networks. GNI (UK) reported ${f(Math.abs(flows.southNorth))} GWh at the South North CSEP entry for this gas day. ${flows.southNorth === 0 ? 'No flow is reported, so no direction arrow is shown.' : flows.southNorth > 0 ? 'The arrow shows flow towards NI.' : 'The arrow shows flow towards ROI.'} Terminal connections are separated on this schematic for clarity.`,
   };
   return <main className="wrap ireland-gas-page"><div className="ireland-gas" ref={pageRef}>
-    <div className="gas-page-heading"><div><span className="gas-eyebrow">ENERGY · DAILY BRIEFING</span><h1>The island’s <em>gas</em>, in a day.</h1><p>Where it came from, what it powered.</p></div><div className="gas-edition"><span><i /> {isLive ? 'Daily update · 19:00 Ireland time' : isLatest ? 'Latest data preview' : 'Original design preview'}</span><time dateTime={snapshot.gasDay}>{gasDateWithWeekday}</time><small>{gasHours} hours · {clock(gasStart)} to {clock(gasEnd)} {gasTimeZone}</small></div></div>
-    <div className="gas-preview-controls">{isLive ? <span className="gas-kicker">ALL-IRELAND GAS</span> : <a href={isLatest ? '/dashboards/ireland-gas/' : '/dashboards/ireland-gas/latest/'}>{isLatest ? 'Compare with 8 November preview' : 'Open latest data preview'} <ArrowUpRight size={12} /></a>}<button type="button" className="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode"><Moon size={15} /><span>Dark mode</span><span className="theme-toggle-track" aria-hidden="true" /></button></div>
-    {controls}
-    <div className="gas-toolbar"><div className="gas-tabs" role="tablist" aria-label="Gas dashboard views"><button role="tab" aria-selected={view === 'overview'} aria-controls="gas-overview" id="gas-tab-overview" onClick={() => setView('overview')}>Daily overview</button><button role="tab" aria-selected={view === 'sources'} aria-controls="gas-sources-panel" id="gas-tab-sources" onClick={() => setView('sources')}>Definitions & sources</button></div><a href="/dashboards/ni-electricity/" className="gas-electricity-link">Electricity dashboards <ArrowUpRight size={14} /></a><span className="gas-date-pill">{gasDateCompact.toUpperCase()} <span>·</span> {gasHours}H</span></div>
+    <h1 className="gas-sr-only">All-Ireland gas</h1>
+    <div className="gas-toolbar">
+      <div className="gas-tabs" role="tablist" aria-label="Gas dashboard views"><button role="tab" aria-selected={view === 'overview'} aria-controls="gas-overview" id="gas-tab-overview" onClick={() => setView('overview')}>Overview</button><button role="tab" aria-selected={view === 'sources'} aria-controls="gas-sources-panel" id="gas-tab-sources" onClick={() => setView('sources')}>Definitions & sources</button></div>
+      <nav className="gas-dashboard-links" aria-label="Electricity dashboards"><a href="/dashboards/ni-electricity/">NI electricity <ArrowUpRight size={12} /></a><a href="/dashboards/roi-electricity/">ROI electricity <ArrowUpRight size={12} /></a></nav>
+      <button type="button" className="theme-toggle" aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode"><Moon size={15} /><span>Dark mode</span><span className="theme-toggle-track" aria-hidden="true" /></button>
+      <div className="gas-snapshot-stamp"><span>All-Ireland gas · <time dateTime={snapshot.gasDay}>{gasDateCompact}</time></span><small>{clock(gasStart)} to {clock(gasEnd)} {gasTimeZone} · {gasHours} hours</small></div>
+    </div>
     <div className="gas-headlines" aria-label="All-island daily gas summary">
       <div><span><i className="gas-import-dot" /> From Scotland</span><Reading value={flows.scotland} /><p>Physical flow at Moffat</p></div>
       <div><span><i className="gas-corrib-dot" /> From Corrib</span><Reading value={flows.corrib} /><p>Irish offshore supply<br />{f(corribUseShare)}% of gas used across the island*</p></div>
@@ -286,7 +275,7 @@ function GasDashboardContents({ controls }: { controls?: ReactNode }) {
       <div><span><i className="gas-power-dot" /> Gas going to electricity</span><Reading value={power} estimated /><p><b>{pct(power/total*100)}</b> of all-island gas use*</p></div>
     </div>
     <section role="tabpanel" aria-labelledby="gas-tab-overview" id="gas-overview" hidden={view !== 'overview'}>
-      <div className="gas-day-takeaway"><span className="gas-kicker">AT A GLANCE</span><p>{powerUseSummary}</p></div>
+      {controls}
       <div className="gas-main-grid"><section className="gas-map-section" aria-labelledby="gas-map-title"><div className="gas-section-heading gas-map-heading"><h2 id="gas-map-title">The route to Ireland</h2><span>Select a pipeline to explore <ArrowUpRight size={12} /></span></div><PipelineMap selected={selected} select={setSelected} /><div className={`gas-flow-note ${selected ? 'is-selected' : ''}`} aria-live="polite"><Info size={15} /><p>{selected ? flowNotes[selected] : '*NI and ROI branch values are commercial allocations. IC1 and IC2 have no separate measured flow figures here. The Isle of Man spur branches from IC2; no flow is assigned. The North-South link is drawn apart for clarity.'}</p>{selected && <button onClick={() => setSelected(null)} aria-label="Clear selected pipeline"><X size={14} /></button>}</div></section>
       <aside className="gas-usage-section" aria-labelledby="gas-usage-title"><div className="gas-section-heading gas-usage-heading"><h2 id="gas-usage-title">How the gas was used</h2><span>{gasHours}-hour totals</span></div><RegionCard region="ni" open={setDetail} /><RegionCard region="roi" open={setDetail} /><p className="gas-usage-footnote"><span className="gas-colour-dot gas-power-dot" /> Gas for electricity <span className="gas-colour-dot" /> Other gas use<br />{estimatedHours > 0 ? `≈ Electricity totals include ${estimatedHours} hours of dispatch estimates.` : 'Electricity totals use metered output.'}</p></aside></div>
       <HourlyChart />
@@ -294,7 +283,7 @@ function GasDashboardContents({ controls }: { controls?: ReactNode }) {
     </section>
     <section role="tabpanel" aria-labelledby="gas-tab-sources" id="gas-sources-panel" hidden={view !== 'sources'}><Sources /></section>
     <DataCredits />
-    <div className="gas-dashboard-footer"><span>{isLive ? 'Daily snapshot' : 'Static snapshot'} · {gasDate} · {snapshot.capturedAt ? `sources fetched ${new Date(snapshot.capturedAt).toISOString().slice(0,16).replace('T',' ')} UTC` : 'no automatic refresh'}</span><span>SALMONOFDATA.COM</span></div>
+    <div className="gas-dashboard-footer"><span>Daily snapshot · {gasDate} · {snapshot.capturedAt ? `sources fetched ${new Date(snapshot.capturedAt).toISOString().slice(0,16).replace('T',' ')} UTC` : `sources fetched ${snapshot.snapshotAsOf}`}</span><span>SALMONOFDATA.COM</span></div>
     {detail && <div className="gas-dialog-backdrop" onClick={() => setDetail(null)}><section className="gas-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="gas-detail-title" ref={dialogRef} tabIndex={-1} onClick={e => e.stopPropagation()} onKeyDown={e => { if (e.key === 'Escape') setDetail(null); if (e.key === 'Tab') { const buttons = e.currentTarget.querySelectorAll<HTMLButtonElement>('button'); const first = buttons[0]; const last = buttons[buttons.length - 1]; if (e.shiftKey && (document.activeElement === first || document.activeElement === e.currentTarget)) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } } }}><button className="gas-dialog-close" onClick={() => setDetail(null)} aria-label="Close calculation details"><X size={20} /></button><span className="gas-kicker">{gasDateCompact.toUpperCase()} · {gasHours}-HOUR GAS DAY</span><h2 id="gas-detail-title">{regions[detail].name}</h2><dl><div><dt>{detail === 'ni' ? 'Gas allocated to NI' : 'Reported total gas use'}</dt><dd>{f(snapshot.regions[detail].totalGas)} GWh</dd></div><div><dt>Gas used for electricity{detail === 'ni' ? ' · estimated' : ' · reported'}</dt><dd>{f(snapshot.regions[detail].powerGas)} GWh</dd></div><div><dt>Other use · difference</dt><dd>{f(snapshot.regions[detail].otherGas)} GWh</dd></div><div><dt>Gas-fired electricity · estimated</dt><dd>{f(snapshot.regions[detail].electricity)} GWh</dd></div><div><dt>All regional electricity demand</dt><dd>{f(snapshot.regions[detail].demand)} GWh</dd></div></dl><p>{detail === 'ni' ? `Power gas is calculated from ${niUnitCount} NI units’ heat-input curves and estimated starts. Other use is the entry allocation less this estimate, including balancing differences.` : 'GNI reports total and power-sector gas consumption. Other use is total consumption minus power-sector gas; it is not supply minus consumption.'}</p><p>Electricity uses {meteredHours} hours of metered output{estimatedHours > 0 && ` and ${estimatedHours} hours of reconstructed dispatch targets`}. Gas firing is assumed. Output ÷ regional demand gives the percentage shown.</p><button className="gas-text-button" onClick={() => { setDetail(null); setView('sources'); }}>Full definitions & sources <ArrowRight size={14} /></button></section></div>}
   </div></main>;
 }

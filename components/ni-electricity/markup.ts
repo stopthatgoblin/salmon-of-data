@@ -10,7 +10,7 @@ export const dashboardMarkup = /* html */ `
         <button id="tab-trends" role="tab" aria-selected="false" aria-controls="trends" tabindex="-1">Trends</button>
         <button id="tab-definitions" role="tab" aria-selected="false" aria-controls="definitions" tabindex="-1">Definitions & sources</button>
       </div>
-      <a class="dashboard-switch" href="/dashboards/roi-electricity/">Switch to ROI <span aria-hidden="true">↗</span></a>
+      <nav class="dashboard-links" aria-label="Other energy dashboards"><a class="dashboard-switch" href="/dashboards/roi-electricity/">Switch to ROI <span aria-hidden="true">↗</span></a><a class="dashboard-switch" href="/dashboards/ireland-gas/">All-Ireland gas <span aria-hidden="true">↗</span></a></nav>
       ${themeToggleMarkup}
       <div class="snapshot-stamp"><span class="snapshot-label"><i></i> Snapshot</span><time data-snapshot-time>-</time></div>
     </div>
