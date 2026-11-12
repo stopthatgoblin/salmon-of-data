@@ -1,4 +1,4 @@
-:is(.ni-electricity, .roi-electricity) .theme-toggle {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle {
   display: inline-flex;
   align-items: center;
   align-self: center;
@@ -13,13 +13,13 @@
   white-space: nowrap;
 }
 
-:is(.ni-electricity, .roi-electricity) .theme-toggle:hover,
-:is(.ni-electricity, .roi-electricity) .theme-toggle[aria-pressed=true] {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle:hover,
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle[aria-pressed=true] {
   color: var(--ink);
   border-color: var(--teal);
 }
 
-:is(.ni-electricity, .roi-electricity) .theme-toggle svg {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle svg {
   width: 15px;
   height: 15px;
   fill: none;
@@ -28,7 +28,7 @@
   stroke-linejoin: round;
 }
 
-:is(.ni-electricity, .roi-electricity) .theme-toggle-track {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle-track {
   display: inline-flex;
   align-items: center;
   width: 24px;
@@ -38,7 +38,7 @@
   background: var(--line);
 }
 
-:is(.ni-electricity, .roi-electricity) .theme-toggle-track::after {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle-track::after {
   content: '';
   width: 10px;
   height: 10px;
@@ -47,27 +47,27 @@
   transition: transform 150ms ease;
 }
 
-:is(.ni-electricity, .roi-electricity) .theme-toggle[aria-pressed=true] .theme-toggle-track {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle[aria-pressed=true] .theme-toggle-track {
   background: var(--teal);
 }
 
-:is(.ni-electricity, .roi-electricity) .theme-toggle[aria-pressed=true] .theme-toggle-track::after {
+:is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle[aria-pressed=true] .theme-toggle-track::after {
   transform: translateX(10px);
 }
 
 @media (max-width: 1000px) {
-  :is(.ni-electricity, .roi-electricity) .theme-toggle { margin: 6px 0; }
+  :is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle { margin: 6px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.ni-electricity, .roi-electricity) .theme-toggle-track::after { transition: none; }
+  :is(.ni-electricity, .roi-electricity, .ireland-gas) .theme-toggle-track::after { transition: none; }
 }
 
 :root[data-electricity-theme=light] { color-scheme: light; }
 
 /* Keep the site shell, dashboard, map and native form controls on one palette. */
 :root[data-electricity-theme=dark],
-:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity) {
+:root[data-electricity-theme=dark] :is(.ni-electricity, .roi-electricity, .ireland-gas) {
   color-scheme: dark;
   --background: #111d20;
   --paper: #1a2b2f;

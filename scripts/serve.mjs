@@ -2,8 +2,10 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import electricityWorker from '../workers/electricity.mjs';
+import gasWorker from '../workers/gas-api.mjs';
 import { securityHeaders, apiSecurityHeaders } from '../workers/security-headers.mjs';
 const electricityStore=process.env.ELECTRICITY_LOCAL_KV_DIR && path.resolve(process.env.ELECTRICITY_LOCAL_KV_DIR);
+const gasStore=process.env.GAS_LOCAL_KV_DIR && path.resolve(process.env.GAS_LOCAL_KV_DIR);
 // Opt-in mirror for reviewing the same accepted data as the hosted preview.
 const electricityPreview=process.env.ELECTRICITY_PREVIEW_API;
 if(electricityPreview && new URL(electricityPreview).origin!=='https://salmon-electricity-preview.peterdonaghy.workers.dev')throw new Error('Unknown electricity preview origin.');
@@ -16,6 +18,19 @@ http.createServer(async(req,res)=>{
  for(const [name,value] of Object.entries(securityHeaders))res.setHeader(name,value);
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'});res.end();return;}
  let pathname;try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname)}catch{res.writeHead(400);res.end('Bad request');return;}
+ if(pathname.startsWith('/api/gas/')){
+  const response=await gasWorker.fetch(new Request(`http://localhost${req.url}`,{method:req.method,headers:req.headers}),{
+   GAS_MODE:'local',GAS_DATA:{async get(key,options){
+    if(!gasStore)return null;
+    const file=path.resolve(gasStore,key);
+    if(!file.startsWith(gasStore+path.sep)||!fs.existsSync(file))return null;
+    const raw=await fs.promises.readFile(file);
+    return options?.type==='json'?JSON.parse(raw):new Blob([raw]).stream();
+   }}
+  });
+  res.writeHead(response.status,Object.fromEntries(response.headers));
+  res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+ }
  if(pathname.startsWith('/api/electricity/')){
   if(electricityPreview){
    try{

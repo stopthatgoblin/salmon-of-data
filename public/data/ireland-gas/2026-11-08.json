@@ -1,0 +1,472 @@
+{
+  "schema": 1,
+  "gasDay": "2026-11-08",
+  "fromUtc": "2026-11-08T05:00:00Z",
+  "toUtc": "2026-11-09T05:00:00Z",
+  "snapshotAsOf": "2026-11-09",
+  "flows": {
+    "scotland": 228.637223,
+    "corrib": 21.078546,
+    "roiAllocated": 173.358519,
+    "niAllocated": 55.317743,
+    "snipPhysical": 55.257778,
+    "stranraer": 0.331826,
+    "southNorth": 0.0
+  },
+  "regions": {
+    "ni": {
+      "totalGas": 55.317743,
+      "powerGas": 30.216027090833336,
+      "otherGas": 25.101715909166664,
+      "electricity": 10.106722,
+      "demand": 20.16575,
+      "demandShare": 50.1182549620024,
+      "powerShare": 54.62266797622841
+    },
+    "roi": {
+      "totalGas": 187.196358,
+      "powerGas": 130.961389,
+      "otherGas": 56.23496900000001,
+      "electricity": 59.58754266666668,
+      "demand": 101.45099999999995,
+      "demandShare": 58.735293557152424,
+      "powerShare": 69.95936801291828
+    }
+  },
+  "hourly": [
+    {
+      "time": "2026-11-08T05:00:00Z",
+      "scotland": 10.783334,
+      "corrib": 0.880504
+    },
+    {
+      "time": "2026-11-08T06:00:00Z",
+      "scotland": 10.923888,
+      "corrib": 0.880352
+    },
+    {
+      "time": "2026-11-08T07:00:00Z",
+      "scotland": 10.908889,
+      "corrib": 0.87949
+    },
+    {
+      "time": "2026-11-08T08:00:00Z",
+      "scotland": 11.312223,
+      "corrib": 0.879673
+    },
+    {
+      "time": "2026-11-08T09:00:00Z",
+      "scotland": 11.433889,
+      "corrib": 0.879223
+    },
+    {
+      "time": "2026-11-08T10:00:00Z",
+      "scotland": 11.392222,
+      "corrib": 0.877734
+    },
+    {
+      "time": "2026-11-08T11:00:00Z",
+      "scotland": 11.292777,
+      "corrib": 0.87542
+    },
+    {
+      "time": "2026-11-08T12:00:00Z",
+      "scotland": 11.255556,
+      "corrib": 0.874267
+    },
+    {
+      "time": "2026-11-08T13:00:00Z",
+      "scotland": 11.284445,
+      "corrib": 0.874135
+    },
+    {
+      "time": "2026-11-08T14:00:00Z",
+      "scotland": 11.212777,
+      "corrib": 0.873412
+    },
+    {
+      "time": "2026-11-08T15:00:00Z",
+      "scotland": 11.148889,
+      "corrib": 0.874716
+    },
+    {
+      "time": "2026-11-08T16:00:00Z",
+      "scotland": 11.146111,
+      "corrib": 0.876323
+    },
+    {
+      "time": "2026-11-08T17:00:00Z",
+      "scotland": 10.771667,
+      "corrib": 0.879108
+    },
+    {
+      "time": "2026-11-08T18:00:00Z",
+      "scotland": 10.148332,
+      "corrib": 0.881036
+    },
+    {
+      "time": "2026-11-08T19:00:00Z",
+      "scotland": 9.793335,
+      "corrib": 0.881675
+    },
+    {
+      "time": "2026-11-08T20:00:00Z",
+      "scotland": 8.711667,
+      "corrib": 0.881765
+    },
+    {
+      "time": "2026-11-08T21:00:00Z",
+      "scotland": 7.907776,
+      "corrib": 0.881153
+    },
+    {
+      "time": "2026-11-08T22:00:00Z",
+      "scotland": 7.895556,
+      "corrib": 0.880538
+    },
+    {
+      "time": "2026-11-08T23:00:00Z",
+      "scotland": 7.516667,
+      "corrib": 0.879096
+    },
+    {
+      "time": "2026-11-09T00:00:00Z",
+      "scotland": 6.850555,
+      "corrib": 0.878863
+    },
+    {
+      "time": "2026-11-09T01:00:00Z",
+      "scotland": 6.665001,
+      "corrib": 0.878396
+    },
+    {
+      "time": "2026-11-09T02:00:00Z",
+      "scotland": 6.175556,
+      "corrib": 0.877364
+    },
+    {
+      "time": "2026-11-09T03:00:00Z",
+      "scotland": 6.133332,
+      "corrib": 0.876961
+    },
+    {
+      "time": "2026-11-09T04:00:00Z",
+      "scotland": 5.972779,
+      "corrib": 0.87734
+    }
+  ],
+  "units": {
+    "ni": [
+      {
+        "id": "GU_503720",
+        "name": "B31",
+        "electricityGwh": 2.5277930000000013,
+        "gasGwh": 6.957558282750003,
+        "starts": []
+      },
+      {
+        "id": "GU_503730",
+        "name": "B32",
+        "electricityGwh": 1.6299829999999986,
+        "gasGwh": 5.371352465250002,
+        "starts": []
+      },
+      {
+        "id": "GU_503740",
+        "name": "B10",
+        "electricityGwh": 2.2403560000000007,
+        "gasGwh": 4.920674128666667,
+        "starts": []
+      },
+      {
+        "id": "GU_500040",
+        "name": "CPS CCGT",
+        "electricityGwh": 0.0,
+        "gasGwh": 0.0,
+        "starts": []
+      },
+      {
+        "id": "GU_504110",
+        "name": "KGT6",
+        "electricityGwh": 3.7085899999999987,
+        "gasGwh": 12.966442214166662,
+        "starts": []
+      },
+      {
+        "id": "GU_504120",
+        "name": "KGT7",
+        "electricityGwh": 0.0,
+        "gasGwh": 0.0,
+        "starts": []
+      }
+    ],
+    "roi": [
+      {
+        "id": "GU_400120",
+        "name": "SK3",
+        "electricityGwh": 1.4829116666666669
+      },
+      {
+        "id": "GU_400121",
+        "name": "SK4",
+        "electricityGwh": 1.4539283333333337
+      },
+      {
+        "id": "GU_400181",
+        "name": "AT11",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_400182",
+        "name": "AT12",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_400183",
+        "name": "AT14",
+        "electricityGwh": 0.37303499999999995
+      },
+      {
+        "id": "GU_400324",
+        "name": "PBA",
+        "electricityGwh": 5.357296799999999
+      },
+      {
+        "id": "GU_400325",
+        "name": "PBB",
+        "electricityGwh": 5.304641866666668
+      },
+      {
+        "id": "GU_400480",
+        "name": "HNC",
+        "electricityGwh": 5.841806666666669
+      },
+      {
+        "id": "GU_400500",
+        "name": "DBP",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_400530",
+        "name": "TYC",
+        "electricityGwh": 7.277430000000006
+      },
+      {
+        "id": "GU_400540",
+        "name": "HN2",
+        "electricityGwh": 8.306430666666666
+      },
+      {
+        "id": "GU_400762",
+        "name": "Gt Island CCGT",
+        "electricityGwh": 9.016629999999994
+      },
+      {
+        "id": "GU_400850",
+        "name": "AD2",
+        "electricityGwh": 10.097598666666668
+      },
+      {
+        "id": "GU_400930",
+        "name": "GU_400930",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_401230",
+        "name": "MEA1 IW1",
+        "electricityGwh": 0.4469019999999999
+      },
+      {
+        "id": "GU_402030",
+        "name": null,
+        "electricityGwh": 1.5251559999999997
+      },
+      {
+        "id": "GU_403450",
+        "name": "TG175 Ballymakaily OCGT",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_403460",
+        "name": null,
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_403610",
+        "name": "Ringsend Flexgen",
+        "electricityGwh": 0.664555
+      },
+      {
+        "id": "GU_403620",
+        "name": "Poolbeg Flexgen",
+        "electricityGwh": 0.550004
+      },
+      {
+        "id": "GU_403680",
+        "name": "Corduff Flexgen",
+        "electricityGwh": 0.6664300000000001
+      },
+      {
+        "id": "GU_404250",
+        "name": "Cuilleen 1",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_404670",
+        "name": "Castlelost OCGT1",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_404680",
+        "name": "Castlelost OCGT2",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_404690",
+        "name": "Castlelost OCGT3",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_404700",
+        "name": "Casltelost OCGT4",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_404710",
+        "name": "Castlelost OCGT5",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405680",
+        "name": null,
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405690",
+        "name": null,
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405700",
+        "name": null,
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405710",
+        "name": null,
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405720",
+        "name": "Cuilleen 2",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405730",
+        "name": "Cuilleen 3",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405740",
+        "name": "Cuilleen 4",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405750",
+        "name": "Cuilleen 5",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405850",
+        "name": "Northwall TEG1",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_405860",
+        "name": "Huntstown TEG",
+        "electricityGwh": 0.0
+      },
+      {
+        "id": "GU_407560",
+        "name": "TG175 Ballymakaily OCGT",
+        "electricityGwh": 0.24239300000000003
+      },
+      {
+        "id": "GU_407570",
+        "name": "TG175 Ballymakaily OCGT",
+        "electricityGwh": 0.242885
+      },
+      {
+        "id": "GU_407580",
+        "name": "TG175 Ballymakaily OCGT",
+        "electricityGwh": 0.24544399999999997
+      },
+      {
+        "id": "GU_407590",
+        "name": "TG175 Ballymakaily OCGT",
+        "electricityGwh": 0.24588800000000005
+      },
+      {
+        "id": "GU_407600",
+        "name": "TG175 Ballymakaily OCGT",
+        "electricityGwh": 0.24617600000000006
+      }
+    ]
+  },
+  "electricityBasis": {
+    "meteredHours": 19,
+    "dispatchEstimateHours": 5,
+    "estimateFromUtc": "2026-11-09T00:00:00Z",
+    "description": "SEMO half-hour interval energy for 05:00\u201324:00 on 8 November; reconstructed dispatch targets for 00:00\u201305:00 on 9 November. Targets are seeded with the final available meter half-hour. Gas firing is assumed for gas/multi-fuel units; battery storage is excluded."
+  },
+  "niGasBasis": {
+    "description": "Unit-specific public SEM PLEXOS heat-input curves plus inferred start-up fuel; gross/net gas energy factor 1.11. NI other use is the entry allocation less estimated power use and includes balancing differences.",
+    "grossNetFactor": 1.11
+  },
+  "sources": {
+    "meter.xml": "https://reports.sem-o.com/documents/PUB_DailyMeterDataD1_202611091548.xml",
+    "technical.xml": "https://reports.sem-o.com/documents/PUB_DailyTechnicalOfferData_202611091015.xml",
+    "register.xml": "https://reports.sem-o.com/documents/PUB_DailyRegisteredUnits_202611051101.xml",
+    "physical-hourly.json": "https://www.gasnetworks.ie/api/v1/physicalflows?date=2026-11-08&frequency=hourly",
+    "ni-demand.json": "https://www.smartgriddashboard.com/api/chart/?region=NI&chartType=demand&areas=demandactual&dateRange=custom&dateFrom=08-Nov-2026&dateTo=09-Nov-2026",
+    "roi-demand.json": "https://www.smartgriddashboard.com/api/chart/?region=ROI&chartType=demand&areas=demandactual&dateRange=custom&dateFrom=08-Nov-2026&dateTo=09-Nov-2026",
+    "dispatch-00.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090000.xml",
+    "dispatch-01.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090100.xml",
+    "dispatch-02.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090200.xml",
+    "dispatch-03.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090300.xml",
+    "dispatch-04.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090400.xml",
+    "dispatch-05.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090500.xml",
+    "dispatch-06.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611090600.xml",
+    "meter-6.xml": "https://reports.sem-o.com/documents/PUB_DailyMeterDataD1_202611091237.xml",
+    "meter-7.xml": "https://reports.sem-o.com/documents/PUB_DailyMeterDataD1_202611091355.xml",
+    "dispatch-prev-23.xml": "https://reports.sem-o.com/documents/PUB_HrlyDispatchInstr_202611082300.xml",
+    "gniDailyPhysical": "https://www.gasnetworks.ie/api/v1/physicalflows?date=2026-11-09&frequency=daily",
+    "gniConsumption": "https://www.gasnetworks.ie/api/v1/gasconsumption?date=2026-11-09&frequency=daily",
+    "gniAllocations": "https://www.gasnetworks.ie/api/v1/commercialentrypoint?date=2026-11-09&frequency=daily",
+    "snip": "https://transparency.entsog.eu/api/v1/operationaldatas?operatorKey=UK-TSO-0002&from=2026-11-08&to=2026-11-09&periodType=day&indicator=Physical%20Flow&limit=500",
+    "northSouth": "https://transparency.entsog.eu/api/v1/operationaldatas?operatorKey=IE-TSO-0001&pointKey=ITP-00222&directionKey=entry&from=2026-11-08&to=2026-11-09&periodType=day&indicator=Physical%20Flow&limit=100"
+  },
+  "notes": [
+    "GWh means one million kWh. All gas quantities use gross calorific energy; electricity output is a separate energy measure.",
+    "Scotland headline is physical flow at Moffat, including NI and ROI downstream and other small offtakes. NI/ROI branch amounts are commercial allocations, not separately measured IC1/IC2 landfalls. They cannot be used as an exact physical balance.",
+    "The SNIP entry at Twynholm includes a 0.332 GWh Scottish offtake at Stranraer. The displayed NI supply allocation is used for the usage residual.",
+    "IC1 and IC2 are shown geographically; no measured split is available. Isle of Man is outside the dashboard usage totals; its zero commercial allocation is not treated as proof of zero physical flow.",
+    "ROI total and power use are GNI reported market-sector consumption. NI total is a commercial entry allocation; NI power gas is estimated and the non-power figure is a residual, not a sector meter.",
+    "ROI electricity includes technical-offer gas/multi-fuel generating units with meter coverage, including CHP exports. Actual fuel switching, embedded own-use and unit operating behaviour can differ.",
+    "Reported gas supply, commercial allocations and consumer demand differ because of their measurement boundaries, linepack, balancing and revisions. No discrepancy is assigned to other use in ROI."
+  ],
+  "supplyUseComparison": {
+    "shownSupplyGwh": 249.715769,
+    "shownUsageGwh": 242.514101,
+    "unreconciledDifferenceGwh": 7.201667999999984,
+    "isleOfManPhysicalGwh": null,
+    "description": "The difference mixes physical entry, commercial allocation and consumption boundaries. It is not a measure of Isle of Man use; Scottish offtakes, linepack, system use, timing and revisions also require reconciliation."
+  },
+  "reuse": {
+    "gniPolicy": "https://www.gasnetworks.ie/about/open-data",
+    "gniOperationalApiLicenceCoverageConfirmed": false,
+    "entsogTerms": "https://transparency.entsog.eu/pdf/TRA0394_20161115_ENTSOG_TP_TC_of_Use_Rev_2_KNS_LG_KNS.pdf",
+    "entsogExtractionDate": "2026-11-09",
+    "electricityLicence": "https://www.smartgriddashboard.com/ni/open-data-license/"
+  }
+}

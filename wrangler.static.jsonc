@@ -1,16 +1,17 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "salmon-of-data",
-  "main": "workers/electricity.mjs",
+  "main": "workers/site.mjs",
   "compatibility_date": "2026-09-11",
   "assets": {
     "binding": "ASSETS",
-    "run_worker_first": ["/api/electricity/*"],
+    "run_worker_first": ["/api/electricity/*", "/api/gas/*"],
     "directory": "./dist/client",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   },
   "kv_namespaces": [
+    { "binding": "GAS_DATA", "id": "52c6bd91b3304c3c8b8ac47e49b5adbc", "preview_id": "9b13bd2424b844478bbaa5153cfa520a" },
     {
       "binding": "ELECTRICITY_DATA",
       "id": "01af7cb09c1c4828b3023de16af4362b",
