@@ -14,6 +14,14 @@ UTC = timezone.utc
 SEMO = 'https://reports.sem-o.com'
 
 
+class MeterDataPending(ValueError):
+    """The primary calendar-day meter report has not yet been published."""
+    def __init__(self, gas_day, latest_report_date=None):
+        self.gas_day = gas_day.isoformat()
+        self.latest_report_date = latest_report_date
+        super().__init__('Waiting for SEMO meter data for ' + self.gas_day)
+
+
 def stamp(value):
     at = datetime.fromisoformat(value.replace('Z', '+00:00'))
     return at.replace(tzinfo=UTC) if at.tzinfo is None else at.astimezone(UTC)

@@ -4,9 +4,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from gas.cloud import LocalStore, MANIFEST, STATUS, failure, publish
-from gas.collect import daily, physical, validate
+from gas.collect import Collection, daily, physical, validate
+from gas.sources import MeterDataPending
 from electricity.research.ni_gas.estimate import gas_window
 
 
@@ -52,6 +54,31 @@ class GasRules(unittest.TestCase):
         self.assertEqual(failed['days'],accepted['days'])
         self.assertEqual(failed['latest'],accepted['latest'])
         self.assertTrue(failed['lastError'])
+
+    def test_missing_primary_meter_report_is_reported_before_other_sources_are_fetched(self):
+        def index(source, first):
+            return [dict(Date='2026-11-11', PublishTime='2026-11-12T15:58:55')] if source == 'PUB_DailyMeterDataD1' else []
+        with patch('gas.collect.Sources.index', side_effect=index), patch('gas.collect.Sources.fetch') as fetch:
+            with self.assertRaises(MeterDataPending) as caught:
+                Collection(date(2026,11,12), Path(self.temp.name) / 'sources')
+            self.assertEqual(caught.exception.latest_report_date, '2026-11-11')
+            self.assertEqual(caught.exception.gas_day, '2026-11-12')
+            fetch.assert_not_called()
+
+    def test_source_wait_preserves_archive_and_clears_after_successful_backfill(self):
+        accepted = publish(self.store, [self.snapshot], target=date(2026,11,8))
+        failure(self.store, date(2026,11,9), datetime(2026,11,10,19,tzinfo=timezone.utc),
+                MeterDataPending(date(2026,11,9), '2026-11-08'))
+        pending = self.store.get_json(MANIFEST)
+        self.assertEqual(pending['days'], accepted['days'])
+        self.assertEqual(pending['lastSuccess'], accepted['lastSuccess'])
+        self.assertEqual(pending['waitingForSource']['gasDay'], '2026-11-09')
+        self.assertIn('Waiting for SEMO meter data', pending['lastError'])
+        self.assertEqual(self.store.get_json(STATUS)['targetGasDay'], '2026-11-09')
+        updated = publish(self.store, [self.snapshot], target=date(2026,11,8))
+        self.assertIsNone(updated['waitingForSource'])
+        self.assertIsNone(updated['lastError'])
+        self.assertIsNone(self.store.get_json(STATUS)['waitingForSource'])
 
     def test_zero_is_a_value_and_missing_is_not_zero(self):
         rows=[dict(name='Moffat',data=[[1794096000000,0]])] # 8 November UTC midnight

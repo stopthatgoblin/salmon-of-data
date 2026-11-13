@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 from electricity.research.ni_gas.estimate import gas_window, fuel_rate, startup_fuel, OIL_UNITS
-from gas.sources import Sources, iso, newest, parallel, stamp
+from gas.sources import MeterDataPending, Sources, iso, newest, parallel, stamp
 
 UTC = timezone.utc
 MODEL = json.loads((Path(__file__).parent / 'ni-model.json').read_text())
@@ -61,6 +61,10 @@ class Collection:
         names = ['PUB_DailyMeterDataD1', 'PUB_DailyTechnicalOfferData', 'PUB_DailyRegisteredUnits']
         indices = parallel([lambda name=name: self.sources.index(name, self.context_first) for name in names])
         self.indices = dict(zip(names, indices))
+        meter_index = self.indices[names[0]]
+        if newest(meter_index, target) is None:
+            latest = max((r['Date'] for r in meter_index if r['Date'] <= target.isoformat()), default=None)
+            raise MeterDataPending(target, latest)
         self.meters, self.meter_sources = {}, []
         jobs = []
         cursor = self.context_first

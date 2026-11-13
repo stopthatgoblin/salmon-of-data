@@ -28,6 +28,8 @@ ROOT = Path(__file__).resolve().parent
 UTC = timezone.utc
 UK = ZoneInfo('Europe/London')
 MAX_ARCHIVE = 20 * 1024 * 1024  # Fail before KV's 25 MiB ceiling.
+MAX_EXPANDED_STATE = 250 * 1024 * 1024
+SNAPSHOT_LATEST_REPORTS = ('PUB_DailyTechnicalOfferData_', 'PUB_DlyGenUnitTechCharDataTrans_')
 PUBLIC_SERIES = {'wind', 'solar', 'otherNI', 'moyle', 'northSouth', 'demand', 'generation'}
 
 
@@ -193,15 +195,25 @@ def archive(work, name, version):
     else:
         files += ['research/dispatch_proxy/cache']
     buffer = io.BytesIO()
+    expanded = 0
+    def bounded_member(info):
+        nonlocal expanded
+        if not (info.isfile() or info.isdir()):
+            return None
+        expanded += info.size
+        if expanded > MAX_EXPANDED_STATE:
+            raise ValueError('Expanded source state exceeds 250 MiB; retain the previous publication')
+        return info
     with tarfile.open(fileobj=buffer, mode='w:gz', compresslevel=6) as tar:
         payload = encode({'schema': 1, 'version': version, 'dataset': name})
         info = tarfile.TarInfo('state.json')
         info.size = len(payload)
+        bounded_member(info)
         tar.addfile(info, io.BytesIO(payload))
         for relative in files:
             path = work / relative
             if path.exists():
-                tar.add(path, arcname=relative, filter=lambda info: None if not (info.isfile() or info.isdir()) else info)
+                tar.add(path, arcname=relative, filter=bounded_member)
     raw = buffer.getvalue()
     if len(raw) > MAX_ARCHIVE:
         raise ValueError('Source state exceeds 20 MiB; retain the previous publication and review archive growth')
@@ -214,8 +226,6 @@ def restore(raw, work, name, version):
         if info != {'schema': 1, 'version': version, 'dataset': name}:
             raise ValueError('KV state version mismatch')
         members = tar.getmembers()
-        if sum(item.size for item in members) > 250 * 1024 * 1024:
-            raise ValueError('Unreasonably large expanded state')
         allowed = ['dashboard/history-cache/', 'research/dispatch_proxy/cache/']
         exact = {'state.json', 'dashboard/history-cache', 'research/dispatch_proxy/cache',
                  'dashboard/history-audit.json', f'dashboard/dist/assets/{name}.json'}
@@ -225,6 +235,15 @@ def restore(raw, work, name, version):
                 raise ValueError('Unsafe state archive path')
             if item.name not in exact and not any(item.name.startswith(prefix) for prefix in allowed):
                 raise ValueError('Unexpected state archive member')
+        if name == 'snapshot':
+            # Old writers retained each day's large technical reports. Restore
+            # only the latest copies, which refresh_snapshot reads; never expand
+            # superseded copies. This also recovers an accepted oversized cache
+            # without changing its public reading or weakening extraction limits.
+            redundant = superseded_snapshot_reports(item.name for item in members if item.isfile())
+            members = [item for item in members if item.name not in redundant]
+        if sum(item.size for item in members) > MAX_EXPANDED_STATE:
+            raise ValueError('Unreasonably large expanded state')
         for item in members:
             target = work / item.name
             if item.isdir():
@@ -330,9 +349,22 @@ def preserve_complete_history(data, previous):
         print(json.dumps({'retainedCompleteHistory': {key: len(days) for key, days in retained.items()}}))
 
 
+def superseded_snapshot_reports(names):
+    names = list(names)
+    redundant = set()
+    for prefix in SNAPSHOT_LATEST_REPORTS:
+        reports = sorted(name for name in names if re.fullmatch(
+            r'research/dispatch_proxy/cache/' + prefix + r'\d{12,14}\.xml', name))
+        redundant.update(reports[:-1])
+    return redundant
+
+
 def prune_snapshot_cache(work, now=None):
+    cache = work / 'research/dispatch_proxy/cache'
+    for name in superseded_snapshot_reports(path.relative_to(work).as_posix() for path in cache.glob('*.xml')):
+        (work / name).unlink()
     cutoff = ((now or datetime.now(UTC)) - timedelta(days=14)).strftime('%Y%m%d')
-    for path in (work / 'research/dispatch_proxy/cache').glob('*.xml'):
+    for path in cache.glob('*.xml'):
         match = re.search(r'_(\d{8})\d*\.xml$', path.name)
         if match and match[1] < cutoff:
             path.unlink()

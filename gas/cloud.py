@@ -19,7 +19,7 @@ import urllib.request
 from zoneinfo import ZoneInfo
 
 from gas.collect import Collection, validate
-from gas.sources import iso
+from gas.sources import MeterDataPending, iso
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = 'public/gas/manifest'
@@ -118,23 +118,29 @@ def publish(store, snapshots, *, target=None, now=None, warnings=None):
     previous_status = store.get_json(STATUS) or {}
     status = dict(schema=1, lastAttempt=iso(now), lastSuccess=iso(now),
                   successfulDate=now.astimezone(LOCAL).date().isoformat() if require_primary else previous_status.get('successfulDate'),
-                  targetGasDay=target.isoformat() if target else None, lastError=None, warnings=warnings or [])
+                  targetGasDay=target.isoformat() if target else None, lastError=None,
+                  waitingForSource=None, warnings=warnings or [])
     manifest.update(days=[records[day] for day in sorted(records)], latest=max(records) if records else None,
-                    lastAttempt=status['lastAttempt'], lastSuccess=status['lastSuccess'], lastError=None)
+                    lastAttempt=status['lastAttempt'], lastSuccess=status['lastSuccess'], lastError=None,
+                    waitingForSource=None)
     # Objects first, public index last. KV propagation is handled by API/client retry.
     store.put_json(MANIFEST, manifest)
     store.put_json(STATUS, status)
     return manifest
 
 
-def failure(store, target, now):
+def failure(store, target, now, error=None):
     status = store.get_json(STATUS) or {}
+    pending = dict(source='SEMO meter data', gasDay=error.gas_day,
+                   latestReportDate=error.latest_report_date) if isinstance(error, MeterDataPending) else None
     status.update(schema=1, lastAttempt=iso(now), targetGasDay=target.isoformat(),
-                  lastError='Daily update failed; retaining the last accepted data.')
+                  waitingForSource=pending,
+                  lastError=(str(error) + '; retaining the last accepted data.') if pending
+                  else 'Daily update failed; retaining the last accepted data.')
     store.put_json(STATUS, status)
     manifest = store.get_json(MANIFEST)
     if manifest:
-        manifest.update(lastAttempt=status['lastAttempt'], lastError=status['lastError'])
+        manifest.update(lastAttempt=status['lastAttempt'], lastError=status['lastError'], waitingForSource=pending)
         store.put_json(MANIFEST, manifest)
 
 
@@ -156,7 +162,7 @@ def main():
         parser.error('Only completed gas days can be collected')
     store = LocalStore(args.local_dir) if args.local_dir else CloudStore()
     status = store.get_json(STATUS) or {}
-    if args.automatic and status.get('successfulDate') == now.astimezone(LOCAL).date().isoformat():
+    if args.automatic and status.get('successfulDate') == now.astimezone(LOCAL).date().isoformat() and status.get('targetGasDay') == target.isoformat():
         print('Gas: this local date already completed successfully.')
         return
     if args.seed or args.seed_only:
@@ -186,7 +192,7 @@ def main():
                               primaryMeteredHours=primary['electricityBasis']['meteredHours'],
                               primaryEstimatedHours=primary['electricityBasis']['dispatchEstimateHours'], warnings=warnings)), flush=True)
     except Exception as error:
-        failure(store, target, datetime.now(UTC))
+        failure(store, target, datetime.now(UTC), error)
         print('Gas collection failed: ' + str(error), file=sys.stderr)
         raise SystemExit(1) from None
 

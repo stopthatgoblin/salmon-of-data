@@ -6,7 +6,8 @@ import IrelandGasDashboard from './dashboard';
 import type { GasSnapshot } from './types';
 
 type Day = { date: string; version: string; collectedAt: string; meteredHours: number; estimatedHours: number };
-type Manifest = { schema: number; days: Day[]; latest: string; lastAttempt: string; lastSuccess: string; lastError: string | null };
+type Manifest = { schema: number; days: Day[]; latest: string; lastAttempt: string; lastSuccess: string; lastError: string | null;
+  waitingForSource?: { source: string; gasDay: string; latestReportDate: string | null } | null };
 const validDate = (value: string | null): value is string => !!value && /^\d{4}-\d{2}-\d{2}$/.test(value)
   && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0,10) === value;
 const label = (value: string) => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));
@@ -71,7 +72,9 @@ export default function GasLiveDashboard() {
       if(localHour<19)due.setUTCDate(due.getUTCDate()-1);
       const late = index.latest < due.toISOString().slice(0,10);
       setProblem(!!index.lastError || late);
-      setMessage(index.lastError || late ? 'Update delayed. Showing the last accepted day.' : selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.');
+      const waiting = index.waitingForSource?.source === 'SEMO meter data' && validDate(index.waitingForSource.gasDay)
+        ? `Waiting for SEMO meter data for ${label(index.waitingForSource.gasDay)}. Showing the last accepted day.` : null;
+      setMessage(waiting || (index.lastError || late ? 'Update delayed. Showing the last accepted day.' : selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.'));
     } catch (error) {
       if (abort.signal.aborted || generation !== epoch.current) return;
       setProblem(true);

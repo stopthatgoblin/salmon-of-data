@@ -182,6 +182,63 @@ class CloudTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Unsafe'):
                 cloud.restore(raw.getvalue(), work, 'history', 'x')
 
+    def test_oversized_legacy_snapshot_recovers_without_expanding_superseded_reports(self):
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            raw = io.BytesIO()
+            data = cloud.encode(self.data('snapshot'))
+            files = {'state.json': cloud.encode(dict(schema=1, version='accepted', dataset='snapshot')),
+                     'dashboard/dist/assets/snapshot.json': data}
+            for prefix in cloud.SNAPSHOT_LATEST_REPORTS:
+                for day in ['20261110', '20261111', '20261112']:
+                    files[f'research/dispatch_proxy/cache/{prefix}{day}1015.xml'] = b'x' * 10000
+            with tarfile.open(fileobj=raw, mode='w:gz') as tar:
+                for name, value in files.items():
+                    info = tarfile.TarInfo(name)
+                    info.size = len(value)
+                    tar.addfile(info, io.BytesIO(value))
+            with patch.object(cloud, 'MAX_EXPANDED_STATE', 30000):
+                cloud.restore(raw.getvalue(), work, 'snapshot', 'accepted')
+            self.assertEqual((work / 'dashboard/dist/assets/snapshot.json').read_bytes(), data)
+            self.assertEqual(sorted(p.name for p in (work / 'research/dispatch_proxy/cache').iterdir()),
+                             sorted(prefix + '202611121015.xml' for prefix in cloud.SNAPSHOT_LATEST_REPORTS))
+            # The same bound still rejects data that cannot be compacted safely.
+            with patch.object(cloud, 'MAX_EXPANDED_STATE', 10000):
+                with self.assertRaisesRegex(ValueError, 'large expanded'):
+                    cloud.restore(raw.getvalue(), work / 'rejected', 'snapshot', 'accepted')
+            self.assertFalse((work / 'rejected').exists())
+
+    def test_writer_rejects_compressible_oversized_state_before_any_kv_mutation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory) / 'work'
+            cloud.make_work(work)
+            data = self.data('snapshot')
+            (work / 'dashboard/dist/assets/snapshot.json').write_bytes(cloud.encode(data))
+            cache = work / 'research/dispatch_proxy/cache'
+            cache.mkdir(parents=True)
+            (cache / 'PUB_DailyMeterDataD1_202611121558.xml').write_bytes(b'x' * 50000)
+            kv = cloud.FileKV(Path(directory) / 'kv')
+            with patch.object(cloud, 'MAX_EXPANDED_STATE', 30000):
+                with self.assertRaisesRegex(ValueError, 'Expanded source state'):
+                    cloud.publish(kv, 'snapshot', work, data, now=NOW)
+            self.assertEqual(kv.writes, 0)
+            self.assertFalse((Path(directory) / 'kv').exists())
+
+    def test_snapshot_retention_keeps_latest_technical_and_required_recent_meter_dispatch_reports(self):
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            cache = work / 'research/dispatch_proxy/cache'
+            cache.mkdir(parents=True)
+            retained = ['PUB_DailyMeterDataD1_202611101558.xml', 'PUB_HrlyDispatchInstr_202611121500.xml']
+            removed = ['PUB_DailyMeterDataD1_202610101558.xml']
+            for prefix in cloud.SNAPSHOT_LATEST_REPORTS:
+                retained.append(prefix + '202611121015.xml')
+                removed.append(prefix + '202611111015.xml')
+            for name in retained + removed:
+                (cache / name).write_bytes(b'accepted')
+            cloud.prune_snapshot_cache(work, datetime(2026, 11, 13, tzinfo=timezone.utc))
+            self.assertEqual(sorted(p.name for p in cache.iterdir()), sorted(retained))
+
 
 if __name__ == '__main__':
     unittest.main()

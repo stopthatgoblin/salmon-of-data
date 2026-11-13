@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import gas from '../workers/gas-api.mjs';
-import { gasCron,gasDue,collectGasOnSchedule } from '../workers/gas-scheduler.mjs';
+import { gasCron,gasCatchupCron,gasDue,collectGasOnSchedule } from '../workers/gas-scheduler.mjs';
+import { collectOnSchedule } from '../workers/electricity-scheduler.mjs';
 
 test('gas timer starts at 19:00 Ireland time in both seasons and suppresses success',()=>{
   for(const time of ['2026-11-12T19:00:00Z','2026-07-12T18:00:00Z'])assert.equal(gasDue(gasCron,Date.parse(time),null),true);
@@ -20,6 +21,25 @@ test('gas dispatch targets only its workflow and preserves the encrypted-token b
       return new Response(null,{status:204});
     });
   assert.equal(result.action,'dispatch');assert.equal(saved.key,'private/gas/status');assert.equal(saved.value.includes('test-secret'),false);
+});
+
+test('late meter data gets bounded daytime retries in GMT and BST without suppressing the next evening',async()=>{
+  for(const [date,hour] of [['2026-11-14','07'],['2026-07-14','06']]){
+    const previousDay=date.slice(0,8)+'12';
+    let state={targetGasDay:previousDay,waitingForSource:{source:'SEMO meter data',gasDay:previousDay},lastAttempt:date.slice(0,8)+'13T22:40:00Z'};
+    const controller={cron:gasCatchupCron,scheduledTime:Date.parse(`${date}T${hour}:00:00Z`)};
+    assert.equal(gasDue(controller.cron,controller.scheduledTime,state),true);
+    assert.equal(gasDue(controller.cron,controller.scheduledTime,null),false);
+    let dispatched;
+    const env={GITHUB_ACTIONS_TOKEN:'test-only',GAS_DATA:{get:async()=>state,put:async(_key,value)=>{state=JSON.parse(value);}}};
+    await collectOnSchedule(controller,env,async(_url,options)=>{dispatched=JSON.parse(options.body);return new Response(null,{status:204});});
+    assert.equal(dispatched.inputs.gas_day,previousDay);
+    assert.equal(gasDue(gasCatchupCron,controller.scheduledTime+10*60000,state),false);
+    state={...state,successfulDate:date,waitingForSource:null,lastAttempt:new Date(controller.scheduledTime).toISOString()};
+    assert.equal(gasDue(gasCatchupCron,Date.parse(`${date}T${String(Number(hour)+3).padStart(2,'0')}:00:00Z`),state),false);
+    // A successful catch-up for an older gas day cannot suppress yesterday's run.
+    assert.equal(gasDue(gasCron,Date.parse(`${date}T${hour==='07'?'19':'18'}:00:00Z`),state),true);
+  }
 });
 
 test('gas API exposes only dated public objects and tolerates propagation misses',async()=>{
