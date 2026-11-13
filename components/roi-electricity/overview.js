@@ -46,6 +46,11 @@ export function mountOverview(root, data, map, events, signal) {
     });
   }
   function renderReadings() {
+    const stationNote = root.querySelector('#station-data-note');
+    const dispatchGap = !data.replay && data.sources?.plants?.missingDispatchHours?.length > 0;
+    stationNote.hidden = !dispatchGap || !!(root.dataset.view && root.dataset.view !== 'overview');
+    stationNote.textContent = dispatchGap
+      ? 'Grid totals and flows remain available. Station output estimates are unavailable because SEMO dispatch reports are incomplete. Their generation remains in Other/Unallocated.' : '';
     const readings = {...data, reportedGeneration:data.generation, generation:data.generation + data.reconciliation, renewables:data.wind + data.solar, imports:data.interconnectors.reduce((sum, flow) => sum + flow.value, 0)};
     root.querySelectorAll('[data-reading]').forEach(el => {
       const key = el.dataset.reading;
@@ -86,6 +91,8 @@ export function mountOverview(root, data, map, events, signal) {
   const stationCapacity = station => station.id === 'turlough-hill'
     ? {value:station.maximum,label:'capacity'}
     : {value:station.available,label:'available'};
+  const stationOutputLabel = station => station.output === null ? 'output unavailable'
+    : `${data.replayStationBasis==='meter'?'metered half-hour average':captured?'estimated output':'sample output'} ${n(station.output)} megawatts`;
   function stationContent(station) {
     const capacity = stationCapacity(station);
     const ratio = usage(station.output, capacity.value);
@@ -118,7 +125,7 @@ export function mountOverview(root, data, map, events, signal) {
     button.style.setProperty('--card-x', `${station.card[0] / mapWidth * 100}%`);
     button.style.setProperty('--card-y', `${station.card[1] / mapHeight * 100}%`);
     button.setAttribute('aria-haspopup', 'dialog');
-    button.setAttribute('aria-label', `${station.name}, ${station.fuel}: ${captured ? 'estimated' : 'sample'} output ${n(station.output)} megawatts, ${n(capacity.value)} megawatts ${capacity.label}. Explore ${station.units.length} ${captured ? 'registered' : 'illustrative'} units.`);
+    button.setAttribute('aria-label', `${station.name}, ${station.fuel}: ${stationOutputLabel(station)}, ${n(capacity.value)} megawatts ${capacity.label}. Explore ${station.units.length} ${captured ? 'registered' : 'illustrative'} units.`);
     button.innerHTML = stationContent(station);
     stationCards.append(button);
     const point = stationPoint(station);
@@ -215,7 +222,7 @@ export function mountOverview(root, data, map, events, signal) {
     const availableCount = station.units.filter(unit => unit.available > 0).length;
     const capacityKnown=station.units.every(unit=>Number.isFinite(unit.available));
     const unitStatus = unit => data.replay ? (data.replayStationBasis==='meter'?'Metered half-hour average':'Archived dispatch estimate') : captured
-      ? unit.output === null ? 'Output unknown' : !unit.available ? 'Declared unavailable' : unit.basis === 'meter_seed' ? `Earlier meter reading${unit.dispatch?.effective ? ' · ' + new Intl.DateTimeFormat('en-IE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZone:'Europe/Dublin'}).format(new Date(unit.dispatch.effective)) : ''}` : unit.basis?.includes('SYNC') ? 'Start instructed' : unit.output ? 'Generation indicated' : 'No generation indicated'
+      ? unit.basis === 'dispatch_gap' ? 'Output unavailable · missing dispatch reports' : unit.output === null ? 'Output unknown' : !unit.available ? 'Declared unavailable' : unit.basis === 'meter_seed' ? `Earlier meter reading${unit.dispatch?.effective ? ' · ' + new Intl.DateTimeFormat('en-IE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZone:'Europe/Dublin'}).format(new Date(unit.dispatch.effective)) : ''}` : unit.basis?.includes('SYNC') ? 'Start instructed' : unit.output ? 'Generation indicated' : 'No generation indicated'
       : !unit.available ? 'Sample: unavailable' : unit.output ? 'Sample: generating' : 'Sample: no generation';
     root.querySelector('#station-switcher').innerHTML = data.stations.map(item => `<button data-switch="${item.id}" aria-pressed="${item.id === id}">${escape(item.name)}</button>`).join('');
     root.querySelector('#station-detail').innerHTML = `<div class="station-title-row"><h2 id="station-title">${generationIcon(station.generationType)}${escape(station.name)}</h2><span class="station-status">${capacityKnown?`${availableCount} of ${station.units.length} units available`:'Availability not archived'}</span></div>
@@ -242,6 +249,7 @@ export function mountOverview(root, data, map, events, signal) {
       : selected === 'trends' ? (root.dataset.historyAvailable === 'true' ? 'Republic of Ireland · Historical daily averages' : 'Republic of Ireland · History not yet loaded')
       : 'Republic of Ireland · Definitions & sources';
     root.dataset.view = selected;
+    root.querySelector('#station-data-note').hidden = selected !== 'overview' || !!data.replay || !data.sources?.plants?.missingDispatchHours?.length;
     if (selected === 'overview') positionMapConnections();
     if (updateHash) history.replaceState(null, '', `#${selected}`);
     events.dispatchEvent(new CustomEvent('dashboard:viewchange', {detail:selected}));
@@ -293,7 +301,7 @@ export function mountOverview(root, data, map, events, signal) {
       const button = root.querySelector(`.plant-callout[data-station="${station.id}"]`);
       const capacity = stationCapacity(station);
       button.innerHTML = stationContent(station);
-      button.setAttribute('aria-label', `${station.name}, ${data.replayStationBasis==='meter'?'metered half-hour average':'estimated output'} ${n(station.output)} megawatts, ${n(capacity.value)} megawatts ${capacity.label}. Explore ${station.units.length} registered units.`);
+      button.setAttribute('aria-label', `${station.name}, ${stationOutputLabel(station)}, ${n(capacity.value)} megawatts ${capacity.label}. Explore ${station.units.length} registered units.`);
       root.querySelector(`[data-map-plant="${station.id}"]`).classList.toggle('muted', station.output === 0);
     }
     for (const flow of data.interconnectors) {

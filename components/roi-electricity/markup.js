@@ -17,6 +17,7 @@ export const dashboardMarkup = /* html */ `
     <div class="snapshot-stamp"><span class="snapshot-label"><i></i> Checking for updates</span><time data-snapshot-time></time></div>
   </div>
   <p class="preview-note" hidden></p>
+  <p id="station-data-note" class="station-data-note" role="status" hidden></p>
   <div class="metrics" aria-label="Electricity system summary, public-source readings">
     <div class="metric demand"><span>Electricity demand</span><strong data-reading="demand"></strong><p class="expected-peak" data-expected-peak="demand">Today's expected peak: unavailable</p></div>
     <div class="metric renewables"><span>ROI wind & solar</span><strong data-reading="renewables"></strong><p><b id="renewables-share"></b> of demand</p><p class="expected-peak" data-expected-peak="windSolar">Today's expected peak: unavailable</p></div>

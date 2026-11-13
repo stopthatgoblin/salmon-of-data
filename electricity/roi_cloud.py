@@ -58,6 +58,11 @@ def validate(data, previous=None):
         if sources['ROI:' + field]['value'] != data[key]:
             raise ValueError('ROI readings differ from retained source inputs')
     stations = data['stations']
+    dispatch_gaps = data['sources']['plants'].get('missingDispatchHours', [])
+    if not isinstance(dispatch_gaps, list):
+        raise ValueError('Invalid dispatch gap metadata')
+    for hour in dispatch_gaps:
+        cloud.stamp(hour)
     if len(stations) != len(collect.MAPPING) or {s['id'] for s in stations} != collect.MAPPING.keys():
         raise ValueError('Incomplete ROI station mapping')
     for station in stations:
@@ -65,6 +70,8 @@ def validate(data, previous=None):
             raise ValueError('ROI unit mapping changed')
         for key in ['output', 'available', 'maximum']:
             values = [unit[key] for unit in station['units']]
+            if key == 'output' and dispatch_gaps and any(value is not None for value in values):
+                raise ValueError('Station estimates cannot cross missing dispatch reports')
             if any(value is not None and (not finite(value) or key != 'output' and value < 0) for value in values):
                 raise ValueError('Invalid ROI unit reading')
             expected = sum(values) if all(finite(value) for value in values) else None

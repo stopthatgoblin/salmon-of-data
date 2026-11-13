@@ -235,8 +235,13 @@ def station_capture(at):
     present = {datetime.strptime(Path(m['ResourceName']).stem.rsplit('_',1)[1],'%Y%m%d%H%M') for m in dispatch_reports}
     missing = sorted(t for t in expected if t<coverage and t not in present)
     if missing:
-        raise ValueError('Missing hourly dispatch reports; previous preview preserved')
-    return result,dict(register=register_meta['ResourceName'],technical=tech_meta['ResourceName'],availabilityBaseline=baseline_meta['ResourceName'],meterSeed=meter_meta['ResourceName'],dispatchPublished=latest['PublishTime']+'Z',dispatchCoverageThrough=iso(coverage),dispatchCoverageAgeMinutes=round((at-coverage).total_seconds()/60,1),reportManifest='private-source-archive/plant-report-manifest.json')
+        # A gap prevents reconstruction of station outputs, not publication of
+        # separately verified regional actuals. Do not carry estimates across
+        # that gap or turn unknown station generation into zero.
+        for unit in result.values():
+            unit.update(output=None, basis='dispatch_gap', dispatch=dict(value=None,basis='dispatch_gap'))
+        print('Station outputs unavailable; missing SEMO dispatch hours: ' + ', '.join(iso(t) for t in missing), flush=True)
+    return result,dict(register=register_meta['ResourceName'],technical=tech_meta['ResourceName'],availabilityBaseline=baseline_meta['ResourceName'],meterSeed=meter_meta['ResourceName'],dispatchPublished=latest['PublishTime']+'Z',dispatchCoverageThrough=iso(coverage),dispatchCoverageAgeMinutes=round((at-coverage).total_seconds()/60,1),missingDispatchHours=[iso(t) for t in missing],reportManifest='private-source-archive/plant-report-manifest.json')
 
 def peaks(at):
     if at.date()!=NOW.date():
@@ -281,6 +286,8 @@ def build(ni):
             station[field] = round(sum(u[field] for u in station['units']),4) if all(finite(u[field]) for u in station['units']) else None
         station['outputBasis'] = 'last-published-dispatch-target-proxy'
         station['note'] = 'Selected registered units. Output is a last-published dispatch-target estimate, seeded from the latest available meter report; it is not live metered output. A dash means the latest instruction does not establish a numeric output. Batteries are included in Other/Unallocated.'
+        if plant_sources.get('missingDispatchHours'):
+            station['note'] = 'Output unavailable because SEMO hourly dispatch reports are incomplete. Regional grid readings remain available; this station\'s generation remains in Other/Unallocated. ' + station['note']
         if station['id'] == 'aughinish':
             station['note'] += ' Aughinish Alumina CHP uses registered generating units SK3 and SK4. The demand-side unit is excluded. CHP generation and surplus grid export are different measures.'
         if station['id'] == 'tarbert-teg':

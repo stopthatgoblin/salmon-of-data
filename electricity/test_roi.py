@@ -7,6 +7,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+import xml.etree.ElementTree as ET
 
 import cloud
 import roi_cloud
@@ -24,6 +25,70 @@ def snapshot():
 
 
 class ROITests(unittest.TestCase):
+    def test_dispatch_gap_hides_estimates_and_complete_reports_restore_them(self):
+        uid = 'GU_TEST'
+        def xml(rows):
+            root = ET.Element('Report')
+            for row in rows:
+                ET.SubElement(root, 'Row', row)
+            return root
+        reports = {
+            'PUB_DailyRegisteredUnits': xml([dict(UnitID=uid,UnitName='Test',Status='Registered')]),
+            'PUB_DailyTechnicalOfferData': xml([dict(ResourceName=uid,MaximumGeneration='100',StartTime='2026-11-12T00:00:00',FuelType='GAS')]),
+            'PUB_DlyGenUnitTechCharDataTrans': xml([dict(ResourceName=uid,OutturnAvailability='100',EffectiveTime='2026-11-12T00:00:00',IssueTime='2026-11-12T00:00:00')]),
+            'PUB_DailyMeterDataD1': xml([dict(ResourceName=uid,MeteredMW='20',StartTime='2026-11-12T13:00:00',EndTime='2026-11-12T13:30:00')]),
+        }
+        def report(name):
+            return dict(ResourceName=name+'.xml',PublishTime='2026-11-12T13:50:00'), reports[name]
+        with tempfile.TemporaryDirectory() as directory, patch.object(collect,'CACHE',Path(directory)), \
+             patch.object(collect,'NOW',datetime(2026,11,12,16,30)), patch.object(collect,'UNITS',{uid}), \
+             patch.object(collect,'report',side_effect=report):
+            manifest = []
+            for hour, value in [(13,50),(15,60)]:
+                name=f'PUB_HrlyDispatchInstr_20261112{hour:02}00.xml'
+                (Path(directory)/name).write_bytes(ET.tostring(xml([dict(ResourceName=uid,
+                    InstructionTimeStamp=f'2026-11-12T{hour:02}:15:00',InstructionIssueTime=f'2026-11-12T{hour:02}:10:00',
+                    InstructionCode='MWOF',DispatchInstruction=str(value))])))
+                manifest.append(dict(ResourceName=name,PublishTime=f'2026-11-12T{hour+1:02}:15:00'))
+            path=Path(directory)/'plant-report-manifest.json'
+            path.write_text(json.dumps(manifest))
+            units, provenance=collect.station_capture(datetime(2026,11,12,15,30))
+            self.assertIsNone(units[uid]['output'])
+            self.assertEqual(units[uid]['basis'],'dispatch_gap')
+            self.assertEqual(provenance['missingDispatchHours'],['2026-11-12T14:00:00Z'])
+            # A published empty hour is complete coverage, not a missing hour.
+            name='PUB_HrlyDispatchInstr_202611121400.xml'
+            (Path(directory)/name).write_bytes(ET.tostring(xml([])))
+            manifest.append(dict(ResourceName=name,PublishTime='2026-11-12T15:15:00'))
+            path.write_text(json.dumps(manifest))
+            units, provenance=collect.station_capture(datetime(2026,11,12,15,30))
+            self.assertEqual(units[uid]['output'],60)
+            self.assertEqual(provenance['missingDispatchHours'],[])
+
+    def test_current_grid_publishes_with_explicitly_unknown_station_outputs(self):
+        data=snapshot()
+        units={u['id']:{**u,'output':None,'basis':'dispatch_gap'} for s in data['stations'] for u in s['units']}
+        plants={**data['sources']['plants'],'missingDispatchHours':['2026-11-04T14:00:00Z']}
+        grid={tuple(key.split(':')):source['value'] for key,source in data['sources']['grid'].items()}
+        at=datetime.fromisoformat(data['time'].removesuffix('Z'))
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/'snapshot.json'
+            output.write_bytes(cloud.encode(data))
+            with patch.object(collect,'SNAPSHOT',output),patch.object(collect,'CACHE',Path(directory)), \
+                 patch.object(collect,'grid_capture',return_value=(at,grid,data['sources']['grid'])), \
+                 patch.object(collect,'station_capture',return_value=(units,plants)), \
+                 patch.object(collect,'peaks',return_value=data['expectedPeaks']):
+                rebuilt=collect.build(data['ni'])
+        roi_cloud.validate(rebuilt,data)
+        self.assertEqual(rebuilt['time'],data['time'])
+        self.assertEqual(rebuilt['demand'],data['demand'])
+        self.assertEqual(rebuilt['interconnectors'],data['interconnectors'])
+        self.assertTrue(all(s['output'] is None for s in rebuilt['stations']))
+        self.assertAlmostEqual(rebuilt['otherGeneration'],data['generation']-data['wind']-data['solar'])
+        rebuilt['stations'][0]['units'][0]['output']=0
+        with self.assertRaisesRegex(ValueError,'cannot cross'):
+            roi_cloud.validate(rebuilt,data)
+
     def test_station_catalog_upgrades_old_archives_and_reallocates_output(self):
         data = snapshot()
         added = {'aughinish', 'tarbert-teg', 'north-wall-teg', 'shannonbridge-teg', 'ringsend-flexgen', 'corduff-flexgen'}

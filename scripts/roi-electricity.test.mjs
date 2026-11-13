@@ -43,6 +43,17 @@ test('ROI preserves signed reconciliation, unknown output and aligned NI inputs'
   }
 });
 
+test('ROI accepts current grid readings with unavailable station estimates but rejects numbers across dispatch gaps',()=>{
+  const partial=structuredClone(snapshot);
+  partial.sources.plants.missingDispatchHours=['2026-11-12T14:00:00Z'];
+  for(const station of partial.stations){station.output=null;for(const unit of station.units)unit.output=null;}
+  Object.assign(partial,reconcileSnapshot(partial));
+  validateUpdate('snapshot',partial,snapshot);
+  assert.equal(partial.otherGeneration,partial.generation-partial.wind-partial.solar);
+  partial.stations[0].units[0].output=0;
+  assert.throws(()=>validateUpdate('snapshot',partial,snapshot),/cross missing dispatch/);
+});
+
 test('ROI polling updates overview without history, retries failures and cancels on unmount', async t => {
   const nodes = new Map();
   const root = { querySelector(selector) {
@@ -141,6 +152,16 @@ test('ROI overview updates cards, arrow direction and the open drawer in place',
   assert.equal(node('.preview-note').hidden,true);
   events.dispatchEvent(new CustomEvent('dashboard:snapshot',{detail:{...next,expectedPeaks:{...next.expectedPeaks,date:'2000-01-01'}}}));
   assert.equal(peak.textContent,"Today's expected peak: unavailable");
+  const partial=structuredClone(next);
+  partial.sources.plants.missingDispatchHours=['2026-11-12T14:00:00Z'];
+  for(const station of partial.stations){station.output=null;for(const unit of station.units){unit.output=null;unit.basis='dispatch_gap';}}
+  events.dispatchEvent(new CustomEvent('dashboard:snapshot',{detail:partial}));
+  assert.equal(node('#station-data-note').hidden,false);
+  assert.match(node('#station-data-note').textContent,/Grid totals and flows remain available/);
+  assert.match(node('#station-detail').innerHTML,/Output unavailable/);
+  assert.equal(demand.innerHTML,`${new Intl.NumberFormat('en-IE').format(partial.demand)} <small>MW</small>`);
+  events.dispatchEvent(new CustomEvent('dashboard:snapshot',{detail:next}));
+  assert.equal(node('#station-data-note').hidden,true);
   controller.abort();
 });
 

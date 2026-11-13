@@ -18,6 +18,8 @@ export function validateUpdate(name, next, current) {
     if (!Number.isFinite(next[key]) || Math.abs(next[key] - balanced[key]) > .001) throw new Error('Invalid ROI balance');
   }
   if (next.stations?.length !== stationLayout.length || next.stations.some((station, index) => station.id !== stationLayout[index].id)) throw new Error('Incomplete ROI stations');
+  if (next.sources?.plants?.missingDispatchHours?.length && next.stations.some(station =>
+    station.output !== null || station.units.some(unit => unit.output !== null))) throw new Error('Station estimates cross missing dispatch reports');
   if (current && next.stations.map(s => s.id).join() !== current.stations.map(s => s.id).join()) throw new Error('ROI station set changed');
 }
 const client = createLiveClient({

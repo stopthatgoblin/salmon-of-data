@@ -1,5 +1,6 @@
 /* ROI geography and denser station layout; dashboard.css retains the NI design. */
 .roi-electricity .preview-note{font:10px/1.5 Arial,Helvetica,sans-serif;color:var(--muted);padding:10px 0 2px}.roi-electricity .preview-note span{padding-inline:6px}
+.roi-electricity .station-data-note{margin:0 0 16px;padding:10px 12px;border:1px solid var(--line);border-radius:6px;font:12px/1.5 Arial,Helvetica,sans-serif;color:var(--ink)}
 .roi-electricity .chart-brand{text-align:right;font:11px/1.5 Arial,sans-serif;letter-spacing:1.6px;color:#6d7f7a}
 .roi-electricity .station-location{font-size:11px;margin-top:9px}.roi-electricity .station-note{font-size:12px;line-height:1.8;margin-top:23px}
 .roi-electricity .balance-breakdown{margin:9px 0;color:var(--muted);font:10px/1.6 Arial,sans-serif}.roi-electricity .balance-breakdown summary{cursor:pointer;color:var(--teal)}.roi-electricity .balance-breakdown dl{display:flex;gap:24px;flex-wrap:wrap;margin:10px 0}.roi-electricity .balance-breakdown dt{font-size:10px}.roi-electricity .balance-breakdown dd{margin:3px 0 0;font:22px/1.3 var(--serif);color:var(--ink)}.roi-electricity .balance-breakdown dd small,.roi-electricity .balance-breakdown dd sup{font:10px Arial,sans-serif;color:var(--muted)}
