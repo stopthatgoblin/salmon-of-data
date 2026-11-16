@@ -59,12 +59,14 @@ class Collection:
         context = math.ceil(cooling / 24) + 2
         self.context_first = self.first_day - timedelta(days=context)
         names = ['PUB_DailyMeterDataD1', 'PUB_DailyTechnicalOfferData', 'PUB_DailyRegisteredUnits']
-        indices = parallel([lambda name=name: self.sources.index(name, self.context_first) for name in names])
-        self.indices = dict(zip(names, indices))
-        meter_index = self.indices[names[0]]
+        # Prove that the primary day's meters exist before loading unrelated
+        # indexes. A slow registry must not hide a known missing meter report.
+        meter_index = self.sources.index(names[0], self.context_first)
         if newest(meter_index, target) is None:
             latest = max((r['Date'] for r in meter_index if r['Date'] <= target.isoformat()), default=None)
             raise MeterDataPending(target, latest)
+        indices = parallel([lambda name=name: self.sources.index(name, self.context_first) for name in names[1:]])
+        self.indices = {names[0]: meter_index, **dict(zip(names[1:], indices))}
         self.meters, self.meter_sources = {}, []
         jobs = []
         cursor = self.context_first

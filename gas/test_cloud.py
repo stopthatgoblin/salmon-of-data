@@ -57,13 +57,25 @@ class GasRules(unittest.TestCase):
 
     def test_missing_primary_meter_report_is_reported_before_other_sources_are_fetched(self):
         def index(source, first):
-            return [dict(Date='2026-11-11', PublishTime='2026-11-12T15:58:55')] if source == 'PUB_DailyMeterDataD1' else []
-        with patch('gas.collect.Sources.index', side_effect=index), patch('gas.collect.Sources.fetch') as fetch:
+            if source != 'PUB_DailyMeterDataD1':
+                raise TimeoutError('Unrelated report index is unavailable')
+            return [dict(Date='2026-11-11', PublishTime='2026-11-12T15:58:55')]
+        with patch('gas.collect.Sources.index', side_effect=index) as queried, patch('gas.collect.Sources.fetch') as fetch:
             with self.assertRaises(MeterDataPending) as caught:
                 Collection(date(2026,11,12), Path(self.temp.name) / 'sources')
             self.assertEqual(caught.exception.latest_report_date, '2026-11-11')
             self.assertEqual(caught.exception.gas_day, '2026-11-12')
+            self.assertEqual([call.args[0] for call in queried.call_args_list], ['PUB_DailyMeterDataD1'])
             fetch.assert_not_called()
+
+    def test_available_primary_meters_do_not_hide_an_unrelated_source_failure(self):
+        def index(source, first):
+            if source == 'PUB_DailyMeterDataD1':
+                return [dict(Date='2026-11-12', PublishTime='2026-11-13T15:00:00')]
+            raise TimeoutError('Report index is unavailable')
+        with patch('gas.collect.Sources.index', side_effect=index):
+            with self.assertRaises(TimeoutError):
+                Collection(date(2026,11,12), Path(self.temp.name) / 'sources')
 
     def test_source_wait_preserves_archive_and_clears_after_successful_backfill(self):
         accepted = publish(self.store, [self.snapshot], target=date(2026,11,8))

@@ -42,6 +42,38 @@ test('late meter data gets bounded daytime retries in GMT and BST without suppre
   }
 });
 
+test('a transient failure after a source wait cannot disable the remaining daytime retries',async()=>{
+  let state={schema:1,targetGasDay:'2026-11-14',lastAttempt:'2026-11-16T07:02:41Z',
+    lastSuccess:'2026-11-12T22:51:03Z',successfulDate:'2026-11-12',waitingForSource:null,
+    lastError:'Daily update failed; retaining the last accepted data.'};
+  const controller={cron:gasCatchupCron,scheduledTime:Date.parse('2026-11-16T10:00:00Z')};
+  assert.equal(gasDue(controller.cron,controller.scheduledTime,state),true);
+  assert.equal(gasDue(gasCatchupCron,Date.parse('2026-11-16T11:00:00Z'),state),false);
+  let dispatched;
+  await collectOnSchedule(controller,{GITHUB_ACTIONS_TOKEN:'test-only',GAS_DATA:{
+    get:async()=>state,put:async(_key,value)=>{state=JSON.parse(value);},
+  }},async(_url,options)=>{dispatched=JSON.parse(options.body);return new Response(null,{status:204});});
+  assert.equal(dispatched.inputs.gas_day,'2026-11-14');
+  assert.equal(gasDue(gasCatchupCron,controller.scheduledTime+10*60000,state),false);
+  assert.equal(gasDue(gasCatchupCron,Date.parse('2026-11-16T13:00:00Z'),state),true);
+  state={...state,lastError:null,waitingForSource:null,successfulDate:'2026-11-16'};
+  assert.equal(gasDue(gasCatchupCron,Date.parse('2026-11-16T16:00:00Z'),state),false);
+  assert.equal(gasDue(gasCron,Date.parse('2026-11-16T19:00:00Z'),state),true);
+});
+
+test('gas failures do not prevent the shared scheduler dispatching electricity',async()=>{
+  const time=Date.parse('2026-11-16T17:17:00Z');
+  let dispatch;
+  const result=await collectOnSchedule({cron:'2,17,32,47 * * * *',scheduledTime:time},{
+    GITHUB_ACTIONS_TOKEN:'test-only',ELECTRICITY_ROI_ENABLED:'true',
+    ELECTRICITY_DATA:{get:async()=>({records:[{}],lastSuccess:'2026-11-16T17:00:00Z'})},
+    GAS_DATA:{get:async()=>{throw new Error('Gas state must not be read during an electricity tick');}},
+  },async(url,options)=>{dispatch={url,inputs:JSON.parse(options.body).inputs};return new Response(null,{status:204});},time);
+  assert.equal(result.action,'dispatch');
+  assert.match(dispatch.url,/ni-electricity\.yml\/dispatches$/);
+  assert.equal(dispatch.inputs.dataset,'snapshot');
+});
+
 test('gas API exposes only dated public objects and tolerates propagation misses',async()=>{
   const calls=[];const version='a'.repeat(24);
   const env={GAS_MODE:'local',GAS_DATA:{get:async(key)=>{calls.push(key);return key==='public/gas/manifest'?{schema:1,latest:'2026-11-11',days:[{date:'2026-11-11',version}]}:null;}}};

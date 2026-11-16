@@ -8,9 +8,10 @@ export function gasDue(cron, scheduledTime, state) {
   const today = localDate.format(new Date(scheduledTime));
   const hour = Number(localHour.format(new Date(scheduledTime)));
   if (cron === gasCatchupCron) {
-    // Only a known missing report gets daytime retries, at 07/10/13/16 local.
-    // Retry its original gas day rather than moving the target at midnight.
-    if (![7,10,13,16].includes(hour) || state?.waitingForSource?.source !== 'SEMO meter data'
+    // Retry failed collections at 07/10/13/16 local, including a source timeout
+    // that replaced a prior missing-report notice. Keep the original gas day.
+    const failed = state?.waitingForSource?.source === 'SEMO meter data' || !!state?.lastError;
+    if (![7,10,13,16].includes(hour) || !failed
         || !/^\d{4}-\d{2}-\d{2}$/.test(state?.targetGasDay || '') || state.targetGasDay >= today) return false;
   } else {
     if (cron !== gasCron || hour < 19 || hour > 22) return false;
