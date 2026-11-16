@@ -1,34 +1,7 @@
 {
-  "checkedAt": "2026-11-06",
+  "checkedAt": "2026-11-16",
   "through": "2026-12-31",
   "entries": [
-    {
-      "date": "2026-11-10",
-      "title": "US consumer prices",
-      "referencePeriod": "October 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
-    {
-      "date": "2026-11-12",
-      "title": "NOAA ENSO Diagnostic Discussion",
-      "referencePeriod": "October 2026 conditions and outlook",
-      "metrics": [
-        "El Niño outlook"
-      ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-      "status": "Confirmed",
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
     {
       "tracker": "el-nino",
       "frequency": "monthly",
@@ -46,17 +19,17 @@
     {
       "tracker": "el-nino",
       "frequency": "monthly",
-      "date": null,
+      "date": "2026-12-10",
       "month": "2026-12",
       "title": "NOAA ENSO Diagnostic Discussion",
       "referencePeriod": "November 2026 conditions and outlook",
       "metrics": [
         "El Niño outlook"
       ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
-      "status": "Expected month",
-      "checkedAt": "2026-11-01",
-      "note": "Monthly release expected; the December date is not yet confirmed."
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.html",
+      "status": "Confirmed",
+      "checkedAt": "2026-11-16",
+      "note": "NOAA confirms 10 December in the November discussion."
     },
     {
       "tracker": "el-nino",
@@ -180,7 +153,7 @@
       "checkedAt": "2026-11-01"
     }
   ],
-  "lastReleaseReviewAt": "2026-11-06",
+  "lastReleaseReviewAt": "2026-11-16",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -562,6 +535,44 @@
         "real-pay earnings input: 2026-10-01"
       ],
       "note": "October earnings captured; October real pay awaits the CPI release."
+    },
+    {
+      "date": "2026-11-10",
+      "title": "US consumer prices",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-16",
+      "publishedAt": "2026-11-10",
+      "importedAt": "2026-11-16",
+      "actualsAdded": [
+        "real-pay: 2026-10-01"
+      ],
+      "revisionsIncluded": []
+    },
+    {
+      "date": "2026-11-12",
+      "title": "NOAA ENSO Diagnostic Discussion",
+      "referencePeriod": "October 2026 conditions and outlook",
+      "metrics": [
+        "El Niño outlook"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "status": "Confirmed",
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-16",
+      "publishedAt": "2026-11-12",
+      "importedAt": "2026-11-16",
+      "actualsAdded": [],
+      "revisionsIncluded": [],
+      "note": "November discussion published; next discussion scheduled 10 December. Frozen paths unchanged."
     }
   ],
   "scope": "Monthly and quarterly releases affecting displayed AI and El Niño metrics. Daily electricity updates and the retired harvest panel are excluded."

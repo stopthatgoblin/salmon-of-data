@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-08",
+  "asOf": "2026-11-16",
   "celtic": {
     "name": "Celtic Interconnector",
     "status": "under-construction",
@@ -40,10 +40,12 @@
       "reason": "Fault in onshore equipment in Northern Ireland; Pole 2 remains operational",
       "published": "2026-11-03",
       "source": "https://www.londonstockexchange.com/en/news/article/84WR/reduction-in-available-capacity/5437-3e-17-1f-da-45c08f",
-      "confidence": "Company RNS; estimate expressly subject to revision",
+      "confidence": "Company RNS and EirGrid plan estimate 13 December, subject to revision; Mutual Energy confirmed 250 MW and repairs on 13 November.",
       "start": "2026-10-20T23:00:00Z",
       "end": "2026-12-13T23:59:00Z",
-      "publishedAt": "2026-11-03T00:00:00Z"
+      "publishedAt": "2026-11-03T00:00:00Z",
+      "latestOperatorUpdate": "https://www.mutual-energy.com/moyle-interconnector-repair-update/",
+      "latestOperatorUpdateDate": "2026-11-13"
     },
     {
       "assetId": "coolkeeragh",
@@ -98,9 +100,9 @@
       "reason": "Generator stator replacement",
       "publishedLocal": "2026-11-03T16:24:22",
       "source": "https://umm.nordpoolgroup.com/#/messages/09c911d4-0227-4a23-8514-69c478d5a186/8",
-      "confidence": "Primary ESB Trading UMM revision 8",
+      "confidence": "Primary ESB Trading UMM revision 8; superseded in display from 13 November by 12 November operator outage plan",
       "start": "2026-06-12T11:00:00Z",
-      "end": "2026-11-14T18:00:00Z",
+      "end": "2026-11-13T00:00:00Z",
       "publishedAt": "2026-11-03T16:24:22Z"
     },
     {
@@ -180,6 +182,109 @@
       "start": "2026-10-29T09:15:00Z",
       "end": "2026-11-20T17:00:00Z",
       "publishedAt": "2026-11-05T10:16:47Z"
+    },
+    {
+      "assetId": "dublin-bay",
+      "unitIds": [
+        "GU_400500"
+      ],
+      "scope": "DB1",
+      "start": "2026-11-13T00:00:00Z",
+      "end": "2026-11-16T22:30:00Z",
+      "publishedAt": "2026-11-13T00:00:00Z",
+      "published": "2026-11-12",
+      "display": "DB1 plan: return 16 Nov 2026",
+      "reason": "Forced outage; EirGrid/SONI plan supersedes the earlier return estimate",
+      "source": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+      "confidence": "EirGrid/SONI plan published 12 November; publication time unconfirmed, so the note is shown from 13 November. Times are estimates.",
+      "availableMW": 0,
+      "unavailableMW": 415
+    },
+    {
+      "assetId": "edenderry",
+      "unitIds": [
+        "GU_401860"
+      ],
+      "scope": "ED1 partial restriction",
+      "start": "2026-10-07T13:00:00Z",
+      "end": "2026-11-20T23:00:00Z",
+      "publishedAt": "2026-11-13T00:00:00Z",
+      "published": "2026-11-12",
+      "display": "ED1 restriction to 20 Nov 2026",
+      "reason": "EirGrid/SONI outage plan lists a partial restriction at 80 MW; this is not a whole-station outage",
+      "source": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+      "confidence": "EirGrid/SONI plan published 12 November; publication time unconfirmed, so the note is shown from 13 November. Times are estimates.",
+      "availableMW": 80
+    },
+    {
+      "assetId": "ardnacrusha",
+      "unitIds": [
+        "GU_400202"
+      ],
+      "scope": "AA3",
+      "start": "2026-09-18T19:00:00Z",
+      "end": "2027-07-30T19:00:00Z",
+      "publishedAt": "2026-11-13T00:00:00Z",
+      "published": "2026-11-12",
+      "display": "AA3 plan: return 30 Jul 2027",
+      "reason": "EirGrid/SONI outage plan lists a forced outage of AA3; other units are not covered",
+      "source": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+      "confidence": "EirGrid/SONI plan published 12 November; publication time unconfirmed, so the note is shown from 13 November. Times are estimates.",
+      "unavailableMW": 19
+    },
+    {
+      "assetId": "turlough-hill",
+      "unitIds": [
+        "GU_400363"
+      ],
+      "scope": "TH4",
+      "start": "2026-11-23T10:00:00Z",
+      "end": "2026-12-04T17:00:00Z",
+      "publishedAt": "2026-11-13T00:00:00Z",
+      "published": "2026-11-12",
+      "display": "TH4 plan: 23 Nov–4 Dec 2026",
+      "reason": "EirGrid/SONI plan lists a forced outage for TH4; no reason or pumping scope specified",
+      "source": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+      "confidence": "EirGrid/SONI plan published 12 November; publication time unconfirmed, so the note is shown from 13 November. Times are estimates.",
+      "unavailableMW": 73
+    },
+    {
+      "assetId": "aughinish",
+      "unitIds": [
+        "GU_400120"
+      ],
+      "scope": "SK3",
+      "start": "2026-11-23T06:00:00Z",
+      "end": "2026-11-25T18:00:00Z",
+      "publishedAt": "2026-11-13T00:00:00Z",
+      "published": "2026-11-12",
+      "display": "SK3 planned outage 23–25 Nov",
+      "reason": "EirGrid/SONI plan lists scheduled outage for Seal Rock SK3; SK4 is not covered",
+      "source": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+      "confidence": "EirGrid/SONI plan published 12 November; publication time unconfirmed, so the note is shown from 13 November. Times are estimates.",
+      "unavailableMW": 83
+    },
+    {
+      "assetId": "coolkeeragh",
+      "unitIds": [
+        "GU_500040"
+      ],
+      "scope": "C30 scheduled outage",
+      "start": "2026-12-04T00:00:00Z",
+      "end": "2026-12-07T00:00:00Z",
+      "publishedAt": "2026-11-13T00:00:00Z",
+      "published": "2026-11-12",
+      "display": "C30 planned outage 4–7 Dec 2026",
+      "reason": "EirGrid/SONI plan lists a scheduled C30 outage; separate from the current forced outage",
+      "source": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+      "confidence": "EirGrid/SONI plan published 12 November; publication time unconfirmed, so the note is shown from 13 November. Times are estimates."
     }
-  ]
+  ],
+  "review": {
+    "date": "2026-11-16",
+    "source": "https://www.eirgrid.ie/industry/customer-information/outage-information",
+    "plan": "https://www.eirgrid.ie/sites/default/files/publications/Outage-Week-47-2026-09-2027.xlsx",
+    "planPublished": "2026-11-12",
+    "note": "EirGrid/SONI plan is indicative and may lag newer market notices. Exact publication time was not supplied; new notes become visible from 13 November. Plan dates do not prove actual return to service."
+  }
 }

@@ -9882,6 +9882,34 @@
         {
           "date": "2026-10-30",
           "value": 88.964897
+        },
+        {
+          "date": "2026-10-31",
+          "value": 89.012048
+        },
+        {
+          "date": "2026-11-01",
+          "value": 89.045233
+        },
+        {
+          "date": "2026-11-02",
+          "value": 88.993136
+        },
+        {
+          "date": "2026-11-03",
+          "value": 88.957252
+        },
+        {
+          "date": "2026-11-04",
+          "value": 88.922491
+        },
+        {
+          "date": "2026-11-05",
+          "value": 88.790405
+        },
+        {
+          "date": "2026-11-06",
+          "value": 88.567967
         }
       ],
       "country": "United States",
@@ -9897,12 +9925,12 @@
       "components": [
         {
           "label": "White-collar basket",
-          "value": "92.3",
+          "value": "92.6",
           "detail": "Source index · Feb 2020 = 100"
         },
         {
           "label": "All US postings",
-          "value": "103.8",
+          "value": "104.6",
           "detail": "Source index · Feb 2020 = 100"
         }
       ],
@@ -9920,7 +9948,7 @@
         78.034368,
         60.693397
       ],
-      "actualsUpdatedAt": "2026-11-06"
+      "actualsUpdatedAt": "2026-11-16"
     },
     {
       "id": "graduates",
@@ -12981,6 +13009,10 @@
         {
           "date": "2026-09-01",
           "value": 104.03272
+        },
+        {
+          "date": "2026-10-01",
+          "value": 104.006901
         }
       ],
       "country": "United States",
@@ -13006,7 +13038,7 @@
         100.950948,
         93.665828
       ],
-      "actualsUpdatedAt": "2026-11-06"
+      "actualsUpdatedAt": "2026-11-16"
     },
     {
       "id": "canada-vacancies",
@@ -13428,6 +13460,6 @@
       ]
     }
   ],
-  "actualsUpdatedAt": "2026-11-06",
-  "actualsReviewedAt": "2026-11-06"
+  "actualsUpdatedAt": "2026-11-16",
+  "actualsReviewedAt": "2026-11-16"
 }

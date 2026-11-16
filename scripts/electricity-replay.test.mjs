@@ -83,3 +83,12 @@ test('live polling cannot overwrite the selected historical reading, and Return 
     controller.abort();
   } finally {controller.abort();globalThis.document=saved;}
 });
+
+test('EirGrid outage updates preserve notice timing, unit scope and estimated end',()=>{
+  assert.equal(applicableOutages('edenderry',{time:'2026-11-12T23:00:00Z'}).length,0);
+  assert.equal(applicableOutages('edenderry',{time:'2026-11-16T12:00:00Z'})[0].scope,'ED1 partial restriction');
+  assert.deepEqual(applicableOutages('ardnacrusha',{time:'2026-11-16T12:00:00Z'})[0].unitIds,['GU_400202']);
+  assert.equal(applicableOutages('dublin-bay',{time:'2026-11-16T20:00:00Z'})[0].end,'2026-11-16T22:30:00Z');
+  assert.equal(applicableOutages('dublin-bay',{time:'2026-11-17T00:00:00Z'}).length,0);
+  assert.equal(applicableOutages('turlough-hill',{time:'2026-11-24T12:00:00Z'})[0].scope,'TH4');
+});

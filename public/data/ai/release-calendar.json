@@ -1,22 +1,8 @@
 {
-  "checkedAt": "2026-11-06",
+  "checkedAt": "2026-11-16",
   "year": 2026,
-  "lastReleaseReviewAt": "2026-11-06",
+  "lastReleaseReviewAt": "2026-11-16",
   "entries": [
-    {
-      "date": "2026-11-10",
-      "title": "US consumer prices",
-      "referencePeriod": "October 2026",
-      "metrics": [
-        "Real pay"
-      ],
-      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
-      "time": "08:30 US Eastern",
-      "status": "Confirmed",
-      "tracker": "ai",
-      "frequency": "monthly",
-      "checkedAt": "2026-11-01"
-    },
     {
       "date": "2026-12-01",
       "title": "US job openings and labour turnover",
@@ -237,6 +223,26 @@
         "real-pay earnings input: 2026-10-01"
       ],
       "note": "October earnings captured; October real pay awaits the CPI release."
+    },
+    {
+      "date": "2026-11-10",
+      "title": "US consumer prices",
+      "referencePeriod": "October 2026",
+      "metrics": [
+        "Real pay"
+      ],
+      "sourceUrl": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "time": "08:30 US Eastern",
+      "status": "Confirmed",
+      "tracker": "ai",
+      "frequency": "monthly",
+      "checkedAt": "2026-11-16",
+      "publishedAt": "2026-11-10",
+      "importedAt": "2026-11-16",
+      "actualsAdded": [
+        "real-pay: 2026-10-01"
+      ],
+      "revisionsIncluded": []
     }
   ]
 }

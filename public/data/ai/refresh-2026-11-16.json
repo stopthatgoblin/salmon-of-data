@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-11-16",
+  "sources": [
+    {
+      "file": "2026-11-16/indeed-us-all.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+      "bytes": 204981,
+      "sha256": "1da20afe872d7bb93df00b7c297531c6b89f52578ba7ff3427ac89c532838ff9",
+      "retrievedOn": "2026-11-16",
+      "note": "Current source capture, including published revisions."
+    },
+    {
+      "file": "2026-11-16/indeed-us-sectors.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+      "bytes": 12240925,
+      "sha256": "7b153669a194f99bf3eaa5f00cffbae4b9a6068e99911d159ef8d8b207e6f2fd",
+      "retrievedOn": "2026-11-16",
+      "note": "Current source capture, including published revisions."
+    },
+    {
+      "file": "2026-11-16/graduate-unemployment.csv",
+      "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-unemployment-data.csv",
+      "bytes": 16184,
+      "sha256": "f7a508bb5d8091b2d67a3ab1266526cf0b39fc424ad9bd6c2278c3785b55dae7",
+      "retrievedOn": "2026-11-16",
+      "note": "Current source capture, including published revisions."
+    },
+    {
+      "file": "2026-11-16/graduate-underemployment.csv",
+      "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-underemployment-data.csv",
+      "bytes": 11620,
+      "sha256": "58338df58ccde8dc5cdaba31a09562fba1e9a64b8d18974811a12df0b923b176",
+      "retrievedOn": "2026-11-16",
+      "note": "Current source capture, including published revisions."
+    }
+  ],
+  "metricsUpdated": {
+    "recruitment": {
+      "observationsAdded": [
+        {
+          "date": "2026-10-31",
+          "value": 89.012048
+        },
+        {
+          "date": "2026-11-01",
+          "value": 89.045233
+        },
+        {
+          "date": "2026-11-02",
+          "value": 88.993136
+        },
+        {
+          "date": "2026-11-03",
+          "value": 88.957252
+        },
+        {
+          "date": "2026-11-04",
+          "value": 88.922491
+        },
+        {
+          "date": "2026-11-05",
+          "value": 88.790405
+        },
+        {
+          "date": "2026-11-06",
+          "value": 88.567967
+        }
+      ],
+      "revisedObservations": [],
+      "revisedObservationCount": 0,
+      "latestObservation": {
+        "date": "2026-11-06",
+        "value": 88.567967
+      }
+    },
+    "real-pay": {
+      "observationsAdded": [
+        {
+          "date": "2026-10-01",
+          "value": 104.006901
+        }
+      ],
+      "revisedObservations": [],
+      "revisedObservationCount": 0,
+      "latestObservation": {
+        "date": "2026-10-01",
+        "value": 104.006901
+      }
+    }
+  },
+  "checks": {
+    "realPay": "October seasonally adjusted CPI 337.476 and earnings $46.25; full CPI FRED CSV timed out. Recent FRED table values overlaid on retained full 16 October source captures; 2019 base preserved.",
+    "cpiSource": "https://fred.stlouisfed.org/series/CPIAUCSL",
+    "earningsSource": "https://fred.stlouisfed.org/series/CES6000000003",
+    "graduates": "Both downloads are byte-identical to 6 November; September 2026 remains latest.",
+    "frozen": "Anchors, paths and definitions unchanged."
+  },
+  "frozenFileSha256": {
+    "public/data/scenarios-v1.json": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+    "public/data/ai/frozen-metrics-v1.json": "93a384e2b0ec76018614152ca1f5065477ae0e09a3246488eefabe6f41fa0dd8"
+  }
+}

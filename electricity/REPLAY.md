@@ -80,7 +80,7 @@ includes the signed reconciliation. Other/Unallocated already includes that
 residual, so it is not added twice.
 
 `electricity/asset-status.json` contains sourced programme/return expectations
-checked on 8 November 2026. Return notes are specific to the affected units and
+reviewed on 16 November 2026 against the 12 November EirGrid/SONI outage plan and the 13 November Moyle operator update. The plan may lag newer market notices; exact publication times are not provided, so new plan-based notes are shown from 13 November. Return notes are specific to the affected units and
 appear only after publication, during the relevant event window. An expired
 estimate does not prove the asset returned; refresh the metadata from its linked
 operator notice when a new expectation is published. Zero output alone does not

@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-11-16",
+  "newActuals": {},
+  "metricsUpdated": {},
+  "sources": [
+    {
+      "file": "2026-11-16/ensodisc.html",
+      "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+      "bytes": 13344,
+      "sha256": "9f6f80cbbeb3fc33a1f83a16c8edbf54c624eca60a8dfea287a396bcf860a5b9",
+      "retrievedOn": "2026-11-16",
+      "note": "NOAA ENSO diagnostic discussion issued 12 November; next discussion scheduled 10 December.",
+      "name": "NOAA ENSO Diagnostic Discussion",
+      "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+    }
+  ],
+  "checks": {
+    "noaa": "November diagnostic discussion published; monthly RONI table remains unchanged since 6 November.",
+    "worldBankAndFao": "Current downloaded source files match 6 November captures.",
+    "retail": "October UK consumer prices scheduled for 18 November."
+  },
+  "frozenFileSha256": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+  "policy": "Source review only; original forecast anchors and paths remain unchanged."
+}

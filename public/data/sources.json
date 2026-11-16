@@ -262,5 +262,15 @@
     "note": "NOAA RONI: August\u2013October 2026 season",
     "name": "NOAA RONI",
     "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/"
+  },
+  {
+    "file": "2026-11-16/ensodisc.html",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+    "bytes": 13344,
+    "sha256": "9f6f80cbbeb3fc33a1f83a16c8edbf54c624eca60a8dfea287a396bcf860a5b9",
+    "retrievedOn": "2026-11-16",
+    "note": "NOAA ENSO diagnostic discussion issued 12 November; next discussion scheduled 10 December.",
+    "name": "NOAA ENSO Diagnostic Discussion",
+    "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
   }
 ]
