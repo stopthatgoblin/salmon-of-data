@@ -22,6 +22,19 @@ class MeterDataPending(ValueError):
         super().__init__('Waiting for SEMO meter data for ' + self.gas_day)
 
 
+class GasDataPending(ValueError):
+    def __init__(self, gas_day):
+        self.gas_day = gas_day.isoformat()
+        super().__init__('Waiting for GNI daily data for ' + self.gas_day)
+
+
+def demand_url(region, first, last):
+    # `custom` is rejected. `week` truncates an eight-calendar-day gas window.
+    return 'https://www.smartgriddashboard.com/api/chart/?' + urllib.parse.urlencode(dict(
+        region=region.upper(), chartType='demand', areas='demandactual', dateRange='day',
+        dateFrom=first.strftime('%d-%b-%Y'), dateTo=last.strftime('%d-%b-%Y')))
+
+
 def stamp(value):
     at = datetime.fromisoformat(value.replace('Z', '+00:00'))
     return at.replace(tzinfo=UTC) if at.tzinfo is None else at.astimezone(UTC)
@@ -114,9 +127,7 @@ class Sources:
         return data['operationaldatas'], url
 
     def demand(self, region, first, last):
-        url = 'https://www.smartgriddashboard.com/api/chart/?' + urllib.parse.urlencode(dict(
-            region=region.upper(), chartType='demand', areas='demandactual', dateRange='custom',
-            dateFrom=first.strftime('%d-%b-%Y'), dateTo=last.strftime('%d-%b-%Y')))
+        url = demand_url(region, first, last)
         for attempt in range(3):
             data = self.json(url, headers={'Eirgrid-Content-Request': 'Nextjs'})
             if isinstance(data.get('Rows'), list) and data['Rows']:

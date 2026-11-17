@@ -1,6 +1,6 @@
 export type GasRegion = {
   totalGas: number; powerGas: number; otherGas: number; electricity: number;
-  demand: number; demandShare: number; powerShare: number;
+  demand: number | null; demandShare: number | null; powerShare: number;
 };
 
 export type GasSnapshot = {

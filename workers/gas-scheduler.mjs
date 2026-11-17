@@ -10,14 +10,14 @@ export function gasDue(cron, scheduledTime, state) {
   if (cron === gasCatchupCron) {
     // Retry failed collections at 07/10/13/16 local, including a source timeout
     // that replaced a prior missing-report notice. Keep the original gas day.
-    const failed = state?.waitingForSource?.source === 'SEMO meter data' || !!state?.lastError;
+    const failed = state?.pending === true || !!state?.waitingForSource || !!state?.lastError;
     if (![7,10,13,16].includes(hour) || !failed
         || !/^\d{4}-\d{2}-\d{2}$/.test(state?.targetGasDay || '') || state.targetGasDay >= today) return false;
   } else {
     if (cron !== gasCron || hour < 19 || hour > 22) return false;
     const target = new Date(today + 'T12:00:00Z');
     target.setUTCDate(target.getUTCDate() - 1);
-    if (state?.successfulDate === today && (!state.targetGasDay || state.targetGasDay === target.toISOString().slice(0,10))) return false;
+    if (!state?.pending && !state?.lastError && state?.successfulDate === today && (!state.targetGasDay || state.targetGasDay === target.toISOString().slice(0,10))) return false;
   }
   const attempt = Date.parse(state?.lastAttempt);
   return !Number.isFinite(attempt) || scheduledTime - attempt >= 18*60000;

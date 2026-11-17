@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 from electricity.research.ni_gas.estimate import gas_window, fuel_rate, startup_fuel, OIL_UNITS
-from gas.sources import MeterDataPending, Sources, iso, newest, parallel, stamp
+from gas.sources import GasDataPending, MeterDataPending, Sources, demand_url, iso, newest, parallel, stamp
 
 UTC = timezone.utc
 MODEL = json.loads((Path(__file__).parent / 'ni-model.json').read_text())
@@ -28,6 +28,8 @@ def daily(rows, day, *, name=None, location=None, group=None):
               and (group is None or r.get('group') == group)]
     require(len(series) == 1, 'Missing or duplicate GNI series')
     values = [v for epoch, v in series[0]['data'] if datetime.fromtimestamp(epoch / 1000, UTC).date() == day]
+    if not values or values == [None]:
+        raise GasDataPending(day)
     require(len(values) == 1 and finite(values[0]) and values[0] >= 0, 'Missing/invalid GNI daily value')
     return values[0] / 1e6
 
@@ -47,8 +49,15 @@ def intervals(first, last, minutes):
     return [first + timedelta(minutes=minutes * n) for n in range(count)]
 
 
+def demand_total(values, first, last):
+    times = intervals(first, last, 15)
+    if not all(at in values and finite(values[at]) and values[at] > 0 for at in times):
+        return None
+    return sum(values[at] * .25 / 1000 for at in times)
+
+
 class Collection:
-    def __init__(self, target, cache, revision_days=7, offline=False):
+    def __init__(self, target, cache, revision_days=7, offline=False, *, allow_older=False):
         require(1 <= revision_days <= 14, 'Invalid revision window')
         self.target = target
         self.first_day = target - timedelta(days=revision_days - 1)
@@ -62,7 +71,8 @@ class Collection:
         # Prove that the primary day's meters exist before loading unrelated
         # indexes. A slow registry must not hide a known missing meter report.
         meter_index = self.sources.index(names[0], self.context_first)
-        if newest(meter_index, target) is None:
+        if newest(meter_index, target) is None and (not allow_older or not any(
+                self.first_day.isoformat() <= row['Date'] <= target.isoformat() for row in meter_index)):
             latest = max((r['Date'] for r in meter_index if r['Date'] <= target.isoformat()), default=None)
             raise MeterDataPending(target, latest)
         indices = parallel([lambda name=name: self.sources.index(name, self.context_first) for name in names[1:]])
@@ -96,10 +106,20 @@ class Collection:
                     require(previous[0] == mw, 'Conflicting meter values')
                 if previous is None or published >= previous[1]:
                     self.meters[key] = mw, published
+        self.demand_errors = {}
         self.demands = dict(zip(['ni', 'roi'], parallel([
-            lambda region=region: self.sources.demand(region, self.first_day, target + timedelta(days=1))
+            lambda region=region: self.optional_demand(region)
             for region in ['ni', 'roi']])))
         self.dispatch_items = None
+
+    def optional_demand(self, region):
+        last = self.target + timedelta(days=1)
+        try:
+            return self.sources.demand(region, self.first_day, last)
+        except Exception as error:
+            self.demand_errors[region] = type(error).__name__
+            print(f'Gas: {region.upper()} demand unavailable ({type(error).__name__}); gas collection continues.', flush=True)
+            return {}, demand_url(region, self.first_day, last)
 
     def dated_report(self, name, day):
         eligible = [r for r in self.indices[name] if r['Date'] <= day.isoformat()]
@@ -143,6 +163,9 @@ class Collection:
         return events, urls
 
     def assemble(self, day):
+        if newest(self.indices['PUB_DailyMeterDataD1'], day) is None:
+            latest = max((r['Date'] for r in self.indices['PUB_DailyMeterDataD1'] if r['Date'] <= day.isoformat()), default=None)
+            raise MeterDataPending(day, latest)
         first, last = gas_window(day)
         expected = intervals(first, last, 30)
         tech, tech_url = self.dated_report('PUB_DailyTechnicalOfferData', day)
@@ -211,13 +234,11 @@ class Collection:
         regions = {}
         for region, total, power, members in [('ni', flows['niAllocated'], ni_power, ni_units), ('roi', roi_total, roi_power, roi_units)]:
             values, _ = self.demands[region]
-            times = intervals(first, last, 15)
-            require(all(at in values and finite(values[at]) and values[at] > 0 for at in times), 'Incomplete ' + region + ' demand over the gas day')
-            demand = sum(values[at] * .25 / 1000 for at in times)
+            demand = demand_total(values, first, last)
             electricity = sum(r['electricityGwh'] for r in members)
             require(total > 0 and 0 <= power <= total, 'Invalid regional gas use/residual')
             regions[region] = dict(totalGas=total, powerGas=power, otherGas=total-power, electricity=electricity,
-                                   demand=demand, demandShare=electricity/demand*100, powerShare=power/total*100)
+                                   demand=demand, demandShare=electricity/demand*100 if demand is not None else None, powerShare=power/total*100)
         hours = []
         for at in intervals(first, last, 60):
             row = dict(time=iso(at))
@@ -232,12 +253,12 @@ class Collection:
         require(all(abs(value) <= max(.1, flows[key] * .005) for key, value in differences.items()), 'Hourly/daily source totals disagree beyond tolerance')
         captured = iso(datetime.now(UTC))
         metered = (cut-first).total_seconds()/3600
-        result = dict(schema=1, gasDay=day.isoformat(), fromUtc=iso(first), toUtc=iso(last), snapshotAsOf=captured[:10], capturedAt=captured,
+        result = dict(schema=2, gasDay=day.isoformat(), fromUtc=iso(first), toUtc=iso(last), snapshotAsOf=captured[:10], capturedAt=captured,
                       flows=flows, regions=regions, hourly=hours, units=dict(ni=ni_units, roi=roi_units),
                       electricityBasis=dict(meteredHours=metered, dispatchEstimateHours=estimated, estimateFromUtc=iso(cut),
                           description=f'{metered:g} hours metered; {estimated:g} hours reconstructed dispatch targets. Gas firing is assumed.'),
                       niGasBasis=dict(grossNetFactor=MODEL['grossNetFactor'], modelVersion=MODEL['version'], description='Public unit heat-input curves and startup fuel; NI residual includes balancing.'),
-                      sourceChecks=dict(hourlyDailyDifferenceGwh=differences),
+                      sourceChecks=dict(hourlyDailyDifferenceGwh=differences, demandErrors=self.demand_errors),
                       sources={'gniDailyPhysical': gas_url, 'gniConsumption': consumption_url, 'gniAllocations': allocation_url, 'gniHourlyPhysical': hourly_url,
                                'snip': snip_url, 'northSouth': north_url, 'meter.xml': next(r['url'] for r in self.meter_sources if r['date'] == day.isoformat()),
                                'technical': tech_url, 'register': register_url, 'model': MODEL['source'], 'niDemand': self.demands['ni'][1], 'roiDemand': self.demands['roi'][1]},
@@ -250,17 +271,22 @@ class Collection:
 
 
 def validate(data):
-    require(data.get('schema') == 1, 'Unknown snapshot schema')
+    require(data.get('schema') in (1, 2), 'Unknown snapshot schema')
     day = date.fromisoformat(data['gasDay'])
     first, last = gas_window(day)
     require(stamp(data['fromUtc']) == first and stamp(data['toUtc']) == last, 'Gas-day boundary mismatch')
     require([stamp(r['time']) for r in data['hourly']] == intervals(first, last, 60), 'Incomplete hourly timeline')
     for region in ['ni', 'roi']:
         row = data['regions'][region]
-        require(all(finite(row.get(k)) for k in ['totalGas', 'powerGas', 'otherGas', 'electricity', 'demand', 'demandShare', 'powerShare']), 'Invalid regional number')
-        require(row['totalGas'] > 0 and row['demand'] > 0 and min(row['powerGas'], row['otherGas'], row['electricity']) >= 0, 'Invalid regional totals')
+        require(all(finite(row.get(k)) for k in ['totalGas', 'powerGas', 'otherGas', 'electricity', 'powerShare']), 'Invalid regional number')
+        require(row['totalGas'] > 0 and min(row['powerGas'], row['otherGas'], row['electricity']) >= 0, 'Invalid regional totals')
         require(abs(row['totalGas'] - row['powerGas'] - row['otherGas']) < 1e-6, 'Residual does not reconcile')
-        require(abs(row['demandShare'] - row['electricity']/row['demand']*100) < 1e-6, 'Electricity demand share mismatch')
+        require(abs(row['powerShare'] - row['powerGas']/row['totalGas']*100) < 1e-6, 'Gas use share mismatch')
+        if data['schema'] == 2 and row.get('demand') is None:
+            require('demand' in row and 'demandShare' in row and row['demandShare'] is None, 'Unavailable demand must have an unavailable share')
+        else:
+            require(finite(row.get('demand')) and row['demand'] > 0 and finite(row.get('demandShare')), 'Invalid demand')
+            require(abs(row['demandShare'] - row['electricity']/row['demand']*100) < 1e-6, 'Electricity demand share mismatch')
     basis = data['electricityBasis']
     require(basis['meteredHours'] + basis['dispatchEstimateHours'] == (last-first).total_seconds()/3600, 'Electricity coverage mismatch')
     require(all(finite(v) for v in data['flows'].values()), 'Invalid gas flow')

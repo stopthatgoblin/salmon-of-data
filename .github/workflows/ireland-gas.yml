@@ -16,11 +16,11 @@ on:
         type: string
         default: ''
       revision_days:
-        description: Recent days to collect/revise
+        description: Completed days to try and revise, including delayed sources (1-14)
         type: string
         default: '7'
       automatic:
-        description: Skip if today's scheduled run already succeeded
+        description: Skip only after all requested days and demand readings are complete
         type: boolean
         default: false
 
@@ -66,7 +66,7 @@ jobs:
         run: |
           python -m unittest discover -s gas -p 'test_*.py'
           python -m unittest discover -s electricity/research/ni_gas -p 'test_*.py'
-      - name: Collect and retain dated snapshots
+      - name: Publish available gas days and retain pending source retries
         run: |
           python - <<'PY'
           import os, subprocess, sys

@@ -5,13 +5,17 @@ The gas dashboard now has an unattended collector, versioned daily snapshots and
 ## Daily operation
 
 1. The private Cloudflare scheduler starts collection at **19:00 Europe/Dublin**.
-2. GitHub Actions fetches and validates the latest completed gas day and revises the previous six days.
+2. GitHub Actions tries the latest completed gas day and the previous six days. Each day whose core gas and electricity sources pass is published, even when a newer day is delayed.
 3. Accepted dated editions are stored in gas KV. Old dates and editions are retained without expiry.
 4. The website reads the archive API. Data refreshes do not rebuild the website.
 
-If SEMO has not published the target calendar-day meter report, the archive explicitly reports **Waiting for SEMO meter data** and keeps the accepted day visible. Evening retries continue; failed collections also receive catch-ups at **07:00, 10:00, 13:00 and 16:00 Europe/Dublin**. This includes a timeout that replaces a previous source-wait status. Catch-ups retain the original gas-day target across midnight and revise its preceding six days. A successful catch-up for an older day does not suppress that evening's newer target. Missing data is never replaced with zero and the existing six-hour dispatch-estimate limit remains.
+If SEMO meters or GNI daily quantities are missing, the archive identifies the source wait and shows the latest accepted day. Unavailable EirGrid/SONI demand no longer prevents publication of valid gas data: only the affected regional demand totals and generation-to-demand percentages are marked unavailable. Complete quarter-hour coverage is still required before those metrics become numeric. The demand API uses `dateRange=day` with explicit endpoints; `custom` is rejected and `week` can truncate the required window.
 
-The primary view remains 05:00 to 05:00 local time. The newest electricity totals can include dispatch estimates; later meter publications upgrade earlier days. NI power gas remains modelled. Missing sources preserve the last accepted view and expose a delayed-update message.
+Evening retries continue; failed or partial collections also receive catch-ups at **07:00, 10:00, 13:00 and 16:00 Europe/Dublin**. Catch-ups retain the original requested target across midnight. An accepted older day, or a day with missing demand, does not mark the requested window complete or suppress retries. Each run revisits the window so recovered source data upgrades accepted editions. Missing data never becomes zero, and the six-hour dispatch-estimate limit remains.
+
+The manifest exposes `pending`, `pendingDays` and `incompleteDays`. The private status retains the requested `targetGasDay`; `successfulDate` advances only after all requested dates and demand metrics are complete. GitHub's run summary distinguishes a successful partial publication from complete source recovery. A run with no valid candidates fails and preserves the accepted archive. An accepted edition is retained when a candidate would lose demand coverage or require more dispatch estimates.
+
+The primary view remains 05:00 to 05:00 local time. The newest electricity totals can include dispatch estimates; later meter publications upgrade earlier days. NI power gas remains modelled. Snapshot schema 2 permits paired `null` demand and demand-share values; the client also reads the original schema 1 archive. Core gas totals, electricity output, gas-use shares, balances and source intervals remain mandatory.
 
 ## Resources
 
@@ -53,7 +57,9 @@ Scheduler changes are deployed separately:
 npx wrangler deploy --config wrangler.electricity-scheduler.jsonc
 ```
 
-The evening gas expression is `0,20,40 18-22 * * *` in UTC. The handler permits 19:00 through 22:40 Ireland time and skips after the current target succeeds. The catch-up expression is `0 6,7,9,10,12,13,15,16 * * *`, filtered to the four Ireland-time hours above across GMT/BST. Daytime invocations skip unless an unsuccessful collection with a completed target gas day is recorded. Existing electricity expressions are retained.
+For the schema 2 rollout, deploy the compatible website before the collector starts publishing nullable-demand snapshots. Deploy the timer separately; its cron expressions are unchanged. The existing `lastError` field also remains populated during a partial update, retaining compatibility with the prior timer while it is being replaced.
+
+The evening gas expression is `0,20,40 18-22 * * *` in UTC. The handler permits 19:00 through 22:40 Ireland time and skips after the current target window is complete. The catch-up expression is `0 6,7,9,10,12,13,15,16 * * *`, filtered to the four Ireland-time hours above across GMT/BST. Daytime invocations run while source recovery remains pending or a collection failed. The existing 18-minute attempt throttle and electricity expressions are retained.
 
 ## Source and archive boundaries
 
