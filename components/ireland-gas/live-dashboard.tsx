@@ -4,23 +4,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, History } from 'lucide-react';
 import IrelandGasDashboard from './dashboard';
 import type { GasSnapshot } from './types';
+import { validSnapshot } from './data';
 
 type Day = { date: string; version: string; collectedAt: string; meteredHours: number; estimatedHours: number };
-type Manifest = { schema: number; days: Day[]; latest: string; lastAttempt: string; lastSuccess: string; lastError: string | null;
+type Manifest = { schema: number; days: Day[]; latest: string; lastAttempt: string; lastSuccess: string; lastError: string | null; pending?: boolean;
   waitingForSource?: { source: string; gasDay: string; latestReportDate: string | null } | null };
 const validDate = (value: string | null): value is string => !!value && /^\d{4}-\d{2}-\d{2}$/.test(value)
   && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0,10) === value;
 const label = (value: string) => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));
-
-function validSnapshot(input: unknown, day: string, version: string): input is GasSnapshot {
-  const value = input as GasSnapshot;
-  if (value?.schema !== 1 || value.gasDay !== day || value.version !== version || !Array.isArray(value.hourly) || value.hourly.length < 23 || value.hourly.length > 25) return false;
-  return (['ni','roi'] as const).every(region=>{
-    const row=value.regions?.[region];
-    return row && ['totalGas','powerGas','otherGas','electricity','demand','demandShare','powerShare'].every(key=>Number.isFinite(row[key as keyof typeof row]));
-  }) && ['scotland','corrib','niAllocated','roiAllocated','snipPhysical','stranraer','southNorth'].every(key=>Number.isFinite(value.flows?.[key as keyof typeof value.flows]))
-    && !!value.reuse && !!value.sources && !!value.electricityBasis && !!value.niGasBasis && !!value.units?.ni && !!value.units?.roi;
-}
 
 export default function GasLiveDashboard() {
   const [snapshot,setSnapshot] = useState<GasSnapshot | null>(null);
@@ -32,6 +23,7 @@ export default function GasLiveDashboard() {
   const selection = useRef<string | null>(null);
   const epoch = useRef(0);
   const current = useRef({day:'',version:''});
+  const loaded = useRef<GasSnapshot | null>(null);
   const controller = useRef<AbortController | null>(null);
 
   const refresh = useCallback(async () => {
@@ -64,17 +56,20 @@ export default function GasLiveDashboard() {
         }
         if (!data) throw new Error('day');
         if (generation !== epoch.current) return;
-        setSnapshot(data);current.current={day:wanted,version:record.version};
+        setSnapshot(data);loaded.current=data;current.current={day:wanted,version:record.version};
       }
       const today = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Dublin',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
       const due = new Date(today+'T12:00:00Z');due.setUTCDate(due.getUTCDate()-1);
       const localHour=Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Dublin',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
       if(localHour<19)due.setUTCDate(due.getUTCDate()-1);
       const late = index.latest < due.toISOString().slice(0,10);
-      setProblem(!!index.lastError || late);
-      const waiting = index.waitingForSource?.source === 'SEMO meter data' && validDate(index.waitingForSource.gasDay)
-        ? `Waiting for SEMO meter data for ${label(index.waitingForSource.gasDay)}. Showing the last accepted day.` : null;
-      setMessage(waiting || (index.lastError || late ? 'Update delayed. Showing the last accepted day.' : selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.'));
+      const missing = (['ni','roi'] as const).filter(region=>loaded.current?.regions[region].demand === null);
+      setProblem(!!index.lastError || !!index.pending || late || missing.length > 0);
+      const waiting = ['SEMO meter data','GNI daily data'].includes(index.waitingForSource?.source || '') && validDate(index.waitingForSource?.gasDay || null)
+        ? `Waiting for ${index.waitingForSource!.source} for ${label(index.waitingForSource!.gasDay)}.` : null;
+      const demand = missing.length ? `Electricity-demand percentages are unavailable for ${missing.map(region=>region.toUpperCase()).join(' and ')}.` : '';
+      const update = waiting || (index.lastError || index.pending || late ? 'Some source data is delayed.' : '');
+      setMessage([update,demand].filter(Boolean).join(' ') || (selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.'));
     } catch (error) {
       if (abort.signal.aborted || generation !== epoch.current) return;
       setProblem(true);

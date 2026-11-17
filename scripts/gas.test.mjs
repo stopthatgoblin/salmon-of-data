@@ -3,6 +3,38 @@ import assert from 'node:assert/strict';
 import gas from '../workers/gas-api.mjs';
 import { gasCron,gasCatchupCron,gasDue,collectGasOnSchedule } from '../workers/gas-scheduler.mjs';
 import { collectOnSchedule } from '../workers/electricity-scheduler.mjs';
+import { readFileSync } from 'node:fs';
+import { validSnapshot } from '../components/ireland-gas/data.ts';
+
+test('gas client accepts unavailable demand only as a paired schema 2 value',()=>{
+  const snapshot=JSON.parse(readFileSync(new URL('../public/data/ireland-gas/2026-11-08.json',import.meta.url)));
+  snapshot.version='a'.repeat(24);
+  assert.equal(validSnapshot(snapshot,snapshot.gasDay,snapshot.version),true);
+  snapshot.regions.ni.demand=null;snapshot.regions.ni.demandShare=null;
+  assert.equal(validSnapshot(snapshot,snapshot.gasDay,snapshot.version),false);
+  snapshot.schema=2;
+  assert.equal(validSnapshot(snapshot,snapshot.gasDay,snapshot.version),true);
+  snapshot.regions.ni.demandShare=0;
+  assert.equal(validSnapshot(snapshot,snapshot.gasDay,snapshot.version),false);
+  snapshot.regions.ni.demandShare=null;snapshot.regions.ni.totalGas=null;
+  assert.equal(validSnapshot(snapshot,snapshot.gasDay,snapshot.version),false);
+});
+
+test('partial publication keeps daytime and evening retries on the original target',async()=>{
+  let state={pending:true,targetGasDay:'2026-11-16',successfulDate:'2026-11-17',
+    lastSuccess:'2026-11-17T07:01:00Z',lastAttempt:'2026-11-17T07:01:00Z',lastError:null};
+  assert.equal(gasDue(gasCatchupCron,Date.parse('2026-11-17T10:00:00Z'),state),true);
+  assert.equal(gasDue(gasCron,Date.parse('2026-11-17T19:00:00Z'),state),true);
+  let inputs;
+  await collectGasOnSchedule({cron:gasCatchupCron,scheduledTime:Date.parse('2026-11-17T10:00:00Z')},
+    {GITHUB_ACTIONS_TOKEN:'test-only',GAS_DATA:{get:async()=>state,put:async(_key,value)=>{state=JSON.parse(value);}}},
+    async(_url,options)=>{inputs=JSON.parse(options.body).inputs;return new Response(null,{status:204});});
+  assert.equal(inputs.gas_day,'2026-11-16');
+  assert.equal(gasDue(gasCatchupCron,Date.parse('2026-11-17T10:10:00Z'),state),false);
+  state={...state,pending:false};
+  assert.equal(gasDue(gasCatchupCron,Date.parse('2026-11-17T13:00:00Z'),state),false);
+  assert.equal(gasDue(gasCron,Date.parse('2026-11-17T19:00:00Z'),state),false);
+});
 
 test('gas timer starts at 19:00 Ireland time in both seasons and suppresses success',()=>{
   for(const time of ['2026-11-12T19:00:00Z','2026-07-12T18:00:00Z'])assert.equal(gasDue(gasCron,Date.parse(time),null),true);

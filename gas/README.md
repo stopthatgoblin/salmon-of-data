@@ -1,6 +1,6 @@
 # Daily gas collector
 
-`python -m gas.cloud` fetches GNI, ENTSOG, SEMO and EirGrid/SONI sources, validates a common gas day and publishes immutable snapshots before advancing a merged date index. The target defaults to yesterday in Europe/Dublin.
+`python -m gas.cloud` fetches GNI, ENTSOG, SEMO and EirGrid/SONI sources, validates common gas days and publishes immutable snapshots before advancing a merged date index. The requested target defaults to yesterday in Europe/Dublin. Valid older days in the revision window can publish while the newest target remains pending.
 
 - `sources.py`: bounded network retries, compressed response cache, dated report selection and upstream URLs. Mutable indices and gas/demand series are refetched. Cached immutable report names identify publication editions.
 - `collect.py`: unit electricity, NI heat-input/startup model, reported ROI gas sectors, regional demand shares and physical flows. Missing values never become zero. Source interval coverage, gas residuals, model validity and hourly/daily agreement are checked.
@@ -18,3 +18,7 @@ python -m gas.cloud --local-dir outputs/gas-live/kv --seed
 ```
 
 Normal collection revises seven days. No older date or edition is deleted. Source URLs/publication times and model identity accompany accepted snapshots; full raw response files are a local cache, not a durable public raw-data archive.
+
+Schema 2 allows explicit paired `null` values for regional electricity demand and its generation-to-demand percentage when complete actual demand is unavailable. Core gas quantities and electrical output still pass all existing source/model/coverage checks. The client continues to accept schema 1. New candidates cannot replace accepted editions with poorer demand or meter coverage.
+
+Partial publication returns successfully but records `pending: true`; it does not advance the daily completion guard. The timer continues bounded evening and daytime retries for the original target, and later runs revisit the window to fill missing dates and demand metrics. GitHub run summaries list the requested day, accepted latest day and outstanding sources. See `docs/gas-dashboard-launch-guide.md` for operation and deployment order.

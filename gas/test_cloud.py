@@ -1,14 +1,14 @@
 from copy import deepcopy
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 import json
 from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
 
-from gas.cloud import LocalStore, MANIFEST, STATUS, failure, publish
-from gas.collect import Collection, daily, physical, validate
-from gas.sources import MeterDataPending
+from gas.cloud import LocalStore, MANIFEST, STATUS, collect_and_publish, failure, publish
+from gas.collect import Collection, daily, demand_total, intervals, physical, validate
+from gas.sources import GasDataPending, MeterDataPending, Sources, iso
 from electricity.research.ni_gas.estimate import gas_window
 
 
@@ -103,6 +103,130 @@ class GasRules(unittest.TestCase):
         self.assertEqual(physical([row],'test','entry',first,last),0)
         for changed in [dict(row,isNA=True),dict(row,periodTo=first.isoformat())]:
             with self.assertRaises(ValueError):physical([changed],'test','entry',first,last)
+
+    def snapshot_for(self, day, missing=()):
+        data = deepcopy(self.snapshot)
+        data['schema'] = 2
+        data['gasDay'] = day.isoformat()
+        first, last = gas_window(day)
+        data.update(fromUtc=iso(first), toUtc=iso(last))
+        for index, row in enumerate(data['hourly']):
+            row['time'] = iso(first + timedelta(hours=index))
+        for region in missing:
+            data['regions'][region].update(demand=None, demandShare=None)
+        return data
+
+    def test_only_explicit_paired_null_demand_is_optional(self):
+        partial = self.snapshot_for(date(2026,11,8), ['ni'])
+        validate(partial)
+        for changes in [dict(demand=None, demandShare=0), dict(demand=0, demandShare=None),
+                        dict(demand=-1, demandShare=0), dict(demand=float('nan'), demandShare=0)]:
+            data = deepcopy(partial)
+            data['regions']['ni'].update(changes)
+            with self.assertRaises(ValueError):validate(data)
+        for field in ['totalGas','powerGas','electricity','otherGas','powerShare']:
+            data = deepcopy(partial)
+            data['regions']['ni'][field] = None
+            with self.assertRaises(ValueError):validate(data)
+        partial['schema'] = 1
+        with self.assertRaises(ValueError):validate(partial)
+
+    def test_supported_demand_request_preserves_both_calendar_endpoints(self):
+        with patch.object(Sources, 'json', return_value={'Rows': [dict(
+                Region='NI', FieldName='SYSTEM_DEMAND', EffectiveTime='17-Nov-2026 04:45:00', Value=1000)]}) as fetch:
+            readings, url = Sources(Path(self.temp.name)/'sources').demand('ni',date(2026,11,10),date(2026,11,17))
+        self.assertIn('dateRange=day', url)
+        self.assertIn('dateFrom=10-Nov-2026', url)
+        self.assertIn('dateTo=17-Nov-2026', url)
+        self.assertEqual(len(readings), 1)
+        self.assertEqual(fetch.call_args.kwargs['headers']['Eirgrid-Content-Request'], 'Nextjs')
+
+    def test_demand_source_failure_is_explicitly_unavailable(self):
+        collection = Collection.__new__(Collection)
+        collection.target, collection.first_day = date(2026,11,16), date(2026,11,10)
+        collection.sources = Sources(Path(self.temp.name)/'sources')
+        collection.demand_errors = {}
+        with patch.object(collection.sources, 'demand', side_effect=TimeoutError('source timeout')):
+            readings, url = collection.optional_demand('ni')
+        self.assertEqual(readings, {})
+        self.assertEqual(collection.demand_errors, {'ni':'TimeoutError'})
+        self.assertIn('dateRange=day', url)
+
+    def test_demand_needs_every_real_quarter_hour_including_clock_change_days(self):
+        for day, hours in [(date(2026,3,28),23),(date(2026,10,24),25),(date(2026,11,14),24)]:
+            first, last = gas_window(day)
+            values = {at:1000 for at in intervals(first,last,15)}
+            self.assertEqual(demand_total(values,first,last),hours)
+            for unavailable in [None,0,float('nan')]:
+                broken = {**values, first:unavailable}
+                self.assertIsNone(demand_total(broken,first,last))
+            del values[first]
+            self.assertIsNone(demand_total(values,first,last))
+
+    def test_missing_primary_meters_can_leave_older_days_eligible(self):
+        def index(source, first):
+            if source == 'PUB_DailyMeterDataD1':
+                return [dict(Date='2026-11-11', PublishTime='2026-11-12T15:58:55')]
+            raise TimeoutError('Fallback initialization reached remaining sources')
+        with patch('gas.collect.Sources.index', side_effect=index):
+            with self.assertRaisesRegex(TimeoutError, 'Fallback initialization'):
+                Collection(date(2026,11,12), Path(self.temp.name)/'sources', allow_older=True)
+        collection = Collection.__new__(Collection)
+        collection.indices = {'PUB_DailyMeterDataD1': [dict(Date='2026-11-11')]}
+        with self.assertRaises(MeterDataPending):collection.assemble(date(2026,11,12))
+
+    def test_available_days_publish_while_newest_target_and_demand_keep_retrying(self):
+        target = date(2026,11,16)
+        now = datetime(2026,11,17,21,tzinfo=timezone.utc)
+        partial = self.snapshot_for(date(2026,11,14), ['ni','roi'])
+        def assemble(day):
+            if day > date(2026,11,14):raise GasDataPending(day)
+            return partial
+        with patch('gas.cloud.Collection') as collection:
+            collection.return_value.assemble.side_effect = assemble
+            manifest = collect_and_publish(self.store,target,Path(self.temp.name)/'sources',3,now=now)
+        self.assertEqual(manifest['latest'],'2026-11-14')
+        self.assertTrue(manifest['pending'])
+        self.assertEqual(manifest['days'][-1]['missingDemand'],['ni','roi'])
+        status = self.store.get_json(STATUS)
+        self.assertEqual(status['targetGasDay'],'2026-11-16')
+        self.assertIsNone(status['successfulDate'])
+        self.assertEqual(status['waitingForSource']['source'],'GNI daily data')
+        partial_version = manifest['days'][-1]['version']
+        with patch('gas.cloud.Collection') as collection:
+            collection.return_value.assemble.side_effect = self.snapshot_for
+            complete = collect_and_publish(self.store,target,Path(self.temp.name)/'sources',3,now=now)
+        self.assertEqual(complete['latest'],'2026-11-16')
+        self.assertFalse(complete['pending'])
+        self.assertEqual(complete['incompleteDays'],[])
+        self.assertIsNone(complete['waitingForSource'])
+        self.assertEqual(self.store.get_json(STATUS)['successfulDate'],'2026-11-17')
+        self.assertIn(partial_version,complete['days'][0]['versions'])
+        self.assertIsNotNone(self.store.get_json('public/gas/day/2026-11-14/'+partial_version))
+
+    def test_complete_newest_day_still_retries_missing_historical_demand(self):
+        target = date(2026,11,16)
+        with patch('gas.cloud.Collection') as collection:
+            collection.return_value.assemble.side_effect = lambda day:self.snapshot_for(day,['roi'] if day < target else [])
+            manifest = collect_and_publish(self.store,target,Path(self.temp.name)/'sources',2)
+        self.assertTrue(manifest['pending'])
+        self.assertEqual(manifest['incompleteDays'],[dict(date='2026-11-15',missingDemand=['roi'])])
+        self.assertIsNone(self.store.get_json(STATUS)['successfulDate'])
+
+    def test_transient_missing_demand_cannot_downgrade_an_accepted_day(self):
+        day = date(2026,11,8)
+        complete = publish(self.store,[self.snapshot_for(day)],target=day)
+        retained = publish(self.store,[self.snapshot_for(day,['ni'])],target=day)
+        self.assertEqual(retained['days'],complete['days'])
+        self.assertFalse(retained['pending'])
+
+    def test_no_available_core_day_preserves_archive(self):
+        accepted = publish(self.store,[self.snapshot])
+        with patch('gas.cloud.Collection') as collection:
+            collection.return_value.assemble.side_effect = GasDataPending(date(2026,11,16))
+            with self.assertRaises(GasDataPending):
+                collect_and_publish(self.store,date(2026,11,16),Path(self.temp.name)/'sources',2)
+        self.assertEqual(self.store.get_json(MANIFEST),accepted)
 
 
 if __name__ == '__main__':unittest.main()
