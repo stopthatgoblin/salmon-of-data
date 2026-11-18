@@ -61,7 +61,7 @@ def grid_month(job, cache, today):
     urls = []
 
     def request_window(first, last):
-        query = urllib.parse.urlencode(dict(region='ROI', chartType=chart, areas=areas, dateRange='custom',
+        query = urllib.parse.urlencode(dict(region='ROI', chartType=chart, areas=areas, dateRange='day',
             dateFrom=first.strftime('%d-%b-%Y'), dateTo=last.strftime('%d-%b-%Y')))
         url = 'https://www.smartgriddashboard.com/api/chart/?' + query
         urls.append(url)
@@ -76,7 +76,13 @@ def grid_month(job, cache, today):
         cursor = start
         while cursor <= end:
             last = min(end, cursor + timedelta(days=27))
-            rows.extend(request_window(cursor, last))
+            window = request_window(cursor, last)
+            if not window and cursor < last:
+                day = cursor
+                while day <= last:
+                    window.extend(request_window(day, day))
+                    day += timedelta(days=1)
+            rows.extend(window)
             cursor = last + timedelta(days=1)
         empty_checked = True
     observations = []

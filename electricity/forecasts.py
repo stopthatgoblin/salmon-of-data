@@ -68,7 +68,7 @@ def fetch_forecast(name, day):
     chart, area, _ = FEEDS[name]
     source_day = datetime.fromisoformat(day).strftime('%d-%b-%Y')
     query = urllib.parse.urlencode(dict(region='NI', chartType=chart, areas=area,
-        dateRange='custom', dateFrom=source_day, dateTo=source_day))
+        dateRange='day', dateFrom=source_day, dateTo=source_day))
     url = 'https://www.smartgriddashboard.com/api/chart/?' + query
     request = urllib.request.Request(url, headers={'Eirgrid-Content-Request': 'Nextjs', 'User-Agent': 'SalmonOfDataElectricity/1'})
     with urllib.request.urlopen(request, timeout=25) as response:

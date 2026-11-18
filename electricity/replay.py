@@ -228,7 +228,7 @@ def grid_month(region, key, first, last, cache, refresh, search_roots, offline=F
 
     def request_window(window_start, window_end):
         url = 'https://www.smartgriddashboard.com/api/chart/?' + urllib.parse.urlencode(dict(
-            region=region.upper(), chartType=chart, areas=areas, dateRange='custom',
+            region=region.upper(), chartType=chart, areas=areas, dateRange='day',
             dateFrom=window_start.strftime('%d-%b-%Y'), dateTo=window_end.strftime('%d-%b-%Y')))
         urls.append(url)
         # The operator occasionally returns an empty successful response even
