@@ -60,6 +60,37 @@ def fetch(url, headers=None):
             time.sleep(attempt + 1)
 
 
+def fill_grid_days(rows, first, last, request_window):
+    """Recover omitted completed days without mixing partial response vintages."""
+    def row_day(row):
+        return datetime.strptime(row['EffectiveTime'], '%d-%b-%Y %H:%M:%S').date()
+
+    def count(values):
+        return len({row['EffectiveTime'] for row in values if row.get('Value') is not None})
+
+    by_day = defaultdict(list)
+    for row in rows:
+        by_day[row_day(row)].append(row)
+    day = first
+    while day <= last:
+        previous = by_day[day]
+        best, coverage = previous, count(previous)
+        if coverage < 96:
+            for attempt in range(3):
+                fresh = [row for row in request_window(day, day) if row_day(row) == day]
+                fresh_coverage = count(fresh)
+                if fresh_coverage > coverage:
+                    best, coverage = fresh, fresh_coverage
+                if coverage >= 96:
+                    break
+                if attempt < 2:
+                    time.sleep(attempt + 1)
+            if best is not previous:
+                by_day[day] = best
+        day += timedelta(days=1)
+    return [row for day in sorted(by_day) for row in by_day[day]]
+
+
 def grid_month(job):
     key, year, month, refresh = job
     start = date(year, month, 1)
@@ -79,7 +110,8 @@ def grid_month(job):
         payload = json.loads(fetch(url, {"Eirgrid-Content-Request": "Nextjs"}))
         if "Rows" not in payload:
             raise ValueError("Unexpected source response: " + url)
-        return payload["Rows"]
+        return [row for row in payload['Rows']
+                if row.get('Region') == 'NI' and row.get('FieldName') == field]
     rows = request_window(start, end)
     empty_checked = False
     if not rows:
@@ -89,16 +121,12 @@ def grid_month(job):
         cursor = start
         while cursor <= end:
             last = min(end, cursor + timedelta(days=27))
-            window = request_window(cursor, last)
-            if not window and cursor < last:
-                # Multi-day demand requests can be empty while individual days work.
-                day = cursor
-                while day <= last:
-                    window.extend(request_window(day, day))
-                    day += timedelta(days=1)
-            rows.extend(window)
+            rows.extend(request_window(cursor, last))
             cursor = last + timedelta(days=1)
         empty_checked = True
+    # A non-empty response can still omit days. Retry each incomplete completed
+    # day separately; never infer readings or overwrite a better partial day.
+    rows = fill_grid_days(rows, start, min(end, datetime.now(ZoneInfo('Europe/London')).date() - timedelta(days=1)), request_window)
     observations = []
     for row in rows:
         if row.get("FieldName") != field or row.get("Region") != "NI":

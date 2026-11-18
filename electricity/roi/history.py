@@ -18,7 +18,7 @@ import urllib.parse
 from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'dashboard'))
-from refresh_history import fetch, daily_average
+from refresh_history import fetch, daily_average, fill_grid_days
 
 GRID = {
     'demand': ('demand', 'demandactual', 'SYSTEM_DEMAND'),
@@ -76,15 +76,10 @@ def grid_month(job, cache, today):
         cursor = start
         while cursor <= end:
             last = min(end, cursor + timedelta(days=27))
-            window = request_window(cursor, last)
-            if not window and cursor < last:
-                day = cursor
-                while day <= last:
-                    window.extend(request_window(day, day))
-                    day += timedelta(days=1)
-            rows.extend(window)
+            rows.extend(request_window(cursor, last))
             cursor = last + timedelta(days=1)
         empty_checked = True
+    rows = fill_grid_days(rows, start, min(end, today - timedelta(days=1)), request_window)
     observations = []
     for row in rows:
         stamp = datetime.strptime(row['EffectiveTime'], '%d-%b-%Y %H:%M:%S')
