@@ -91,10 +91,10 @@ class GridRequestTests(unittest.TestCase):
         class Clock(datetime):
             @classmethod
             def now(cls, tz=None):
-                return cls(2026, 11, 3, tzinfo=tz)
+                return cls(2026, 11, 4, tzinfo=tz)
         with tempfile.TemporaryDirectory() as directory, patch.object(ni_history, 'CACHE', Path(directory)), \
                 patch.object(ni_history, 'datetime', Clock), \
-                patch.object(ni_history, 'fetch', side_effect=self.historical_source):
+                patch.object(ni_history, 'fetch', side_effect=self.historical_source), patch.object(ni_history.time, 'sleep'):
             data = ni_history.grid_month(('demand', 2026, 11, True))
         self.assertEqual(len(data['rows']), 192)
         self.assertEqual({row[0][:10] for row in data['rows']}, {'2026-11-01', '2026-11-03'})
@@ -102,11 +102,42 @@ class GridRequestTests(unittest.TestCase):
 
     def test_roi_history_recovers_daily_data_from_empty_ranges_and_keeps_gaps(self):
         with tempfile.TemporaryDirectory() as directory, \
-                patch.object(roi_history, 'fetch', side_effect=self.historical_source):
-            data = roi_history.grid_month(('demand', 2026, 11, True), Path(directory), date(2026, 11, 3))
+                patch.object(roi_history, 'fetch', side_effect=self.historical_source), patch.object(ni_history.time, 'sleep'):
+            data = roi_history.grid_month(('demand', 2026, 11, True), Path(directory), date(2026, 11, 4))
         self.assertEqual(len(data['rows']), 192)
         self.assertEqual({row[0][:10] for row in data['rows']}, {'2026-11-01', '2026-11-03'})
         self.assertTrue(data['emptyRangeChecked'])
+
+    def test_partial_ranges_retry_missing_days_and_replace_a_complete_revision_as_a_whole(self):
+        class Clock(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return cls(2026, 11, 4, tzinfo=tz)
+        for region, module in [('NI', ni_history), ('ROI', roi_history)]:
+            attempts = {}
+            def daily(day, count=96, value=100):
+                return [dict(Region=region, FieldName='SYSTEM_DEMAND', Value=value,
+                    EffectiveTime=(datetime(2026, 11, day) + timedelta(minutes=i * 15)).strftime('%d-%b-%Y %H:%M:%S'))
+                    for i in range(count)]
+            def source(url, headers):
+                query = self.query(url)
+                if query['dateFrom'] != query['dateTo']:
+                    return json.dumps({'Rows': daily(1) + daily(3, 95)}).encode()
+                day = datetime.strptime(query['dateFrom'], '%d-%b-%Y').day
+                self.assertIn(day, [2, 3])  # Complete and unfinished days need no request.
+                attempts[day] = attempts.get(day, 0) + 1
+                rows = daily(3, value=200) if day == 3 and attempts[day] > 1 else []
+                return json.dumps({'Rows': rows}).encode()
+            with self.subTest(region=region), tempfile.TemporaryDirectory() as directory, \
+                    patch.object(module, 'fetch', side_effect=source), patch.object(ni_history.time, 'sleep'), \
+                    patch.object(ni_history, 'datetime', Clock), patch.object(ni_history, 'CACHE', Path(directory)):
+                if region == 'NI':
+                    data = module.grid_month(('demand', 2026, 11, True))
+                else:
+                    data = module.grid_month(('demand', 2026, 11, True), Path(directory), date(2026, 11, 4))
+            self.assertEqual(len(data['rows']), 192)
+            self.assertEqual({row[1] for row in data['rows'] if row[0].startswith('2026-11-03')}, {200})
+            self.assertEqual(attempts, {2: 3, 3: 2})
 
     def test_replay_uses_supported_ranges_for_both_regions(self):
         with tempfile.TemporaryDirectory() as directory, \
@@ -116,6 +147,16 @@ class GridRequestTests(unittest.TestCase):
                                          Path(directory), True, [])
                 self.assertEqual(len(data['rows']), 192)
                 self.assertEqual({row[0][:10] for row in data['rows']}, {'2026-11-01', '2026-11-03'})
+
+    def test_daily_retries_do_not_replace_a_better_partial_response(self):
+        def rows(count, value):
+            return [dict(EffectiveTime=(datetime(2026, 11, 1) + timedelta(minutes=i * 15)).strftime('%d-%b-%Y %H:%M:%S'),
+                         Value=value) for i in range(count)]
+        previous = rows(95, 100)
+        with patch.object(ni_history.time, 'sleep'):
+            result = ni_history.fill_grid_days(previous, date(2026, 11, 1), date(2026, 11, 1),
+                                               lambda *_: rows(94, 200))
+        self.assertEqual(result, previous)
 
 
 if __name__ == '__main__':
