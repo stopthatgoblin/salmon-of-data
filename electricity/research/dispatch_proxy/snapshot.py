@@ -29,7 +29,8 @@ def fetch_grid(chart, areas, day):
     # The website can return empty or stale data for an otherwise valid range.
     # Try bounded alternatives, validating the actual field rather than row count.
     for lookback in ([1, 7, 27] if chart == 'interconnection' else [0, 1, 7]):
-        query = urllib.parse.urlencode({"region":"NI", "chartType":chart, "dateRange":"custom",
+        # The current Smart Grid API rejects `custom`; explicit bounds work with `day`.
+        query = urllib.parse.urlencode({"region":"NI", "chartType":chart, "dateRange":"day",
                                        "dateFrom":(target - timedelta(days=lookback)).strftime('%d-%b-%Y'),
                                        "dateTo":day, "areas":areas})
         url = "https://www.smartgriddashboard.com/api/chart/?" + query

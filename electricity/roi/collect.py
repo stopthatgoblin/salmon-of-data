@@ -84,7 +84,7 @@ def download_grid(job):
     region, chart = job
     field = {'demand':'SYSTEM_DEMAND','generation':'GEN_EXP','wind':'WIND_ACTUAL','solar':'SOLAR_ACTUAL','interconnection':'INTER_MOYLE' if region=='NI' else 'INTER_EWIC'}[chart]
     for days in [0,1,7,27]:
-        query = dict(region=region,chartType=chart,dateRange='custom',dateFrom=(NOW-timedelta(days=days)).strftime('%d-%b-%Y'),dateTo=NOW.strftime('%d-%b-%Y'),areas=chart+'actual' if chart!='interconnection' else 'interconnection')
+        query = dict(region=region,chartType=chart,dateRange='day',dateFrom=(NOW-timedelta(days=days)).strftime('%d-%b-%Y'),dateTo=NOW.strftime('%d-%b-%Y'),areas=chart+'actual' if chart!='interconnection' else 'interconnection')
         url = 'https://www.smartgriddashboard.com/api/chart/?'+urlencode(query)
         data = json.loads(fetch(url))
         save_json(CACHE/f'{region}-{chart}-{days}d.json',dict(url=url,retrievedAt=iso(datetime.utcnow()),data=data))
@@ -94,7 +94,7 @@ def download_grid(job):
 
 def download_forecast(chart):
     for days in [0,1]:
-        query = dict(region='ROI',chartType=chart,dateRange='custom',dateFrom=(NOW-timedelta(days=days)).strftime('%d-%b-%Y'),dateTo=NOW.strftime('%d-%b-%Y'),areas=chart+'forecast')
+        query = dict(region='ROI',chartType=chart,dateRange='day',dateFrom=(NOW-timedelta(days=days)).strftime('%d-%b-%Y'),dateTo=NOW.strftime('%d-%b-%Y'),areas=chart+'forecast')
         url = 'https://www.smartgriddashboard.com/api/chart/?'+urlencode(query)
         data = json.loads(fetch(url))
         save_json(CACHE/f'ROI-{chart}-forecast.json',dict(url=url,retrievedAt=iso(datetime.utcnow()),data=data))
