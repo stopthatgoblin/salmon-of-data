@@ -23,6 +23,10 @@ on:
         description: Skip only after all requested days and demand readings are complete
         type: boolean
         default: false
+      verify_recovery:
+        description: Preview only - verify date advance, missing-meter recovery and unchanged retries
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -66,7 +70,22 @@ jobs:
         run: |
           python -m unittest discover -s gas -p 'test_*.py'
           python -m unittest discover -s electricity/research/ni_gas -p 'test_*.py'
+      - name: Restore immutable reports and retained report catalogs
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: outputs/gas-live/sources
+          key: gas-sources-v1-${{ env.GAS_TARGET }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            gas-sources-v1-${{ env.GAS_TARGET }}-
+            gas-sources-v1-production-
+      - name: Reject recovery replay outside preview
+        if: inputs.verify_recovery && env.GAS_TARGET != 'preview'
+        run: exit 1
+      - name: Verify the preview publication and recovery path with real source reports
+        if: inputs.verify_recovery && env.GAS_TARGET == 'preview'
+        run: python -m gas.verify
       - name: Publish available gas days and retain pending source retries
+        id: publish
         run: |
           python - <<'PY'
           import os, subprocess, sys
@@ -77,3 +96,21 @@ jobs:
               command += ['--automatic']
           subprocess.run(command, check=True)
           PY
+      - name: Preserve collected reports between retries
+        if: always() && !cancelled()
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: outputs/gas-live/sources
+          key: gas-sources-v1-${{ env.GAS_TARGET }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Retain source evidence for changed editions
+        if: steps.publish.outputs.changed == 'true'
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: gas-source-evidence-${{ env.GAS_TARGET }}-${{ github.run_id }}
+          path: |
+            outputs/gas-live/sources/*.gz
+            outputs/gas-live/sources/*.url
+            outputs/gas-live/sources/catalog-*.json
+            outputs/gas-live/verification.json
+          retention-days: 30
+          compression-level: 0

@@ -126,3 +126,40 @@ test('immutable gas responses support conditional reads and HEAD without leaking
   const hit=await gas.fetch(new Request(url,{headers:{'If-None-Match':`"${version}"`}}),env);assert.equal(hit.status,304);assert.equal(await hit.text(),'');
   assert.ok(head.headers.get('X-Content-Type-Options'));
 });
+
+test('schema 3 keeps reported gas readable during regional meter and hourly outages',()=>{
+  const value=JSON.parse(readFileSync(new URL('../public/data/ireland-gas/2026-11-08.json',import.meta.url)));
+  value.schema=3;value.version='b'.repeat(24);
+  value.regions.ni={...value.regions.ni,electricity:null,powerGas:null,otherGas:null,powerShare:null,demandShare:null};
+  value.units.ni=[];
+  value.electricityBasis={...value.electricityBasis,meteredHours:null,dispatchEstimateHours:null,estimateFromUtc:null,
+    regional:{ni:null,roi:{meteredHours:24,dispatchEstimateHours:0,estimateFromUtc:value.toUtc}}};
+  value.sourceChecks={pending:[{source:'SEMO meter data',gasDay:value.gasDay,region:'ni'}]};
+  assert.equal(validSnapshot(value,value.gasDay,value.version),true);
+  value.hourly=[];value.sourceChecks.pending.push({source:'GNI hourly flows',gasDay:value.gasDay});
+  assert.equal(validSnapshot(value,value.gasDay,value.version),true);
+  value.regions.ni.powerShare=0;
+  assert.equal(validSnapshot(value,value.gasDay,value.version),false);
+  value.regions.ni.powerShare=null;value.regions.ni.electricity=0;
+  assert.equal(validSnapshot(value,value.gasDay,value.version),false);
+  value.regions.ni.electricity=null;value.sourceChecks.pending=[];
+  assert.equal(validSnapshot(value,value.gasDay,value.version),false);
+});
+
+test('temporary scheduled preview verification is isolated, bounded and expires',async()=>{
+  const {gasPreviewCron,collectGasPreviewOnSchedule}=await import('../workers/gas-scheduler.mjs');
+  const time=Date.parse('2026-11-19T22:00:00Z');
+  let state=null,dispatch;
+  const env={GAS_PREVIEW_REF:'codex/gas-reliability',GAS_PREVIEW_UNTIL:'2026-11-19T23:00:00Z',GITHUB_ACTIONS_TOKEN:'test-only',
+    GAS_DATA:{get:()=>{throw new Error('Production state must not be read');}},
+    GAS_PREVIEW_DATA:{get:async()=>state,put:async(_key,value)=>{state=JSON.parse(value);}}};
+  const request=async(url,options)=>{dispatch=JSON.parse(options.body);return new Response(null,{status:204});};
+  const controller={cron:gasPreviewCron,scheduledTime:time};
+  assert.equal((await collectOnSchedule(controller,env,request,time)).action,'dispatch');
+  assert.equal(dispatch.ref,'codex/gas-reliability');assert.equal(dispatch.inputs.target,'preview');
+  assert.equal(dispatch.inputs.verify_recovery,'true');
+  assert.equal((await collectGasPreviewOnSchedule(controller,env,request)).action,'skip');
+  assert.equal((await collectGasPreviewOnSchedule({...controller,scheduledTime:time+60*60000},env,request)).action,'skip');
+  assert.equal((await collectGasPreviewOnSchedule(controller,{...env,GAS_PREVIEW_REF:'main'},request)).action,'skip');
+  assert.equal((await collectGasPreviewOnSchedule(controller,{...env,GAS_PREVIEW_UNTIL:'2026-11-22T00:00:00Z'},request)).action,'skip');
+});

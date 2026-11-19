@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from gas.cloud import LocalStore, MANIFEST, STATUS, collect_and_publish, failure, publish
+from gas.cloud import LocalStore, MANIFEST, STATUS, collect_and_publish, failure, publish, source_wait
 from gas.collect import Collection, daily, demand_total, intervals, physical, validate
 from gas.sources import GasDataPending, MeterDataPending, Sources, iso
 from electricity.research.ni_gas.estimate import gas_window
@@ -96,6 +96,80 @@ class GasRules(unittest.TestCase):
         rows=[dict(name='Moffat',data=[[1794096000000,0]])] # 8 November UTC midnight
         self.assertEqual(daily(rows,date(2026,11,8),name='Moffat'),0)
         with self.assertRaises(ValueError):daily(rows,date(2026,11,9),name='Moffat')
+
+    def test_gni_identical_duplicates_are_accepted_but_conflicts_remain_pending(self):
+        day = date(2026,11,8)
+        epoch = 1794096000000
+        rows = [dict(name='DM',data=[[epoch,1000],[epoch,1000]])]
+        self.assertEqual(daily(rows,day,name='DM'),.001)
+        rows[0]['data'][1][1] = 1001
+        with self.assertRaises(GasDataPending) as caught:
+            daily(rows,day,name='DM')
+        pending = source_wait(caught.exception)
+        self.assertEqual(pending['source'],'GNI daily data')
+        self.assertEqual(pending['reason'],'Conflicting daily values for DM')
+        rows[0]['data'][1][1] = None
+        with self.assertRaises(ValueError):daily(rows,day,name='DM')
+
+    def meter_collection(self, day):
+        collection = Collection.__new__(Collection)
+        first,last = gas_window(day)
+        collection.meters = {(uid,at):(100 if uid == 'ni' else 200,first)
+                             for uid in ['ni','roi'] for at in intervals(first-timedelta(minutes=30),last,30)}
+        return collection, first, last
+
+    def test_regional_meter_tails_are_estimated_without_overwriting_available_readings(self):
+        day = date(2026,11,17)
+        collection,first,last = self.meter_collection(day)
+        cut = last-timedelta(hours=5)
+        for at in intervals(cut,last,30):del collection.meters['ni',at]
+        events = {'ni':[(cut,cut,120)]}
+        with patch.object(collection,'dispatch',return_value=(events,['dispatch.xml'])) as dispatch:
+            meters,actual_cut,urls = collection.complete_meters(day,{'ni','roi'})
+        self.assertEqual(actual_cut,cut)
+        self.assertEqual(urls,['dispatch.xml'])
+        dispatch.assert_called_once_with(cut-timedelta(minutes=30),last,{'ni'})
+        self.assertTrue(all(meters['ni',at] == 120 for at in intervals(cut,last,30)))
+        self.assertTrue(all(meters['roi',at] == 200 for at in intervals(first,last,30)))
+        self.assertEqual(meters['ni',cut-timedelta(minutes=30)],100)
+        self.assertNotIn(('ni',cut),collection.meters)
+
+    def test_each_unit_uses_its_own_final_meter_as_dispatch_seed(self):
+        day = date(2026,11,17)
+        collection,first,last = self.meter_collection(day)
+        for uid,hours in [('ni',6),('roi',2)]:
+            for at in intervals(last-timedelta(hours=hours),last,30):del collection.meters[uid,at]
+        # A dispatch instruction preceding ROI's later meter cutoff must not
+        # replace that unit's more recent measured seed.
+        events = {'ni':[], 'roi':[(last-timedelta(hours=4),first,999)]}
+        with patch.object(collection,'dispatch',return_value=(events,[])):
+            meters,cut,_ = collection.complete_meters(day,{'ni','roi'})
+        self.assertEqual(cut,last-timedelta(hours=6))
+        self.assertEqual(meters['ni',last-timedelta(minutes=30)],100)
+        self.assertEqual(meters['roi',last-timedelta(minutes=30)],200)
+
+    def test_full_day_internal_gaps_and_long_tails_still_wait_for_meters(self):
+        day = date(2026,11,18)
+        for kind in ['full','internal','long']:
+            with self.subTest(kind=kind):
+                collection,first,last = self.meter_collection(day)
+                missing = intervals(first,last,30) if kind == 'full' else [first+timedelta(hours=1)] if kind == 'internal' else intervals(last-timedelta(hours=6,minutes=30),last,30)
+                for at in missing:del collection.meters['ni',at]
+                with patch.object(collection,'dispatch') as dispatch:
+                    with self.assertRaises(MeterDataPending) as caught:
+                        collection.complete_meters(day,{'ni','roi'})
+                    dispatch.assert_not_called()
+                self.assertEqual(source_wait(caught.exception)['source'],'SEMO meter data')
+                self.assertTrue(source_wait(caught.exception)['reason'])
+
+    def test_complete_meters_do_not_need_dispatch_reports(self):
+        day = date(2026,11,17)
+        collection,_,last = self.meter_collection(day)
+        with patch.object(collection,'dispatch') as dispatch:
+            _,cut,urls = collection.complete_meters(day,{'ni','roi'})
+            dispatch.assert_not_called()
+        self.assertEqual(cut,last)
+        self.assertEqual(urls,[])
 
     def test_entsog_wrong_period_and_na_are_rejected(self):
         first,last=gas_window(date(2026,11,8))
@@ -211,7 +285,8 @@ class GasRules(unittest.TestCase):
             manifest = collect_and_publish(self.store,target,Path(self.temp.name)/'sources',2)
         self.assertTrue(manifest['pending'])
         self.assertEqual(manifest['incompleteDays'],[dict(date='2026-11-15',missingDemand=['roi'])])
-        self.assertIsNone(self.store.get_json(STATUS)['successfulDate'])
+        self.assertTrue(manifest['targetComplete'])
+        self.assertIsNotNone(self.store.get_json(STATUS)['successfulDate'])
 
     def test_transient_missing_demand_cannot_downgrade_an_accepted_day(self):
         day = date(2026,11,8)

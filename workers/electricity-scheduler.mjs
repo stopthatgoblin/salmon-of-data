@@ -1,6 +1,6 @@
 // Private, timer-only Worker. The GitHub credential is an encrypted Worker
 // secret, never an asset, a URL parameter, a log message or an HTTP endpoint.
-import { gasCron, gasCatchupCron, collectGasOnSchedule } from './gas-scheduler.mjs';
+import { gasCron, gasCatchupCron, gasPreviewCron, collectGasOnSchedule, collectGasPreviewOnSchedule } from './gas-scheduler.mjs';
 import { readElectricityPointer } from './electricity-state.mjs';
 const workflowURL = 'https://api.github.com/repos/stopthatgoblin/salmon-of-data/actions/workflows/ni-electricity.yml/dispatches';
 export const overviewCron = '2,17,32,47 * * * *';
@@ -36,6 +36,7 @@ export function collectionDue(dataset, pointer, now = Date.now()) {
 }
 
 export async function collectOnSchedule(controller, env, request = fetch, now = Date.now()) {
+  if (controller.cron === gasPreviewCron) return collectGasPreviewOnSchedule(controller, env, request);
   if (controller.cron === gasCron || controller.cron === gasCatchupCron) return collectGasOnSchedule(controller, env, request);
   const dataset = scheduledDataset(controller.cron, controller.scheduledTime);
   if (!dataset) return { action: 'skip', reason: 'outside UK collection hours' };

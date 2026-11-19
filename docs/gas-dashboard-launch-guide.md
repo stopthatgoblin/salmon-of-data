@@ -15,7 +15,7 @@ Evening retries continue; failed or partial collections also receive catch-ups a
 
 The manifest exposes `pending`, `pendingDays` and `incompleteDays`. The private status retains the requested `targetGasDay`; `successfulDate` advances only after all requested dates and demand metrics are complete. GitHub's run summary distinguishes a successful partial publication from complete source recovery. A run with no valid candidates fails and preserves the accepted archive. An accepted edition is retained when a candidate would lose demand coverage or require more dispatch estimates.
 
-The primary view remains 05:00 to 05:00 local time. The newest electricity totals can include dispatch estimates; later meter publications upgrade earlier days. NI power gas remains modelled. Snapshot schema 2 permits paired `null` demand and demand-share values; the client also reads the original schema 1 archive. Core gas totals, electricity output, gas-use shares, balances and source intervals remain mandatory.
+The primary view remains 05:00 to 05:00 local time. The newest electricity totals can include dispatch estimates; later meter publications upgrade earlier days. Each unit can have a different contiguous missing tail, up to six hours, seeded from its own final meter interval. Available readings are retained, including when one region's next calendar-day meters arrive before the other's. The snapshot coverage hours describe the minimum metered prefix and maximum estimated tail across units. Full-day missing meters, internal gaps and longer tails remain pending for SEMO; conflicting GNI daily values remain pending for GNI. Pending-source records and GitHub run summaries include the specific reason. NI power gas remains modelled. Snapshot schema 2 permits paired `null` demand and demand-share values; the client also reads the original schema 1 archive. Core gas totals, electricity output, gas-use shares, balances and source intervals remain mandatory.
 
 ## Resources
 
@@ -68,3 +68,17 @@ GNI supplies daily physical flows, allocations and ROI sector consumption. ENTSO
 The initial validated archive covers 5-11 November 2026. Older first editions of 8/9 November are retained as versions. Future accepted days extend the date picker. Older backfill is possible only where every required feed and startup context passes validation.
 
 The specific licence coverage of GNI operational API series remains unconfirmed and is disclosed in the source notes. The live page retains attribution, reuse links, model assumptions and the distinction between physical flows and commercial allocations.
+
+## Reliability rollout - 19 November 2026
+
+Snapshot schema 3 publishes validated reported gas even when one region's electricity inputs are unavailable. Missing NI power gas, its residual and shares are explicit nulls; ROI reported gas use remains independent of ROI electricity output. The client accepts schemas 1-3. Regional meter coverage is recorded separately, and each unit retains its own six-hour estimate limit. Deploy the compatible website before the new collector reaches production.
+
+Identical daily or hourly GNI duplicates are counted once. Conflicting daily gas quantities still block that day. Missing, conflicting or unreconciled hourly data hides only the chart, with a source reason and retry; the daily quantities remain visible. No forecast replaces a missing reported quantity.
+
+The manifest distinguishes `lastChecked`, `lastDataChange`, `lastDateAdvance`, `lastComplete`, `targetComplete` and `outcome`. `lastSuccess` now advances only when the requested day is complete. Earlier archive problems remain pending independently. An unchanged retry updates check status without creating another immutable edition. Every accepted first edition is retained, including when a later correction returns to an earlier value.
+
+Pending dates survive the seven-day revision window. Each run adds a rotating batch of at most two older unresolved dates. Immutable reports and a retained report catalog are restored/saved with the GitHub Actions cache; changed publications also retain their source evidence as a 30-day workflow artifact. Cache eviction and artifact retention are operational limits, not a permanent raw-data archive. Accepted dated snapshots and their versions retain the existing no-expiry policy.
+
+`python -m gas.verify` runs only against the configured preview namespace (or an explicit local directory). It uses two real source days and a missing-NI-meter replay in private verification keys to check date advance, recovery, retained first editions and timestamp-only retries. Replayed availability never enters the public dashboard archive. The ordinary collector then publishes the current real source data to preview.
+
+For release verification, a temporary scheduler overlay can enable `*/5 * * * *`, `GAS_PREVIEW_DATA`, `GAS_PREVIEW_REF=codex/gas-...` and a `GAS_PREVIEW_UNTIL` within two hours. The callback dispatches only preview, throttles duplicate checks for 30 minutes and expires automatically. Restore the tracked scheduler configuration after the check; it contains no preview verification cron or bindings. Normal production dispatch stays pinned to `main` throughout.
