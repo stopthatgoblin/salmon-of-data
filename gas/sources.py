@@ -8,6 +8,7 @@ from pathlib import Path
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 import xml.etree.ElementTree as ET
 
 UTC = timezone.utc
@@ -15,17 +16,19 @@ SEMO = 'https://reports.sem-o.com'
 
 
 class MeterDataPending(ValueError):
-    """The primary calendar-day meter report has not yet been published."""
-    def __init__(self, gas_day, latest_report_date=None):
+    """Required meter readings are unpublished or incomplete."""
+    def __init__(self, gas_day, latest_report_date=None, reason=None):
         self.gas_day = gas_day.isoformat()
         self.latest_report_date = latest_report_date
-        super().__init__('Waiting for SEMO meter data for ' + self.gas_day)
+        self.reason = reason
+        super().__init__('Waiting for SEMO meter data for ' + self.gas_day + (': ' + reason if reason else ''))
 
 
 class GasDataPending(ValueError):
-    def __init__(self, gas_day):
+    def __init__(self, gas_day, reason=None):
         self.gas_day = gas_day.isoformat()
-        super().__init__('Waiting for GNI daily data for ' + self.gas_day)
+        self.reason = reason
+        super().__init__('Waiting for GNI daily data for ' + self.gas_day + (': ' + reason if reason else ''))
 
 
 def demand_url(region, first, last):
@@ -84,18 +87,34 @@ class Sources:
         return json.loads(self.fetch(url, **kwargs))
 
     def index(self, name, first):
+        if not name.replace('_', '').isalnum():
+            raise ValueError('Invalid report catalog name')
+        catalog_path = self.cache / ('catalog-' + name + '.json')
+        catalog = json.loads(catalog_path.read_text()) if catalog_path.exists() else []
+        def retain(items):
+            merged = {row['ResourceName']: row for row in catalog + items}
+            result = sorted(merged.values(), key=lambda row: (row['Date'], row['PublishTime']), reverse=True)
+            temporary = catalog_path.with_suffix('.tmp')
+            temporary.write_text(json.dumps(result))
+            temporary.replace(catalog_path)
+            return result
         items = []
         for page in range(1, 101):
             url = SEMO + '/api/v1/documents/static-reports?' + urllib.parse.urlencode(dict(
                 name=name, sort_by='PublishTime', order_by='DESC', page_size=100, page=page))
-            data = self.json(url)
+            try:
+                data = self.json(url)
+            except (urllib.error.URLError, TimeoutError):
+                if catalog:
+                    return retain(items)
+                raise
             rows = data.get('items')
             if not isinstance(rows, list):
                 raise ValueError('Invalid SEMO index: ' + name)
             items.extend(rows)
             # Descending publication order; allow later publications of old data.
             if not rows or page >= data['pagination']['totalPages'] or all(r['Date'] < first.isoformat() for r in rows):
-                return items
+                return retain(items)
         raise ValueError('SEMO index exceeded bounded pagination')
 
     def report(self, item):

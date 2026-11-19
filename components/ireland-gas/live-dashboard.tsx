@@ -3,14 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, History } from 'lucide-react';
 import IrelandGasDashboard from './dashboard';
-import type { GasSnapshot } from './types';
+import type { GasSnapshot, GasManifest } from './types';
 import { validSnapshot } from './data';
 
-type Day = { date: string; version: string; collectedAt: string; meteredHours: number; estimatedHours: number };
-type Manifest = { schema: number; days: Day[]; latest: string; lastAttempt: string; lastSuccess: string; lastError: string | null; pending?: boolean;
-  waitingForSource?: { source: string; gasDay: string; latestReportDate: string | null } | null };
+type Manifest = GasManifest;
 const validDate = (value: string | null): value is string => !!value && /^\d{4}-\d{2}-\d{2}$/.test(value)
   && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0,10) === value;
+const checkTime = (value: string | null | undefined) => value && Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Dublin',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZoneName:'short'}).format(new Date(value)).replace('GMT+0','GMT') : null;
 const label = (value: string) => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T12:00:00Z'));
 
 export default function GasLiveDashboard() {
@@ -64,12 +63,16 @@ export default function GasLiveDashboard() {
       if(localHour<19)due.setUTCDate(due.getUTCDate()-1);
       const late = index.latest < due.toISOString().slice(0,10);
       const missing = (['ni','roi'] as const).filter(region=>loaded.current?.regions[region].demand === null);
-      setProblem(!!index.lastError || !!index.pending || late || missing.length > 0);
+      const missingElectricity = (['ni','roi'] as const).filter(region=>loaded.current?.regions[region].electricity === null);
+      setProblem(!!index.lastError || !!index.pending || late || missing.length > 0 || missingElectricity.length > 0);
       const waiting = ['SEMO meter data','GNI daily data'].includes(index.waitingForSource?.source || '') && validDate(index.waitingForSource?.gasDay || null)
         ? `Waiting for ${index.waitingForSource!.source} for ${label(index.waitingForSource!.gasDay)}.` : null;
       const demand = missing.length ? `Electricity-demand percentages are unavailable for ${missing.map(region=>region.toUpperCase()).join(' and ')}.` : '';
-      const update = waiting || (index.lastError || index.pending || late ? 'Some source data is delayed.' : '');
-      setMessage([update,demand].filter(Boolean).join(' ') || (selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.'));
+      const electricity = missingElectricity.length ? `Electricity output is awaiting readings for ${missingElectricity.map(region=>region.toUpperCase()).join(' and ')}. Reported gas remains available.` : '';
+      const update = index.outcome === 'failed' ? 'The latest collection failed; accepted data is retained.'
+        : index.targetComplete && index.pending ? 'The requested gas day is complete. Earlier archive dates are awaiting sources.'
+        : waiting || (index.lastError || index.pending || late ? 'Some source data is delayed.' : '');
+      setMessage([update,electricity,demand].filter(Boolean).join(' ') || (selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.'));
     } catch (error) {
       if (abort.signal.aborted || generation !== epoch.current) return;
       setProblem(true);
@@ -118,6 +121,7 @@ export default function GasLiveDashboard() {
       </div><p role="status">{loading?'Loading…':message}</p></div>
     </details>
     {problem&&!loading&&<p className="gas-update-note" role="status">{message} Displayed: {label(snapshot.gasDay)}.</p>}
+    {manifest&&<p className="gas-check-status">{checkTime(manifest.lastChecked||manifest.lastAttempt)&&<>Last checked: {checkTime(manifest.lastChecked||manifest.lastAttempt)}.</>} {checkTime(manifest.lastDataChange)&&<>Data last changed: {checkTime(manifest.lastDataChange)}.</>}</p>}
   </>;
   return <IrelandGasDashboard snapshot={snapshot} controls={controls}/>;
 }

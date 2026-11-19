@@ -1,6 +1,6 @@
 // Private, timer-only Worker. The GitHub credential is an encrypted Worker
 // secret, never an asset, a URL parameter, a log message or an HTTP endpoint.
-import { gasCron, gasCatchupCron, collectGasOnSchedule } from './gas-scheduler.mjs';
+import { gasCron, gasCatchupCron, collectGasOnSchedule, collectGasPreviewOnSchedule } from './gas-scheduler.mjs';
 import { readElectricityPointer } from './electricity-state.mjs';
 const workflowURL = 'https://api.github.com/repos/stopthatgoblin/salmon-of-data/actions/workflows/ni-electricity.yml/dispatches';
 export const overviewCron = '2,17,32,47 * * * *';
@@ -64,9 +64,21 @@ export async function collectOnSchedule(controller, env, request = fetch, now = 
   return { action: 'dispatch', dataset, status: response.status };
 }
 
+export async function collectScheduledChecks(controller, env, request=fetch, now=Date.now()) {
+  // The optional expiring preview check shares an existing tick. Its failure
+  // cannot suppress the production collector and needs no extra Free-plan cron.
+  return Promise.allSettled([
+    collectOnSchedule(controller,env,request,now),
+    collectGasPreviewOnSchedule(controller,env,request),
+  ]);
+}
+
 export default {
   async scheduled(controller, env) {
-    const result = await collectOnSchedule(controller, env);
-    console.log(JSON.stringify(result));
+    const [primary,preview]=await collectScheduledChecks(controller,env);
+    if (preview.status==='fulfilled' && preview.value.action==='dispatch') console.log(JSON.stringify(preview.value));
+    if (preview.status==='rejected') console.log(JSON.stringify({dataset:'gas-preview',action:'failed',error:preview.reason.message}));
+    if (primary.status==='rejected') throw primary.reason;
+    console.log(JSON.stringify(primary.value));
   },
 };
