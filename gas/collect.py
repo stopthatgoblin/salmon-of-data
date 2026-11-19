@@ -250,7 +250,11 @@ class Collection:
         electricity, pending = {}, []
         for region in ['ni', 'roi']:
             try:
-                electricity[region] = self.electricity(day, region)
+                available = self.electricity(day, region)
+                if region == 'ni':
+                    model_gas = sum(row['gasGwh'] for row in available['units'])
+                    require(finite(model_gas) and 0 <= model_gas <= flows['niAllocated'], 'NI model gas is outside the reported allocation; model review required')
+                electricity[region] = available
             except Exception as error:
                 if not self.gas_first:
                     raise

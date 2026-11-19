@@ -138,6 +138,12 @@ class Reliability(unittest.TestCase):
         waiting=collection.assemble(day)
         self.assertEqual(waiting['hourly'],[])
         self.assertTrue(any(row['source']=='GNI hourly flows' for row in waiting['sourceChecks']['pending']))
+        collection.electricity=lambda day,region: dict(units=[dict(gasGwh=data['flows']['niAllocated']+1)],
+            basis=data['electricityBasis']['regional']['ni'],sources={},dispatch=[]) if region=='ni' else electricity(day,region)
+        invalid_model=collection.assemble(day)
+        self.assertEqual(invalid_model['flows'],data['flows'])
+        self.assertIsNone(invalid_model['regions']['ni']['powerGas'])
+        self.assertTrue(any('model review required' in row['reason'] for row in invalid_model['sourceChecks']['pending']))
 
     def test_catalog_keeps_reports_after_the_live_index_rolls_forward(self):
         source=Sources(Path(self.temp.name)/'sources')
