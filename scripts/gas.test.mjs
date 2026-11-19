@@ -155,11 +155,28 @@ test('temporary scheduled preview verification is isolated, bounded and expires'
     GAS_PREVIEW_DATA:{get:async()=>state,put:async(_key,value)=>{state=JSON.parse(value);}}};
   const request=async(url,options)=>{dispatch=JSON.parse(options.body);return new Response(null,{status:204});};
   const controller={cron:gasPreviewCron,scheduledTime:time};
-  assert.equal((await collectOnSchedule(controller,env,request,time)).action,'dispatch');
+  assert.equal((await collectGasPreviewOnSchedule(controller,env,request)).action,'dispatch');
   assert.equal(dispatch.ref,'codex/gas-reliability');assert.equal(dispatch.inputs.target,'preview');
   assert.equal(dispatch.inputs.verify_recovery,'true');
   assert.equal((await collectGasPreviewOnSchedule(controller,env,request)).action,'skip');
   assert.equal((await collectGasPreviewOnSchedule({...controller,scheduledTime:time+60*60000},env,request)).action,'skip');
   assert.equal((await collectGasPreviewOnSchedule(controller,{...env,GAS_PREVIEW_REF:'main'},request)).action,'skip');
   assert.equal((await collectGasPreviewOnSchedule(controller,{...env,GAS_PREVIEW_UNTIL:'2026-11-22T00:00:00Z'},request)).action,'skip');
+});
+
+
+test('preview verification shares an existing tick and cannot suppress production',async()=>{
+  const {collectScheduledChecks}=await import('../workers/electricity-scheduler.mjs');
+  const time=Date.parse('2026-11-19T22:02:00Z');
+  const calls=[];
+  const env={GITHUB_ACTIONS_TOKEN:'test-only',GAS_PREVIEW_REF:'codex/gas-reliability',GAS_PREVIEW_UNTIL:'2026-11-19T23:00:00Z',
+    ELECTRICITY_DATA:{get:async()=>({records:[{}],lastSuccess:'2026-11-19T20:00:00Z'})},
+    GAS_PREVIEW_DATA:{get:async()=>null,put:async()=>{}}};
+  const results=await collectScheduledChecks({cron:'2,17,32,47 * * * *',scheduledTime:time},env,async(url,options)=>{
+    calls.push(JSON.parse(options.body));
+    return new Response(null,{status:url.includes('ireland-gas')?503:204});
+  },time);
+  assert.equal(results[0].status,'fulfilled');assert.equal(results[0].value.action,'dispatch');
+  assert.equal(results[1].status,'rejected');assert.equal(calls.length,2);
+  assert.equal(calls.find(row=>row.inputs.target==='production').ref,'main');
 });

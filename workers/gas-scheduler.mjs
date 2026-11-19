@@ -1,6 +1,6 @@
 export const gasCron = '0,20,40 18-22 * * *';
 export const gasCatchupCron = '0 6,7,9,10,12,13,15,16 * * *';
-export const gasPreviewCron = '*/5 * * * *';
+export const gasPreviewCron = '2,17,32,47 * * * *';
 const localHour = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Dublin',hour:'2-digit',hourCycle:'h23'});
 const localDate = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Dublin',year:'numeric',month:'2-digit',day:'2-digit'});
 const workflowURL = 'https://api.github.com/repos/stopthatgoblin/salmon-of-data/actions/workflows/ireland-gas.yml/dispatches';
@@ -9,7 +9,7 @@ const workflowURL = 'https://api.github.com/repos/stopthatgoblin/salmon-of-data/
 // Production namespace, workflow ref and normal schedule remain independent.
 export async function collectGasPreviewOnSchedule(controller, env, request=fetch) {
   const remaining=Date.parse(env.GAS_PREVIEW_UNTIL)-controller.scheduledTime;
-  if (controller.cron!==gasPreviewCron || !(remaining>0 && remaining<=2*60*60*1000)
+  if (![gasPreviewCron,gasCron].includes(controller.cron) || !(remaining>0 && remaining<=2*60*60*1000)
       || !/^codex\/gas-[a-z0-9-]+$/.test(env.GAS_PREVIEW_REF||'') || !env.GAS_PREVIEW_DATA)
     return {action:'skip',dataset:'gas-preview',reason:'preview verification disabled or expired'};
   const state=await env.GAS_PREVIEW_DATA.get('private/gas/preview-check',{type:'json',cacheTtl:60});
