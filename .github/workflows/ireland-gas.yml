@@ -98,7 +98,7 @@ jobs:
           PY
       - name: Preserve collected reports between retries
         if: always() && !cancelled()
-        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: outputs/gas-live/sources
           key: gas-sources-v1-${{ env.GAS_TARGET }}-${{ github.run_id }}-${{ github.run_attempt }}
