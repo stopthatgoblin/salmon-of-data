@@ -238,7 +238,6 @@
 .gas-date-controls :disabled{opacity:.45;cursor:default}
 .gas-date-controls button:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
 .gas-chart-legend .gas-corrib-dot{background:var(--gas-chart-corrib)}
-.gas-update-note{padding:8px 0;font-size:11px;color:var(--gas-power)}
 .gas-loading{padding:24px 0;min-height:140px;color:var(--gas-muted)}
 .gas-loading button{margin:10px 16px 0 0}
 :root[data-electricity-theme=dark] .ireland-gas{--gas-chart-corrib:#e7b95a}
@@ -246,4 +245,3 @@
 @media(max-width:600px){.gas-toolbar{gap:0 14px}.gas-tabs{flex:1 1 100%;order:1;border-top:1px solid var(--gas-line)}.gas-dashboard-links{order:0;flex:1;gap:12px}.gas-dashboard-links a{font-size:10px}.gas-toolbar .theme-toggle{order:0;min-height:28px;font-size:10px}.gas-snapshot-stamp{order:0;flex:1 0 100%;padding:5px 0 10px;font-size:11px}.gas-snapshot-stamp small{font-size:9px}.gas-replay-mode{font-size:9px}.gas-date-controls select{max-width:150px}}
 .ireland-gas .gas-reading.gas-reading-unavailable{font:1rem/1.5 Arial,sans-serif;letter-spacing:0;color:var(--gas-muted);white-space:normal}
 .gas-check-status{font-size:.875rem;line-height:1.5;color:var(--gas-muted);padding:0 0 12px}
-.gas-update-note{font-size:.875rem;line-height:1.5}

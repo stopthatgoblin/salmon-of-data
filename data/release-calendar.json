@@ -1,36 +1,7 @@
 {
-  "checkedAt": "2026-11-16",
+  "checkedAt": "2026-11-22",
   "through": "2026-12-31",
   "entries": [
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-11-18",
-      "title": "UK consumer prices",
-      "metrics": [
-        "UK groceries"
-      ],
-      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukoctober2026",
-      "referencePeriod": "October 2026",
-      "time": "07:00 UK time",
-      "status": "Confirmed",
-      "checkedAt": "2026-11-01"
-    },
-    {
-      "tracker": "el-nino",
-      "frequency": "monthly",
-      "date": "2026-12-10",
-      "month": "2026-12",
-      "title": "NOAA ENSO Diagnostic Discussion",
-      "referencePeriod": "November 2026 conditions and outlook",
-      "metrics": [
-        "El Niño outlook"
-      ],
-      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.html",
-      "status": "Confirmed",
-      "checkedAt": "2026-11-16",
-      "note": "NOAA confirms 10 December in the November discussion."
-    },
     {
       "tracker": "el-nino",
       "frequency": "monthly",
@@ -43,7 +14,7 @@
       "referencePeriod": "September–November 2026",
       "time": null,
       "status": "By the 5th",
-      "checkedAt": "2026-11-01",
+      "checkedAt": "2026-11-22",
       "month": "2026-12",
       "note": "NOAA states that the RONI table is updated by the fifth of each month; this is a release window, not a confirmed publication day."
     },
@@ -59,7 +30,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "tracker": "el-nino",
@@ -77,7 +48,7 @@
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-11-06",
+      "checkedAt": "2026-11-22",
       "month": "2026-12",
       "note": "Next update confirmed by the World Bank."
     },
@@ -89,11 +60,11 @@
       "metrics": [
         "Food basket"
       ],
-      "sourceUrl": "https://www.fao.org/worldfoodsituation/foodpricesindex/en/",
+      "sourceUrl": "https://www.fao.org/statistics/data-releases",
       "referencePeriod": "November 2026",
       "time": null,
       "status": "Confirmed",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "date": "2026-12-04",
@@ -108,7 +79,22 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-12-10",
+      "month": "2026-12",
+      "title": "NOAA ENSO Diagnostic Discussion",
+      "referencePeriod": "November 2026 conditions and outlook",
+      "metrics": [
+        "El Niño outlook"
+      ],
+      "sourceUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.html",
+      "status": "Confirmed",
+      "checkedAt": "2026-11-22",
+      "note": "NOAA confirms 10 December in the November discussion."
     },
     {
       "date": "2026-12-10",
@@ -122,7 +108,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "title": "Canadian vacancies and offered wages",
@@ -136,7 +122,7 @@
       "frequency": "quarterly",
       "date": "2026-12-15",
       "status": "Confirmed",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "tracker": "el-nino",
@@ -150,10 +136,10 @@
       "referencePeriod": "November 2026",
       "time": "07:00 UK time",
       "status": "Confirmed",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     }
   ],
-  "lastReleaseReviewAt": "2026-11-16",
+  "lastReleaseReviewAt": "2026-11-22",
   "completedReleases": [
     {
       "date": "2026-09-11",
@@ -573,6 +559,26 @@
       "actualsAdded": [],
       "revisionsIncluded": [],
       "note": "November discussion published; next discussion scheduled 10 December. Frozen paths unchanged."
+    },
+    {
+      "tracker": "el-nino",
+      "frequency": "monthly",
+      "date": "2026-11-18",
+      "title": "UK consumer prices",
+      "metrics": [
+        "UK groceries"
+      ],
+      "sourceUrl": "https://www.ons.gov.uk/releases/consumerpriceinflationukoctober2026",
+      "referencePeriod": "October 2026",
+      "time": "07:00 UK time",
+      "status": "Confirmed",
+      "checkedAt": "2026-11-22",
+      "publishedAt": "2026-11-18",
+      "importedAt": "2026-11-22",
+      "actualsAdded": [
+        "retail: 2026-10 = 144.6"
+      ],
+      "revisionsIncluded": []
     }
   ],
   "scope": "Monthly and quarterly releases affecting displayed AI and El Niño metrics. Daily electricity updates and the retired harvest panel are excluded."

@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-16",
+  "checkedAt": "2026-11-22",
   "year": 2026,
-  "lastReleaseReviewAt": "2026-11-16",
+  "lastReleaseReviewAt": "2026-11-22",
   "entries": [
     {
       "date": "2026-12-01",
@@ -15,7 +15,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "date": "2026-12-04",
@@ -30,7 +30,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "date": "2026-12-10",
@@ -44,7 +44,7 @@
       "status": "Confirmed",
       "tracker": "ai",
       "frequency": "monthly",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     },
     {
       "title": "Canadian vacancies and offered wages",
@@ -58,7 +58,7 @@
       "frequency": "quarterly",
       "date": "2026-12-15",
       "status": "Confirmed",
-      "checkedAt": "2026-11-01"
+      "checkedAt": "2026-11-22"
     }
   ],
   "provisional": [],

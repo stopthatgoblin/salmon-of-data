@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-22",
+  "newActuals": {
+    "retail": [
+      {
+        "date": "2026-10",
+        "value": 144.6
+      }
+    ]
+  },
+  "sources": [
+    {
+      "file": "2026-11-22/ons.json",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+      "bytes": 126617,
+      "sha256": "8c3bcaaa734f3a731ef8246a4b929aae884165309597f4bdf905e8934ddadb78",
+      "retrievedOn": "2026-11-22",
+      "note": "ONS D7BU: October 2026 food and non-alcoholic beverages index.",
+      "name": "ONS D7BU",
+      "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data"
+    }
+  ],
+  "checks": {
+    "retail": "October 2026 D7BU = 144.6, released 18 November.",
+    "otherSources": "NOAA RONI, FAO and World Bank captures match the 6 November files."
+  },
+  "frozenFileSha256": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+  "policy": "Published observations only; original forecast anchors and scenarios remain unchanged."
+}

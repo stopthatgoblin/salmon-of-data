@@ -1,0 +1,874 @@
+{
+  "checkedAt": "2026-11-22",
+  "sources": [
+    {
+      "file": "2026-11-22/indeed-us-all.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+      "bytes": 205567,
+      "sha256": "4087dc63e3686d4b2b8a309e76138cd377b59e9a5d7347e18a62d4ec731fb47b",
+      "retrievedOn": "2026-11-22",
+      "note": "Source capture, including published revisions."
+    },
+    {
+      "file": "2026-11-22/indeed-us-sectors.csv",
+      "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+      "bytes": 12275534,
+      "sha256": "aff050a6983bc8d31619f69c3e36f03bc7f3bf7cea56f1a8ae25bee097e001a5",
+      "retrievedOn": "2026-11-22",
+      "note": "Source capture, including published revisions."
+    },
+    {
+      "file": "2026-11-22/graduate-unemployment.csv",
+      "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-unemployment-data.csv",
+      "bytes": 16184,
+      "sha256": "f7a508bb5d8091b2d67a3ab1266526cf0b39fc424ad9bd6c2278c3785b55dae7",
+      "retrievedOn": "2026-11-22",
+      "note": "Source capture, including published revisions."
+    },
+    {
+      "file": "2026-11-22/graduate-underemployment.csv",
+      "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-underemployment-data.csv",
+      "bytes": 11620,
+      "sha256": "58338df58ccde8dc5cdaba31a09562fba1e9a64b8d18974811a12df0b923b176",
+      "retrievedOn": "2026-11-22",
+      "note": "Source capture, including published revisions."
+    }
+  ],
+  "metricsUpdated": {
+    "recruitment": {
+      "latestObservation": {
+        "date": "2026-11-13",
+        "value": 87.527064
+      },
+      "observationsAdded": [
+        {
+          "date": "2026-11-07",
+          "value": 88.39578
+        },
+        {
+          "date": "2026-11-08",
+          "value": 88.250483
+        },
+        {
+          "date": "2026-11-09",
+          "value": 88.11149
+        },
+        {
+          "date": "2026-11-10",
+          "value": 87.968218
+        },
+        {
+          "date": "2026-11-11",
+          "value": 87.755134
+        },
+        {
+          "date": "2026-11-12",
+          "value": 87.620932
+        },
+        {
+          "date": "2026-11-13",
+          "value": 87.527064
+        }
+      ],
+      "revisedObservations": [
+        {
+          "date": "2020-02-16",
+          "previousValue": 100.760823,
+          "value": 100.750781
+        },
+        {
+          "date": "2020-05-11",
+          "previousValue": 90.9108,
+          "value": 90.925448
+        },
+        {
+          "date": "2020-05-14",
+          "previousValue": 90.438483,
+          "value": 90.43579
+        },
+        {
+          "date": "2020-07-23",
+          "previousValue": 85.997156,
+          "value": 86.007946
+        },
+        {
+          "date": "2020-08-04",
+          "previousValue": 85.949214,
+          "value": 85.959608
+        },
+        {
+          "date": "2020-11-21",
+          "previousValue": 96.883541,
+          "value": 96.881766
+        },
+        {
+          "date": "2020-11-26",
+          "previousValue": 98.378846,
+          "value": 98.377082
+        },
+        {
+          "date": "2020-12-09",
+          "previousValue": 102.490117,
+          "value": 102.488352
+        },
+        {
+          "date": "2020-12-17",
+          "previousValue": 101.789709,
+          "value": 101.787961
+        },
+        {
+          "date": "2020-12-23",
+          "previousValue": 97.736517,
+          "value": 97.734764
+        },
+        {
+          "date": "2020-12-31",
+          "previousValue": 97.730452,
+          "value": 97.740706
+        },
+        {
+          "date": "2021-01-20",
+          "previousValue": 96.134899,
+          "value": 96.133212
+        },
+        {
+          "date": "2021-01-23",
+          "previousValue": 95.404449,
+          "value": 95.402764
+        },
+        {
+          "date": "2021-01-24",
+          "previousValue": 95.513144,
+          "value": 95.511461
+        },
+        {
+          "date": "2021-01-26",
+          "previousValue": 95.91271,
+          "value": 95.91103
+        },
+        {
+          "date": "2021-01-28",
+          "previousValue": 96.421268,
+          "value": 96.430966
+        },
+        {
+          "date": "2021-02-23",
+          "previousValue": 100.422947,
+          "value": 100.421357
+        },
+        {
+          "date": "2021-03-27",
+          "previousValue": 100.698864,
+          "value": 100.697411
+        },
+        {
+          "date": "2021-03-29",
+          "previousValue": 100.465646,
+          "value": 100.464204
+        },
+        {
+          "date": "2021-04-02",
+          "previousValue": 100.056728,
+          "value": 100.05531
+        },
+        {
+          "date": "2021-04-07",
+          "previousValue": 99.647976,
+          "value": 99.646579
+        },
+        {
+          "date": "2021-04-08",
+          "previousValue": 99.59737,
+          "value": 99.595976
+        },
+        {
+          "date": "2021-04-15",
+          "previousValue": 99.138404,
+          "value": 99.137032
+        },
+        {
+          "date": "2021-04-16",
+          "previousValue": 99.0502,
+          "value": 99.048831
+        },
+        {
+          "date": "2021-04-20",
+          "previousValue": 99.108828,
+          "value": 99.10748
+        },
+        {
+          "date": "2021-04-24",
+          "previousValue": 99.565507,
+          "value": 99.564174
+        },
+        {
+          "date": "2021-06-04",
+          "previousValue": 102.027984,
+          "value": 102.026719
+        },
+        {
+          "date": "2021-06-08",
+          "previousValue": 102.724286,
+          "value": 102.723022
+        },
+        {
+          "date": "2021-06-10",
+          "previousValue": 103.019305,
+          "value": 103.018045
+        },
+        {
+          "date": "2021-06-17",
+          "previousValue": 103.343313,
+          "value": 103.342066
+        },
+        {
+          "date": "2021-06-18",
+          "previousValue": 103.216637,
+          "value": 103.21539
+        },
+        {
+          "date": "2021-06-19",
+          "previousValue": 103.208816,
+          "value": 103.207571
+        },
+        {
+          "date": "2021-06-20",
+          "previousValue": 103.185323,
+          "value": 103.18408
+        },
+        {
+          "date": "2021-07-14",
+          "previousValue": 103.994661,
+          "value": 103.993447
+        },
+        {
+          "date": "2021-07-20",
+          "previousValue": 103.890573,
+          "value": 103.88937
+        },
+        {
+          "date": "2021-07-22",
+          "previousValue": 104.197968,
+          "value": 104.196764
+        },
+        {
+          "date": "2021-07-24",
+          "previousValue": 104.67724,
+          "value": 104.676033
+        },
+        {
+          "date": "2021-08-19",
+          "previousValue": 107.495641,
+          "value": 107.503344
+        },
+        {
+          "date": "2021-09-20",
+          "previousValue": 109.920552,
+          "value": 109.919394
+        },
+        {
+          "date": "2021-09-21",
+          "previousValue": 110.018519,
+          "value": 110.017361
+        },
+        {
+          "date": "2021-09-25",
+          "previousValue": 110.661493,
+          "value": 110.669161
+        },
+        {
+          "date": "2021-09-29",
+          "previousValue": 111.268743,
+          "value": 111.267589
+        },
+        {
+          "date": "2021-10-04",
+          "previousValue": 111.635069,
+          "value": 111.642738
+        },
+        {
+          "date": "2021-11-13",
+          "previousValue": 114.010707,
+          "value": 114.018181
+        },
+        {
+          "date": "2021-11-26",
+          "previousValue": 114.561573,
+          "value": 114.56896
+        },
+        {
+          "date": "2022-03-15",
+          "previousValue": 117.46655,
+          "value": 117.465512
+        },
+        {
+          "date": "2022-03-20",
+          "previousValue": 117.159554,
+          "value": 117.158514
+        },
+        {
+          "date": "2022-03-23",
+          "previousValue": 117.148747,
+          "value": 117.156066
+        },
+        {
+          "date": "2022-03-27",
+          "previousValue": 117.274105,
+          "value": 117.273067
+        },
+        {
+          "date": "2022-03-29",
+          "previousValue": 117.224781,
+          "value": 117.232078
+        },
+        {
+          "date": "2022-04-05",
+          "previousValue": 117.88446,
+          "value": 117.883424
+        },
+        {
+          "date": "2022-04-10",
+          "previousValue": 117.129717,
+          "value": 117.137063
+        },
+        {
+          "date": "2022-04-16",
+          "previousValue": 115.437875,
+          "value": 115.436822
+        },
+        {
+          "date": "2022-04-19",
+          "previousValue": 115.17874,
+          "value": 115.177693
+        },
+        {
+          "date": "2022-04-23",
+          "previousValue": 115.57874,
+          "value": 115.585939
+        },
+        {
+          "date": "2022-04-24",
+          "previousValue": 115.578108,
+          "value": 115.577071
+        },
+        {
+          "date": "2022-04-27",
+          "previousValue": 115.276392,
+          "value": 115.28358
+        },
+        {
+          "date": "2022-05-04",
+          "previousValue": 114.939917,
+          "value": 114.938879
+        },
+        {
+          "date": "2022-05-11",
+          "previousValue": 115.770777,
+          "value": 115.769736
+        },
+        {
+          "date": "2022-05-12",
+          "previousValue": 115.915953,
+          "value": 115.914912
+        },
+        {
+          "date": "2022-05-24",
+          "previousValue": 115.424694,
+          "value": 115.423659
+        },
+        {
+          "date": "2022-06-04",
+          "previousValue": 114.371089,
+          "value": 114.370046
+        },
+        {
+          "date": "2022-06-06",
+          "previousValue": 114.242253,
+          "value": 114.241208
+        },
+        {
+          "date": "2022-06-07",
+          "previousValue": 114.196214,
+          "value": 114.195168
+        },
+        {
+          "date": "2022-06-15",
+          "previousValue": 114.440729,
+          "value": 114.439678
+        },
+        {
+          "date": "2022-06-16",
+          "previousValue": 114.310359,
+          "value": 114.317575
+        },
+        {
+          "date": "2022-06-17",
+          "previousValue": 114.21417,
+          "value": 114.213118
+        },
+        {
+          "date": "2022-06-23",
+          "previousValue": 113.690927,
+          "value": 113.689874
+        },
+        {
+          "date": "2022-06-26",
+          "previousValue": 113.552568,
+          "value": 113.551511
+        },
+        {
+          "date": "2022-07-03",
+          "previousValue": 112.607665,
+          "value": 112.606607
+        },
+        {
+          "date": "2022-07-04",
+          "previousValue": 112.512169,
+          "value": 112.511111
+        },
+        {
+          "date": "2022-07-09",
+          "previousValue": 112.218879,
+          "value": 112.217812
+        },
+        {
+          "date": "2022-07-10",
+          "previousValue": 112.050033,
+          "value": 112.048965
+        },
+        {
+          "date": "2022-07-11",
+          "previousValue": 111.93041,
+          "value": 111.929341
+        },
+        {
+          "date": "2022-07-13",
+          "previousValue": 111.628455,
+          "value": 111.635624
+        },
+        {
+          "date": "2022-07-20",
+          "previousValue": 111.136579,
+          "value": 111.135503
+        },
+        {
+          "date": "2022-07-21",
+          "previousValue": 111.213786,
+          "value": 111.212709
+        },
+        {
+          "date": "2022-07-23",
+          "previousValue": 111.226448,
+          "value": 111.233642
+        },
+        {
+          "date": "2022-07-27",
+          "previousValue": 111.348596,
+          "value": 111.347518
+        },
+        {
+          "date": "2022-07-28",
+          "previousValue": 111.251158,
+          "value": 111.250081
+        },
+        {
+          "date": "2022-08-03",
+          "previousValue": 110.860709,
+          "value": 110.859631
+        },
+        {
+          "date": "2022-08-04",
+          "previousValue": 110.741004,
+          "value": 110.739926
+        },
+        {
+          "date": "2022-08-11",
+          "previousValue": 110.234145,
+          "value": 110.233065
+        },
+        {
+          "date": "2022-08-12",
+          "previousValue": 110.203684,
+          "value": 110.202603
+        },
+        {
+          "date": "2022-08-19",
+          "previousValue": 109.865925,
+          "value": 109.864835
+        },
+        {
+          "date": "2022-08-25",
+          "previousValue": 109.391751,
+          "value": 109.398932
+        },
+        {
+          "date": "2022-08-26",
+          "previousValue": 109.316526,
+          "value": 109.315431
+        },
+        {
+          "date": "2022-08-27",
+          "previousValue": 109.193855,
+          "value": 109.192761
+        },
+        {
+          "date": "2022-10-10",
+          "previousValue": 105.409435,
+          "value": 105.408314
+        },
+        {
+          "date": "2022-10-11",
+          "previousValue": 105.394861,
+          "value": 105.392619
+        },
+        {
+          "date": "2022-10-15",
+          "previousValue": 105.087082,
+          "value": 105.085961
+        },
+        {
+          "date": "2022-10-16",
+          "previousValue": 105.093651,
+          "value": 105.09253
+        },
+        {
+          "date": "2022-10-19",
+          "previousValue": 105.045748,
+          "value": 105.044627
+        },
+        {
+          "date": "2022-10-21",
+          "previousValue": 104.988662,
+          "value": 104.98754
+        },
+        {
+          "date": "2022-10-22",
+          "previousValue": 104.818938,
+          "value": 104.824887
+        },
+        {
+          "date": "2022-10-30",
+          "previousValue": 104.307953,
+          "value": 104.306825
+        },
+        {
+          "date": "2022-11-02",
+          "previousValue": 103.768243,
+          "value": 103.765988
+        },
+        {
+          "date": "2022-11-07",
+          "previousValue": 103.008367,
+          "value": 103.007239
+        },
+        {
+          "date": "2022-11-10",
+          "previousValue": 102.54939,
+          "value": 102.556313
+        },
+        {
+          "date": "2022-11-14",
+          "previousValue": 101.870714,
+          "value": 101.86959
+        },
+        {
+          "date": "2022-11-26",
+          "previousValue": 100.939509,
+          "value": 100.946365
+        },
+        {
+          "date": "2022-12-05",
+          "previousValue": 100.6247,
+          "value": 100.631608
+        },
+        {
+          "date": "2022-12-11",
+          "previousValue": 100.27697,
+          "value": 100.283914
+        },
+        {
+          "date": "2022-12-24",
+          "previousValue": 99.486162,
+          "value": 99.485002
+        },
+        {
+          "date": "2023-01-06",
+          "previousValue": 98.186969,
+          "value": 98.185788
+        },
+        {
+          "date": "2023-01-11",
+          "previousValue": 97.980013,
+          "value": 97.986975
+        },
+        {
+          "date": "2023-01-14",
+          "previousValue": 97.945951,
+          "value": 97.944768
+        },
+        {
+          "date": "2023-01-19",
+          "previousValue": 98.073314,
+          "value": 98.072126
+        },
+        {
+          "date": "2023-02-13",
+          "previousValue": 96.402974,
+          "value": 96.410049
+        },
+        {
+          "date": "2023-03-29",
+          "previousValue": 89.747754,
+          "value": 89.754381
+        },
+        {
+          "date": "2023-06-03",
+          "previousValue": 86.847367,
+          "value": 86.853879
+        },
+        {
+          "date": "2023-06-13",
+          "previousValue": 85.924774,
+          "value": 85.931294
+        },
+        {
+          "date": "2023-06-15",
+          "previousValue": 85.668411,
+          "value": 85.67491
+        },
+        {
+          "date": "2023-09-19",
+          "previousValue": 85.982009,
+          "value": 85.975225
+        },
+        {
+          "date": "2023-10-08",
+          "previousValue": 85.421655,
+          "value": 85.414838
+        },
+        {
+          "date": "2023-12-02",
+          "previousValue": 84.881558,
+          "value": 84.874593
+        },
+        {
+          "date": "2024-07-29",
+          "previousValue": 83.912321,
+          "value": 83.904979
+        },
+        {
+          "date": "2024-09-23",
+          "previousValue": 86.012116,
+          "value": 86.010638
+        },
+        {
+          "date": "2024-09-29",
+          "previousValue": 85.844383,
+          "value": 85.8429
+        },
+        {
+          "date": "2024-10-01",
+          "previousValue": 85.719586,
+          "value": 85.718102
+        },
+        {
+          "date": "2024-10-19",
+          "previousValue": 85.715813,
+          "value": 85.714286
+        },
+        {
+          "date": "2024-10-25",
+          "previousValue": 86.009676,
+          "value": 86.008135
+        },
+        {
+          "date": "2024-12-26",
+          "previousValue": 85.420439,
+          "value": 85.428175
+        },
+        {
+          "date": "2025-01-16",
+          "previousValue": 85.614242,
+          "value": 85.61273
+        },
+        {
+          "date": "2025-02-03",
+          "previousValue": 84.802399,
+          "value": 84.810146
+        },
+        {
+          "date": "2025-03-10",
+          "previousValue": 83.897365,
+          "value": 83.905123
+        },
+        {
+          "date": "2025-03-12",
+          "previousValue": 83.989076,
+          "value": 83.996852
+        },
+        {
+          "date": "2025-06-21",
+          "previousValue": 82.723732,
+          "value": 82.722148
+        },
+        {
+          "date": "2025-06-25",
+          "previousValue": 82.686515,
+          "value": 82.694381
+        },
+        {
+          "date": "2025-07-12",
+          "previousValue": 83.315686,
+          "value": 83.323707
+        },
+        {
+          "date": "2025-08-01",
+          "previousValue": 84.833731,
+          "value": 84.83214
+        },
+        {
+          "date": "2025-08-08",
+          "previousValue": 84.812444,
+          "value": 84.810852
+        },
+        {
+          "date": "2025-08-24",
+          "previousValue": 85.678448,
+          "value": 85.67686
+        },
+        {
+          "date": "2025-08-30",
+          "previousValue": 86.115372,
+          "value": 86.113774
+        },
+        {
+          "date": "2025-11-10",
+          "previousValue": 88.126814,
+          "value": 88.135537
+        },
+        {
+          "date": "2025-11-24",
+          "previousValue": 87.229416,
+          "value": 87.237974
+        },
+        {
+          "date": "2025-12-05",
+          "previousValue": 87.595532,
+          "value": 87.593899
+        },
+        {
+          "date": "2025-12-09",
+          "previousValue": 87.742314,
+          "value": 87.740683
+        },
+        {
+          "date": "2025-12-19",
+          "previousValue": 87.975868,
+          "value": 87.984384
+        },
+        {
+          "date": "2026-01-06",
+          "previousValue": 88.083618,
+          "value": 88.092217
+        },
+        {
+          "date": "2026-01-20",
+          "previousValue": 88.986919,
+          "value": 88.9955
+        },
+        {
+          "date": "2026-02-28",
+          "previousValue": 88.617038,
+          "value": 88.625443
+        },
+        {
+          "date": "2026-03-04",
+          "previousValue": 88.557379,
+          "value": 88.565781
+        },
+        {
+          "date": "2026-06-28",
+          "previousValue": 86.392269,
+          "value": 86.400818
+        },
+        {
+          "date": "2026-07-09",
+          "previousValue": 87.501646,
+          "value": 87.5
+        },
+        {
+          "date": "2026-07-12",
+          "previousValue": 87.548517,
+          "value": 87.546872
+        },
+        {
+          "date": "2026-07-20",
+          "previousValue": 87.113689,
+          "value": 87.110412
+        },
+        {
+          "date": "2026-07-23",
+          "previousValue": 86.728758,
+          "value": 86.727124
+        },
+        {
+          "date": "2026-08-08",
+          "previousValue": 85.225969,
+          "value": 85.224331
+        },
+        {
+          "date": "2026-08-19",
+          "previousValue": 87.452098,
+          "value": 87.45046
+        },
+        {
+          "date": "2026-08-26",
+          "previousValue": 87.147887,
+          "value": 87.146257
+        },
+        {
+          "date": "2026-09-09",
+          "previousValue": 88.226077,
+          "value": 88.224462
+        },
+        {
+          "date": "2026-09-16",
+          "previousValue": 87.849577,
+          "value": 87.856474
+        },
+        {
+          "date": "2026-10-09",
+          "previousValue": 87.542007,
+          "value": 87.550413
+        },
+        {
+          "date": "2026-10-11",
+          "previousValue": 87.663462,
+          "value": 87.661859
+        },
+        {
+          "date": "2026-10-12",
+          "previousValue": 87.723264,
+          "value": 87.731704
+        },
+        {
+          "date": "2026-10-22",
+          "previousValue": 88.673358,
+          "value": 88.671749
+        }
+      ],
+      "revisedObservationCount": 157
+    }
+  },
+  "checks": {
+    "graduates": "Both source files match the 16 November captures; September remains latest.",
+    "employmentAndPay": "October remains the latest released employment and CPI data.",
+    "hiring": "September remains the latest JOLTS release; the next release is 1 December.",
+    "canada": "Q2 remains the latest quarterly release; Q3 is due 15 December.",
+    "frozen": "Anchors, paths and definitions unchanged."
+  },
+  "frozenFileSha256": {
+    "public/data/scenarios-v1.json": "cd638ec629827e0c533ea5e2cdcd9bbfb330f4362e256f0b76dc620be45d45fe",
+    "public/data/ai/frozen-metrics-v1.json": "93a384e2b0ec76018614152ca1f5065477ae0e09a3246488eefabe6f41fa0dd8"
+  }
+}

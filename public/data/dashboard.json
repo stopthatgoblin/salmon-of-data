@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-16",
+  "asOf": "2026-11-22",
   "version": 1,
   "metrics": [
     {
@@ -4654,6 +4654,10 @@
         {
           "date": "2026-09",
           "value": 144.3
+        },
+        {
+          "date": "2026-10",
+          "value": 144.6
         }
       ],
       "frequency": "Monthly",
@@ -4667,8 +4671,8 @@
       "peak": "2027-12",
       "historyStart": "1988-01",
       "latest": {
-        "date": "2026-09",
-        "value": 144.3
+        "date": "2026-10",
+        "value": 144.6
       },
       "anchor": {
         "date": "2026-07",
@@ -5785,6 +5789,16 @@
       "note": "NOAA ENSO diagnostic discussion issued 12 November; next discussion scheduled 10 December.",
       "name": "NOAA ENSO Diagnostic Discussion",
       "downloadUrl": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+    },
+    {
+      "file": "2026-11-22/ons.json",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data",
+      "bytes": 126617,
+      "sha256": "8c3bcaaa734f3a731ef8246a4b929aae884165309597f4bdf905e8934ddadb78",
+      "retrievedOn": "2026-11-22",
+      "note": "ONS D7BU: October 2026 food and non-alcoholic beverages index.",
+      "name": "ONS D7BU",
+      "downloadUrl": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bu/mm23/data"
     }
   ]
 }

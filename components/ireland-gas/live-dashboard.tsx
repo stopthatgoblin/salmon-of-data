@@ -18,7 +18,6 @@ export default function GasLiveDashboard() {
   const [selected,setSelected] = useState<string | null>(null);
   const [message,setMessage] = useState('Checking the daily archive…');
   const [loading,setLoading] = useState(true);
-  const [problem,setProblem] = useState(false);
   const selection = useRef<string | null>(null);
   const epoch = useRef(0);
   const current = useRef({day:'',version:''});
@@ -41,7 +40,7 @@ export default function GasLiveDashboard() {
       setManifest(index);
       const wanted = selection.current || index.latest;
       const record = index.days.find(row=>row.date === wanted);
-      if (!record) {setProblem(true);setMessage('This date is not in the archive. Choose an available day.');return;}
+      if (!record) {setMessage('This date is not in the archive. Choose an available day.');return;}
       if (current.current.day !== wanted || current.current.version !== record.version) {
         let data: GasSnapshot | null = null;
         for (let attempt=0;attempt<3;attempt++) {
@@ -64,7 +63,6 @@ export default function GasLiveDashboard() {
       const late = index.latest < due.toISOString().slice(0,10);
       const missing = (['ni','roi'] as const).filter(region=>loaded.current?.regions[region].demand === null);
       const missingElectricity = (['ni','roi'] as const).filter(region=>loaded.current?.regions[region].electricity === null);
-      setProblem(!!index.lastError || !!index.pending || late || missing.length > 0 || missingElectricity.length > 0);
       const waiting = ['SEMO meter data','GNI daily data'].includes(index.waitingForSource?.source || '') && validDate(index.waitingForSource?.gasDay || null)
         ? `Waiting for ${index.waitingForSource!.source} for ${label(index.waitingForSource!.gasDay)}.` : null;
       const demand = missing.length ? `Electricity-demand percentages are unavailable for ${missing.map(region=>region.toUpperCase()).join(' and ')}.` : '';
@@ -75,7 +73,6 @@ export default function GasLiveDashboard() {
       setMessage([update,electricity,demand].filter(Boolean).join(' ') || (selection.current ? 'Historical view. Includes accepted revisions.' : 'Choose a gas day from the archive.'));
     } catch (error) {
       if (abort.signal.aborted || generation !== epoch.current) return;
-      setProblem(true);
       setMessage(current.current.day ? 'Could not refresh. Showing the last loaded day.' : 'Gas data could not be loaded. Please retry.');
     } finally {if(generation===epoch.current)setLoading(false);}
   },[]);
@@ -120,7 +117,6 @@ export default function GasLiveDashboard() {
       <button type="button" className="gas-return-latest" disabled={loading||!selected} onClick={()=>choose(null)}>Latest</button>
       </div><p role="status">{loading?'Loading…':message}</p></div>
     </details>
-    {problem&&!loading&&<p className="gas-update-note" role="status">{message} Displayed: {label(snapshot.gasDay)}.</p>}
     {manifest&&<p className="gas-check-status">{checkTime(manifest.lastChecked||manifest.lastAttempt)&&<>Last checked: {checkTime(manifest.lastChecked||manifest.lastAttempt)}.</>} {checkTime(manifest.lastDataChange)&&<>Data last changed: {checkTime(manifest.lastDataChange)}.</>}</p>}
   </>;
   return <IrelandGasDashboard snapshot={snapshot} controls={controls}/>;

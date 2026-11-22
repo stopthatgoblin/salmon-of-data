@@ -411,5 +411,37 @@
     "sha256": "58338df58ccde8dc5cdaba31a09562fba1e9a64b8d18974811a12df0b923b176",
     "retrievedOn": "2026-11-16",
     "note": "Current source capture, including published revisions."
+  },
+  {
+    "file": "2026-11-22/indeed-us-all.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/aggregate_job_postings_US.csv",
+    "bytes": 205567,
+    "sha256": "4087dc63e3686d4b2b8a309e76138cd377b59e9a5d7347e18a62d4ec731fb47b",
+    "retrievedOn": "2026-11-22",
+    "note": "Source capture, including published revisions."
+  },
+  {
+    "file": "2026-11-22/indeed-us-sectors.csv",
+    "url": "https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv",
+    "bytes": 12275534,
+    "sha256": "aff050a6983bc8d31619f69c3e36f03bc7f3bf7cea56f1a8ae25bee097e001a5",
+    "retrievedOn": "2026-11-22",
+    "note": "Source capture, including published revisions."
+  },
+  {
+    "file": "2026-11-22/graduate-unemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-unemployment-data.csv",
+    "bytes": 16184,
+    "sha256": "f7a508bb5d8091b2d67a3ab1266526cf0b39fc424ad9bd6c2278c3785b55dae7",
+    "retrievedOn": "2026-11-22",
+    "note": "Source capture, including published revisions."
+  },
+  {
+    "file": "2026-11-22/graduate-underemployment.csv",
+    "url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-underemployment-data.csv",
+    "bytes": 11620,
+    "sha256": "58338df58ccde8dc5cdaba31a09562fba1e9a64b8d18974811a12df0b923b176",
+    "retrievedOn": "2026-11-22",
+    "note": "Source capture, including published revisions."
   }
 ]
